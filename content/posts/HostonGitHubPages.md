@@ -151,3 +151,22 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 ```
+
+### Step 7
+
+Commit and push the change to your GitHub repository.
+
+```powershell
+git add -A
+git commit -m "Create hugo.yaml"
+git push
+```
+
+### Step 8
+
+From GitHub’s main menu, choose Actions. You will see something like this:
+![Workflows](https://gohugo.io/hosting-and-deployment/hosting-on-github/gh-pages-3.png)
+
+### Step 9
+
+When GitHub has finished building and deploying your site, the color of the status indicator will change to green.
