@@ -6,7 +6,6 @@ description = "Git setup for HUGO"
 slug = "git_setup"
 tags = [
     "git",
-    "hugo",
 ]
 categories = [
     "setup",
