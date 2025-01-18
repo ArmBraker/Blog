@@ -1,4 +1,4 @@
-baseURL = "https://armbraker.github.io/Blog/"
+baseURL = "https://armbraker.github.io/blog/"
 title = "Journey into IT Knowledge"
 theme = "hugo-coder"
 languageCode = "en"

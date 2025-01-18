@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Journey into IT Knowledge</title>
+    <link>https://armbraker.github.io/blog/categories/</link>
+    <description>Recent content in Categories on Journey into IT Knowledge</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 18 Jan 2025 16:55:28 +0100</lastBuildDate>
+    <atom:link href="https://armbraker.github.io/blog/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Configuration</title>
+      <link>https://armbraker.github.io/blog/categories/configuration/</link>
+      <pubDate>Sat, 18 Jan 2025 16:55:28 +0100</pubDate>
+      <guid>https://armbraker.github.io/blog/categories/configuration/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Setup</title>
+      <link>https://armbraker.github.io/blog/categories/setup/</link>
+      <pubDate>Sat, 18 Jan 2025 16:55:28 +0100</pubDate>
+      <guid>https://armbraker.github.io/blog/categories/setup/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cheatsheet</title>
+      <link>https://armbraker.github.io/blog/categories/cheatsheet/</link>
+      <pubDate>Sat, 18 Jan 2025 15:25:21 +0100</pubDate>
+      <guid>https://armbraker.github.io/blog/categories/cheatsheet/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>
