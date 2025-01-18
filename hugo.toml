@@ -1,4 +1,4 @@
-baseURL = "http://armbraker.github.io"
+baseURL = "https://armbraker.github.io/Blog/"
 title = "Journey into IT Knowledge"
 theme = "hugo-coder"
 languageCode = "en"
@@ -27,7 +27,7 @@ author = "ArmBraker 👨‍💻"
 description = "A Journey to into IT Knowledge"
 keywords = "blog,knowledge,IT Security,hacking,personal,networking"
 info = ["IT Security Specialist 🔐", "Consultant 💡"]
-avatarURL = "/images/avatar.png"
+avatarURL = "/blog/images/avatar.png"
 #gravatar = "samuelkrausko@gmail.com"
 dateFormat = "January 2, 2006"
 since = 2025

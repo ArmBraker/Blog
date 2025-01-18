@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Cheatsheet on Journey into IT Knowledge</title>
-    <link>http://armbraker.github.io/categories/cheatsheet/</link>
+    <link>https://armbraker.github.io/Blog/categories/cheatsheet/</link>
     <description>Recent content in Cheatsheet on Journey into IT Knowledge</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Sat, 18 Jan 2025 15:25:21 +0100</lastBuildDate>
-    <atom:link href="http://armbraker.github.io/categories/cheatsheet/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://armbraker.github.io/Blog/categories/cheatsheet/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>GIT Setup</title>
-      <link>http://armbraker.github.io/posts/git_setup/</link>
+      <link>https://armbraker.github.io/Blog/posts/git_setup/</link>
       <pubDate>Sat, 18 Jan 2025 15:25:21 +0100</pubDate>
-      <guid>http://armbraker.github.io/posts/git_setup/</guid>
+      <guid>https://armbraker.github.io/Blog/posts/git_setup/</guid>
       <description>&lt;h2 id=&#34;github-with-vscode&#34;&gt;&#xA;  GitHub with VSCode&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#github-with-vscode&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;h3 id=&#34;introduction&#34;&gt;&#xA;  Introduction&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#introduction&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;I recently decided to start making a blog about my journey to &amp;ldquo;IT Knowledge&amp;rdquo;&amp;hellip; This decision came into my mind because &lt;code&gt;I s*ck in making of notes&lt;/code&gt; and also my English is not in the level which I would be comfort with&amp;hellip;&lt;/p&gt;&#xA;&lt;p&gt;My ultimate idea is to create a blog webpage with my notes and writeups powered by &lt;a href=&#34;https://gohugo.io/&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;HUGO CMS&lt;/a&gt;&lt;/p&gt;</description>
     </item>
   </channel>

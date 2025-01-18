@@ -45,7 +45,7 @@ choco install git -y
 
 You can sign into VS Code with your GitHub account in the Accounts menu in the lower right of the Activity bar to enable additional features like Settings Sync, but also cloning and publishing repositories from GitHub.
 
-![sign-in](/images/signin.png)
+![sign-in](/blog/images/signin.png)
 
 ### My usage of GIT
 
