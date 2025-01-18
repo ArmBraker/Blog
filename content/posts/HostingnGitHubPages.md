@@ -1,7 +1,7 @@
 +++ 
 draft = false
 date = 2025-01-18T16:55:28+01:00
-title = "Host on GitHub Pages"
+title = "Host Hugo on GitHub Pages"
 description = "How to host Hugo on GitHub Pages"
 slug = "hostingonGitHubPages"
 authors = []
@@ -44,11 +44,13 @@ git push -u origin main
 ### Step 3
 
 - Visit your GitHub repository. From the main menu choose **Settings > Pages**. In the center of your screen you will see this:
+
 ![Build and deployment](https://gohugo.io/hosting-and-deployment/hosting-on-github/gh-pages-1.png)
 
 ### Step 4
 
 - Change the **Source** to `GitHub Actions`. The change is immediate; you do not have to press a Save button.
+
 ![Build and deployment](https://gohugo.io/hosting-and-deployment/hosting-on-github/gh-pages-2.png)
 
 ### Step 5
@@ -170,3 +172,5 @@ From GitHub’s main menu, choose Actions. You will see something like this:
 ### Step 9
 
 When GitHub has finished building and deploying your site, the color of the status indicator will change to green.
+
+![succesful_action](/blog/images/successful_action.png)
