@@ -8,7 +8,7 @@ aliases = ["about", "journey", "contact"]
 
 ## Welcome to My Blog
 
-Hi there! I'm **[Your Name]**, and this blog is dedicated to my personal journey of mastering IT knowledge. I recently decided to start documenting my experiences as a way to enhance my learning process. Keeping structured notes has always been a *challenge* for me, and I also aim to help other fellows in their journey.
+Hi there! My alias is **ArmBraker**, and this blog is dedicated to my personal journey of mastering IT knowledge. I recently decided to start documenting my experiences as a way to enhance my learning process. Keeping structured notes has always been a *challenge* for me, and I also aim to help other fellows in their journey.
 
 ### Who Am I?
 

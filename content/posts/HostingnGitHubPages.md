@@ -173,4 +173,4 @@ From GitHub’s main menu, choose Actions. You will see something like this:
 
 When GitHub has finished building and deploying your site, the color of the status indicator will change to green.
 
-![succesful_action](/blog/images/successful_action.png)
+![successful_action](/blog/images/successful_action.png)
