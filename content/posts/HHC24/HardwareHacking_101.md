@@ -104,7 +104,7 @@ slh --view-card 143
 
 - **SUCCESS**
 
-```ASCII
+```powershell
 
        *   *   *   *   *   *   *   *   *   *   *
    *                                             *
@@ -198,7 +198,9 @@ SELECT * FROM access_cards LIMIT 1 OFFSET 41;
 
 ```SQL
 sqlite> UPDATE access_cards SET access = 1, sig = '135a32d5026c5628b1753e6c67015c0f04e26051ef7391c2552de2816b1b7096' WHERE id = 42;
+```
 
+```powershell
        *   *   *   *   *   *   *   *   *   *   *
    *                                             *
 *      ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄     *
