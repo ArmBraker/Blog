@@ -13,132 +13,19 @@
 
 
 <meta name="author" content="ArmBraker 👨‍💻">
-<meta name="description" content="
-  Objective
-  
-    
-    Link to heading
-  
-
-We need to access the terminal and modify the access database. We&rsquo;re looking to grant access to card number 42.
---------------------------------------------------------
-                   ___     _      _  _   
-                  / __|   | |    | || |  
-                  \__ \   | |__  | __ |  
-                  |___/   |____| |_||_|  
-                _|&#34;&#34;&#34;&#34;&#34;|_|&#34;&#34;&#34;&#34;&#34;|_|&#34;&#34;&#34;&#34;&#34;| 
-                &#34;`-0-0-&#39;&#34;`-0-0-&#39;&#34;`-0-0-&#39; 
---------------------------------------------------------
-  Santa&#39;s Little Helper - Access Card Maintenance Tool
-
-          Tool Name: slh
-
-options:
-  -h, --help            show this help message and exit
-  --view-config         View current configuration.
-  --view-cards          View current values of all access cards.
-  --view-card ID        View a single access card by ID.
-  --set-access ACCESS_LEVEL
-                        Set access level of access card. Must be 0 (No Access) or 1 (Full Access).
-  --id ID               ID of card to modify.
-  --passcode PASSCODE   Passcode to make changes.
-  --new-card            Generate a new card ID.
---------------------------------------------------------
-
-History command revealed following information:
-
-   1  cd /var/www/html
-    2  ls -l
-    3  sudo nano index.html
-    4  cd ..
-    5  rm -rf repo
-    6  sudo apt update
-    7  sudo apt upgrade -y
-    8  ping 1.1.1.1
-    9  slh --help
-   10  slg --config
-   11  slh --passcode CandyCaneCrunch77 --set-access 1 --id 143
-   12  df -h
-   13  top
-   14  ps aux | grep apache
-   15  sudo systemctl restart apache2
-   16  history | grep ssh
-   17  clear
-   18  whoami
-   19  crontab -e
-   20  crontab -l
-   21  alias ll=&#39;ls -lah&#39;
-   22  unalias ll
-   23  echo &#34;Hello, World!&#34;
-   24  cat /etc/passwd
-   25  sudo tail -f /var/log/syslog
-   26  mv archive.tar.gz /backup/
-   27  rm archive.tar.gz
-   28  find / -name &#34;*.log&#34;
-   29  grep &#34;error&#34; /var/log/apache2/error.log
-   30  history
-
-Card ID 143 content:
-
-slh --view-card 143
-
-(143, &#39;fa9717e8-e1af-42e9-ad68-eeb96ab39d13&#39;, 0, &#39;728f25dda2ef6168ada53065883756140cfe663bce4e827084b745a32255157d&#39;)
-
-According to documentation, the full access is 1, but the card with ID 143 has value 0.
-To finish the objective for broz, following command needs to be executed:
-
- slh --passcode CandyCaneCrunch77 --set-access 1 --id 42 
-
-SUCCESS
-
-
-       *   *   *   *   *   *   *   *   *   *   *
-   *                                             *
-*      ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄     *
- *  $$$$$$\   $$$$$$\   $$$$$$\  $$$$$$$$\  $$$$$$\   $$$$$$\  * 
-  * $$  __$$\ $$  __$$\ $$  __$$\ $$  _____|$$  __$$\ $$  __$$\ *
-   *$$ /  $$ |$$ /  \__|$$ /  \__|$$ |      $$ /  \__|$$ /  \__| *
-    $$$$$$$$ |$$ |      $$ |      $$$$$\    \$$$$$$\  \$$$$$$\   
-   *$$  __$$ |$$ |      $$ |      $$  __|    \____$$\  \____$$\  *
-  * $$ |  $$ |$$ |  $$\ $$ |  $$\ $$ |      $$\   $$ |$$\   $$ | *
-*   $$ |  $$ |\$$$$$$  |\$$$$$$  |$$$$$$$$\ \$$$$$$  |\$$$$$$  |   *
- *  \__|  \__| \______/  \______/ \________| \______/  \______/  *
-*         *    ❄             ❄           *        ❄    ❄    ❄   *
-   *        *     *     *      *     *      *    *      *      *
-   *  $$$$$$\  $$$$$$$\   $$$$$$\  $$\   $$\ $$$$$$$$\ $$$$$$$$\ $$$$$$$\  $$\  *
-   * $$  __$$\ $$  __$$\ $$  __$$\ $$$\  $$ |\__$$  __|$$  _____|$$  __$$\ $$ | *
-  *  $$ /  \__|$$ |  $$ |$$ /  $$ |$$$$\ $$ |   $$ |   $$ |      $$ |  $$ |$$ |*
-  *  $$ |$$$$\ $$$$$$$  |$$$$$$$$ |$$ $$\$$ |   $$ |   $$$$$\    $$ |  $$ |$$ | *
- *   $$ |\_$$ |$$  __$$&lt; $$  __$$ |$$ \$$$$ |   $$ |   $$  __|   $$ |  $$ |\__|*
-  *  $$ |  $$ |$$ |  $$ |$$ |  $$ |$$ |\$$$ |   $$ |   $$ |      $$ |  $$ |   *
-*    \$$$$$$  |$$ |  $$ |$$ |  $$ |$$ | \$$ |   $$ |   $$$$$$$$\ $$$$$$$  |$$\ *
- *    \______/ \__|  \__|\__|  \__|\__|  \__|   \__|   \________|\_______/ \__|  *
-  *                                                            ❄    ❄    ❄   *
-   *      *    *    *    *    *    *    *    *    *    *    *    *    *    *    
-
-  Gold
-  
-    
-    Link to heading
-  
-
-
-
-Elf says now: &ldquo;There’s a tougher route if you&rsquo;re up for the challenge to earn the Gold medal. It involves directly modifying the database and generating your own HMAC signature.&rdquo;">
+<meta name="description" content="A simple hardware terminal application enhanced by database and hashing exploitation">
 <meta name="keywords" content="blog,knowledge,IT Security,hacking,personal,networking">
 
 
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="HHC24 - Hardware Hacking 101">
-  <meta name="twitter:description" content="Objective Link to heading We need to access the terminal and modify the access database. We’re looking to grant access to card number 42.
--------------------------------------------------------- ___ _ _ _ / __| | | | || | \__ \ | |__ | __ | |___/ |____| |_||_| _|&#34;&#34;&#34;&#34;&#34;|_|&#34;&#34;&#34;&#34;&#34;|_|&#34;&#34;&#34;&#34;&#34;| &#34;`-0-0-&#39;&#34;`-0-0-&#39;&#34;`-0-0-&#39; -------------------------------------------------------- Santa&#39;s Little Helper - Access Card Maintenance Tool Tool Name: slh options: -h, --help show this help message and exit --view-config View current configuration. --view-cards View current values of all access cards. --view-card ID View a single access card by ID. --set-access ACCESS_LEVEL Set access level of access card. Must be 0 (No Access) or 1 (Full Access). --id ID ID of card to modify. --passcode PASSCODE Passcode to make changes. --new-card Generate a new card ID. -------------------------------------------------------- History command revealed following information: 1 cd /var/www/html 2 ls -l 3 sudo nano index.html 4 cd .. 5 rm -rf repo 6 sudo apt update 7 sudo apt upgrade -y 8 ping 1.1.1.1 9 slh --help 10 slg --config 11 slh --passcode CandyCaneCrunch77 --set-access 1 --id 143 12 df -h 13 top 14 ps aux | grep apache 15 sudo systemctl restart apache2 16 history | grep ssh 17 clear 18 whoami 19 crontab -e 20 crontab -l 21 alias ll=&#39;ls -lah&#39; 22 unalias ll 23 echo &#34;Hello, World!&#34; 24 cat /etc/passwd 25 sudo tail -f /var/log/syslog 26 mv archive.tar.gz /backup/ 27 rm archive.tar.gz 28 find / -name &#34;*.log&#34; 29 grep &#34;error&#34; /var/log/apache2/error.log 30 history Card ID 143 content: slh --view-card 143 (143, &#39;fa9717e8-e1af-42e9-ad68-eeb96ab39d13&#39;, 0, &#39;728f25dda2ef6168ada53065883756140cfe663bce4e827084b745a32255157d&#39;) According to documentation, the full access is 1, but the card with ID 143 has value 0. To finish the objective for broz, following command needs to be executed: slh --passcode CandyCaneCrunch77 --set-access 1 --id 42 SUCCESS * * * * * * * * * * * * * * ❄ ❄ ❄ ❄ ❄ ❄ ❄ ❄ ❄ ❄ ❄ ❄ ❄ * * $$$$$$\ $$$$$$\ $$$$$$\ $$$$$$$$\ $$$$$$\ $$$$$$\ * * $$ __$$\ $$ __$$\ $$ __$$\ $$ _____|$$ __$$\ $$ __$$\ * *$$ / $$ |$$ / \__|$$ / \__|$$ | $$ / \__|$$ / \__| * $$$$$$$$ |$$ | $$ | $$$$$\ \$$$$$$\ \$$$$$$\ *$$ __$$ |$$ | $$ | $$ __| \____$$\ \____$$\ * * $$ | $$ |$$ | $$\ $$ | $$\ $$ | $$\ $$ |$$\ $$ | * * $$ | $$ |\$$$$$$ |\$$$$$$ |$$$$$$$$\ \$$$$$$ |\$$$$$$ | * * \__| \__| \______/ \______/ \________| \______/ \______/ * * * ❄ ❄ * ❄ ❄ ❄ * * * * * * * * * * * * $$$$$$\ $$$$$$$\ $$$$$$\ $$\ $$\ $$$$$$$$\ $$$$$$$$\ $$$$$$$\ $$\ * * $$ __$$\ $$ __$$\ $$ __$$\ $$$\ $$ |\__$$ __|$$ _____|$$ __$$\ $$ | * * $$ / \__|$$ | $$ |$$ / $$ |$$$$\ $$ | $$ | $$ | $$ | $$ |$$ |* * $$ |$$$$\ $$$$$$$ |$$$$$$$$ |$$ $$\$$ | $$ | $$$$$\ $$ | $$ |$$ | * * $$ |\_$$ |$$ __$$&lt; $$ __$$ |$$ \$$$$ | $$ | $$ __| $$ | $$ |\__|* * $$ | $$ |$$ | $$ |$$ | $$ |$$ |\$$$ | $$ | $$ | $$ | $$ | * * \$$$$$$ |$$ | $$ |$$ | $$ |$$ | \$$ | $$ | $$$$$$$$\ $$$$$$$ |$$\ * * \______/ \__| \__|\__| \__|\__| \__| \__| \________|\_______/ \__| * * ❄ ❄ ❄ * * * * * * * * * * * * * * * * Gold Link to heading Elf says now: “There’s a tougher route if you’re up for the challenge to earn the Gold medal. It involves directly modifying the database and generating your own HMAC signature.”">
+  <meta name="twitter:description" content="A simple hardware terminal application enhanced by database and hashing exploitation">
 
 <meta property="og:url" content="https://armbraker.github.io/blog/posts/hhc24/hardwarehacking_101/">
   <meta property="og:site_name" content="Journey into IT Knowledge">
   <meta property="og:title" content="HHC24 - Hardware Hacking 101">
-  <meta property="og:description" content="Objective Link to heading We need to access the terminal and modify the access database. We’re looking to grant access to card number 42.
--------------------------------------------------------- ___ _ _ _ / __| | | | || | \__ \ | |__ | __ | |___/ |____| |_||_| _|&#34;&#34;&#34;&#34;&#34;|_|&#34;&#34;&#34;&#34;&#34;|_|&#34;&#34;&#34;&#34;&#34;| &#34;`-0-0-&#39;&#34;`-0-0-&#39;&#34;`-0-0-&#39; -------------------------------------------------------- Santa&#39;s Little Helper - Access Card Maintenance Tool Tool Name: slh options: -h, --help show this help message and exit --view-config View current configuration. --view-cards View current values of all access cards. --view-card ID View a single access card by ID. --set-access ACCESS_LEVEL Set access level of access card. Must be 0 (No Access) or 1 (Full Access). --id ID ID of card to modify. --passcode PASSCODE Passcode to make changes. --new-card Generate a new card ID. -------------------------------------------------------- History command revealed following information: 1 cd /var/www/html 2 ls -l 3 sudo nano index.html 4 cd .. 5 rm -rf repo 6 sudo apt update 7 sudo apt upgrade -y 8 ping 1.1.1.1 9 slh --help 10 slg --config 11 slh --passcode CandyCaneCrunch77 --set-access 1 --id 143 12 df -h 13 top 14 ps aux | grep apache 15 sudo systemctl restart apache2 16 history | grep ssh 17 clear 18 whoami 19 crontab -e 20 crontab -l 21 alias ll=&#39;ls -lah&#39; 22 unalias ll 23 echo &#34;Hello, World!&#34; 24 cat /etc/passwd 25 sudo tail -f /var/log/syslog 26 mv archive.tar.gz /backup/ 27 rm archive.tar.gz 28 find / -name &#34;*.log&#34; 29 grep &#34;error&#34; /var/log/apache2/error.log 30 history Card ID 143 content: slh --view-card 143 (143, &#39;fa9717e8-e1af-42e9-ad68-eeb96ab39d13&#39;, 0, &#39;728f25dda2ef6168ada53065883756140cfe663bce4e827084b745a32255157d&#39;) According to documentation, the full access is 1, but the card with ID 143 has value 0. To finish the objective for broz, following command needs to be executed: slh --passcode CandyCaneCrunch77 --set-access 1 --id 42 SUCCESS * * * * * * * * * * * * * * ❄ ❄ ❄ ❄ ❄ ❄ ❄ ❄ ❄ ❄ ❄ ❄ ❄ * * $$$$$$\ $$$$$$\ $$$$$$\ $$$$$$$$\ $$$$$$\ $$$$$$\ * * $$ __$$\ $$ __$$\ $$ __$$\ $$ _____|$$ __$$\ $$ __$$\ * *$$ / $$ |$$ / \__|$$ / \__|$$ | $$ / \__|$$ / \__| * $$$$$$$$ |$$ | $$ | $$$$$\ \$$$$$$\ \$$$$$$\ *$$ __$$ |$$ | $$ | $$ __| \____$$\ \____$$\ * * $$ | $$ |$$ | $$\ $$ | $$\ $$ | $$\ $$ |$$\ $$ | * * $$ | $$ |\$$$$$$ |\$$$$$$ |$$$$$$$$\ \$$$$$$ |\$$$$$$ | * * \__| \__| \______/ \______/ \________| \______/ \______/ * * * ❄ ❄ * ❄ ❄ ❄ * * * * * * * * * * * * $$$$$$\ $$$$$$$\ $$$$$$\ $$\ $$\ $$$$$$$$\ $$$$$$$$\ $$$$$$$\ $$\ * * $$ __$$\ $$ __$$\ $$ __$$\ $$$\ $$ |\__$$ __|$$ _____|$$ __$$\ $$ | * * $$ / \__|$$ | $$ |$$ / $$ |$$$$\ $$ | $$ | $$ | $$ | $$ |$$ |* * $$ |$$$$\ $$$$$$$ |$$$$$$$$ |$$ $$\$$ | $$ | $$$$$\ $$ | $$ |$$ | * * $$ |\_$$ |$$ __$$&lt; $$ __$$ |$$ \$$$$ | $$ | $$ __| $$ | $$ |\__|* * $$ | $$ |$$ | $$ |$$ | $$ |$$ |\$$$ | $$ | $$ | $$ | $$ | * * \$$$$$$ |$$ | $$ |$$ | $$ |$$ | \$$ | $$ | $$$$$$$$\ $$$$$$$ |$$\ * * \______/ \__| \__|\__| \__|\__| \__| \__| \________|\_______/ \__| * * ❄ ❄ ❄ * * * * * * * * * * * * * * * * Gold Link to heading Elf says now: “There’s a tougher route if you’re up for the challenge to earn the Gold medal. It involves directly modifying the database and generating your own HMAC signature.”">
+  <meta property="og:description" content="A simple hardware terminal application enhanced by database and hashing exploitation">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">

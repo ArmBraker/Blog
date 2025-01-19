@@ -2,7 +2,7 @@
 draft = false
 date = 2025-01-19T16:19:30+01:00
 title = "HHC24 - Hardware Hacking 101"
-description = ""
+description = "A simple hardware terminal application enhanced by database and hashing exploitation"
 slug = ""
 authors = []
 tags = [
