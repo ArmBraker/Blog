@@ -2,8 +2,41 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://armbraker.github.io/blog/</loc>
+    <lastmod>2025-01-19T16:19:30+01:00</lastmod>
+  </url><url>
+    <loc>https://armbraker.github.io/blog/posts/</loc>
+    <lastmod>2025-01-19T16:19:30+01:00</lastmod>
+  </url><url>
+    <loc>https://armbraker.github.io/blog/categories/android/</loc>
+    <lastmod>2025-01-19T13:29:11+01:00</lastmod>
+  </url><url>
     <loc>https://armbraker.github.io/blog/categories/</loc>
-    <lastmod>2025-01-18T16:55:28+01:00</lastmod>
+    <lastmod>2025-01-19T13:29:11+01:00</lastmod>
+  </url><url>
+    <loc>https://armbraker.github.io/blog/tags/ctf/</loc>
+    <lastmod>2025-01-19T13:29:11+01:00</lastmod>
+  </url><url>
+    <loc>https://armbraker.github.io/blog/categories/encryption/</loc>
+    <lastmod>2025-01-19T13:29:11+01:00</lastmod>
+  </url><url>
+    <loc>https://armbraker.github.io/blog/tags/hhc24/</loc>
+    <lastmod>2025-01-19T13:29:11+01:00</lastmod>
+  </url><url>
+    <loc>https://armbraker.github.io/blog/posts/hhc24/android/</loc>
+    <lastmod>2025-01-19T13:29:11+01:00</lastmod>
+  </url><url>
+    <loc>https://armbraker.github.io/blog/categories/reverseengineering/</loc>
+    <lastmod>2025-01-19T13:29:11+01:00</lastmod>
+  </url><url>
+    <loc>https://armbraker.github.io/blog/tags/sans/</loc>
+    <lastmod>2025-01-19T13:29:11+01:00</lastmod>
+  </url><url>
+    <loc>https://armbraker.github.io/blog/tags/</loc>
+    <lastmod>2025-01-19T13:29:11+01:00</lastmod>
+  </url><url>
+    <loc>https://armbraker.github.io/blog/categories/writeup/</loc>
+    <lastmod>2025-01-19T13:29:11+01:00</lastmod>
   </url><url>
     <loc>https://armbraker.github.io/blog/categories/configuration/</loc>
     <lastmod>2025-01-18T16:55:28+01:00</lastmod>
@@ -20,16 +53,7 @@
     <loc>https://armbraker.github.io/blog/tags/hugo/</loc>
     <lastmod>2025-01-18T16:55:28+01:00</lastmod>
   </url><url>
-    <loc>https://armbraker.github.io/blog/</loc>
-    <lastmod>2025-01-18T16:55:28+01:00</lastmod>
-  </url><url>
-    <loc>https://armbraker.github.io/blog/posts/</loc>
-    <lastmod>2025-01-18T16:55:28+01:00</lastmod>
-  </url><url>
     <loc>https://armbraker.github.io/blog/categories/setup/</loc>
-    <lastmod>2025-01-18T16:55:28+01:00</lastmod>
-  </url><url>
-    <loc>https://armbraker.github.io/blog/tags/</loc>
     <lastmod>2025-01-18T16:55:28+01:00</lastmod>
   </url><url>
     <loc>https://armbraker.github.io/blog/about/</loc>

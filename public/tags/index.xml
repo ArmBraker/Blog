@@ -6,8 +6,29 @@
     <description>Recent content in Tags on Journey into IT Knowledge</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 18 Jan 2025 16:55:28 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 19 Jan 2025 13:29:11 +0100</lastBuildDate>
     <atom:link href="https://armbraker.github.io/blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CTF</title>
+      <link>https://armbraker.github.io/blog/tags/ctf/</link>
+      <pubDate>Sun, 19 Jan 2025 13:29:11 +0100</pubDate>
+      <guid>https://armbraker.github.io/blog/tags/ctf/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>HHC24</title>
+      <link>https://armbraker.github.io/blog/tags/hhc24/</link>
+      <pubDate>Sun, 19 Jan 2025 13:29:11 +0100</pubDate>
+      <guid>https://armbraker.github.io/blog/tags/hhc24/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Sans</title>
+      <link>https://armbraker.github.io/blog/tags/sans/</link>
+      <pubDate>Sun, 19 Jan 2025 13:29:11 +0100</pubDate>
+      <guid>https://armbraker.github.io/blog/tags/sans/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Github</title>
       <link>https://armbraker.github.io/blog/tags/github/</link>

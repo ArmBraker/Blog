@@ -1,0 +1,1834 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>
+  HHC24 - Android · Journey into IT Knowledge
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="ArmBraker 👨‍💻">
+<meta name="description" content="HHC24 - Android challange for reverse engineering android application and decrypt secrets.">
+<meta name="keywords" content="blog,knowledge,IT Security,hacking,personal,networking">
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="HHC24 - Android">
+  <meta name="twitter:description" content="HHC24 - Android challange for reverse engineering android application and decrypt secrets.">
+
+<meta property="og:url" content="https://armbraker.github.io/blog/posts/hhc24/android/">
+  <meta property="og:site_name" content="Journey into IT Knowledge">
+  <meta property="og:title" content="HHC24 - Android">
+  <meta property="og:description" content="HHC24 - Android challange for reverse engineering android application and decrypt secrets.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-01-19T13:29:11+01:00">
+    <meta property="article:modified_time" content="2025-01-19T13:29:11+01:00">
+    <meta property="article:tag" content="HHC24">
+    <meta property="article:tag" content="Sans">
+    <meta property="article:tag" content="CTF">
+
+
+
+
+<link rel="canonical" href="https://armbraker.github.io/blog/posts/hhc24/android/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/blog/css/coder.min.bb7a78bfb4e57aba6e78691ce9ad3fef35238fff2f55149e48bb3c43becd260c.css" integrity="sha256-u3p4v7TlerpueGkc6a0/7zUjj/8vVRSeSLs8Q77NJgw=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/blog/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="https://armbraker.github.io/blog/">
+      Journey into IT Knowledge
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/blog/">Home</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/blog/posts/">Blog</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/blog/about/">About</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://armbraker.github.io/blog/posts/hhc24/android/">
+              HHC24 - Android
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2025-01-19T13:29:11&#43;01:00">
+                January 19, 2025
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              10-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/blog/categories/writeup/">Writeup</a>
+      <span class="separator">•</span>
+    <a href="/blog/categories/android/">Android</a>
+      <span class="separator">•</span>
+    <a href="/blog/categories/encryption/">Encryption</a>
+      <span class="separator">•</span>
+    <a href="/blog/categories/reverseengineering/">ReverseEngineering</a></div>
+
+          <div class="tags">
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/blog/tags/hhc24/">HHC24</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/blog/tags/sans/">Sans</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/blog/tags/ctf/">CTF</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <h2 id="bronz-">
+  Bronz 🥉
+  <a class="heading-link" href="#bronz-">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li>
+<p>Elf give us hint to use following two tools: APK Tool, JADX. So, lets setup the enviroment&hellip;</p>
+<ul>
+<li>JADX: <a href="https://github.com/skylot/jadx"  class="external-link" target="_blank" rel="noopener">https://github.com/skylot/jadx</a></li>
+<li>APK Tool: <a href="https://github.com/iBotPeaches/Apktool/releases"  class="external-link" target="_blank" rel="noopener">https://github.com/iBotPeaches/Apktool/releases</a></li>
+</ul>
+</li>
+<li>
+<p>Now we are able to decompile the APK file.</p>
+</li>
+<li>
+<p>There is database helper class which is handling the sqlLite3 database file:</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">DATABASE_NAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;naughtynicelist.db&#34;</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><ul>
+<li>This class also contains the commans for inserting child with item into &ldquo;NormalList&rdquo; table:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-SQL" data-lang="SQL"><span class="line"><span class="cl"><span class="n">db</span><span class="p">.</span><span class="n">execSQL</span><span class="p">(</span><span class="s2">&#34;INSERT INTO NormalList (Item) VALUES (&#39;Carlos, Madrid, Spain&#39;);&#34;</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><ul>
+<li>After analyzes of decompiled files, we can figure out that the DB is build dynamically when APK is executed. Therefore we have 2 options how to solve the challange:
+<ol>
+<li>Execute the APK and debug it with ADB or excract the DB file from application directory in AVD or phone.</li>
+<li>Analyze the source code and check if there is a function which will remore the child from list.</li>
+</ol>
+</li>
+<li>As usual, I opted with option 2. 😂</li>
+<li>I found that there is also another class &ldquo;MainActivity&rdquo;
+This class lots of functionality like building the GUI and button activities, <strong>however</strong> there are also another SQL statements.</li>
+<li>I found the one I was looking for:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-SQL" data-lang="SQL"><span class="line"><span class="cl"><span class="k">Cursor</span><span class="w"> </span><span class="k">cursor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sQLiteDatabase</span><span class="p">.</span><span class="n">rawQuery</span><span class="p">(</span><span class="s2">&#34;SELECT Item FROM NormalList WHERE Item NOT LIKE &#39;%Ellie%&#39;&#34;</span><span class="p">,</span><span class="w"> </span><span class="k">null</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><p>Now we know that Ellie will not get presents! 🎁</p>
+<h2 id="gold-">
+  Gold 🥇
+  <a class="heading-link" href="#gold-">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li>
+<p>The Gold challange contains 2 smaller &ldquo;challanges&rdquo;:</p>
+<ul>
+<li>
+<p><strong>Format</strong>: We know that this APK is packaged with another format from <code>Elf hint</code>:</p>
+<p><em>&ldquo;So yeah, have you heard about this new Android app format? Want to convert it to an APK file?&rdquo;</em>
+The format was <code>.aab</code></p>
+<p>There is a GitHub repo: <a href="https://github.com/HackJJ/apk-sherlock/blob/main/aab2apk.md"  class="external-link" target="_blank" rel="noopener">https://github.com/HackJJ/apk-sherlock/blob/main/aab2apk.md</a></p>
+</li>
+<li>
+<p><strong>Encryption and Obfuscation</strong>:</p>
+<p><em>&ldquo;Obfuscated and encrypted? Hmph. Shame you can&rsquo;t just run strings on the file.&rdquo;</em></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="exctracting-apk">
+  Exctracting APK
+  <a class="heading-link" href="#exctracting-apk">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<ul>
+<li>By following the instuction from GitHub. I extracted the APK from .aab:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">Archive:  .<span class="se">\S</span>antaSwipe.zip
+</span></span><span class="line"><span class="cl"> extracting: .<span class="se">\S</span>antaSwipeSecure<span class="se">\/</span>toc.pb
+</span></span><span class="line"><span class="cl"> extracting: .<span class="se">\S</span>antaSwipeSecure<span class="se">\/</span>universal.apk
+</span></span></code></pre></div><ul>
+<li>
+<p>Analyzing the source code in JADX, I noticed that there is AES encryption with following parameters:</p>
+<ul>
+<li>AES</li>
+<li>GCM mode no padding</li>
+</ul>
+</li>
+<li>
+<p>Encryption parameters are listed in <code>res/values/strings.xml</code>:</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">&#34;ek&#34;</span><span class="nt">&gt;</span>rmDJ1wJ7ZtKy3lkLs6X9bZ2Jvpt6jL6YWiDsXtgjkXw=<span class="nt">&lt;/string&gt;</span> 
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">&#34;iv&#34;</span><span class="nt">&gt;</span>Q2hlY2tNYXRlcml4<span class="nt">&lt;/string&gt;</span>
+</span></span></code></pre></div><ul>
+<li>
+<p>Using JADX I found in the source code DB statements which are encrypted:</p>
+</li>
+<li>
+<p>First statement:</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="n">db</span><span class="p">.</span><span class="na">execSQL</span><span class="p">(</span><span class="n">decryptData</span><span class="p">(</span><span class="s">&#34;IVrt+9Zct4oUePZeQqFwyhBix8cSCIxtsa+lJZkMNpNFBgoHeJlwp73l2oyEh1Y6AfqnfH7gcU9Yfov6u70cUA2/OwcxVt7Ubdn0UD2kImNsclEQ9M8PpnevBX3mXlW2QnH8+Q+SC7JaMUc9CIvxB2HYQG2JujQf6skpVaPAKGxfLqDj+2UyTAVLoeUlQjc18swZVtTQO7Zwe6sTCYlrw7GpFXCAuI6Ex29gfeVIeB7pK7M4kZGy3OIaFxfTdevCoTMwkoPvJuRupA6ybp36vmLLMXaAWsrDHRUbKfE6UKvGoC9d5vqmKeIO9elASuagxjBJ&#34;</span><span class="p">));</span><span class="w">
+</span></span></span></code></pre></div><ul>
+<li>Second  statement:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">insertInitialData</span><span class="p">(</span><span class="n">SQLiteDatabase</span><span class="w"> </span><span class="n">db</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Iterator</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CollectionsKt</span><span class="p">.</span><span class="na">listOf</span><span class="p">((</span><span class="n">Object</span><span class="o">[]</span><span class="p">)</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">String</span><span class="o">[]</span><span class="p">{</span><span class="s">&#34;L2HD1a45w7EtSN41J7kx/hRgPwR8lDBg9qUicgz1qhRgSg==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;IWna1u1qu/4LUNVrbpd8riZ+w9oZNN1sPRS2ujQpMqAAt114Yw==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;MWfO0+M1t5IvQtN2ad9w3hp81sYQIIaX6veq03bnk6I4H/1n89gW&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;LmHJ164506skXdh3K9MZ/BBiw90TRO2mD0Hp9Nuoxu4ghx5/WQ==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;J2XF2645xKciX9RgK9MR+wZ60NIbKIsOTRSHP0jkBJPaF0djlqbc&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;LGfJ0q451qslWt14aZd8rjtr1ZMtJItIvrKk8RRQWh2U6bQSEdPga59XDQ==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;LWTBzOt4u/4KXt99aJ18riBgy8cSJcpvtrKnM4IEsMDr9AwtlSJW+S/jdoHvXA==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;I2HM3+w1t4opQ953c5x8rjZvzNITIEFFaMC3bP4bW/FptwSEIzo=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;K3vJ2Od1+79qEeN2apZ8rjx6w98OKXRQNvvj/tYXj2mFoDhaZw==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;O33D06452K0nWtA1J7kx/hRgtZNzI71BDpxorJ6mxImw/A==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;L2na0+M1t58yWdR3dN9wyQdrx9ASZFBP13TAtgvjKYVFW9J6rA==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;KmnGya451bs0Xdh3K9MX6wdjw90OdugnqIwKHDmVzoF7PjkQJQ==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;IWDN1K451bsvW9h3YN9wzR1nzNLx7AaHK857pwQ3GlLQ2i+e&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;I2XByK451L8vQ941J7Y39wV6pk1FpbJdc3QZRlpVuVIsjQ==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;JGnc0+94u/4FUMJ4ZZ8x4BZvjpM6LphLvL+vfIsRMj38FLu+GyCyUdPJ2g==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;I2TNwq452bsxEeh2dZh8riBd4zTtytJ89Bxu9NEok+aDWmI=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;J2TN1OM1t5MpQtJ2cN9w3AB90doWBr/HMmnvw088K+A8OYyeqg==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;Ln3L26452rcqUN81J7ok7xl32UJTvrQCKVSd6Z+tiX2Hmg==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;Lm3B1uM1t5wjWMNsc99wwhBsw90YLyjPYh2rLfMJ1C4VX2kQBpE=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;KGfG2/E1t40yXtJyb5w841ku8cQSJY9K1bwgTiInx6cYV5Ui/DM+sA==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;L23BlqJK/78oVtl4bt9wzR1nzNKBr23V1KlRgUeyT5PagT9r&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;MWnFz+d1u/4EVMN3K9MD+Rx62NYFLYtKu34IoIzUoRVftPjhSrdCxro=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;LGnM0+M1t5UvVMc1J6Y7/BRnzNY2Zug0wYGSAMBLA1AcU9yx&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;NGHLzu1ru/4ERNJxZoE1/QEiguEYLItKtr0WsmwcMfhswLv9Tec+ZRjR&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;I2Hb0uM1t5AnWMN2ZZp8rj5rzMoWa/+6xCGsNnHvb00IU4Fr3Q==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;JmnG0+d1u/4JQt12K9Me4Qd5w8o6jn3t2IdQwSuXYx7u//Cv&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;I2bBzuM1t5MzXNN4bt9wxxtqy9JRetksUopAr2UrK5xAUHDW&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;JmHN3e01t5MjSdh6aNMT5wF3jpM6JJJNvLOoRJgv4sLKLQau2YBLzokQ&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;LmHG3uM1t50pQdR3b5I36xsigvcSL4dFrbfU9Cqvl5I/xLcz0XU03pLK&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;I2bc1ew1t4gvVN93Zt9wzwB91sEeIIGZ9QAB6FA50LlDQiHup1s=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;MWna264537sqQth3bJp8rjNnzN8WL47gYBHKOnMA/05AZVXhUewu&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;KGfa3ec1t5IvXNA1J6M1/ACz8Z0iiXnvwFsEg5jrkLGq&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;JXrJ2ec1t5siWN97coE35lku8dAYNYZFsbi05FzIyksNODX0NjFqyvVn&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;L2nc3+01t5wzVN92dNMR5wdr0Z9XAJhDurK0PoMIwB3/YInPpneEf/Q3blsrDg==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;J2XB1vs1t5ozU91wad9wxwdrztIZJQMfNE4DYwx1R7bg5c50NDQ=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;Jmne0+Y1t5QpWdB3aZYj7AB8xZ9XEoVRq7TgFosbO6NUOYiKnRWuNaKuxMtDzqVA7Q==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;LGfa26451rM1RdRrY5I9olVAx8cfJJhIvrKkJJm3opYYxGiM9SQhFp8qlek=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;MXzN3ON3u/4EVN1+dZI061ku8dYFI4NF6DAFvK8r77cS9dUOpitQRg==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;KWHFlqJK8rEzXZ05VJwl+h0u6dwFJIuDD8ONR42MoY7KFht/QJfy&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;Ln3L0+M1t5wnQ9J8a5w+71ku8cMWKIQC0zxiXHG/YZvw7T+TNIqz&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;LWXJyK451rMrUN81J7k//BFvzGO14j2tV1Au4CjIir5oH4s=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;L2na0+c1t44nQ9hqK9MW/BRgwdazin6FJqgBFVKkiYZE/Oku&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;NmfFlqJa/7clUNZ2K9MF3TR3qVJdK8qDeVx+ZJ0MHnNU&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;Km3E3+x4u/4WQ9B+cpZ8rjZ0x9AfYbhBr6miO4QKWNrxWDpCUMmjm7xYtCdc6A==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;I3rCz+w1t5ojXdlwK9MZ4BFnwzwsgLd0z5uSRxTqIB8aQs4=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;L2nazuM1t4knQ8J4cN9w3hpiw90TTjWQOk7MWqw/XG0TO0AeQA==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;MWHF1ew1t4QzQ9h6b99w3QJn1skSM4ZFsbgRVLExuZmptZSHE6Yrul/e&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;I2bJlqJD9rk0VNM1J7Ai4RR6y9JIjLKEIfFIhBPBpLBEqomH&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;MGnO2+d1u/4KWMJ7aJ18riVh0McCJotIhSM4dPg694vcV/24WexvGQ==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;LmHG3uM1t4wjSNpzZoU55Vku69ASLYtKu2L+bDaBlZjDIaGNeZhBJqA=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;L2HL0uN1u/4EQ9BtboA87wNvjpMkLYVSvrepNgEBI1AclZNI8gyCBYQG2eM=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;J37JlqJb4ronQdRqc99wxgBgxdIFOAlaPoAgk8c4iPDAzcEuNDE=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;LGHD1e54/vJmfNh3dJh8rjdrztIFNJmu2xg+J6QSEiIx6k9QIl+a&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;KWDJ3utz9vJmddByZoF8riZrzNYQIIbM23+WAVV6B504yBF/YTdb&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;O2fdyfF88fJmY9B7Zod8rjhh0NwUIoVxNH9I0bHcUbdrTrTpnIWL&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;LmndyOM1t5IvXNA1J6M1/ADJIEAtaTSWOs3rUHGxE23v&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;KH3J1K45xqsvRd41J7Yz+xRqzcGKc2ANFJm7yAP/iEAOkACn&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;I2TBlqJN4rAvQp05U4Y+5wZnw7REbFTEsKKaYtEbT4D/BfA=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;I2TB1OM1t40pV9h4K9MS+xlpw8EeIHcUEuddwvPOGYIPlGbXuns=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;JmHF0/Zr/vJmZdNwa5oj51ku5dYYM41Nvhg6ySTDiTI5vv18a6J6y14=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;J2XF2+xs8rJqEf14YJwjolVAy9QSM4NFBawvI9LTb3YoXPhmLC/pDw==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;KH3E0+M1t4gvVN93Zt9wzwB91sEeIEtgVtuakzge6p44dqbJkEc=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;MGfK3/Btu/4BXdBqYJwnolVdwdwDLYtKu+LDoHra5pWd9cdD5y0f3Mo=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;I2bJyfZ45LcnHZFKZpo++lVex8cSM5lGqq6ne807J7NGCggtcc93Ohi+VKRgXDKpmdgI&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;J2bS1a452r80QtRwa581olVI0NIZIo+b1vqa1HqNcwPKRRUCkA2e&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;I2Hb0uM1t5QnWtBrc5J8rjxgxtwZJJlNvvHYzXGTBJ/ect8fCv2lmE4=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;L2nc3/dq7fJmesN4bJwnolVezd8WL47o08C8QCvrmNi28s6uzbkB&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;MGfb2645378wUN94K9MT+xdvICDOUBRXAjmOpELQySokFQ==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;JmHN3e01t40nX8V2J7c/4xxgxdxbYa5LsrWuPo4IPOBnBhkbfJx6kuAQ5S2AHRJNPm+/JMsu2Y4=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;K3vJ2Od1u/4LUN9wa5J8riVmy98eMZpNsbmz/o7XqAaLAwARWkH6eIgkvg==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;JmnG0+d1u/4FUMN4ZJIjolVYx90SO59Bs72pxXLFYIQzfSavfBYeKvSp&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;MWfO0+M1t40pV9h4K9MS+xlpw8EeIOWh30NfCMogzRbG9bbOpOQ=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;L33bzuN/9vJmcN9yZoExolVa18EcJJMyCPdCGbm3ITUv4dWqaqTJ&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;JW3HyOV8u/4IUNhraJE5olVFx90OIIDivPFcm6m1iBokvOvJ6Jw=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;LmHG26451L8vQ941J7Y39wV6CD4JBxN6y16SruzezWKPkA==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;KGfb3645xL8oEft2dDD5olVNzcADIMp2tr+hjSygfMWJwjL2dFscDmwjjg==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;L2HJlqJN9rIqWN93K9MV/QFhzNoWqj9VHhFMZ8Go9BUGzcsDyA==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;J2TB2/E1t5YjXcJwaZg5olVIy90bIIRA/1z33GgMGZTTRJFra6XBzA==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;OGna26453q0qUNx4ZZI0olVew9geMp5FsXmupyWxdH/oy9rxaRJqUOA=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;I2zJ16451awnRdhqa5Im71ku8d8YN4tPtr1l2Twrd2VbP7DifnHx1H8R&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;J2TB3K453q0yUN97cp98riF70NgSOCtbDxARU2xtlLgyGO7yaRU=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;Ln3LlqJb5as1QtR1dN9wzBBixdoCLK9D8qtP2JBdQm86rVaciwM=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;LmndyOM1t5MnVcNwY99w3QVvy916DDmwWl6gWeYjk2X3jVl2&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;NGHLzu1ru/4ERNJxZoE1/QEiguEYLItKtr0WsmwcMfhswLv9Tec+ZRjR&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;I2TNwuN386wjHZFVcos14xdh18EQbcpoqqSlOo8GJ7JSkODr7+fBPtiGNds2i5nCLw==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;KGfb0vd4u/4EWMN0bp035hRjjpMiL4NQurjgHIQHNaRaDnIYbKQ9JusGaa1aAkGEVV8=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;J2XF26451qslWt14aZd8rjtr1ZMtJItIvrKk5S9JSEZ8qKvgRP2Mvcy4eQ==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;Ln3Bya45xL8oRdh4YJx8rjZmy98Sl+3RcG/g8aeHWMyfJPImOg==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;IWnc0udr/rAjHZFWc4cx+RQigvAWL4tAvg5ALUCnxBG/cw3LfEmj4oA=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;NmfFeSNqu/4LXt9tYoU56hBhjpMiM59Dqr253YTDn38uXKJ5tl00FEINTg==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;I2bG26451LE2VN9xZpQ14Fku5tYZLItWtJEJuhXmygDg52L+RBvqJyA=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;Mm3c3/A1t5E1Xd41J70//AJv27+zexRjk1E0oOdUtHEChqA=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;KH3E0+M1t5wjQ91wad9wyRB8z9IZOJNUHr+RrQebnoaStFwY+6Y=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;MWnFz+d1u/4QWNR3aZJ8rjR70ccFKItX81FQp//+9EtF+nURL4FI&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;LGHG264527QzU91zZp0xolVdztwBJIRNvlt7/VakIoRl++rXlHttwhE=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;I2bMyOdwu/4FWdhqbp0x+1ku79wbJYVSvr7qGO5Zb23L3xCvXHMRYvs=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;KWnBlqJR8rI1WN9ybt9wyBxgztIZJUkQdjl75fDWiRSzBI1CHdw=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;I2DF3+Y1t50nWMN2K9MV6Qx+1mbIOp5nPzrOusVi9a3n/50=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;O2nb1+t38vJmctBqZpE87xttw59XDIVWsL+jOGYAZSakGQcwH9LkY0MNP74=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;Lm3H1K45zb8hQ9R7K9MT/Bpv1toWCeg3YKGO+eApkQGBF09JMw==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;K3vJ2Od1+79qEeN2apZ8rjx6w98OKXRQNvvj/tYXj2mFoDhaZw==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;JG3E0/o1t5MzX9h6b99wyRB8z9IZOEuf/8PQJ7tJYwF2ZBYDZDY=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;L2nc3+01t5wpVt5txFJ8rjZhztwaI4NFdKbrVcU/JGUSzKJm3q3PSQ==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;LWTBzOt4u/4RVN11bp03+hpgjpM5JJ0EhbmhO4wHNjmjzqwzDO366z8XlmAxBAo=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;JmnG0+d1u/4MXtl4aZ01/Rd70NRbYblLqqiod6wPIKlWAvC4AsA71TXm3aAJve9HIUA=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;LGfa2645278hXsI1J7056RB8y9LIAUNdOdmXkW3fRpcNUxV8&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;MXzN3ON3u/4EVN1+dZI061ku8dYFI4NF6DAFvK8r77cS9dUOpitQRg==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;Lm3B1uM1t58qVth8dYB8rjRixdYFKItGdCiZJowXSEk2P7+XCerx&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;KWHFlqJb4q0nX505VJwl+h0u6dwFJIuiXi2lY6YPZ4CjViAKRpaC&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;Ln3L0+M1t5wnQ9J8a5w+71ku8cMWKIQC0zxiXHG/YZvw7T+TNIqz&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;LWXJyK4507EuUJ05VpIk7wcjUnL2xhkJz8n9Dm47dXGt&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;L2na0+c1t5IzSdR0ZZwl/BIigv8COY9JvbO1JYqohuoT5OQ0dvvUWILo1jaO&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;NmfFlqJK9rBmd8N4aZA5/RZhjpMiEqvWVxuq2sU0ngeuJh5Bmivp&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;Km3E3+x4u/4QWNR3aZJ8rjR70ccFKIsDa5wYsSNXEVH6T9VNnoNh&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;I3rCz+w1t5wnX9Z4a5wi61ku690TKIvYZgzmW1HQgG0OvS+GZrqX&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;L2nazuM1t440UNZsYt9wzQ9rwdtXE49Uqr6sPo4tNlgEErLmy2e9McwjexaZ&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;MWHF1ew1t5kjX9RvZt9w3QJn1skSM4ZFsbjUNmfsNMnhkq0GBwNdRuQQ&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;I2bJlqJD9rk0VNM1J7Ai4RR6y9JIjLKEIfFIhBPBpLBEqomH&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;MGnO2+d1u/4WXsNtaN9w3hp81sYQIIbYlRYHiSlXMoS4tPdilxhG&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;LmHG3uM1t4wjSNpzZoU55Vku69ASLYtKu2L+bDaBlZjDIaGNeZhBJqA=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;L2HL0uN1u/4EQ9BtboA87wNvjpMkLYVSvrepNgEBI1AclZNI8gyCBYQG2eM=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;J37JlqJb4ronQdRqc99wxgBgxdIFOAlaPoAgk8c4iPDAzcEuNDE=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;LGHD1e54/vJmfN5qZJwnolVc18AEKIvjrzloQ+cC1iWupZVahPs2&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;KWDJ3utz9vJmddByZoF8riZrzNYQIIbM23+WAVV6B504yBF/YTdb&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;O2fdyfF88fJmY9B7Zod8rjhh0NwUIoVxNH9I0bHcUbdrTrTpnIWL&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;LmndyOM1t5IvXNA1J6M1/ADJIEAtaTSWOs3rUHGxE23v&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;KH3J1K45xqsvRd41J7Yz+xRqzcGKc2ANFJm7yAP/iEAOkACn&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;L2na0+M1t40nX5FTcpI+olVe19YFNYUEjbWjOJpcl9JvvyJ7scI8el5JTy4=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;I2TBlqJN4rAvQp05U4Y+5wZnw7REbFTEsKKaYtEbT4D/BfA=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;I2TB1OM1t5wzUtl4dZYj+lku8NwaIIRNvvtC1rkdlxBlbKrQAX6AucI=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;JmHF0/Zr/vJmeth8cd9w2x58w9oZJM51yxayaVH4ddqhS9Ld+lI=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;J2XF2+xs8rJqEf14YJwjolVAy9QSM4NFBawvI9LTb3YoXPhmLC/pDw==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;KH3E0+M1t4gvVN93Zt9wzwB91sEeIEtgVtuakzge6p44dqbJkEc=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;MGfK3/Btu/4BXdBqYJwnolVdwdwDLYtKu+LDoHra5pWd9cdD5y0f3Mo=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;I2bJyfZ45LcnHZFKZpo++lVex8cSM5lGqq6ne807J7NGCggtcc93Ohi+VKRgXDKpmdgI&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;J2bS1a452rcqUN81J7ok7xl3dnBUBK/NLqVw5yX69lhDyQ==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;I2Hb0uM1t5QnWtBrc5J8rjxgxtwZJJlNvvHYzXGTBJ/ect8fCv2lmE4=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;L2nc3/dq7fJmdtV4aYA7olVezd8WL47176gxNd+vY9fx4MSmT2ej&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;MGfb2645378wUN94K9MT+xdvICDOUBRXAjmOpELQySokFQ==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;JmHN3e01t40nX8V2J7c/4xxgxdxbYa5LsrWuPo4IPOBnBhkbfJx6kuAQ5S2AHRJNPm+/JMsu2Y4=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;K3vJ2Od1u/4LUN9wa5J8riVmy98eMZpNsbmz/o7XqAaLAwARWkH6eIgkvg==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;JmnG0+d1u/4FUMN4ZJIjolVYx90SO59Bs72pxXLFYIQzfSavfBYeKvSp&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;MWfO0+M1t40pV9h4K9MS+xlpw8EeIOWh30NfCMogzRbG9bbOpOQ=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;L33bzuN/9vJmc9B+b5cx6lku68EWMIJsYV5vA84d075o0zjkKww=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;L23BlqJN9rc2VNg1J6cx5wJvzCDEGFoHhNAE0ZQMzBepH+M=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;JW3HyOV8u/4IUNhraJE5olVFx90OIIDivPFcm6m1iBokvOvJ6Jw=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;LmHG26451bsvQ8RtK9Mc6xdvzNwZZ/8B9lM2+mUZn77BIM0HBQ==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;KGfb3645xL8oEft2dDD5olVNzcADIMp2tr+hjSygfMWJwjL2dFscDmwjjg==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;L2HJlqJN9rIqWN93K9MV/QFhzNoWqj9VHhFMZ8Go9BUGzcsDyA==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;KGfG2/E1t4gvXd9wcoB8rjln1tsCIIRNvmU7T9+1tpsYdtrvmWv1l7U=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;J2TB2/E1t5YjXcJwaZg5olVIy90bIIRA/1z33GgMGZTTRJFra6XBzA==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;OGna26453q0qUNx4ZZI0olVew9geMp5FsXmupyWxdH/oy9rxaRJqUOA=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;I2zJ16451awnRdhqa5Im71ku8d8YN4tPtr1l2Twrd2VbP7DifnHx1H8R&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;J2TB3K451rAtUMN4K9ME+wdlx8rZbZqbfhGZr3wzxCxB4bYI&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;Ln3LlqJJ9qwvQp05QYEx4BZrln569Gq0kHSy+WS+n1k/sA==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;LmndyOM1t5MnVcNwY99w3QVvy916DDmwWl6gWeYjk2X3jVl2&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;NGHLzu1ru/4ERNJxZoE1/QEiguEYLItKtr0WsmwcMfhswLv9Tec+ZRjR&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;MWna2645xKopUtpxaJ89olVd1dYTJISsz5CtbxJFXJPiMCte0noG&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;I2TNwuN386wjHZFbdYYj/RBi0Z9XA49IuLW1OoUxRdZ+wmfnJvvtJwXi10k=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;L2na0+M1t5IvQtN2ad9w3hp81sYQIIYOpc2XzyjeMgAWf7nbp/ts&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;L2HL0uN8+/Jmfd53Y5w+olVbzNoDJI4ElLWuMIkGP9LTeVuwVKu4l7DOB1U91N0=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;J2XB1vs1t5ozU91wad9wxwdrztIZJQMfNE4DYwx1R7bg5c50NDQ=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;Jmne0+Y1t40/Vd98ft9wzwB91sEWLYNFu2xWVc39+4i1Bn7JWwoynA==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;J2XF26451qslWt14aZd8rjtr1ZMtJItIvrKk5S9JSEZ8qKvgRP2Mvcy4eQ==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;Ln3Bya452rs+WNJ2J7A5+gwigv4SOYNHsHi4IVfVImdVO9OdwBX0/mw=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;IWnc0udr/rAjHZFWc4cx+RQigvAWL4tAvg5ALUCnxBG/cw3LfEmj4oA=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;NmfFeSNqu/4LXt9tYoU56hBhjpMiM59Dqr253YTDn38uXKJ5tl00FEINTg==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;I2bG26451LE2VN9xZpQ14Fku5tYZLItWtJEJuhXmygDg52L+RBvqJyA=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;Mm3c3/A1t5E1Xd41J70//AJv27+zexRjk1E0oOdUtHEChqA=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;KH3E0+M1t5wjQ91wad9wyRB8z9IZOJNUHr+RrQebnoaStFwY+6Y=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;MWnFz+d1u/4QWNR3aZJ8rjR70ccFKItX81FQp//+9EtF+nURL4FI&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;LGHG264527QzU91zZp0xolVdztwBJIRNvlt7/VakIoRl++rXlHttwhE=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;I2bMyOdwu/4FWdhqbp0x+1ku79wbJYVSvr7qGO5Zb23L3xCvXHMRYvs=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;KWnBlqJR8rI1WN9ybt9wyBxgztIZJUkQdjl75fDWiRSzBI1CHdw=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;I2DF3+Y1t50nWMN2K9MV6Qx+1mbIOp5nPzrOusVi9a3n/50=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;O2nb1+t38vJmctBqZpE87xttw59XDIVWsL+jOGYAZSakGQcwH9LkY0MNP74=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;Lm3H1K45zb8hQ9R7K9MT/Bpv1toWCeg3YKGO+eApkQGBF09JMw==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;K3vJ2Od1+79qEeN2apZ8rjx6w98OKXRQNvvj/tYXj2mFoDhaZw==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;JG3E0/o1t5MzX9h6b99wyRB8z9IZOEuf/8PQJ7tJYwF2ZBYDZDY=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;MWfO0+M1t58yWdR3dN9wyQdrx9AS/R916miej6pBB+UB54ZZ1g==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;L2nc3+01t5wzVN92dNMR5wdr0Z9XAJhDurK0PoMIwB3/YInPpneEf/Q3blsrDg==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;LWTBzOt4u/4RVN11bp03+hpgjpM5JJ0EhbmhO4wHNjmjzqwzDO366z8XlmAxBAo=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;JmnG0+d1u/4MXtl4aZ01/Rd70NRbYblLqqiod6wPIKlWAvC4AsA71TXm3aAJve9HIUA=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;LGfa2645278hXsI1J7056RB8y9LIAUNdOdmXkW3fRpcNUxV8&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;MXzN3ON3u/4EVN1+dZI061ku8dYFI4NF6DAFvK8r77cS9dUOpitQRg==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;Lm3B1uM1t58qVth8dYB8rjRixdYFKItGdCiZJowXSEk2P7+XCerx&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;KWHFlqJK8rEzXZ05VJwl+h0u6dwFJIuDD8ONR42MoY7KFht/QJfy&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;Ln3L0+M1t5wnQ9J8a5w+71ku8cMWKIQC0zxiXHG/YZvw7T+TNIqz&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;LWXJyK4507EuUJ05VpIk7wcjUnL2xhkJz8n9Dm47dXGt&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;L2na0+c1t5IzSdR0ZZwl/BIigv8COY9JvbO1JYqohuoT5OQ0dvvUWILo1jaO&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;NmfFlqJR+Ks1Rd53K9MF3TQJIJtqQwmr4zdVTQ9laNPM&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;Km3E3+x4u/4QWNR3aZJ8rjR70ccFKIsDa5wYsSNXEVH6T9VNnoNh&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;I3rCz+w1t5ojXdlwK9MZ4BFnwzwsgLd0z5uSRxTqIB8aQs4=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;L2nazuM1t440UNZsYt9wzQ9rwdtXE49Uqr6sPo4tNlgEErLmy2e9McwjexaZ&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;MWHF1ew1t4QzQ9h6b99w3QJn1skSM4ZFsbgRVLExuZmptZSHE6Yrul/e&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;I2bJlqJD9rk0VNM1J7Ai4RR6y9JIjLKEIfFIhBPBpLBEqomH&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;MGnO2+d1u/4WXsNtaN9w3hp81sYQIIbYlRYHiSlXMoS4tPdilxhG&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;LmHG3uM1t4wjSNpzZoU55Vku69ASLYtKu2L+bDaBlZjDIaGNeZhBJqA=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;L2HL0uN1u/4EQ9BtboA87wNvjpMkLYVSvrepNgEBI1AclZNI8gyCBYQG2eM=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;J37JlqJb4ronQdRqc99wxgBgxdIFOAlaPoAgk8c4iPDAzcEuNDE=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;LGHD1e54/vJmfN5qZJwnolVc18AEKIvjrzloQ+cC1iWupZVahPs2&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;KWDJ3utz9vJmddByZoF8riZrzNYQIIbM23+WAVV6B504yBF/YTdb&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;O2fdyfF88fJmY9B7Zod8rjhh0NwUIoVxNH9I0bHcUbdrTrTpnIWL&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;LmndyOM1t5IvXNA1J6M1/ADJIEAtaTSWOs3rUHGxE23v&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;KH3J1K45xqsvRd41J7Yz+xRqzcGKc2ANFJm7yAP/iEAOkACn&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;L2na0+M1t40nX5FTcpI+olVe19YFNYUEjbWjOJpcl9JvvyJ7scI8el5JTy4=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;I2TBlqJN4rAvQp05U4Y+5wZnw7REbFTEsKKaYtEbT4D/BfA=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;I2TB1OM1t5wzUtl4dZYj+lku8NwaIIRNvvtC1rkdlxBlbKrQAX6AucI=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;JmHF0/Zr/vJmeth8cd9w2x58w9oZJM51yxayaVH4ddqhS9Ld+lI=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;J2XF2+xs8rJqEf14YJwjolVAy9QSM4NFBawvI9LTb3YoXPhmLC/pDw==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;KH3E0+M1t4gvVN93Zt9wzwB91sEeIEtgVtuakzge6p44dqbJkEc=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;MGfK3/Btu/4BXdBqYJwnolVdwdwDLYtKu+LDoHra5pWd9cdD5y0f3Mo=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;I2bJyfZ45LcnHZFKZpo++lVex8cSM5lGqq6ne807J7NGCggtcc93Ohi+VKRgXDKpmdgI&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;J2bS1a452rcqUN81J7ok7xl3dnBUBK/NLqVw5yX69lhDyQ==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;I2Hb0uM1t5QnWtBrc5J8rjxgxtwZJJlNvvHYzXGTBJ/ect8fCv2lmE4=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;L2nc3/dq7fJmdtV4aYA7olVezd8WL47176gxNd+vY9fx4MSmT2ej&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;MGfb2645378wUN94K9MT+xdvICDOUBRXAjmOpELQySokFQ==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;JmHN3e01t40nX8V2J7c/4xxgxdxbYa5LsrWuPo4IPOBnBhkbfJx6kuAQ5S2AHRJNPm+/JMsu2Y4=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;K3vJ2Od1u/4LUN9wa5J8riVmy98eMZpNsbmz/o7XqAaLAwARWkH6eIgkvg==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;JmnG0+d1u/4FUMN4ZJIjolVYx90SO59Bs72pxXLFYIQzfSavfBYeKvSp&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;MWfO0+M1t40pV9h4K9MS+xlpw8EeIOWh30NfCMogzRbG9bbOpOQ=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;L33bzuN/9vJmc9B+b5cx6lku68EWMIJsYV5vA84d075o0zjkKww=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;L23BlqJN9rc2VNg1J6cx5wJvzCDEGFoHhNAE0ZQMzBepH+M=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;JW3HyOV8u/4IUNhraJE5olVFx90OIIDivPFcm6m1iBokvOvJ6Jw=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;LmHG26451bsvQ8RtK9Mc6xdvzNwZZ/8B9lM2+mUZn77BIM0HBQ==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;KGfb3645xL8oEft2dDD5olVNzcADIMp2tr+hjSygfMWJwjL2dFscDmwjjg==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;L2HJlqJN9rIqWN93K9MV/QFhzNoWqj9VHhFMZ8Go9BUGzcsDyA==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;KGfG2/E1t4gvXd9wcoB8rjln1tsCIIRNvmU7T9+1tpsYdtrvmWv1l7U=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;J2TB2/E1t5YjXcJwaZg5olVIy90bIIRA/1z33GgMGZTTRJFra6XBzA==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;OGna26453q0qUNx4ZZI0olVew9geMp5FsXmupyWxdH/oy9rxaRJqUOA=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;I2zJ16451awnRdhqa5Im71ku8d8YN4tPtr1l2Twrd2VbP7DifnHx1H8R&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;J2TB3K451rAtUMN4K9ME+wdlx8rZbZqbfhGZr3wzxCxB4bYI&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;Ln3LlqJJ9qwvQp05QYEx4BZrln569Gq0kHSy+WS+n1k/sA==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;LmndyOM1t5MnVcNwY99w3QVvy916DDmwWl6gWeYjk2X3jVl2&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;NGHLzu1ru/4ERNJxZoE1/QEiguEYLItKtr0WsmwcMfhswLv9Tec+ZRjR&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;MWna2645xKopUtpxaJ89olVd1dYTJISsz5CtbxJFXJPiMCte0noG&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;I2TNwuN386wjHZFbdYYj/RBi0Z9XA49IuLW1OoUxRdZ+wmfnJvvtJwXi10k=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;L2na0+M1t5IvQtN2ad9w3hp81sYQIIYOpc2XzyjeMgAWf7nbp/ts&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;L2HL0uN8+/Jmfd53Y5w+olVbzNoDJI4ElLWuMIkGP9LTeVuwVKu4l7DOB1U91N0=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;J2XB1vs1t5ozU91wad9wxwdrztIZJQMfNE4DYwx1R7bg5c50NDQ=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;Jmne0+Y1t40/Vd98ft9wzwB91sEWLYNFu2xWVc39+4i1Bn7JWwoynA==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;J2XF26451qslWt14aZd8rjtr1ZMtJItIvrKk5S9JSEZ8qKvgRP2Mvcy4eQ==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;Ln3Bya452rs+WNJ2J7A5+gwigv4SOYNHsHi4IVfVImdVO9OdwBX0/mw=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;IWnc0udr/rAjHZFWc4cx+RQigvAWL4tAvg5ALUCnxBG/cw3LfEmj4oA=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;NmfFeSNqu/4LXt9tYoU56hBhjpMiM59Dqr253YTDn38uXKJ5tl00FEINTg==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;I2bG26451LE2VN9xZpQ14Fku5tYZLItWtJEJuhXmygDg52L+RBvqJyA=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;Mm3c3/A1t5E1Xd41J70//AJv27+zexRjk1E0oOdUtHEChqA=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;KH3E0+M1t5wjQ91wad9wyRB8z9IZOJNUHr+RrQebnoaStFwY+6Y=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;MWnFz+d1u/4QWNR3aZJ8rjR70ccFKItX81FQp//+9EtF+nURL4FI&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;LGHG264527QzU91zZp0xolVdztwBJIRNvlt7/VakIoRl++rXlHttwhE=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;I2bMyOdwu/4FWdhqbp0x+1ku79wbJYVSvr7qGO5Zb23L3xCvXHMRYvs=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;KWnBlqJR8rI1WN9ybt9wyBxgztIZJUkQdjl75fDWiRSzBI1CHdw=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;I2DF3+Y1t50nWMN2K9MV6Qx+1mbIOp5nPzrOusVi9a3n/50=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;O2nb1+t38vJmctBqZpE87xttw59XDIVWsL+jOGYAZSakGQcwH9LkY0MNP74=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;Lm3H1K45zb8hQ9R7K9MT/Bpv1toWCeg3YKGO+eApkQGBF09JMw==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;K3vJ2Od1+79qEeN2apZ8rjx6w98OKXRQNvvj/tYXj2mFoDhaZw==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;JG3E0/o1t5MzX9h6b99wyRB8z9IZOEuf/8PQJ7tJYwF2ZBYDZDY=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;MWfO0+M1t58yWdR3dN9wyQdrx9AS/R916miej6pBB+UB54ZZ1g==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;L2nc3+01t5wzVN92dNMR5wdr0Z9XAJhDurK0PoMIwB3/YInPpneEf/Q3blsrDg==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;LWTBzOt4u/4RVN11bp03+hpgjpM5JJ0EhbmhO4wHNjmjzqwzDO366z8XlmAxBAo=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;JmnG0+d1u/4MXtl4aZ01/Rd70NRbYblLqqiod6wPIKlWAvC4AsA71TXm3aAJve9HIUA=&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;LGfa2645278hXsI1J7056RB8y9LIAUNdOdmXkW3fRpcNUxV8&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;MXzN3ON3u/4EVN1+dZI061ku8dYFI4NF6DAFvK8r77cS9dUOpitQRg==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;Lm3B1uM1t58qVth8dYB8rjRixdYFKItGdCiZJowXSEk2P7+XCerx&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;KWHFlqJK8rEzXZ05VJwl+h0u6dwFJIuDD8ONR42MoY7KFht/QJfy&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;Ln3L0+M1t5wnQ9J8a5w+71ku8cMWKIQC0zxiXHG/YZvw7T+TNIqz&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;LWXJyK4507EuUJ05VpIk7wcjUnL2xhkJz8n9Dm47dXGt&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;L2na0+c1t5IzSdR0ZZwl/BIigv8COY9JvbO1JYqohuoT5OQ0dvvUWILo1jaO&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;NmfFlqJV+K1mcN9+Yp81/Vku9+A2aAwUTns96j8eMWk7TUtSxw==&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;J2zf2/B95PJmf9RuJ7k1/AZr259XFLll5xvRfxu/YDOTFR460RwK+Q==&#34;</span><span class="p">}).</span><span class="na">iterator</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">it</span><span class="p">.</span><span class="na">hasNext</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">db</span><span class="p">.</span><span class="na">execSQL</span><span class="p">(</span><span class="s">&#34;INSERT INTO NormalList (Item) VALUES (&#39;&#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">StringsKt</span><span class="p">.</span><span class="na">trim</span><span class="p">((</span><span class="n">CharSequence</span><span class="p">)</span><span class="w"> </span><span class="n">it</span><span class="p">.</span><span class="na">next</span><span class="p">()).</span><span class="na">toString</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&#34;&#39;);&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><ul>
+<li>Using Python for data decryption:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">base64</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">Crypto.Cipher</span> <span class="kn">import</span> <span class="n">AES</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">Crypto.Util</span> <span class="kn">import</span> <span class="n">Padding</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Base64 encoded IV and Encryption Key from strings.xml</span>
+</span></span><span class="line"><span class="cl"><span class="n">base64_iv</span> <span class="o">=</span> <span class="s2">&#34;Q2hlY2tNYXRlcml4&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">base64_key</span> <span class="o">=</span> <span class="s2">&#34;rmDJ1wJ7ZtKy3lkLs6X9bZ2Jvpt6jL6YWiDsXtgjkXw=&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">base64_encrypted_data</span> <span class="o">=</span> <span class="s2">&#34;IVrt+9Zct4oUePZeQqFwyhBix8cSCIxtsa+lJZkMNpNFBgoHeJlwp73l2oyEh1Y6AfqnfH7gcU9Yfov6u70cUA2/OwcxVt7Ubdn0UD2kImNsclEQ9M8PpnevBX3mXlW2QnH8+Q+SC7JaMUc9CIvxB2HYQG2JujQf6skpVaPAKGxfLqDj+2UyTAVLoeUlQjc18swZVtTQO7Zwe6sTCYlrw7GpFXCAuI6Ex29gfeVIeB7pK7M4kZGy3OIaFxfTdevCoTMwkoPvJuRupA6ybp36vmLLMXaAWsrDHRUbKfE6UKvGoC9d5vqmKeIO9elASuagxjBJ&#34;</span>  <span class="c1"># Replace with actual data</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Decode the Base64 strings</span>
+</span></span><span class="line"><span class="cl"><span class="n">iv</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">base64_iv</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">encryption_key</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">base64_key</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">encrypted_data</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">base64_encrypted_data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># AES-GCM Decryption</span>
+</span></span><span class="line"><span class="cl"><span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cipher</span> <span class="o">=</span> <span class="n">AES</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">encryption_key</span><span class="p">,</span> <span class="n">AES</span><span class="o">.</span><span class="n">MODE_GCM</span><span class="p">,</span> <span class="n">nonce</span><span class="o">=</span><span class="n">iv</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">decrypted_data</span> <span class="o">=</span> <span class="n">cipher</span><span class="o">.</span><span class="n">decrypt_and_verify</span><span class="p">(</span><span class="n">encrypted_data</span><span class="p">[:</span><span class="o">-</span><span class="mi">16</span><span class="p">],</span> <span class="n">encrypted_data</span><span class="p">[</span><span class="o">-</span><span class="mi">16</span><span class="p">:])</span>
+</span></span><span class="line"><span class="cl">    <span class="n">decrypted_text</span> <span class="o">=</span> <span class="n">decrypted_data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Decrypted Data:&#34;</span><span class="p">,</span> <span class="n">decrypted_text</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Decryption failed:&#34;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+</span></span></code></pre></div><ul>
+<li>Decrypted statements:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-SQL" data-lang="SQL"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">TRIGGER</span><span class="w"> </span><span class="n">DeleteIfInsertedSpecificValue</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">AFTER</span><span class="w"> </span><span class="k">INSERT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">NormalList</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">FOR</span><span class="w"> </span><span class="k">EACH</span><span class="w"> </span><span class="k">ROW</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">BEGIN</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">NormalList</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">Item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;KGfb0vd4u/4EWMN0bp035hRjjpMiL4NQurjgHIQHNaRaDnIYbKQ9JusGaa1aAkGEVV8=&#39;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">END</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><ul>
+<li>According to above statement, we need to decrypt the Item once again to find deleted child:</li>
+</ul>
+<p><code>Joshua, Birmingham, United Kingdom</code></p>
+<ul>
+<li>Decryption script for second SQL statement:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">base64</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">Crypto.Cipher</span> <span class="kn">import</span> <span class="n">AES</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">Crypto.Util</span> <span class="kn">import</span> <span class="n">Padding</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Base64 encoded IV and Encryption Key from strings.xml</span>
+</span></span><span class="line"><span class="cl"><span class="n">base64_iv</span> <span class="o">=</span> <span class="s2">&#34;Q2hlY2tNYXRlcml4&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">base64_key</span> <span class="o">=</span> <span class="s2">&#34;rmDJ1wJ7ZtKy3lkLs6X9bZ2Jvpt6jL6YWiDsXtgjkXw=&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">base64_encrypted_data</span> <span class="o">=</span> <span class="s2">&#34;L2HD1a45w7EtSN41J7kx/hRgPwR8lDBg9qUicgz1qhRgSg==&#34;</span><span class="p">,</span> <span class="s2">&#34;IWna1u1qu/4LUNVrbpd8riZ+w9oZNN1sPRS2ujQpMqAAt114Yw==&#34;</span><span class="p">,</span> <span class="s2">&#34;MWfO0+M1t5IvQtN2ad9w3hp81sYQIIaX6veq03bnk6I4H/1n89gW&#34;</span><span class="p">,</span> <span class="s2">&#34;LmHJ164506skXdh3K9MZ/BBiw90TRO2mD0Hp9Nuoxu4ghx5/WQ==&#34;</span><span class="p">,</span> <span class="s2">&#34;J2XF2645xKciX9RgK9MR+wZ60NIbKIsOTRSHP0jkBJPaF0djlqbc&#34;</span><span class="p">,</span> <span class="s2">&#34;LGfJ0q451qslWt14aZd8rjtr1ZMtJItIvrKk8RRQWh2U6bQSEdPga59XDQ==&#34;</span><span class="p">,</span> <span class="s2">&#34;LWTBzOt4u/4KXt99aJ18riBgy8cSJcpvtrKnM4IEsMDr9AwtlSJW+S/jdoHvXA==&#34;</span><span class="p">,</span> <span class="s2">&#34;I2HM3+w1t4opQ953c5x8rjZvzNITIEFFaMC3bP4bW/FptwSEIzo=&#34;</span><span class="p">,</span> <span class="s2">&#34;K3vJ2Od1+79qEeN2apZ8rjx6w98OKXRQNvvj/tYXj2mFoDhaZw==&#34;</span><span class="p">,</span> <span class="s2">&#34;O33D06452K0nWtA1J7kx/hRgtZNzI71BDpxorJ6mxImw/A==&#34;</span><span class="p">,</span> <span class="s2">&#34;L2na0+M1t58yWdR3dN9wyQdrx9ASZFBP13TAtgvjKYVFW9J6rA==&#34;</span><span class="p">,</span> <span class="s2">&#34;KmnGya451bs0Xdh3K9MX6wdjw90OdugnqIwKHDmVzoF7PjkQJQ==&#34;</span><span class="p">,</span> <span class="s2">&#34;IWDN1K451bsvW9h3YN9wzR1nzNLx7AaHK857pwQ3GlLQ2i+e&#34;</span><span class="p">,</span> <span class="s2">&#34;I2XByK451L8vQ941J7Y39wV6pk1FpbJdc3QZRlpVuVIsjQ==&#34;</span><span class="p">,</span> <span class="s2">&#34;JGnc0+94u/4FUMJ4ZZ8x4BZvjpM6LphLvL+vfIsRMj38FLu+GyCyUdPJ2g==&#34;</span><span class="p">,</span> <span class="s2">&#34;I2TNwq452bsxEeh2dZh8riBd4zTtytJ89Bxu9NEok+aDWmI=&#34;</span><span class="p">,</span> <span class="s2">&#34;J2TN1OM1t5MpQtJ2cN9w3AB90doWBr/HMmnvw088K+A8OYyeqg==&#34;</span><span class="p">,</span> <span class="s2">&#34;Ln3L26452rcqUN81J7ok7xl32UJTvrQCKVSd6Z+tiX2Hmg==&#34;</span><span class="p">,</span> <span class="s2">&#34;Lm3B1uM1t5wjWMNsc99wwhBsw90YLyjPYh2rLfMJ1C4VX2kQBpE=&#34;</span><span class="p">,</span> <span class="s2">&#34;KGfG2/E1t40yXtJyb5w841ku8cQSJY9K1bwgTiInx6cYV5Ui/DM+sA==&#34;</span><span class="p">,</span> <span class="s2">&#34;L23BlqJK/78oVtl4bt9wzR1nzNKBr23V1KlRgUeyT5PagT9r&#34;</span><span class="p">,</span> <span class="s2">&#34;MWnFz+d1u/4EVMN3K9MD+Rx62NYFLYtKu34IoIzUoRVftPjhSrdCxro=&#34;</span><span class="p">,</span> <span class="s2">&#34;LGnM0+M1t5UvVMc1J6Y7/BRnzNY2Zug0wYGSAMBLA1AcU9yx&#34;</span><span class="p">,</span> <span class="s2">&#34;NGHLzu1ru/4ERNJxZoE1/QEiguEYLItKtr0WsmwcMfhswLv9Tec+ZRjR&#34;</span><span class="p">,</span> <span class="s2">&#34;I2Hb0uM1t5AnWMN2ZZp8rj5rzMoWa/+6xCGsNnHvb00IU4Fr3Q==&#34;</span><span class="p">,</span> <span class="s2">&#34;JmnG0+d1u/4JQt12K9Me4Qd5w8o6jn3t2IdQwSuXYx7u//Cv&#34;</span><span class="p">,</span> <span class="s2">&#34;I2bBzuM1t5MzXNN4bt9wxxtqy9JRetksUopAr2UrK5xAUHDW&#34;</span><span class="p">,</span> <span class="s2">&#34;JmHN3e01t5MjSdh6aNMT5wF3jpM6JJJNvLOoRJgv4sLKLQau2YBLzokQ&#34;</span><span class="p">,</span> <span class="s2">&#34;LmHG3uM1t50pQdR3b5I36xsigvcSL4dFrbfU9Cqvl5I/xLcz0XU03pLK&#34;</span><span class="p">,</span> <span class="s2">&#34;I2bc1ew1t4gvVN93Zt9wzwB91sEeIIGZ9QAB6FA50LlDQiHup1s=&#34;</span><span class="p">,</span> <span class="s2">&#34;MWna264537sqQth3bJp8rjNnzN8WL47gYBHKOnMA/05AZVXhUewu&#34;</span><span class="p">,</span> <span class="s2">&#34;KGfa3ec1t5IvXNA1J6M1/ACz8Z0iiXnvwFsEg5jrkLGq&#34;</span><span class="p">,</span> <span class="s2">&#34;JXrJ2ec1t5siWN97coE35lku8dAYNYZFsbi05FzIyksNODX0NjFqyvVn&#34;</span><span class="p">,</span> <span class="s2">&#34;L2nc3+01t5wzVN92dNMR5wdr0Z9XAJhDurK0PoMIwB3/YInPpneEf/Q3blsrDg==&#34;</span><span class="p">,</span> <span class="s2">&#34;J2XB1vs1t5ozU91wad9wxwdrztIZJQMfNE4DYwx1R7bg5c50NDQ=&#34;</span><span class="p">,</span> <span class="s2">&#34;Jmne0+Y1t5QpWdB3aZYj7AB8xZ9XEoVRq7TgFosbO6NUOYiKnRWuNaKuxMtDzqVA7Q==&#34;</span><span class="p">,</span> <span class="s2">&#34;LGfa26451rM1RdRrY5I9olVAx8cfJJhIvrKkJJm3opYYxGiM9SQhFp8qlek=&#34;</span><span class="p">,</span> <span class="s2">&#34;MXzN3ON3u/4EVN1+dZI061ku8dYFI4NF6DAFvK8r77cS9dUOpitQRg==&#34;</span><span class="p">,</span> <span class="s2">&#34;KWHFlqJK8rEzXZ05VJwl+h0u6dwFJIuDD8ONR42MoY7KFht/QJfy&#34;</span><span class="p">,</span> <span class="s2">&#34;Ln3L0+M1t5wnQ9J8a5w+71ku8cMWKIQC0zxiXHG/YZvw7T+TNIqz&#34;</span><span class="p">,</span> <span class="s2">&#34;LWXJyK451rMrUN81J7k//BFvzGO14j2tV1Au4CjIir5oH4s=&#34;</span><span class="p">,</span> <span class="s2">&#34;L2na0+c1t44nQ9hqK9MW/BRgwdazin6FJqgBFVKkiYZE/Oku&#34;</span><span class="p">,</span> <span class="s2">&#34;NmfFlqJa/7clUNZ2K9MF3TR3qVJdK8qDeVx+ZJ0MHnNU&#34;</span><span class="p">,</span> <span class="s2">&#34;Km3E3+x4u/4WQ9B+cpZ8rjZ0x9AfYbhBr6miO4QKWNrxWDpCUMmjm7xYtCdc6A==&#34;</span><span class="p">,</span> <span class="s2">&#34;I3rCz+w1t5ojXdlwK9MZ4BFnwzwsgLd0z5uSRxTqIB8aQs4=&#34;</span><span class="p">,</span> <span class="s2">&#34;L2nazuM1t4knQ8J4cN9w3hpiw90TTjWQOk7MWqw/XG0TO0AeQA==&#34;</span><span class="p">,</span> <span class="s2">&#34;MWHF1ew1t4QzQ9h6b99w3QJn1skSM4ZFsbgRVLExuZmptZSHE6Yrul/e&#34;</span><span class="p">,</span> <span class="s2">&#34;I2bJlqJD9rk0VNM1J7Ai4RR6y9JIjLKEIfFIhBPBpLBEqomH&#34;</span><span class="p">,</span> <span class="s2">&#34;MGnO2+d1u/4KWMJ7aJ18riVh0McCJotIhSM4dPg694vcV/24WexvGQ==&#34;</span><span class="p">,</span> <span class="s2">&#34;LmHG3uM1t4wjSNpzZoU55Vku69ASLYtKu2L+bDaBlZjDIaGNeZhBJqA=&#34;</span><span class="p">,</span> <span class="s2">&#34;L2HL0uN1u/4EQ9BtboA87wNvjpMkLYVSvrepNgEBI1AclZNI8gyCBYQG2eM=&#34;</span><span class="p">,</span> <span class="s2">&#34;J37JlqJb4ronQdRqc99wxgBgxdIFOAlaPoAgk8c4iPDAzcEuNDE=&#34;</span><span class="p">,</span> <span class="s2">&#34;LGHD1e54/vJmfNh3dJh8rjdrztIFNJmu2xg+J6QSEiIx6k9QIl+a&#34;</span><span class="p">,</span> <span class="s2">&#34;KWDJ3utz9vJmddByZoF8riZrzNYQIIbM23+WAVV6B504yBF/YTdb&#34;</span><span class="p">,</span> <span class="s2">&#34;O2fdyfF88fJmY9B7Zod8rjhh0NwUIoVxNH9I0bHcUbdrTrTpnIWL&#34;</span><span class="p">,</span> <span class="s2">&#34;LmndyOM1t5IvXNA1J6M1/ADJIEAtaTSWOs3rUHGxE23v&#34;</span><span class="p">,</span> <span class="s2">&#34;KH3J1K45xqsvRd41J7Yz+xRqzcGKc2ANFJm7yAP/iEAOkACn&#34;</span><span class="p">,</span> <span class="s2">&#34;I2TBlqJN4rAvQp05U4Y+5wZnw7REbFTEsKKaYtEbT4D/BfA=&#34;</span><span class="p">,</span> <span class="s2">&#34;I2TB1OM1t40pV9h4K9MS+xlpw8EeIHcUEuddwvPOGYIPlGbXuns=&#34;</span><span class="p">,</span> <span class="s2">&#34;JmHF0/Zr/vJmZdNwa5oj51ku5dYYM41Nvhg6ySTDiTI5vv18a6J6y14=&#34;</span><span class="p">,</span> <span class="s2">&#34;J2XF2+xs8rJqEf14YJwjolVAy9QSM4NFBawvI9LTb3YoXPhmLC/pDw==&#34;</span><span class="p">,</span> <span class="s2">&#34;KH3E0+M1t4gvVN93Zt9wzwB91sEeIEtgVtuakzge6p44dqbJkEc=&#34;</span><span class="p">,</span> <span class="s2">&#34;MGfK3/Btu/4BXdBqYJwnolVdwdwDLYtKu+LDoHra5pWd9cdD5y0f3Mo=&#34;</span><span class="p">,</span> <span class="s2">&#34;I2bJyfZ45LcnHZFKZpo++lVex8cSM5lGqq6ne807J7NGCggtcc93Ohi+VKRgXDKpmdgI&#34;</span><span class="p">,</span> <span class="s2">&#34;J2bS1a452r80QtRwa581olVI0NIZIo+b1vqa1HqNcwPKRRUCkA2e&#34;</span><span class="p">,</span> <span class="s2">&#34;I2Hb0uM1t5QnWtBrc5J8rjxgxtwZJJlNvvHYzXGTBJ/ect8fCv2lmE4=&#34;</span><span class="p">,</span> <span class="s2">&#34;L2nc3/dq7fJmesN4bJwnolVezd8WL47o08C8QCvrmNi28s6uzbkB&#34;</span><span class="p">,</span> <span class="s2">&#34;MGfb2645378wUN94K9MT+xdvICDOUBRXAjmOpELQySokFQ==&#34;</span><span class="p">,</span> <span class="s2">&#34;JmHN3e01t40nX8V2J7c/4xxgxdxbYa5LsrWuPo4IPOBnBhkbfJx6kuAQ5S2AHRJNPm+/JMsu2Y4=&#34;</span><span class="p">,</span> <span class="s2">&#34;K3vJ2Od1u/4LUN9wa5J8riVmy98eMZpNsbmz/o7XqAaLAwARWkH6eIgkvg==&#34;</span><span class="p">,</span> <span class="s2">&#34;JmnG0+d1u/4FUMN4ZJIjolVYx90SO59Bs72pxXLFYIQzfSavfBYeKvSp&#34;</span><span class="p">,</span> <span class="s2">&#34;MWfO0+M1t40pV9h4K9MS+xlpw8EeIOWh30NfCMogzRbG9bbOpOQ=&#34;</span><span class="p">,</span> <span class="s2">&#34;L33bzuN/9vJmcN9yZoExolVa18EcJJMyCPdCGbm3ITUv4dWqaqTJ&#34;</span><span class="p">,</span> <span class="s2">&#34;JW3HyOV8u/4IUNhraJE5olVFx90OIIDivPFcm6m1iBokvOvJ6Jw=&#34;</span><span class="p">,</span> <span class="s2">&#34;LmHG26451L8vQ941J7Y39wV6CD4JBxN6y16SruzezWKPkA==&#34;</span><span class="p">,</span> <span class="s2">&#34;KGfb3645xL8oEft2dDD5olVNzcADIMp2tr+hjSygfMWJwjL2dFscDmwjjg==&#34;</span><span class="p">,</span> <span class="s2">&#34;L2HJlqJN9rIqWN93K9MV/QFhzNoWqj9VHhFMZ8Go9BUGzcsDyA==&#34;</span><span class="p">,</span> <span class="s2">&#34;J2TB2/E1t5YjXcJwaZg5olVIy90bIIRA/1z33GgMGZTTRJFra6XBzA==&#34;</span><span class="p">,</span> <span class="s2">&#34;OGna26453q0qUNx4ZZI0olVew9geMp5FsXmupyWxdH/oy9rxaRJqUOA=&#34;</span><span class="p">,</span> <span class="s2">&#34;I2zJ16451awnRdhqa5Im71ku8d8YN4tPtr1l2Twrd2VbP7DifnHx1H8R&#34;</span><span class="p">,</span> <span class="s2">&#34;J2TB3K453q0yUN97cp98riF70NgSOCtbDxARU2xtlLgyGO7yaRU=&#34;</span><span class="p">,</span> <span class="s2">&#34;Ln3LlqJb5as1QtR1dN9wzBBixdoCLK9D8qtP2JBdQm86rVaciwM=&#34;</span><span class="p">,</span> <span class="s2">&#34;LmndyOM1t5MnVcNwY99w3QVvy916DDmwWl6gWeYjk2X3jVl2&#34;</span><span class="p">,</span> <span class="s2">&#34;NGHLzu1ru/4ERNJxZoE1/QEiguEYLItKtr0WsmwcMfhswLv9Tec+ZRjR&#34;</span><span class="p">,</span> <span class="s2">&#34;I2TNwuN386wjHZFVcos14xdh18EQbcpoqqSlOo8GJ7JSkODr7+fBPtiGNds2i5nCLw==&#34;</span><span class="p">,</span> <span class="s2">&#34;KGfb0vd4u/4EWMN0bp035hRjjpMiL4NQurjgHIQHNaRaDnIYbKQ9JusGaa1aAkGEVV8=&#34;</span><span class="p">,</span> <span class="s2">&#34;J2XF26451qslWt14aZd8rjtr1ZMtJItIvrKk5S9JSEZ8qKvgRP2Mvcy4eQ==&#34;</span><span class="p">,</span> <span class="s2">&#34;Ln3Bya45xL8oRdh4YJx8rjZmy98Sl+3RcG/g8aeHWMyfJPImOg==&#34;</span><span class="p">,</span> <span class="s2">&#34;IWnc0udr/rAjHZFWc4cx+RQigvAWL4tAvg5ALUCnxBG/cw3LfEmj4oA=&#34;</span><span class="p">,</span> <span class="s2">&#34;NmfFeSNqu/4LXt9tYoU56hBhjpMiM59Dqr253YTDn38uXKJ5tl00FEINTg==&#34;</span><span class="p">,</span> <span class="s2">&#34;I2bG26451LE2VN9xZpQ14Fku5tYZLItWtJEJuhXmygDg52L+RBvqJyA=&#34;</span><span class="p">,</span> <span class="s2">&#34;Mm3c3/A1t5E1Xd41J70//AJv27+zexRjk1E0oOdUtHEChqA=&#34;</span><span class="p">,</span> <span class="s2">&#34;KH3E0+M1t5wjQ91wad9wyRB8z9IZOJNUHr+RrQebnoaStFwY+6Y=&#34;</span><span class="p">,</span> <span class="s2">&#34;MWnFz+d1u/4QWNR3aZJ8rjR70ccFKItX81FQp//+9EtF+nURL4FI&#34;</span><span class="p">,</span> <span class="s2">&#34;LGHG264527QzU91zZp0xolVdztwBJIRNvlt7/VakIoRl++rXlHttwhE=&#34;</span><span class="p">,</span> <span class="s2">&#34;I2bMyOdwu/4FWdhqbp0x+1ku79wbJYVSvr7qGO5Zb23L3xCvXHMRYvs=&#34;</span><span class="p">,</span> <span class="s2">&#34;KWnBlqJR8rI1WN9ybt9wyBxgztIZJUkQdjl75fDWiRSzBI1CHdw=&#34;</span><span class="p">,</span> <span class="s2">&#34;I2DF3+Y1t50nWMN2K9MV6Qx+1mbIOp5nPzrOusVi9a3n/50=&#34;</span><span class="p">,</span> <span class="s2">&#34;O2nb1+t38vJmctBqZpE87xttw59XDIVWsL+jOGYAZSakGQcwH9LkY0MNP74=&#34;</span><span class="p">,</span> <span class="s2">&#34;Lm3H1K45zb8hQ9R7K9MT/Bpv1toWCeg3YKGO+eApkQGBF09JMw==&#34;</span><span class="p">,</span> <span class="s2">&#34;K3vJ2Od1+79qEeN2apZ8rjx6w98OKXRQNvvj/tYXj2mFoDhaZw==&#34;</span><span class="p">,</span> <span class="s2">&#34;JG3E0/o1t5MzX9h6b99wyRB8z9IZOEuf/8PQJ7tJYwF2ZBYDZDY=&#34;</span><span class="p">,</span> <span class="s2">&#34;L2nc3+01t5wpVt5txFJ8rjZhztwaI4NFdKbrVcU/JGUSzKJm3q3PSQ==&#34;</span><span class="p">,</span> <span class="s2">&#34;LWTBzOt4u/4RVN11bp03+hpgjpM5JJ0EhbmhO4wHNjmjzqwzDO366z8XlmAxBAo=&#34;</span><span class="p">,</span> <span class="s2">&#34;JmnG0+d1u/4MXtl4aZ01/Rd70NRbYblLqqiod6wPIKlWAvC4AsA71TXm3aAJve9HIUA=&#34;</span><span class="p">,</span> <span class="s2">&#34;LGfa2645278hXsI1J7056RB8y9LIAUNdOdmXkW3fRpcNUxV8&#34;</span><span class="p">,</span> <span class="s2">&#34;MXzN3ON3u/4EVN1+dZI061ku8dYFI4NF6DAFvK8r77cS9dUOpitQRg==&#34;</span><span class="p">,</span> <span class="s2">&#34;Lm3B1uM1t58qVth8dYB8rjRixdYFKItGdCiZJowXSEk2P7+XCerx&#34;</span><span class="p">,</span> <span class="s2">&#34;KWHFlqJb4q0nX505VJwl+h0u6dwFJIuiXi2lY6YPZ4CjViAKRpaC&#34;</span><span class="p">,</span> <span class="s2">&#34;Ln3L0+M1t5wnQ9J8a5w+71ku8cMWKIQC0zxiXHG/YZvw7T+TNIqz&#34;</span><span class="p">,</span> <span class="s2">&#34;LWXJyK4507EuUJ05VpIk7wcjUnL2xhkJz8n9Dm47dXGt&#34;</span><span class="p">,</span> <span class="s2">&#34;L2na0+c1t5IzSdR0ZZwl/BIigv8COY9JvbO1JYqohuoT5OQ0dvvUWILo1jaO&#34;</span><span class="p">,</span> <span class="s2">&#34;NmfFlqJK9rBmd8N4aZA5/RZhjpMiEqvWVxuq2sU0ngeuJh5Bmivp&#34;</span><span class="p">,</span> <span class="s2">&#34;Km3E3+x4u/4QWNR3aZJ8rjR70ccFKIsDa5wYsSNXEVH6T9VNnoNh&#34;</span><span class="p">,</span> <span class="s2">&#34;I3rCz+w1t5wnX9Z4a5wi61ku690TKIvYZgzmW1HQgG0OvS+GZrqX&#34;</span><span class="p">,</span> <span class="s2">&#34;L2nazuM1t440UNZsYt9wzQ9rwdtXE49Uqr6sPo4tNlgEErLmy2e9McwjexaZ&#34;</span><span class="p">,</span> <span class="s2">&#34;MWHF1ew1t5kjX9RvZt9w3QJn1skSM4ZFsbjUNmfsNMnhkq0GBwNdRuQQ&#34;</span><span class="p">,</span> <span class="s2">&#34;I2bJlqJD9rk0VNM1J7Ai4RR6y9JIjLKEIfFIhBPBpLBEqomH&#34;</span><span class="p">,</span> <span class="s2">&#34;MGnO2+d1u/4WXsNtaN9w3hp81sYQIIbYlRYHiSlXMoS4tPdilxhG&#34;</span><span class="p">,</span> <span class="s2">&#34;LmHG3uM1t4wjSNpzZoU55Vku69ASLYtKu2L+bDaBlZjDIaGNeZhBJqA=&#34;</span><span class="p">,</span> <span class="s2">&#34;L2HL0uN1u/4EQ9BtboA87wNvjpMkLYVSvrepNgEBI1AclZNI8gyCBYQG2eM=&#34;</span><span class="p">,</span> <span class="s2">&#34;J37JlqJb4ronQdRqc99wxgBgxdIFOAlaPoAgk8c4iPDAzcEuNDE=&#34;</span><span class="p">,</span> <span class="s2">&#34;LGHD1e54/vJmfN5qZJwnolVc18AEKIvjrzloQ+cC1iWupZVahPs2&#34;</span><span class="p">,</span> <span class="s2">&#34;KWDJ3utz9vJmddByZoF8riZrzNYQIIbM23+WAVV6B504yBF/YTdb&#34;</span><span class="p">,</span> <span class="s2">&#34;O2fdyfF88fJmY9B7Zod8rjhh0NwUIoVxNH9I0bHcUbdrTrTpnIWL&#34;</span><span class="p">,</span> <span class="s2">&#34;LmndyOM1t5IvXNA1J6M1/ADJIEAtaTSWOs3rUHGxE23v&#34;</span><span class="p">,</span> <span class="s2">&#34;KH3J1K45xqsvRd41J7Yz+xRqzcGKc2ANFJm7yAP/iEAOkACn&#34;</span><span class="p">,</span> <span class="s2">&#34;L2na0+M1t40nX5FTcpI+olVe19YFNYUEjbWjOJpcl9JvvyJ7scI8el5JTy4=&#34;</span><span class="p">,</span> <span class="s2">&#34;I2TBlqJN4rAvQp05U4Y+5wZnw7REbFTEsKKaYtEbT4D/BfA=&#34;</span><span class="p">,</span> <span class="s2">&#34;I2TB1OM1t5wzUtl4dZYj+lku8NwaIIRNvvtC1rkdlxBlbKrQAX6AucI=&#34;</span><span class="p">,</span> <span class="s2">&#34;JmHF0/Zr/vJmeth8cd9w2x58w9oZJM51yxayaVH4ddqhS9Ld+lI=&#34;</span><span class="p">,</span> <span class="s2">&#34;J2XF2+xs8rJqEf14YJwjolVAy9QSM4NFBawvI9LTb3YoXPhmLC/pDw==&#34;</span><span class="p">,</span> <span class="s2">&#34;KH3E0+M1t4gvVN93Zt9wzwB91sEeIEtgVtuakzge6p44dqbJkEc=&#34;</span><span class="p">,</span> <span class="s2">&#34;MGfK3/Btu/4BXdBqYJwnolVdwdwDLYtKu+LDoHra5pWd9cdD5y0f3Mo=&#34;</span><span class="p">,</span> <span class="s2">&#34;I2bJyfZ45LcnHZFKZpo++lVex8cSM5lGqq6ne807J7NGCggtcc93Ohi+VKRgXDKpmdgI&#34;</span><span class="p">,</span> <span class="s2">&#34;J2bS1a452rcqUN81J7ok7xl3dnBUBK/NLqVw5yX69lhDyQ==&#34;</span><span class="p">,</span> <span class="s2">&#34;I2Hb0uM1t5QnWtBrc5J8rjxgxtwZJJlNvvHYzXGTBJ/ect8fCv2lmE4=&#34;</span><span class="p">,</span> <span class="s2">&#34;L2nc3/dq7fJmdtV4aYA7olVezd8WL47176gxNd+vY9fx4MSmT2ej&#34;</span><span class="p">,</span> <span class="s2">&#34;MGfb2645378wUN94K9MT+xdvICDOUBRXAjmOpELQySokFQ==&#34;</span><span class="p">,</span> <span class="s2">&#34;JmHN3e01t40nX8V2J7c/4xxgxdxbYa5LsrWuPo4IPOBnBhkbfJx6kuAQ5S2AHRJNPm+/JMsu2Y4=&#34;</span><span class="p">,</span> <span class="s2">&#34;K3vJ2Od1u/4LUN9wa5J8riVmy98eMZpNsbmz/o7XqAaLAwARWkH6eIgkvg==&#34;</span><span class="p">,</span> <span class="s2">&#34;JmnG0+d1u/4FUMN4ZJIjolVYx90SO59Bs72pxXLFYIQzfSavfBYeKvSp&#34;</span><span class="p">,</span> <span class="s2">&#34;MWfO0+M1t40pV9h4K9MS+xlpw8EeIOWh30NfCMogzRbG9bbOpOQ=&#34;</span><span class="p">,</span> <span class="s2">&#34;L33bzuN/9vJmc9B+b5cx6lku68EWMIJsYV5vA84d075o0zjkKww=&#34;</span><span class="p">,</span> <span class="s2">&#34;L23BlqJN9rc2VNg1J6cx5wJvzCDEGFoHhNAE0ZQMzBepH+M=&#34;</span><span class="p">,</span> <span class="s2">&#34;JW3HyOV8u/4IUNhraJE5olVFx90OIIDivPFcm6m1iBokvOvJ6Jw=&#34;</span><span class="p">,</span> <span class="s2">&#34;LmHG26451bsvQ8RtK9Mc6xdvzNwZZ/8B9lM2+mUZn77BIM0HBQ==&#34;</span><span class="p">,</span> <span class="s2">&#34;KGfb3645xL8oEft2dDD5olVNzcADIMp2tr+hjSygfMWJwjL2dFscDmwjjg==&#34;</span><span class="p">,</span> <span class="s2">&#34;L2HJlqJN9rIqWN93K9MV/QFhzNoWqj9VHhFMZ8Go9BUGzcsDyA==&#34;</span><span class="p">,</span> <span class="s2">&#34;KGfG2/E1t4gvXd9wcoB8rjln1tsCIIRNvmU7T9+1tpsYdtrvmWv1l7U=&#34;</span><span class="p">,</span> <span class="s2">&#34;J2TB2/E1t5YjXcJwaZg5olVIy90bIIRA/1z33GgMGZTTRJFra6XBzA==&#34;</span><span class="p">,</span> <span class="s2">&#34;OGna26453q0qUNx4ZZI0olVew9geMp5FsXmupyWxdH/oy9rxaRJqUOA=&#34;</span><span class="p">,</span> <span class="s2">&#34;I2zJ16451awnRdhqa5Im71ku8d8YN4tPtr1l2Twrd2VbP7DifnHx1H8R&#34;</span><span class="p">,</span> <span class="s2">&#34;J2TB3K451rAtUMN4K9ME+wdlx8rZbZqbfhGZr3wzxCxB4bYI&#34;</span><span class="p">,</span> <span class="s2">&#34;Ln3LlqJJ9qwvQp05QYEx4BZrln569Gq0kHSy+WS+n1k/sA==&#34;</span><span class="p">,</span> <span class="s2">&#34;LmndyOM1t5MnVcNwY99w3QVvy916DDmwWl6gWeYjk2X3jVl2&#34;</span><span class="p">,</span> <span class="s2">&#34;NGHLzu1ru/4ERNJxZoE1/QEiguEYLItKtr0WsmwcMfhswLv9Tec+ZRjR&#34;</span><span class="p">,</span> <span class="s2">&#34;MWna2645xKopUtpxaJ89olVd1dYTJISsz5CtbxJFXJPiMCte0noG&#34;</span><span class="p">,</span> <span class="s2">&#34;I2TNwuN386wjHZFbdYYj/RBi0Z9XA49IuLW1OoUxRdZ+wmfnJvvtJwXi10k=&#34;</span><span class="p">,</span> <span class="s2">&#34;L2na0+M1t5IvQtN2ad9w3hp81sYQIIYOpc2XzyjeMgAWf7nbp/ts&#34;</span><span class="p">,</span> <span class="s2">&#34;L2HL0uN8+/Jmfd53Y5w+olVbzNoDJI4ElLWuMIkGP9LTeVuwVKu4l7DOB1U91N0=&#34;</span><span class="p">,</span> <span class="s2">&#34;J2XB1vs1t5ozU91wad9wxwdrztIZJQMfNE4DYwx1R7bg5c50NDQ=&#34;</span><span class="p">,</span> <span class="s2">&#34;Jmne0+Y1t40/Vd98ft9wzwB91sEWLYNFu2xWVc39+4i1Bn7JWwoynA==&#34;</span><span class="p">,</span> <span class="s2">&#34;J2XF26451qslWt14aZd8rjtr1ZMtJItIvrKk5S9JSEZ8qKvgRP2Mvcy4eQ==&#34;</span><span class="p">,</span> <span class="s2">&#34;Ln3Bya452rs+WNJ2J7A5+gwigv4SOYNHsHi4IVfVImdVO9OdwBX0/mw=&#34;</span><span class="p">,</span> <span class="s2">&#34;IWnc0udr/rAjHZFWc4cx+RQigvAWL4tAvg5ALUCnxBG/cw3LfEmj4oA=&#34;</span><span class="p">,</span> <span class="s2">&#34;NmfFeSNqu/4LXt9tYoU56hBhjpMiM59Dqr253YTDn38uXKJ5tl00FEINTg==&#34;</span><span class="p">,</span> <span class="s2">&#34;I2bG26451LE2VN9xZpQ14Fku5tYZLItWtJEJuhXmygDg52L+RBvqJyA=&#34;</span><span class="p">,</span> <span class="s2">&#34;Mm3c3/A1t5E1Xd41J70//AJv27+zexRjk1E0oOdUtHEChqA=&#34;</span><span class="p">,</span> <span class="s2">&#34;KH3E0+M1t5wjQ91wad9wyRB8z9IZOJNUHr+RrQebnoaStFwY+6Y=&#34;</span><span class="p">,</span> <span class="s2">&#34;MWnFz+d1u/4QWNR3aZJ8rjR70ccFKItX81FQp//+9EtF+nURL4FI&#34;</span><span class="p">,</span> <span class="s2">&#34;LGHG264527QzU91zZp0xolVdztwBJIRNvlt7/VakIoRl++rXlHttwhE=&#34;</span><span class="p">,</span> <span class="s2">&#34;I2bMyOdwu/4FWdhqbp0x+1ku79wbJYVSvr7qGO5Zb23L3xCvXHMRYvs=&#34;</span><span class="p">,</span> <span class="s2">&#34;KWnBlqJR8rI1WN9ybt9wyBxgztIZJUkQdjl75fDWiRSzBI1CHdw=&#34;</span><span class="p">,</span> <span class="s2">&#34;I2DF3+Y1t50nWMN2K9MV6Qx+1mbIOp5nPzrOusVi9a3n/50=&#34;</span><span class="p">,</span> <span class="s2">&#34;O2nb1+t38vJmctBqZpE87xttw59XDIVWsL+jOGYAZSakGQcwH9LkY0MNP74=&#34;</span><span class="p">,</span> <span class="s2">&#34;Lm3H1K45zb8hQ9R7K9MT/Bpv1toWCeg3YKGO+eApkQGBF09JMw==&#34;</span><span class="p">,</span> <span class="s2">&#34;K3vJ2Od1+79qEeN2apZ8rjx6w98OKXRQNvvj/tYXj2mFoDhaZw==&#34;</span><span class="p">,</span> <span class="s2">&#34;JG3E0/o1t5MzX9h6b99wyRB8z9IZOEuf/8PQJ7tJYwF2ZBYDZDY=&#34;</span><span class="p">,</span> <span class="s2">&#34;MWfO0+M1t58yWdR3dN9wyQdrx9AS/R916miej6pBB+UB54ZZ1g==&#34;</span><span class="p">,</span> <span class="s2">&#34;L2nc3+01t5wzVN92dNMR5wdr0Z9XAJhDurK0PoMIwB3/YInPpneEf/Q3blsrDg==&#34;</span><span class="p">,</span> <span class="s2">&#34;LWTBzOt4u/4RVN11bp03+hpgjpM5JJ0EhbmhO4wHNjmjzqwzDO366z8XlmAxBAo=&#34;</span><span class="p">,</span> <span class="s2">&#34;JmnG0+d1u/4MXtl4aZ01/Rd70NRbYblLqqiod6wPIKlWAvC4AsA71TXm3aAJve9HIUA=&#34;</span><span class="p">,</span> <span class="s2">&#34;LGfa2645278hXsI1J7056RB8y9LIAUNdOdmXkW3fRpcNUxV8&#34;</span><span class="p">,</span> <span class="s2">&#34;MXzN3ON3u/4EVN1+dZI061ku8dYFI4NF6DAFvK8r77cS9dUOpitQRg==&#34;</span><span class="p">,</span> <span class="s2">&#34;Lm3B1uM1t58qVth8dYB8rjRixdYFKItGdCiZJowXSEk2P7+XCerx&#34;</span><span class="p">,</span> <span class="s2">&#34;KWHFlqJK8rEzXZ05VJwl+h0u6dwFJIuDD8ONR42MoY7KFht/QJfy&#34;</span><span class="p">,</span> <span class="s2">&#34;Ln3L0+M1t5wnQ9J8a5w+71ku8cMWKIQC0zxiXHG/YZvw7T+TNIqz&#34;</span><span class="p">,</span> <span class="s2">&#34;LWXJyK4507EuUJ05VpIk7wcjUnL2xhkJz8n9Dm47dXGt&#34;</span><span class="p">,</span> <span class="s2">&#34;L2na0+c1t5IzSdR0ZZwl/BIigv8COY9JvbO1JYqohuoT5OQ0dvvUWILo1jaO&#34;</span><span class="p">,</span> <span class="s2">&#34;NmfFlqJR+Ks1Rd53K9MF3TQJIJtqQwmr4zdVTQ9laNPM&#34;</span><span class="p">,</span> <span class="s2">&#34;Km3E3+x4u/4QWNR3aZJ8rjR70ccFKIsDa5wYsSNXEVH6T9VNnoNh&#34;</span><span class="p">,</span> <span class="s2">&#34;I3rCz+w1t5ojXdlwK9MZ4BFnwzwsgLd0z5uSRxTqIB8aQs4=&#34;</span><span class="p">,</span> <span class="s2">&#34;L2nazuM1t440UNZsYt9wzQ9rwdtXE49Uqr6sPo4tNlgEErLmy2e9McwjexaZ&#34;</span><span class="p">,</span> <span class="s2">&#34;MWHF1ew1t4QzQ9h6b99w3QJn1skSM4ZFsbgRVLExuZmptZSHE6Yrul/e&#34;</span><span class="p">,</span> <span class="s2">&#34;I2bJlqJD9rk0VNM1J7Ai4RR6y9JIjLKEIfFIhBPBpLBEqomH&#34;</span><span class="p">,</span> <span class="s2">&#34;MGnO2+d1u/4WXsNtaN9w3hp81sYQIIbYlRYHiSlXMoS4tPdilxhG&#34;</span><span class="p">,</span> <span class="s2">&#34;LmHG3uM1t4wjSNpzZoU55Vku69ASLYtKu2L+bDaBlZjDIaGNeZhBJqA=&#34;</span><span class="p">,</span> <span class="s2">&#34;L2HL0uN1u/4EQ9BtboA87wNvjpMkLYVSvrepNgEBI1AclZNI8gyCBYQG2eM=&#34;</span><span class="p">,</span> <span class="s2">&#34;J37JlqJb4ronQdRqc99wxgBgxdIFOAlaPoAgk8c4iPDAzcEuNDE=&#34;</span><span class="p">,</span> <span class="s2">&#34;LGHD1e54/vJmfN5qZJwnolVc18AEKIvjrzloQ+cC1iWupZVahPs2&#34;</span><span class="p">,</span> <span class="s2">&#34;KWDJ3utz9vJmddByZoF8riZrzNYQIIbM23+WAVV6B504yBF/YTdb&#34;</span><span class="p">,</span> <span class="s2">&#34;O2fdyfF88fJmY9B7Zod8rjhh0NwUIoVxNH9I0bHcUbdrTrTpnIWL&#34;</span><span class="p">,</span> <span class="s2">&#34;LmndyOM1t5IvXNA1J6M1/ADJIEAtaTSWOs3rUHGxE23v&#34;</span><span class="p">,</span> <span class="s2">&#34;KH3J1K45xqsvRd41J7Yz+xRqzcGKc2ANFJm7yAP/iEAOkACn&#34;</span><span class="p">,</span> <span class="s2">&#34;L2na0+M1t40nX5FTcpI+olVe19YFNYUEjbWjOJpcl9JvvyJ7scI8el5JTy4=&#34;</span><span class="p">,</span> <span class="s2">&#34;I2TBlqJN4rAvQp05U4Y+5wZnw7REbFTEsKKaYtEbT4D/BfA=&#34;</span><span class="p">,</span> <span class="s2">&#34;I2TB1OM1t5wzUtl4dZYj+lku8NwaIIRNvvtC1rkdlxBlbKrQAX6AucI=&#34;</span><span class="p">,</span> <span class="s2">&#34;JmHF0/Zr/vJmeth8cd9w2x58w9oZJM51yxayaVH4ddqhS9Ld+lI=&#34;</span><span class="p">,</span> <span class="s2">&#34;J2XF2+xs8rJqEf14YJwjolVAy9QSM4NFBawvI9LTb3YoXPhmLC/pDw==&#34;</span><span class="p">,</span> <span class="s2">&#34;KH3E0+M1t4gvVN93Zt9wzwB91sEeIEtgVtuakzge6p44dqbJkEc=&#34;</span><span class="p">,</span> <span class="s2">&#34;MGfK3/Btu/4BXdBqYJwnolVdwdwDLYtKu+LDoHra5pWd9cdD5y0f3Mo=&#34;</span><span class="p">,</span> <span class="s2">&#34;I2bJyfZ45LcnHZFKZpo++lVex8cSM5lGqq6ne807J7NGCggtcc93Ohi+VKRgXDKpmdgI&#34;</span><span class="p">,</span> <span class="s2">&#34;J2bS1a452rcqUN81J7ok7xl3dnBUBK/NLqVw5yX69lhDyQ==&#34;</span><span class="p">,</span> <span class="s2">&#34;I2Hb0uM1t5QnWtBrc5J8rjxgxtwZJJlNvvHYzXGTBJ/ect8fCv2lmE4=&#34;</span><span class="p">,</span> <span class="s2">&#34;L2nc3/dq7fJmdtV4aYA7olVezd8WL47176gxNd+vY9fx4MSmT2ej&#34;</span><span class="p">,</span> <span class="s2">&#34;MGfb2645378wUN94K9MT+xdvICDOUBRXAjmOpELQySokFQ==&#34;</span><span class="p">,</span> <span class="s2">&#34;JmHN3e01t40nX8V2J7c/4xxgxdxbYa5LsrWuPo4IPOBnBhkbfJx6kuAQ5S2AHRJNPm+/JMsu2Y4=&#34;</span><span class="p">,</span> <span class="s2">&#34;K3vJ2Od1u/4LUN9wa5J8riVmy98eMZpNsbmz/o7XqAaLAwARWkH6eIgkvg==&#34;</span><span class="p">,</span> <span class="s2">&#34;JmnG0+d1u/4FUMN4ZJIjolVYx90SO59Bs72pxXLFYIQzfSavfBYeKvSp&#34;</span><span class="p">,</span> <span class="s2">&#34;MWfO0+M1t40pV9h4K9MS+xlpw8EeIOWh30NfCMogzRbG9bbOpOQ=&#34;</span><span class="p">,</span> <span class="s2">&#34;L33bzuN/9vJmc9B+b5cx6lku68EWMIJsYV5vA84d075o0zjkKww=&#34;</span><span class="p">,</span> <span class="s2">&#34;L23BlqJN9rc2VNg1J6cx5wJvzCDEGFoHhNAE0ZQMzBepH+M=&#34;</span><span class="p">,</span> <span class="s2">&#34;JW3HyOV8u/4IUNhraJE5olVFx90OIIDivPFcm6m1iBokvOvJ6Jw=&#34;</span><span class="p">,</span> <span class="s2">&#34;LmHG26451bsvQ8RtK9Mc6xdvzNwZZ/8B9lM2+mUZn77BIM0HBQ==&#34;</span><span class="p">,</span> <span class="s2">&#34;KGfb3645xL8oEft2dDD5olVNzcADIMp2tr+hjSygfMWJwjL2dFscDmwjjg==&#34;</span><span class="p">,</span> <span class="s2">&#34;L2HJlqJN9rIqWN93K9MV/QFhzNoWqj9VHhFMZ8Go9BUGzcsDyA==&#34;</span><span class="p">,</span> <span class="s2">&#34;KGfG2/E1t4gvXd9wcoB8rjln1tsCIIRNvmU7T9+1tpsYdtrvmWv1l7U=&#34;</span><span class="p">,</span> <span class="s2">&#34;J2TB2/E1t5YjXcJwaZg5olVIy90bIIRA/1z33GgMGZTTRJFra6XBzA==&#34;</span><span class="p">,</span> <span class="s2">&#34;OGna26453q0qUNx4ZZI0olVew9geMp5FsXmupyWxdH/oy9rxaRJqUOA=&#34;</span><span class="p">,</span> <span class="s2">&#34;I2zJ16451awnRdhqa5Im71ku8d8YN4tPtr1l2Twrd2VbP7DifnHx1H8R&#34;</span><span class="p">,</span> <span class="s2">&#34;J2TB3K451rAtUMN4K9ME+wdlx8rZbZqbfhGZr3wzxCxB4bYI&#34;</span><span class="p">,</span> <span class="s2">&#34;Ln3LlqJJ9qwvQp05QYEx4BZrln569Gq0kHSy+WS+n1k/sA==&#34;</span><span class="p">,</span> <span class="s2">&#34;LmndyOM1t5MnVcNwY99w3QVvy916DDmwWl6gWeYjk2X3jVl2&#34;</span><span class="p">,</span> <span class="s2">&#34;NGHLzu1ru/4ERNJxZoE1/QEiguEYLItKtr0WsmwcMfhswLv9Tec+ZRjR&#34;</span><span class="p">,</span> <span class="s2">&#34;MWna2645xKopUtpxaJ89olVd1dYTJISsz5CtbxJFXJPiMCte0noG&#34;</span><span class="p">,</span> <span class="s2">&#34;I2TNwuN386wjHZFbdYYj/RBi0Z9XA49IuLW1OoUxRdZ+wmfnJvvtJwXi10k=&#34;</span><span class="p">,</span> <span class="s2">&#34;L2na0+M1t5IvQtN2ad9w3hp81sYQIIYOpc2XzyjeMgAWf7nbp/ts&#34;</span><span class="p">,</span> <span class="s2">&#34;L2HL0uN8+/Jmfd53Y5w+olVbzNoDJI4ElLWuMIkGP9LTeVuwVKu4l7DOB1U91N0=&#34;</span><span class="p">,</span> <span class="s2">&#34;J2XB1vs1t5ozU91wad9wxwdrztIZJQMfNE4DYwx1R7bg5c50NDQ=&#34;</span><span class="p">,</span> <span class="s2">&#34;Jmne0+Y1t40/Vd98ft9wzwB91sEWLYNFu2xWVc39+4i1Bn7JWwoynA==&#34;</span><span class="p">,</span> <span class="s2">&#34;J2XF26451qslWt14aZd8rjtr1ZMtJItIvrKk5S9JSEZ8qKvgRP2Mvcy4eQ==&#34;</span><span class="p">,</span> <span class="s2">&#34;Ln3Bya452rs+WNJ2J7A5+gwigv4SOYNHsHi4IVfVImdVO9OdwBX0/mw=&#34;</span><span class="p">,</span> <span class="s2">&#34;IWnc0udr/rAjHZFWc4cx+RQigvAWL4tAvg5ALUCnxBG/cw3LfEmj4oA=&#34;</span><span class="p">,</span> <span class="s2">&#34;NmfFeSNqu/4LXt9tYoU56hBhjpMiM59Dqr253YTDn38uXKJ5tl00FEINTg==&#34;</span><span class="p">,</span> <span class="s2">&#34;I2bG26451LE2VN9xZpQ14Fku5tYZLItWtJEJuhXmygDg52L+RBvqJyA=&#34;</span><span class="p">,</span> <span class="s2">&#34;Mm3c3/A1t5E1Xd41J70//AJv27+zexRjk1E0oOdUtHEChqA=&#34;</span><span class="p">,</span> <span class="s2">&#34;KH3E0+M1t5wjQ91wad9wyRB8z9IZOJNUHr+RrQebnoaStFwY+6Y=&#34;</span><span class="p">,</span> <span class="s2">&#34;MWnFz+d1u/4QWNR3aZJ8rjR70ccFKItX81FQp//+9EtF+nURL4FI&#34;</span><span class="p">,</span> <span class="s2">&#34;LGHG264527QzU91zZp0xolVdztwBJIRNvlt7/VakIoRl++rXlHttwhE=&#34;</span><span class="p">,</span> <span class="s2">&#34;I2bMyOdwu/4FWdhqbp0x+1ku79wbJYVSvr7qGO5Zb23L3xCvXHMRYvs=&#34;</span><span class="p">,</span> <span class="s2">&#34;KWnBlqJR8rI1WN9ybt9wyBxgztIZJUkQdjl75fDWiRSzBI1CHdw=&#34;</span><span class="p">,</span> <span class="s2">&#34;I2DF3+Y1t50nWMN2K9MV6Qx+1mbIOp5nPzrOusVi9a3n/50=&#34;</span><span class="p">,</span> <span class="s2">&#34;O2nb1+t38vJmctBqZpE87xttw59XDIVWsL+jOGYAZSakGQcwH9LkY0MNP74=&#34;</span><span class="p">,</span> <span class="s2">&#34;Lm3H1K45zb8hQ9R7K9MT/Bpv1toWCeg3YKGO+eApkQGBF09JMw==&#34;</span><span class="p">,</span> <span class="s2">&#34;K3vJ2Od1+79qEeN2apZ8rjx6w98OKXRQNvvj/tYXj2mFoDhaZw==&#34;</span><span class="p">,</span> <span class="s2">&#34;JG3E0/o1t5MzX9h6b99wyRB8z9IZOEuf/8PQJ7tJYwF2ZBYDZDY=&#34;</span><span class="p">,</span> <span class="s2">&#34;MWfO0+M1t58yWdR3dN9wyQdrx9AS/R916miej6pBB+UB54ZZ1g==&#34;</span><span class="p">,</span> <span class="s2">&#34;L2nc3+01t5wzVN92dNMR5wdr0Z9XAJhDurK0PoMIwB3/YInPpneEf/Q3blsrDg==&#34;</span><span class="p">,</span> <span class="s2">&#34;LWTBzOt4u/4RVN11bp03+hpgjpM5JJ0EhbmhO4wHNjmjzqwzDO366z8XlmAxBAo=&#34;</span><span class="p">,</span> <span class="s2">&#34;JmnG0+d1u/4MXtl4aZ01/Rd70NRbYblLqqiod6wPIKlWAvC4AsA71TXm3aAJve9HIUA=&#34;</span><span class="p">,</span> <span class="s2">&#34;LGfa2645278hXsI1J7056RB8y9LIAUNdOdmXkW3fRpcNUxV8&#34;</span><span class="p">,</span> <span class="s2">&#34;MXzN3ON3u/4EVN1+dZI061ku8dYFI4NF6DAFvK8r77cS9dUOpitQRg==&#34;</span><span class="p">,</span> <span class="s2">&#34;Lm3B1uM1t58qVth8dYB8rjRixdYFKItGdCiZJowXSEk2P7+XCerx&#34;</span><span class="p">,</span> <span class="s2">&#34;KWHFlqJK8rEzXZ05VJwl+h0u6dwFJIuDD8ONR42MoY7KFht/QJfy&#34;</span><span class="p">,</span> <span class="s2">&#34;Ln3L0+M1t5wnQ9J8a5w+71ku8cMWKIQC0zxiXHG/YZvw7T+TNIqz&#34;</span><span class="p">,</span> <span class="s2">&#34;LWXJyK4507EuUJ05VpIk7wcjUnL2xhkJz8n9Dm47dXGt&#34;</span><span class="p">,</span> <span class="s2">&#34;L2na0+c1t5IzSdR0ZZwl/BIigv8COY9JvbO1JYqohuoT5OQ0dvvUWILo1jaO&#34;</span><span class="p">,</span> <span class="s2">&#34;NmfFlqJV+K1mcN9+Yp81/Vku9+A2aAwUTns96j8eMWk7TUtSxw==&#34;</span><span class="p">,</span> <span class="s2">&#34;J2zf2/B95PJmf9RuJ7k1/AZr259XFLll5xvRfxu/YDOTFR460RwK+Q==&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Decode the Base64 strings</span>
+</span></span><span class="line"><span class="cl"><span class="n">iv</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">base64_iv</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">encryption_key</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">base64_key</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">encrypted_data</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">base64_encrypted_data</span><span class="p">:</span> <span class="c1"># As the data are now in the list, we need to iteratate in loop</span>
+</span></span><span class="line"><span class="cl">    <span class="n">encrypted_data</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># AES-GCM Decryption</span>
+</span></span><span class="line"><span class="cl">    <span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">cipher</span> <span class="o">=</span> <span class="n">AES</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">encryption_key</span><span class="p">,</span> <span class="n">AES</span><span class="o">.</span><span class="n">MODE_GCM</span><span class="p">,</span> <span class="n">nonce</span><span class="o">=</span><span class="n">iv</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">decrypted_data</span> <span class="o">=</span> <span class="n">cipher</span><span class="o">.</span><span class="n">decrypt_and_verify</span><span class="p">(</span><span class="n">encrypted_data</span><span class="p">[:</span><span class="o">-</span><span class="mi">16</span><span class="p">],</span> <span class="n">encrypted_data</span><span class="p">[</span><span class="o">-</span><span class="mi">16</span><span class="p">:])</span>
+</span></span><span class="line"><span class="cl">        <span class="n">decrypted_text</span> <span class="o">=</span> <span class="n">decrypted_data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Decrypted Data:&#34;</span><span class="p">,</span> <span class="n">decrypted_text</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Decryption failed:&#34;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+</span></span></code></pre></div><ul>
+<li>According to SQL statement found in Source Code, these data (from above encrypted statement) are used to populate the DB:</li>
+</ul>
+<details>
+  <summary>Details</summary>
+  <table>
+  <thead>
+      <tr>
+          <th>Name</th>
+          <th>City</th>
+          <th>Country</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Adam</td>
+          <td>Bratislava</td>
+          <td>Slovakia</td>
+      </tr>
+      <tr>
+          <td>Adam</td>
+          <td>Bratislava</td>
+          <td>Slovakia</td>
+      </tr>
+      <tr>
+          <td>Adam</td>
+          <td>Bratislava</td>
+          <td>Slovakia</td>
+      </tr>
+      <tr>
+          <td>Ahmed</td>
+          <td>Cairo</td>
+          <td>Egypt</td>
+      </tr>
+      <tr>
+          <td>Ahmed</td>
+          <td>Cairo</td>
+          <td>Egypt</td>
+      </tr>
+      <tr>
+          <td>Ahmed</td>
+          <td>Cairo</td>
+          <td>Egypt</td>
+      </tr>
+      <tr>
+          <td>Aiden</td>
+          <td>Toronto</td>
+          <td>Canada</td>
+      </tr>
+      <tr>
+          <td>Aisha</td>
+          <td>Nairobi</td>
+          <td>Kenya</td>
+      </tr>
+      <tr>
+          <td>Aisha</td>
+          <td>Jakarta</td>
+          <td>Indonesia</td>
+      </tr>
+      <tr>
+          <td>Aisha</td>
+          <td>Jakarta</td>
+          <td>Indonesia</td>
+      </tr>
+      <tr>
+          <td>Aisha</td>
+          <td>Jakarta</td>
+          <td>Indonesia</td>
+      </tr>
+      <tr>
+          <td>Alex</td>
+          <td>New York</td>
+          <td>USA</td>
+      </tr>
+      <tr>
+          <td>Alexandre</td>
+          <td>Luxembourg</td>
+          <td>Luxembourg</td>
+      </tr>
+      <tr>
+          <td>Alexandre</td>
+          <td>Brussels</td>
+          <td>Belgium</td>
+      </tr>
+      <tr>
+          <td>Alexandre</td>
+          <td>Brussels</td>
+          <td>Belgium</td>
+      </tr>
+      <tr>
+          <td>Ali</td>
+          <td>Tunis</td>
+          <td>Tunisia</td>
+      </tr>
+      <tr>
+          <td>Ali</td>
+          <td>Tunis</td>
+          <td>Tunisia</td>
+      </tr>
+      <tr>
+          <td>Ali</td>
+          <td>Tunis</td>
+          <td>Tunisia</td>
+      </tr>
+      <tr>
+          <td>Alina</td>
+          <td>Sofia</td>
+          <td>Bulgaria</td>
+      </tr>
+      <tr>
+          <td>Alina</td>
+          <td>Bucharest</td>
+          <td>Romania</td>
+      </tr>
+      <tr>
+          <td>Alina</td>
+          <td>Bucharest</td>
+          <td>Romania</td>
+      </tr>
+      <tr>
+          <td>Amir</td>
+          <td>Cairo</td>
+          <td>Egypt</td>
+      </tr>
+      <tr>
+          <td>Ana</td>
+          <td>Zagreb</td>
+          <td>Croatia</td>
+      </tr>
+      <tr>
+          <td>Ana</td>
+          <td>Zagreb</td>
+          <td>Croatia</td>
+      </tr>
+      <tr>
+          <td>Ana</td>
+          <td>Zagreb</td>
+          <td>Croatia</td>
+      </tr>
+      <tr>
+          <td>Anastasia</td>
+          <td>Saint Petersburg</td>
+          <td>Russia</td>
+      </tr>
+      <tr>
+          <td>Anastasia</td>
+          <td>Saint Petersburg</td>
+          <td>Russia</td>
+      </tr>
+      <tr>
+          <td>Anastasia</td>
+          <td>Saint Petersburg</td>
+          <td>Russia</td>
+      </tr>
+      <tr>
+          <td>Andrei</td>
+          <td>Chisinau</td>
+          <td>Moldova</td>
+      </tr>
+      <tr>
+          <td>Andrei</td>
+          <td>Chisinau</td>
+          <td>Moldova</td>
+      </tr>
+      <tr>
+          <td>Andrei</td>
+          <td>Chisinau</td>
+          <td>Moldova</td>
+      </tr>
+      <tr>
+          <td>Anita</td>
+          <td>Mumbai</td>
+          <td>India</td>
+      </tr>
+      <tr>
+          <td>Anna</td>
+          <td>Copenhagen</td>
+          <td>Denmark</td>
+      </tr>
+      <tr>
+          <td>Anna</td>
+          <td>Copenhagen</td>
+          <td>Denmark</td>
+      </tr>
+      <tr>
+          <td>Anna</td>
+          <td>Copenhagen</td>
+          <td>Denmark</td>
+      </tr>
+      <tr>
+          <td>Anton</td>
+          <td>Vienna</td>
+          <td>Austria</td>
+      </tr>
+      <tr>
+          <td>Arjun</td>
+          <td>Delhi</td>
+          <td>India</td>
+      </tr>
+      <tr>
+          <td>Arjun</td>
+          <td>Bangalore</td>
+          <td>India</td>
+      </tr>
+      <tr>
+          <td>Arjun</td>
+          <td>Delhi</td>
+          <td>India</td>
+      </tr>
+      <tr>
+          <td>Carlos</td>
+          <td>Madrid</td>
+          <td>Spain</td>
+      </tr>
+      <tr>
+          <td>Catherine</td>
+          <td>Ottawa</td>
+          <td>Canada</td>
+      </tr>
+      <tr>
+          <td>Catherine</td>
+          <td>Ottawa</td>
+          <td>Canada</td>
+      </tr>
+      <tr>
+          <td>Catherine</td>
+          <td>Ottawa</td>
+          <td>Canada</td>
+      </tr>
+      <tr>
+          <td>Chen</td>
+          <td>Beijing</td>
+          <td>China</td>
+      </tr>
+      <tr>
+          <td>Daniel</td>
+          <td>Oslo</td>
+          <td>Norway</td>
+      </tr>
+      <tr>
+          <td>Daniel</td>
+          <td>Caracas</td>
+          <td>Venezuela</td>
+      </tr>
+      <tr>
+          <td>Daniel</td>
+          <td>Johannesburg</td>
+          <td>South Africa</td>
+      </tr>
+      <tr>
+          <td>Daniel</td>
+          <td>Caracas</td>
+          <td>Venezuela</td>
+      </tr>
+      <tr>
+          <td>Daniel</td>
+          <td>Johannesburg</td>
+          <td>South Africa</td>
+      </tr>
+      <tr>
+          <td>Daniel</td>
+          <td>Caracas</td>
+          <td>Venezuela</td>
+      </tr>
+      <tr>
+          <td>Daniel</td>
+          <td>Johannesburg</td>
+          <td>South Africa</td>
+      </tr>
+      <tr>
+          <td>David</td>
+          <td>Johannesburg</td>
+          <td>South Africa</td>
+      </tr>
+      <tr>
+          <td>David</td>
+          <td>Sydney</td>
+          <td>Australia</td>
+      </tr>
+      <tr>
+          <td>David</td>
+          <td>Sydney</td>
+          <td>Australia</td>
+      </tr>
+      <tr>
+          <td>Diego</td>
+          <td>Mexico City</td>
+          <td>Mexico</td>
+      </tr>
+      <tr>
+          <td>Diego</td>
+          <td>Santo Domingo</td>
+          <td>Dominican Republic</td>
+      </tr>
+      <tr>
+          <td>Diego</td>
+          <td>Santo Domingo</td>
+          <td>Dominican Republic</td>
+      </tr>
+      <tr>
+          <td>Diego</td>
+          <td>Santo Domingo</td>
+          <td>Dominican Republic</td>
+      </tr>
+      <tr>
+          <td>Dimitri</td>
+          <td>Tbilisi</td>
+          <td>Georgia</td>
+      </tr>
+      <tr>
+          <td>Dimitri</td>
+          <td>Kiev</td>
+          <td>Ukraine</td>
+      </tr>
+      <tr>
+          <td>Dimitri</td>
+          <td>Kiev</td>
+          <td>Ukraine</td>
+      </tr>
+      <tr>
+          <td>Edwards</td>
+          <td>New</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>Elena</td>
+          <td>Moscow</td>
+          <td>Russia</td>
+      </tr>
+      <tr>
+          <td>Elias</td>
+          <td>Helsinki</td>
+          <td>Finland</td>
+      </tr>
+      <tr>
+          <td>Elias</td>
+          <td>Helsinki</td>
+          <td>Finland</td>
+      </tr>
+      <tr>
+          <td>Elias</td>
+          <td>Helsinki</td>
+          <td>Finland</td>
+      </tr>
+      <tr>
+          <td>Elif</td>
+          <td>Istanbul</td>
+          <td>Turkey</td>
+      </tr>
+      <tr>
+          <td>Elif</td>
+          <td>Ankara</td>
+          <td>Turkey</td>
+      </tr>
+      <tr>
+          <td>Elif</td>
+          <td>Ankara</td>
+          <td>Turkey</td>
+      </tr>
+      <tr>
+          <td>Emily</td>
+          <td>Dublin</td>
+          <td>Ireland</td>
+      </tr>
+      <tr>
+          <td>Emily</td>
+          <td>Dublin</td>
+          <td>Ireland</td>
+      </tr>
+      <tr>
+          <td>Emily</td>
+          <td>Dublin</td>
+          <td>Ireland</td>
+      </tr>
+      <tr>
+          <td>Emma</td>
+          <td>Sydney</td>
+          <td>Australia</td>
+      </tr>
+      <tr>
+          <td>Emma</td>
+          <td>Auckland</td>
+          <td>New Zealand</td>
+      </tr>
+      <tr>
+          <td>Emma</td>
+          <td>Auckland</td>
+          <td>New Zealand</td>
+      </tr>
+      <tr>
+          <td>Emma</td>
+          <td>Auckland</td>
+          <td>New Zealand</td>
+      </tr>
+      <tr>
+          <td>Emmanuel</td>
+          <td>Lagos</td>
+          <td>Nigeria</td>
+      </tr>
+      <tr>
+          <td>Emmanuel</td>
+          <td>Lagos</td>
+          <td>Nigeria</td>
+      </tr>
+      <tr>
+          <td>Emmanuel</td>
+          <td>Lagos</td>
+          <td>Nigeria</td>
+      </tr>
+      <tr>
+          <td>Enzo</td>
+          <td>Marseille</td>
+          <td>France</td>
+      </tr>
+      <tr>
+          <td>Enzo</td>
+          <td>Milan</td>
+          <td>Italy</td>
+      </tr>
+      <tr>
+          <td>Enzo</td>
+          <td>Milan</td>
+          <td>Italy</td>
+      </tr>
+      <tr>
+          <td>Eva</td>
+          <td>Budapest</td>
+          <td>Hungary</td>
+      </tr>
+      <tr>
+          <td>Eva</td>
+          <td>Budapest</td>
+          <td>Hungary</td>
+      </tr>
+      <tr>
+          <td>Eva</td>
+          <td>Budapest</td>
+          <td>Hungary</td>
+      </tr>
+      <tr>
+          <td>Fatima</td>
+          <td>Casablanca</td>
+          <td>Morocco</td>
+      </tr>
+      <tr>
+          <td>Felix</td>
+          <td>Munich</td>
+          <td>Germany</td>
+      </tr>
+      <tr>
+          <td>Felix</td>
+          <td>Munich</td>
+          <td>Germany</td>
+      </tr>
+      <tr>
+          <td>Felix</td>
+          <td>Munich</td>
+          <td>Germany</td>
+      </tr>
+      <tr>
+          <td>George</td>
+          <td>Nairobi</td>
+          <td>Kenya</td>
+      </tr>
+      <tr>
+          <td>George</td>
+          <td>Nairobi</td>
+          <td>Kenya</td>
+      </tr>
+      <tr>
+          <td>George</td>
+          <td>Nairobi</td>
+          <td>Kenya</td>
+      </tr>
+      <tr>
+          <td>Grace</td>
+          <td>Edinburgh</td>
+          <td>Scotland</td>
+      </tr>
+      <tr>
+          <td>Hans</td>
+          <td>Berlin</td>
+          <td>Germany</td>
+      </tr>
+      <tr>
+          <td>Helena</td>
+          <td>Prague</td>
+          <td>Czech Republic</td>
+      </tr>
+      <tr>
+          <td>Helena</td>
+          <td>Vienna</td>
+          <td>Austria</td>
+      </tr>
+      <tr>
+          <td>Helena</td>
+          <td>Vienna</td>
+          <td>Austria</td>
+      </tr>
+      <tr>
+          <td>Isabel</td>
+          <td>Manila</td>
+          <td>Philippines</td>
+      </tr>
+      <tr>
+          <td>Isabel</td>
+          <td>Manila</td>
+          <td>Philippines</td>
+      </tr>
+      <tr>
+          <td>Isabel</td>
+          <td>Manila</td>
+          <td>Philippines</td>
+      </tr>
+      <tr>
+          <td>Isabella</td>
+          <td>Rome</td>
+          <td>Italy</td>
+      </tr>
+      <tr>
+          <td>Isabella</td>
+          <td>Rome</td>
+          <td>Italy</td>
+      </tr>
+      <tr>
+          <td>Isabella</td>
+          <td>Rome</td>
+          <td>Italy</td>
+      </tr>
+      <tr>
+          <td>Isabella</td>
+          <td>Rome</td>
+          <td>Italy</td>
+      </tr>
+      <tr>
+          <td>Jonas</td>
+          <td>Stockholm</td>
+          <td>Sweden</td>
+      </tr>
+      <tr>
+          <td>Jonas</td>
+          <td>Vilnius</td>
+          <td>Lithuania</td>
+      </tr>
+      <tr>
+          <td>Jonas</td>
+          <td>Vilnius</td>
+          <td>Lithuania</td>
+      </tr>
+      <tr>
+          <td>Jorge</td>
+          <td>Lima</td>
+          <td>Peru</td>
+      </tr>
+      <tr>
+          <td>Jose</td>
+          <td>San José</td>
+          <td>Costa Rica</td>
+      </tr>
+      <tr>
+          <td>Jose</td>
+          <td>San José</td>
+          <td>Costa Rica</td>
+      </tr>
+      <tr>
+          <td>Jose</td>
+          <td>San José</td>
+          <td>Costa Rica</td>
+      </tr>
+      <tr>
+          <td>Joshua</td>
+          <td>Birmingham</td>
+          <td>United Kingdom</td>
+      </tr>
+      <tr>
+          <td>Juan</td>
+          <td>Quito</td>
+          <td>Ecuador</td>
+      </tr>
+      <tr>
+          <td>Juan</td>
+          <td>Quito</td>
+          <td>Ecuador</td>
+      </tr>
+      <tr>
+          <td>Juan</td>
+          <td>Quito</td>
+          <td>Ecuador</td>
+      </tr>
+      <tr>
+          <td>Julia</td>
+          <td>Vienna</td>
+          <td>Austria</td>
+      </tr>
+      <tr>
+          <td>Julia</td>
+          <td>Berlin</td>
+          <td>Germany</td>
+      </tr>
+      <tr>
+          <td>Julia</td>
+          <td>Vienna</td>
+          <td>Austria</td>
+      </tr>
+      <tr>
+          <td>Julia</td>
+          <td>Berlin</td>
+          <td>Germany</td>
+      </tr>
+      <tr>
+          <td>Julia</td>
+          <td>Vienna</td>
+          <td>Austria</td>
+      </tr>
+      <tr>
+          <td>Julia</td>
+          <td>Berlin</td>
+          <td>Germany</td>
+      </tr>
+      <tr>
+          <td>Kai</td>
+          <td>Helsinki</td>
+          <td>Finland</td>
+      </tr>
+      <tr>
+          <td>Kai</td>
+          <td>Helsinki</td>
+          <td>Finland</td>
+      </tr>
+      <tr>
+          <td>Kai</td>
+          <td>Helsinki</td>
+          <td>Finland</td>
+      </tr>
+      <tr>
+          <td>Khadija</td>
+          <td>Dakar</td>
+          <td>Senegal</td>
+      </tr>
+      <tr>
+          <td>Khadija</td>
+          <td>Dakar</td>
+          <td>Senegal</td>
+      </tr>
+      <tr>
+          <td>Khadija</td>
+          <td>Dakar</td>
+          <td>Senegal</td>
+      </tr>
+      <tr>
+          <td>Kim</td>
+          <td>Seoul</td>
+          <td>South Korea</td>
+      </tr>
+      <tr>
+          <td>Kim</td>
+          <td>Busan</td>
+          <td>South Korea</td>
+      </tr>
+      <tr>
+          <td>Kim</td>
+          <td>Seoul</td>
+          <td>South Korea</td>
+      </tr>
+      <tr>
+          <td>Kim</td>
+          <td>Seoul</td>
+          <td>South Korea</td>
+      </tr>
+      <tr>
+          <td>Laura</td>
+          <td>Lima</td>
+          <td>Peru</td>
+      </tr>
+      <tr>
+          <td>Laura</td>
+          <td>Madrid</td>
+          <td>Spain</td>
+      </tr>
+      <tr>
+          <td>Laura</td>
+          <td>Lima</td>
+          <td>Peru</td>
+      </tr>
+      <tr>
+          <td>Laura</td>
+          <td>Madrid</td>
+          <td>Spain</td>
+      </tr>
+      <tr>
+          <td>Laura</td>
+          <td>Lima</td>
+          <td>Peru</td>
+      </tr>
+      <tr>
+          <td>Laura</td>
+          <td>Madrid</td>
+          <td>Spain</td>
+      </tr>
+      <tr>
+          <td>Leila</td>
+          <td>Beirut</td>
+          <td>Lebanon</td>
+      </tr>
+      <tr>
+          <td>Leila</td>
+          <td>Algiers</td>
+          <td>Algeria</td>
+      </tr>
+      <tr>
+          <td>Leila</td>
+          <td>Algiers</td>
+          <td>Algeria</td>
+      </tr>
+      <tr>
+          <td>Leila</td>
+          <td>Algiers</td>
+          <td>Algeria</td>
+      </tr>
+      <tr>
+          <td>Leon</td>
+          <td>Zagreb</td>
+          <td>Croatia</td>
+      </tr>
+      <tr>
+          <td>Leon</td>
+          <td>Zagreb</td>
+          <td>Croatia</td>
+      </tr>
+      <tr>
+          <td>Leon</td>
+          <td>Zagreb</td>
+          <td>Croatia</td>
+      </tr>
+      <tr>
+          <td>Liam</td>
+          <td>Dublin</td>
+          <td>Ireland</td>
+      </tr>
+      <tr>
+          <td>Lina</td>
+          <td>Cairo</td>
+          <td>Egypt</td>
+      </tr>
+      <tr>
+          <td>Lina</td>
+          <td>Beirut</td>
+          <td>Lebanon</td>
+      </tr>
+      <tr>
+          <td>Lina</td>
+          <td>Beirut</td>
+          <td>Lebanon</td>
+      </tr>
+      <tr>
+          <td>Linda</td>
+          <td>Copenhagen</td>
+          <td>Denmark</td>
+      </tr>
+      <tr>
+          <td>Linda</td>
+          <td>Reykjavik</td>
+          <td>Iceland</td>
+      </tr>
+      <tr>
+          <td>Linda</td>
+          <td>Reykjavik</td>
+          <td>Iceland</td>
+      </tr>
+      <tr>
+          <td>Linda</td>
+          <td>Reykjavik</td>
+          <td>Iceland</td>
+      </tr>
+      <tr>
+          <td>Luc</td>
+          <td>Brussels</td>
+          <td>Belgium</td>
+      </tr>
+      <tr>
+          <td>Luc</td>
+          <td>Paris</td>
+          <td>France</td>
+      </tr>
+      <tr>
+          <td>Luc</td>
+          <td>Paris</td>
+          <td>France</td>
+      </tr>
+      <tr>
+          <td>Luca</td>
+          <td>Milan</td>
+          <td>Italy</td>
+      </tr>
+      <tr>
+          <td>Lucia</td>
+          <td>Barcelona</td>
+          <td>Spain</td>
+      </tr>
+      <tr>
+          <td>Lucia</td>
+          <td>Barcelona</td>
+          <td>Spain</td>
+      </tr>
+      <tr>
+          <td>Lucia</td>
+          <td>Barcelona</td>
+          <td>Spain</td>
+      </tr>
+      <tr>
+          <td>Lucia</td>
+          <td>Barcelona</td>
+          <td>Spain</td>
+      </tr>
+      <tr>
+          <td>Luis</td>
+          <td>Santiago</td>
+          <td>Chile</td>
+      </tr>
+      <tr>
+          <td>Luis</td>
+          <td>Mexico City</td>
+          <td>Mexico</td>
+      </tr>
+      <tr>
+          <td>Luis</td>
+          <td>Mexico City</td>
+          <td>Mexico</td>
+      </tr>
+      <tr>
+          <td>Maria</td>
+          <td>Athens</td>
+          <td>Greece</td>
+      </tr>
+      <tr>
+          <td>Maria</td>
+          <td>San Juan</td>
+          <td>Puerto Rico</td>
+      </tr>
+      <tr>
+          <td>Maria</td>
+          <td>Lisbon</td>
+          <td>Portugal</td>
+      </tr>
+      <tr>
+          <td>Maria</td>
+          <td>San Juan</td>
+          <td>Puerto Rico</td>
+      </tr>
+      <tr>
+          <td>Maria</td>
+          <td>Lisbon</td>
+          <td>Portugal</td>
+      </tr>
+      <tr>
+          <td>Marie</td>
+          <td>Paris</td>
+          <td>France</td>
+      </tr>
+      <tr>
+          <td>Marie</td>
+          <td>Luxembourg</td>
+          <td>Luxembourg</td>
+      </tr>
+      <tr>
+          <td>Marie</td>
+          <td>Luxembourg</td>
+          <td>Luxembourg</td>
+      </tr>
+      <tr>
+          <td>Marie</td>
+          <td>Luxembourg</td>
+          <td>Luxembourg</td>
+      </tr>
+      <tr>
+          <td>Marta</td>
+          <td>Warsaw</td>
+          <td>Poland</td>
+      </tr>
+      <tr>
+          <td>Marta</td>
+          <td>Prague</td>
+          <td>Czech Republic</td>
+      </tr>
+      <tr>
+          <td>Marta</td>
+          <td>Prague</td>
+          <td>Czech Republic</td>
+      </tr>
+      <tr>
+          <td>Mateo</td>
+          <td>Buenos Aires</td>
+          <td>Argentina</td>
+      </tr>
+      <tr>
+          <td>Mateo</td>
+          <td>Bogotá</td>
+          <td>Colombia</td>
+      </tr>
+      <tr>
+          <td>Mateo</td>
+          <td>Buenos Aires</td>
+          <td>Argentina</td>
+      </tr>
+      <tr>
+          <td>Mateo</td>
+          <td>Buenos Aires</td>
+          <td>Argentina</td>
+      </tr>
+      <tr>
+          <td>Mateusz</td>
+          <td>Krakow</td>
+          <td>Poland</td>
+      </tr>
+      <tr>
+          <td>Mateusz</td>
+          <td>Gdansk</td>
+          <td>Poland</td>
+      </tr>
+      <tr>
+          <td>Mateusz</td>
+          <td>Gdansk</td>
+          <td>Poland</td>
+      </tr>
+      <tr>
+          <td>Mei</td>
+          <td>Shanghai</td>
+          <td>China</td>
+      </tr>
+      <tr>
+          <td>Mei</td>
+          <td>Taipei</td>
+          <td>Taiwan</td>
+      </tr>
+      <tr>
+          <td>Mei</td>
+          <td>Taipei</td>
+          <td>Taiwan</td>
+      </tr>
+      <tr>
+          <td>Mia</td>
+          <td>Tallinn</td>
+          <td>Estonia</td>
+      </tr>
+      <tr>
+          <td>Mia</td>
+          <td>Tallinn</td>
+          <td>Estonia</td>
+      </tr>
+      <tr>
+          <td>Mia</td>
+          <td>Tallinn</td>
+          <td>Estonia</td>
+      </tr>
+      <tr>
+          <td>Michael</td>
+          <td>London</td>
+          <td>United Kingdom</td>
+      </tr>
+      <tr>
+          <td>Michael</td>
+          <td>London</td>
+          <td>United Kingdom</td>
+      </tr>
+      <tr>
+          <td>Michal</td>
+          <td>Bratislava</td>
+          <td>Slovakia</td>
+      </tr>
+      <tr>
+          <td>Michal</td>
+          <td>Bratislava</td>
+          <td>Slovakia</td>
+      </tr>
+      <tr>
+          <td>Michal</td>
+          <td>Bratislava</td>
+          <td>Slovakia</td>
+      </tr>
+      <tr>
+          <td>Miko</td>
+          <td>Tokyo</td>
+          <td>Japan</td>
+      </tr>
+      <tr>
+          <td>Mustafa</td>
+          <td>Ankara</td>
+          <td>Turkey</td>
+      </tr>
+      <tr>
+          <td>Mustafa</td>
+          <td>Baghdad</td>
+          <td>Iraq</td>
+      </tr>
+      <tr>
+          <td>Mustafa</td>
+          <td>Baghdad</td>
+          <td>Iraq</td>
+      </tr>
+      <tr>
+          <td>Nadia</td>
+          <td>Kiev</td>
+          <td>Ukraine</td>
+      </tr>
+      <tr>
+          <td>Nikolai</td>
+          <td>Minsk</td>
+          <td>Belarus</td>
+      </tr>
+      <tr>
+          <td>Nikolai</td>
+          <td>Moscow</td>
+          <td>Russia</td>
+      </tr>
+      <tr>
+          <td>Nikolai</td>
+          <td>Moscow</td>
+          <td>Russia</td>
+      </tr>
+      <tr>
+          <td>Nina</td>
+          <td>Ljubljana</td>
+          <td>Slovenia</td>
+      </tr>
+      <tr>
+          <td>Nina</td>
+          <td>Ljubljana</td>
+          <td>Slovenia</td>
+      </tr>
+      <tr>
+          <td>Nina</td>
+          <td>Ljubljana</td>
+          <td>Slovenia</td>
+      </tr>
+      <tr>
+          <td>Noah</td>
+          <td>Auckland</td>
+          <td>New Zealand</td>
+      </tr>
+      <tr>
+          <td>Nora</td>
+          <td>Amsterdam</td>
+          <td>Netherlands</td>
+      </tr>
+      <tr>
+          <td>Nora</td>
+          <td>Lagos</td>
+          <td>Nigeria</td>
+      </tr>
+      <tr>
+          <td>Nora</td>
+          <td>Lagos</td>
+          <td>Nigeria</td>
+      </tr>
+      <tr>
+          <td>Nora</td>
+          <td>Lagos</td>
+          <td>Nigeria</td>
+      </tr>
+      <tr>
+          <td>Olivia</td>
+          <td>London</td>
+          <td>United Kingdom</td>
+      </tr>
+      <tr>
+          <td>Olivia</td>
+          <td>Wellington</td>
+          <td>New Zealand</td>
+      </tr>
+      <tr>
+          <td>Olivia</td>
+          <td>Wellington</td>
+          <td>New Zealand</td>
+      </tr>
+      <tr>
+          <td>Olivia</td>
+          <td>Wellington</td>
+          <td>New Zealand</td>
+      </tr>
+      <tr>
+          <td>Omar</td>
+          <td>Amman</td>
+          <td>Jordan</td>
+      </tr>
+      <tr>
+          <td>Omar</td>
+          <td>Doha</td>
+          <td>Qatar</td>
+      </tr>
+      <tr>
+          <td>Omar</td>
+          <td>Doha</td>
+          <td>Qatar</td>
+      </tr>
+      <tr>
+          <td>Omar</td>
+          <td>Doha</td>
+          <td>Qatar</td>
+      </tr>
+      <tr>
+          <td>Peter</td>
+          <td>Oslo</td>
+          <td>Norway</td>
+      </tr>
+      <tr>
+          <td>Peter</td>
+          <td>Oslo</td>
+          <td>Norway</td>
+      </tr>
+      <tr>
+          <td>Peter</td>
+          <td>Oslo</td>
+          <td>Norway</td>
+      </tr>
+      <tr>
+          <td>Rafael</td>
+          <td>Lisbon</td>
+          <td>Portugal</td>
+      </tr>
+      <tr>
+          <td>Rafael</td>
+          <td>Porto</td>
+          <td>Portugal</td>
+      </tr>
+      <tr>
+          <td>Rafael</td>
+          <td>Porto</td>
+          <td>Portugal</td>
+      </tr>
+      <tr>
+          <td>Robert</td>
+          <td>Glasgow</td>
+          <td>Scotland</td>
+      </tr>
+      <tr>
+          <td>Robert</td>
+          <td>Glasgow</td>
+          <td>Scotland</td>
+      </tr>
+      <tr>
+          <td>Robert</td>
+          <td>Glasgow</td>
+          <td>Scotland</td>
+      </tr>
+      <tr>
+          <td>Rosa</td>
+          <td>Havana</td>
+          <td>Cuba</td>
+      </tr>
+      <tr>
+          <td>Rosa</td>
+          <td>Havana</td>
+          <td>Cuba</td>
+      </tr>
+      <tr>
+          <td>Rosa</td>
+          <td>Havana</td>
+          <td>Cuba</td>
+      </tr>
+      <tr>
+          <td>Samuel</td>
+          <td>Bern</td>
+          <td>Switzerland</td>
+      </tr>
+      <tr>
+          <td>Samuel</td>
+          <td>Vienna</td>
+          <td>Austria</td>
+      </tr>
+      <tr>
+          <td>Samuel</td>
+          <td>Vienna</td>
+          <td>Austria</td>
+      </tr>
+      <tr>
+          <td>Samuel</td>
+          <td>Vienna</td>
+          <td>Austria</td>
+      </tr>
+      <tr>
+          <td>Sara</td>
+          <td>Helsinki</td>
+          <td>Finland</td>
+      </tr>
+      <tr>
+          <td>Sara</td>
+          <td>Stockholm</td>
+          <td>Sweden</td>
+      </tr>
+      <tr>
+          <td>Sara</td>
+          <td>Stockholm</td>
+          <td>Sweden</td>
+      </tr>
+      <tr>
+          <td>Simon</td>
+          <td>Zurich</td>
+          <td>Switzerland</td>
+      </tr>
+      <tr>
+          <td>Simon</td>
+          <td>Geneva</td>
+          <td>Switzerland</td>
+      </tr>
+      <tr>
+          <td>Simon</td>
+          <td>Zurich</td>
+          <td>Switzerland</td>
+      </tr>
+      <tr>
+          <td>Sofia</td>
+          <td>Lisbon</td>
+          <td>Portugal</td>
+      </tr>
+      <tr>
+          <td>Sofia</td>
+          <td>Sofia</td>
+          <td>Bulgaria</td>
+      </tr>
+      <tr>
+          <td>Sofia</td>
+          <td>Sofia</td>
+          <td>Bulgaria</td>
+      </tr>
+      <tr>
+          <td>Sofia</td>
+          <td>Athens</td>
+          <td>Greece</td>
+      </tr>
+      <tr>
+          <td>Sofia</td>
+          <td>Sofia</td>
+          <td>Bulgaria</td>
+      </tr>
+      <tr>
+          <td>Sofia</td>
+          <td>Athens</td>
+          <td>Greece</td>
+      </tr>
+      <tr>
+          <td>Stefan</td>
+          <td>Belgrade</td>
+          <td>Serbia</td>
+      </tr>
+      <tr>
+          <td>Stefan</td>
+          <td>Belgrade</td>
+          <td>Serbia</td>
+      </tr>
+      <tr>
+          <td>Stefan</td>
+          <td>Belgrade</td>
+          <td>Serbia</td>
+      </tr>
+      <tr>
+          <td>Stefan</td>
+          <td>Belgrade</td>
+          <td>Serbia</td>
+      </tr>
+      <tr>
+          <td>Tom</td>
+          <td>Chicago</td>
+          <td>USA</td>
+      </tr>
+      <tr>
+          <td>Tom</td>
+          <td>San Francisco</td>
+          <td>USA</td>
+      </tr>
+      <tr>
+          <td>Tom</td>
+          <td>Houston</td>
+          <td>USA</td>
+      </tr>
+      <tr>
+          <td>Tom</td>
+          <td>Los Angeles</td>
+          <td>USA</td>
+      </tr>
+      <tr>
+          <td>Tomás</td>
+          <td>Montevideo</td>
+          <td>Uruguay</td>
+      </tr>
+      <tr>
+          <td>Tomás</td>
+          <td>Montevideo</td>
+          <td>Uruguay</td>
+      </tr>
+      <tr>
+          <td>Tomás</td>
+          <td>Montevideo</td>
+          <td>Uruguay</td>
+      </tr>
+      <tr>
+          <td>Victor</td>
+          <td>Bucharest</td>
+          <td>Romania</td>
+      </tr>
+      <tr>
+          <td>Victor</td>
+          <td>Bucharest</td>
+          <td>Romania</td>
+      </tr>
+      <tr>
+          <td>Victor</td>
+          <td>Bucharest</td>
+          <td>Romania</td>
+      </tr>
+      <tr>
+          <td>Victor</td>
+          <td>Bucharest</td>
+          <td>Romania</td>
+      </tr>
+      <tr>
+          <td>Yasmine</td>
+          <td>Casablanca</td>
+          <td>Morocco</td>
+      </tr>
+      <tr>
+          <td>Yasmine</td>
+          <td>Casablanca</td>
+          <td>Morocco</td>
+      </tr>
+      <tr>
+          <td>Yasmine</td>
+          <td>Casablanca</td>
+          <td>Morocco</td>
+      </tr>
+      <tr>
+          <td>Youssef</td>
+          <td>Rabat</td>
+          <td>Morocco</td>
+      </tr>
+      <tr>
+          <td>Youssef</td>
+          <td>Rabat</td>
+          <td>Morocco</td>
+      </tr>
+      <tr>
+          <td>Youssef</td>
+          <td>Rabat</td>
+          <td>Morocco</td>
+      </tr>
+      <tr>
+          <td>Yuki</td>
+          <td>Osaka</td>
+          <td>Japan</td>
+      </tr>
+      <tr>
+          <td>Zara</td>
+          <td>Islamabad</td>
+          <td>Pakistan</td>
+      </tr>
+      <tr>
+          <td>Zara</td>
+          <td>Islamabad</td>
+          <td>Pakistan</td>
+      </tr>
+      <tr>
+          <td>Zara</td>
+          <td>Islamabad</td>
+          <td>Pakistan</td>
+      </tr>
+  </tbody>
+</table>
+</details>
+<ul>
+<li>
+<p>Lets submit the name of deleted child: <code>Joshua, Birmingham, United Kingdom</code></p>
+</li>
+<li>
+<p><code>Congratulations! You have completed the [Gold] Mobile Analysis challenge!</code></p>
+</li>
+<li>
+<p>Now we know that Joshua will not get presents! 🎁</p>
+</li>
+</ul>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+    2025
+     ArmBraker 👨‍💻 
+    ·
+    
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/blog/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>
