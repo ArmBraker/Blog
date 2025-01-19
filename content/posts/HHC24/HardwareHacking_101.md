@@ -1,5 +1,5 @@
 +++ 
-draft = true
+draft = false
 date = 2025-01-19T16:19:30+01:00
 title = "HHC24 - Hardware Hacking 101"
 description = ""
@@ -190,7 +190,7 @@ SELECT * FROM access_cards LIMIT 1 OFFSET 41;
   - The card NO. which need to be modified (42).
   - Needed access level: **FULL (1)**
 
-- **Hint:** We got hint from previos challange that we need to use HMAC to sign the card signature:
+- **Hint:** We got hint from previous challenge that we need to use HMAC to sign the card signature:
 
   - In cyberchef I used following recipe: <https://gchq.github.io/CyberChef/#recipe=HMAC(%7B'option':'UTF8','string':'9ed1515819dec61fd361d5fdabb57f41ecce1a5fe1fe263b98c0d6943b9b232e'%7D,'SHA256')&input=MWMwNjAxOGI2LTVlODAtNDM5NS1hYjcxLWFlNTEyNDU2MDE4OQ>
 

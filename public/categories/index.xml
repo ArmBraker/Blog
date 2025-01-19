@@ -6,8 +6,43 @@
     <description>Recent content in Categories on Journey into IT Knowledge</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 19 Jan 2025 13:29:11 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 19 Jan 2025 16:19:30 +0100</lastBuildDate>
     <atom:link href="https://armbraker.github.io/blog/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Databases</title>
+      <link>https://armbraker.github.io/blog/categories/databases/</link>
+      <pubDate>Sun, 19 Jan 2025 16:19:30 +0100</pubDate>
+      <guid>https://armbraker.github.io/blog/categories/databases/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hardware</title>
+      <link>https://armbraker.github.io/blog/categories/hardware/</link>
+      <pubDate>Sun, 19 Jan 2025 16:19:30 +0100</pubDate>
+      <guid>https://armbraker.github.io/blog/categories/hardware/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hashing</title>
+      <link>https://armbraker.github.io/blog/categories/hashing/</link>
+      <pubDate>Sun, 19 Jan 2025 16:19:30 +0100</pubDate>
+      <guid>https://armbraker.github.io/blog/categories/hashing/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>ReverseEngineering</title>
+      <link>https://armbraker.github.io/blog/categories/reverseengineering/</link>
+      <pubDate>Sun, 19 Jan 2025 16:19:30 +0100</pubDate>
+      <guid>https://armbraker.github.io/blog/categories/reverseengineering/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Writeup</title>
+      <link>https://armbraker.github.io/blog/categories/writeup/</link>
+      <pubDate>Sun, 19 Jan 2025 16:19:30 +0100</pubDate>
+      <guid>https://armbraker.github.io/blog/categories/writeup/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Android</title>
       <link>https://armbraker.github.io/blog/categories/android/</link>
@@ -20,20 +55,6 @@
       <link>https://armbraker.github.io/blog/categories/encryption/</link>
       <pubDate>Sun, 19 Jan 2025 13:29:11 +0100</pubDate>
       <guid>https://armbraker.github.io/blog/categories/encryption/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>ReverseEngineering</title>
-      <link>https://armbraker.github.io/blog/categories/reverseengineering/</link>
-      <pubDate>Sun, 19 Jan 2025 13:29:11 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/categories/reverseengineering/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Writeup</title>
-      <link>https://armbraker.github.io/blog/categories/writeup/</link>
-      <pubDate>Sun, 19 Jan 2025 13:29:11 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/categories/writeup/</guid>
       <description></description>
     </item>
     <item>

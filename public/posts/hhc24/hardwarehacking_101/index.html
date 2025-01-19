@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>
+  HHC24 - Hardware Hacking 101 · Journey into IT Knowledge
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="ArmBraker 👨‍💻">
+<meta name="description" content="
+  Objective
+  
+    
+    Link to heading
+  
+
+We need to access the terminal and modify the access database. We&rsquo;re looking to grant access to card number 42.
+--------------------------------------------------------
+                   ___     _      _  _   
+                  / __|   | |    | || |  
+                  \__ \   | |__  | __ |  
+                  |___/   |____| |_||_|  
+                _|&#34;&#34;&#34;&#34;&#34;|_|&#34;&#34;&#34;&#34;&#34;|_|&#34;&#34;&#34;&#34;&#34;| 
+                &#34;`-0-0-&#39;&#34;`-0-0-&#39;&#34;`-0-0-&#39; 
+--------------------------------------------------------
+  Santa&#39;s Little Helper - Access Card Maintenance Tool
+
+          Tool Name: slh
+
+options:
+  -h, --help            show this help message and exit
+  --view-config         View current configuration.
+  --view-cards          View current values of all access cards.
+  --view-card ID        View a single access card by ID.
+  --set-access ACCESS_LEVEL
+                        Set access level of access card. Must be 0 (No Access) or 1 (Full Access).
+  --id ID               ID of card to modify.
+  --passcode PASSCODE   Passcode to make changes.
+  --new-card            Generate a new card ID.
+--------------------------------------------------------
+
+History command revealed following information:
+
+   1  cd /var/www/html
+    2  ls -l
+    3  sudo nano index.html
+    4  cd ..
+    5  rm -rf repo
+    6  sudo apt update
+    7  sudo apt upgrade -y
+    8  ping 1.1.1.1
+    9  slh --help
+   10  slg --config
+   11  slh --passcode CandyCaneCrunch77 --set-access 1 --id 143
+   12  df -h
+   13  top
+   14  ps aux | grep apache
+   15  sudo systemctl restart apache2
+   16  history | grep ssh
+   17  clear
+   18  whoami
+   19  crontab -e
+   20  crontab -l
+   21  alias ll=&#39;ls -lah&#39;
+   22  unalias ll
+   23  echo &#34;Hello, World!&#34;
+   24  cat /etc/passwd
+   25  sudo tail -f /var/log/syslog
+   26  mv archive.tar.gz /backup/
+   27  rm archive.tar.gz
+   28  find / -name &#34;*.log&#34;
+   29  grep &#34;error&#34; /var/log/apache2/error.log
+   30  history
+
+Card ID 143 content:
+
+slh --view-card 143
+
+(143, &#39;fa9717e8-e1af-42e9-ad68-eeb96ab39d13&#39;, 0, &#39;728f25dda2ef6168ada53065883756140cfe663bce4e827084b745a32255157d&#39;)
+
+According to documentation, the full access is 1, but the card with ID 143 has value 0.
+To finish the objective for broz, following command needs to be executed:
+
+ slh --passcode CandyCaneCrunch77 --set-access 1 --id 42 
+
+SUCCESS
+
+
+       *   *   *   *   *   *   *   *   *   *   *
+   *                                             *
+*      ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄     *
+ *  $$$$$$\   $$$$$$\   $$$$$$\  $$$$$$$$\  $$$$$$\   $$$$$$\  * 
+  * $$  __$$\ $$  __$$\ $$  __$$\ $$  _____|$$  __$$\ $$  __$$\ *
+   *$$ /  $$ |$$ /  \__|$$ /  \__|$$ |      $$ /  \__|$$ /  \__| *
+    $$$$$$$$ |$$ |      $$ |      $$$$$\    \$$$$$$\  \$$$$$$\   
+   *$$  __$$ |$$ |      $$ |      $$  __|    \____$$\  \____$$\  *
+  * $$ |  $$ |$$ |  $$\ $$ |  $$\ $$ |      $$\   $$ |$$\   $$ | *
+*   $$ |  $$ |\$$$$$$  |\$$$$$$  |$$$$$$$$\ \$$$$$$  |\$$$$$$  |   *
+ *  \__|  \__| \______/  \______/ \________| \______/  \______/  *
+*         *    ❄             ❄           *        ❄    ❄    ❄   *
+   *        *     *     *      *     *      *    *      *      *
+   *  $$$$$$\  $$$$$$$\   $$$$$$\  $$\   $$\ $$$$$$$$\ $$$$$$$$\ $$$$$$$\  $$\  *
+   * $$  __$$\ $$  __$$\ $$  __$$\ $$$\  $$ |\__$$  __|$$  _____|$$  __$$\ $$ | *
+  *  $$ /  \__|$$ |  $$ |$$ /  $$ |$$$$\ $$ |   $$ |   $$ |      $$ |  $$ |$$ |*
+  *  $$ |$$$$\ $$$$$$$  |$$$$$$$$ |$$ $$\$$ |   $$ |   $$$$$\    $$ |  $$ |$$ | *
+ *   $$ |\_$$ |$$  __$$&lt; $$  __$$ |$$ \$$$$ |   $$ |   $$  __|   $$ |  $$ |\__|*
+  *  $$ |  $$ |$$ |  $$ |$$ |  $$ |$$ |\$$$ |   $$ |   $$ |      $$ |  $$ |   *
+*    \$$$$$$  |$$ |  $$ |$$ |  $$ |$$ | \$$ |   $$ |   $$$$$$$$\ $$$$$$$  |$$\ *
+ *    \______/ \__|  \__|\__|  \__|\__|  \__|   \__|   \________|\_______/ \__|  *
+  *                                                            ❄    ❄    ❄   *
+   *      *    *    *    *    *    *    *    *    *    *    *    *    *    *    
+
+  Gold
+  
+    
+    Link to heading
+  
+
+
+
+Elf says now: &ldquo;There’s a tougher route if you&rsquo;re up for the challenge to earn the Gold medal. It involves directly modifying the database and generating your own HMAC signature.&rdquo;">
+<meta name="keywords" content="blog,knowledge,IT Security,hacking,personal,networking">
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="HHC24 - Hardware Hacking 101">
+  <meta name="twitter:description" content="Objective Link to heading We need to access the terminal and modify the access database. We’re looking to grant access to card number 42.
+-------------------------------------------------------- ___ _ _ _ / __| | | | || | \__ \ | |__ | __ | |___/ |____| |_||_| _|&#34;&#34;&#34;&#34;&#34;|_|&#34;&#34;&#34;&#34;&#34;|_|&#34;&#34;&#34;&#34;&#34;| &#34;`-0-0-&#39;&#34;`-0-0-&#39;&#34;`-0-0-&#39; -------------------------------------------------------- Santa&#39;s Little Helper - Access Card Maintenance Tool Tool Name: slh options: -h, --help show this help message and exit --view-config View current configuration. --view-cards View current values of all access cards. --view-card ID View a single access card by ID. --set-access ACCESS_LEVEL Set access level of access card. Must be 0 (No Access) or 1 (Full Access). --id ID ID of card to modify. --passcode PASSCODE Passcode to make changes. --new-card Generate a new card ID. -------------------------------------------------------- History command revealed following information: 1 cd /var/www/html 2 ls -l 3 sudo nano index.html 4 cd .. 5 rm -rf repo 6 sudo apt update 7 sudo apt upgrade -y 8 ping 1.1.1.1 9 slh --help 10 slg --config 11 slh --passcode CandyCaneCrunch77 --set-access 1 --id 143 12 df -h 13 top 14 ps aux | grep apache 15 sudo systemctl restart apache2 16 history | grep ssh 17 clear 18 whoami 19 crontab -e 20 crontab -l 21 alias ll=&#39;ls -lah&#39; 22 unalias ll 23 echo &#34;Hello, World!&#34; 24 cat /etc/passwd 25 sudo tail -f /var/log/syslog 26 mv archive.tar.gz /backup/ 27 rm archive.tar.gz 28 find / -name &#34;*.log&#34; 29 grep &#34;error&#34; /var/log/apache2/error.log 30 history Card ID 143 content: slh --view-card 143 (143, &#39;fa9717e8-e1af-42e9-ad68-eeb96ab39d13&#39;, 0, &#39;728f25dda2ef6168ada53065883756140cfe663bce4e827084b745a32255157d&#39;) According to documentation, the full access is 1, but the card with ID 143 has value 0. To finish the objective for broz, following command needs to be executed: slh --passcode CandyCaneCrunch77 --set-access 1 --id 42 SUCCESS * * * * * * * * * * * * * * ❄ ❄ ❄ ❄ ❄ ❄ ❄ ❄ ❄ ❄ ❄ ❄ ❄ * * $$$$$$\ $$$$$$\ $$$$$$\ $$$$$$$$\ $$$$$$\ $$$$$$\ * * $$ __$$\ $$ __$$\ $$ __$$\ $$ _____|$$ __$$\ $$ __$$\ * *$$ / $$ |$$ / \__|$$ / \__|$$ | $$ / \__|$$ / \__| * $$$$$$$$ |$$ | $$ | $$$$$\ \$$$$$$\ \$$$$$$\ *$$ __$$ |$$ | $$ | $$ __| \____$$\ \____$$\ * * $$ | $$ |$$ | $$\ $$ | $$\ $$ | $$\ $$ |$$\ $$ | * * $$ | $$ |\$$$$$$ |\$$$$$$ |$$$$$$$$\ \$$$$$$ |\$$$$$$ | * * \__| \__| \______/ \______/ \________| \______/ \______/ * * * ❄ ❄ * ❄ ❄ ❄ * * * * * * * * * * * * $$$$$$\ $$$$$$$\ $$$$$$\ $$\ $$\ $$$$$$$$\ $$$$$$$$\ $$$$$$$\ $$\ * * $$ __$$\ $$ __$$\ $$ __$$\ $$$\ $$ |\__$$ __|$$ _____|$$ __$$\ $$ | * * $$ / \__|$$ | $$ |$$ / $$ |$$$$\ $$ | $$ | $$ | $$ | $$ |$$ |* * $$ |$$$$\ $$$$$$$ |$$$$$$$$ |$$ $$\$$ | $$ | $$$$$\ $$ | $$ |$$ | * * $$ |\_$$ |$$ __$$&lt; $$ __$$ |$$ \$$$$ | $$ | $$ __| $$ | $$ |\__|* * $$ | $$ |$$ | $$ |$$ | $$ |$$ |\$$$ | $$ | $$ | $$ | $$ | * * \$$$$$$ |$$ | $$ |$$ | $$ |$$ | \$$ | $$ | $$$$$$$$\ $$$$$$$ |$$\ * * \______/ \__| \__|\__| \__|\__| \__| \__| \________|\_______/ \__| * * ❄ ❄ ❄ * * * * * * * * * * * * * * * * Gold Link to heading Elf says now: “There’s a tougher route if you’re up for the challenge to earn the Gold medal. It involves directly modifying the database and generating your own HMAC signature.”">
+
+<meta property="og:url" content="https://armbraker.github.io/blog/posts/hhc24/hardwarehacking_101/">
+  <meta property="og:site_name" content="Journey into IT Knowledge">
+  <meta property="og:title" content="HHC24 - Hardware Hacking 101">
+  <meta property="og:description" content="Objective Link to heading We need to access the terminal and modify the access database. We’re looking to grant access to card number 42.
+-------------------------------------------------------- ___ _ _ _ / __| | | | || | \__ \ | |__ | __ | |___/ |____| |_||_| _|&#34;&#34;&#34;&#34;&#34;|_|&#34;&#34;&#34;&#34;&#34;|_|&#34;&#34;&#34;&#34;&#34;| &#34;`-0-0-&#39;&#34;`-0-0-&#39;&#34;`-0-0-&#39; -------------------------------------------------------- Santa&#39;s Little Helper - Access Card Maintenance Tool Tool Name: slh options: -h, --help show this help message and exit --view-config View current configuration. --view-cards View current values of all access cards. --view-card ID View a single access card by ID. --set-access ACCESS_LEVEL Set access level of access card. Must be 0 (No Access) or 1 (Full Access). --id ID ID of card to modify. --passcode PASSCODE Passcode to make changes. --new-card Generate a new card ID. -------------------------------------------------------- History command revealed following information: 1 cd /var/www/html 2 ls -l 3 sudo nano index.html 4 cd .. 5 rm -rf repo 6 sudo apt update 7 sudo apt upgrade -y 8 ping 1.1.1.1 9 slh --help 10 slg --config 11 slh --passcode CandyCaneCrunch77 --set-access 1 --id 143 12 df -h 13 top 14 ps aux | grep apache 15 sudo systemctl restart apache2 16 history | grep ssh 17 clear 18 whoami 19 crontab -e 20 crontab -l 21 alias ll=&#39;ls -lah&#39; 22 unalias ll 23 echo &#34;Hello, World!&#34; 24 cat /etc/passwd 25 sudo tail -f /var/log/syslog 26 mv archive.tar.gz /backup/ 27 rm archive.tar.gz 28 find / -name &#34;*.log&#34; 29 grep &#34;error&#34; /var/log/apache2/error.log 30 history Card ID 143 content: slh --view-card 143 (143, &#39;fa9717e8-e1af-42e9-ad68-eeb96ab39d13&#39;, 0, &#39;728f25dda2ef6168ada53065883756140cfe663bce4e827084b745a32255157d&#39;) According to documentation, the full access is 1, but the card with ID 143 has value 0. To finish the objective for broz, following command needs to be executed: slh --passcode CandyCaneCrunch77 --set-access 1 --id 42 SUCCESS * * * * * * * * * * * * * * ❄ ❄ ❄ ❄ ❄ ❄ ❄ ❄ ❄ ❄ ❄ ❄ ❄ * * $$$$$$\ $$$$$$\ $$$$$$\ $$$$$$$$\ $$$$$$\ $$$$$$\ * * $$ __$$\ $$ __$$\ $$ __$$\ $$ _____|$$ __$$\ $$ __$$\ * *$$ / $$ |$$ / \__|$$ / \__|$$ | $$ / \__|$$ / \__| * $$$$$$$$ |$$ | $$ | $$$$$\ \$$$$$$\ \$$$$$$\ *$$ __$$ |$$ | $$ | $$ __| \____$$\ \____$$\ * * $$ | $$ |$$ | $$\ $$ | $$\ $$ | $$\ $$ |$$\ $$ | * * $$ | $$ |\$$$$$$ |\$$$$$$ |$$$$$$$$\ \$$$$$$ |\$$$$$$ | * * \__| \__| \______/ \______/ \________| \______/ \______/ * * * ❄ ❄ * ❄ ❄ ❄ * * * * * * * * * * * * $$$$$$\ $$$$$$$\ $$$$$$\ $$\ $$\ $$$$$$$$\ $$$$$$$$\ $$$$$$$\ $$\ * * $$ __$$\ $$ __$$\ $$ __$$\ $$$\ $$ |\__$$ __|$$ _____|$$ __$$\ $$ | * * $$ / \__|$$ | $$ |$$ / $$ |$$$$\ $$ | $$ | $$ | $$ | $$ |$$ |* * $$ |$$$$\ $$$$$$$ |$$$$$$$$ |$$ $$\$$ | $$ | $$$$$\ $$ | $$ |$$ | * * $$ |\_$$ |$$ __$$&lt; $$ __$$ |$$ \$$$$ | $$ | $$ __| $$ | $$ |\__|* * $$ | $$ |$$ | $$ |$$ | $$ |$$ |\$$$ | $$ | $$ | $$ | $$ | * * \$$$$$$ |$$ | $$ |$$ | $$ |$$ | \$$ | $$ | $$$$$$$$\ $$$$$$$ |$$\ * * \______/ \__| \__|\__| \__|\__| \__| \__| \________|\_______/ \__| * * ❄ ❄ ❄ * * * * * * * * * * * * * * * * Gold Link to heading Elf says now: “There’s a tougher route if you’re up for the challenge to earn the Gold medal. It involves directly modifying the database and generating your own HMAC signature.”">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-01-19T16:19:30+01:00">
+    <meta property="article:modified_time" content="2025-01-19T16:19:30+01:00">
+    <meta property="article:tag" content="HHC24">
+    <meta property="article:tag" content="Sans">
+    <meta property="article:tag" content="CTF">
+
+
+
+
+<link rel="canonical" href="https://armbraker.github.io/blog/posts/hhc24/hardwarehacking_101/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/blog/css/coder.min.bb7a78bfb4e57aba6e78691ce9ad3fef35238fff2f55149e48bb3c43becd260c.css" integrity="sha256-u3p4v7TlerpueGkc6a0/7zUjj/8vVRSeSLs8Q77NJgw=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/blog/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="https://armbraker.github.io/blog/">
+      Journey into IT Knowledge
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/blog/">Home</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/blog/posts/">Blog</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/blog/about/">About</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://armbraker.github.io/blog/posts/hhc24/hardwarehacking_101/">
+              HHC24 - Hardware Hacking 101
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2025-01-19T16:19:30&#43;01:00">
+                January 19, 2025
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              6-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/blog/categories/writeup/">Writeup</a>
+      <span class="separator">•</span>
+    <a href="/blog/categories/hardware/">Hardware</a>
+      <span class="separator">•</span>
+    <a href="/blog/categories/databases/">Databases</a>
+      <span class="separator">•</span>
+    <a href="/blog/categories/hashing/">Hashing</a>
+      <span class="separator">•</span>
+    <a href="/blog/categories/reverseengineering/">ReverseEngineering</a></div>
+
+          <div class="tags">
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/blog/tags/hhc24/">HHC24</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/blog/tags/sans/">Sans</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/blog/tags/ctf/">CTF</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <h2 id="objective">
+  Objective
+  <a class="heading-link" href="#objective">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>We need to access the terminal and modify the access database. We&rsquo;re looking to grant access to card number 42.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">--------------------------------------------------------
+</span></span><span class="line"><span class="cl">                   ___     _      _  _   
+</span></span><span class="line"><span class="cl">                  / __<span class="p">|</span>   <span class="p">|</span> <span class="p">|</span>    <span class="p">|</span> <span class="o">||</span> <span class="p">|</span>  
+</span></span><span class="line"><span class="cl">                  <span class="se">\_</span>_ <span class="se">\ </span>  <span class="p">|</span> <span class="p">|</span>__  <span class="p">|</span> __ <span class="p">|</span>  
+</span></span><span class="line"><span class="cl">                  <span class="p">|</span>___/   <span class="p">|</span>____<span class="p">|</span> <span class="p">|</span>_<span class="o">||</span>_<span class="p">|</span>  
+</span></span><span class="line"><span class="cl">                _<span class="p">|</span><span class="s2">&#34;&#34;&#34;&#34;&#34;|_|&#34;&#34;&#34;&#34;&#34;</span><span class="p">|</span>_<span class="p">|</span><span class="s2">&#34;&#34;&#34;&#34;&#34;| 
+</span></span></span><span class="line"><span class="cl"><span class="s2">                &#34;</span><span class="sb">`</span>-0-0-<span class="s1">&#39;&#34;`-0-0-&#39;</span><span class="s2">&#34;`-0-0-&#39; 
+</span></span></span><span class="line"><span class="cl"><span class="s2">--------------------------------------------------------
+</span></span></span><span class="line"><span class="cl"><span class="s2">  Santa&#39;s Little Helper - Access Card Maintenance Tool
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">          Tool Name: slh
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">options:
+</span></span></span><span class="line"><span class="cl"><span class="s2">  -h, --help            show this help message and exit
+</span></span></span><span class="line"><span class="cl"><span class="s2">  --view-config         View current configuration.
+</span></span></span><span class="line"><span class="cl"><span class="s2">  --view-cards          View current values of all access cards.
+</span></span></span><span class="line"><span class="cl"><span class="s2">  --view-card ID        View a single access card by ID.
+</span></span></span><span class="line"><span class="cl"><span class="s2">  --set-access ACCESS_LEVEL
+</span></span></span><span class="line"><span class="cl"><span class="s2">                        Set access level of access card. Must be 0 (No Access) or 1 (Full Access).
+</span></span></span><span class="line"><span class="cl"><span class="s2">  --id ID               ID of card to modify.
+</span></span></span><span class="line"><span class="cl"><span class="s2">  --passcode PASSCODE   Passcode to make changes.
+</span></span></span><span class="line"><span class="cl"><span class="s2">  --new-card            Generate a new card ID.
+</span></span></span><span class="line"><span class="cl"><span class="s2">--------------------------------------------------------
+</span></span></span></code></pre></div><ul>
+<li>History command revealed following information:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">   <span class="m">1</span>  <span class="nb">cd</span> /var/www/html
+</span></span><span class="line"><span class="cl">    <span class="m">2</span>  ls -l
+</span></span><span class="line"><span class="cl">    <span class="m">3</span>  sudo nano index.html
+</span></span><span class="line"><span class="cl">    <span class="m">4</span>  <span class="nb">cd</span> ..
+</span></span><span class="line"><span class="cl">    <span class="m">5</span>  rm -rf repo
+</span></span><span class="line"><span class="cl">    <span class="m">6</span>  sudo apt update
+</span></span><span class="line"><span class="cl">    <span class="m">7</span>  sudo apt upgrade -y
+</span></span><span class="line"><span class="cl">    <span class="m">8</span>  ping 1.1.1.1
+</span></span><span class="line"><span class="cl">    <span class="m">9</span>  slh --help
+</span></span><span class="line"><span class="cl">   <span class="m">10</span>  slg --config
+</span></span><span class="line"><span class="cl">   <span class="m">11</span>  slh --passcode CandyCaneCrunch77 --set-access <span class="m">1</span> --id <span class="m">143</span>
+</span></span><span class="line"><span class="cl">   <span class="m">12</span>  df -h
+</span></span><span class="line"><span class="cl">   <span class="m">13</span>  top
+</span></span><span class="line"><span class="cl">   <span class="m">14</span>  ps aux <span class="p">|</span> grep apache
+</span></span><span class="line"><span class="cl">   <span class="m">15</span>  sudo systemctl restart apache2
+</span></span><span class="line"><span class="cl">   <span class="m">16</span>  <span class="nb">history</span> <span class="p">|</span> grep ssh
+</span></span><span class="line"><span class="cl">   <span class="m">17</span>  clear
+</span></span><span class="line"><span class="cl">   <span class="m">18</span>  whoami
+</span></span><span class="line"><span class="cl">   <span class="m">19</span>  crontab -e
+</span></span><span class="line"><span class="cl">   <span class="m">20</span>  crontab -l
+</span></span><span class="line"><span class="cl">   <span class="m">21</span>  <span class="nb">alias</span> <span class="nv">ll</span><span class="o">=</span><span class="s1">&#39;ls -lah&#39;</span>
+</span></span><span class="line"><span class="cl">   <span class="m">22</span>  <span class="nb">unalias</span> ll
+</span></span><span class="line"><span class="cl">   <span class="m">23</span>  <span class="nb">echo</span> <span class="s2">&#34;Hello, World!&#34;</span>
+</span></span><span class="line"><span class="cl">   <span class="m">24</span>  cat /etc/passwd
+</span></span><span class="line"><span class="cl">   <span class="m">25</span>  sudo tail -f /var/log/syslog
+</span></span><span class="line"><span class="cl">   <span class="m">26</span>  mv archive.tar.gz /backup/
+</span></span><span class="line"><span class="cl">   <span class="m">27</span>  rm archive.tar.gz
+</span></span><span class="line"><span class="cl">   <span class="m">28</span>  find / -name <span class="s2">&#34;*.log&#34;</span>
+</span></span><span class="line"><span class="cl">   <span class="m">29</span>  grep <span class="s2">&#34;error&#34;</span> /var/log/apache2/error.log
+</span></span><span class="line"><span class="cl">   <span class="m">30</span>  <span class="nb">history</span>
+</span></span></code></pre></div><ul>
+<li>Card ID 143 content:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">slh --view-card <span class="m">143</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">(</span>143, <span class="s1">&#39;fa9717e8-e1af-42e9-ad68-eeb96ab39d13&#39;</span>, 0, <span class="s1">&#39;728f25dda2ef6168ada53065883756140cfe663bce4e827084b745a32255157d&#39;</span><span class="o">)</span>
+</span></span></code></pre></div><ul>
+<li>According to documentation, the full access is <strong>1</strong>, but the card with ID 143 has value <strong>0</strong>.</li>
+<li>To finish the objective for broz, following command needs to be executed:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"> slh --passcode CandyCaneCrunch77 --set-access <span class="m">1</span> --id <span class="m">42</span> 
+</span></span></code></pre></div><ul>
+<li><strong>SUCCESS</strong></li>
+</ul>
+<pre tabindex="0"><code class="language-ASCII" data-lang="ASCII">
+       *   *   *   *   *   *   *   *   *   *   *
+   *                                             *
+*      ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄     *
+ *  $$$$$$\   $$$$$$\   $$$$$$\  $$$$$$$$\  $$$$$$\   $$$$$$\  * 
+  * $$  __$$\ $$  __$$\ $$  __$$\ $$  _____|$$  __$$\ $$  __$$\ *
+   *$$ /  $$ |$$ /  \__|$$ /  \__|$$ |      $$ /  \__|$$ /  \__| *
+    $$$$$$$$ |$$ |      $$ |      $$$$$\    \$$$$$$\  \$$$$$$\   
+   *$$  __$$ |$$ |      $$ |      $$  __|    \____$$\  \____$$\  *
+  * $$ |  $$ |$$ |  $$\ $$ |  $$\ $$ |      $$\   $$ |$$\   $$ | *
+*   $$ |  $$ |\$$$$$$  |\$$$$$$  |$$$$$$$$\ \$$$$$$  |\$$$$$$  |   *
+ *  \__|  \__| \______/  \______/ \________| \______/  \______/  *
+*         *    ❄             ❄           *        ❄    ❄    ❄   *
+   *        *     *     *      *     *      *    *      *      *
+   *  $$$$$$\  $$$$$$$\   $$$$$$\  $$\   $$\ $$$$$$$$\ $$$$$$$$\ $$$$$$$\  $$\  *
+   * $$  __$$\ $$  __$$\ $$  __$$\ $$$\  $$ |\__$$  __|$$  _____|$$  __$$\ $$ | *
+  *  $$ /  \__|$$ |  $$ |$$ /  $$ |$$$$\ $$ |   $$ |   $$ |      $$ |  $$ |$$ |*
+  *  $$ |$$$$\ $$$$$$$  |$$$$$$$$ |$$ $$\$$ |   $$ |   $$$$$\    $$ |  $$ |$$ | *
+ *   $$ |\_$$ |$$  __$$&lt; $$  __$$ |$$ \$$$$ |   $$ |   $$  __|   $$ |  $$ |\__|*
+  *  $$ |  $$ |$$ |  $$ |$$ |  $$ |$$ |\$$$ |   $$ |   $$ |      $$ |  $$ |   *
+*    \$$$$$$  |$$ |  $$ |$$ |  $$ |$$ | \$$ |   $$ |   $$$$$$$$\ $$$$$$$  |$$\ *
+ *    \______/ \__|  \__|\__|  \__|\__|  \__|   \__|   \________|\_______/ \__|  *
+  *                                                            ❄    ❄    ❄   *
+   *      *    *    *    *    *    *    *    *    *    *    *    *    *    *    
+</code></pre><h2 id="gold">
+  Gold
+  <a class="heading-link" href="#gold">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li>
+<p>Elf says now: <em>&ldquo;There’s a tougher route if you&rsquo;re up for the challenge to earn the Gold medal. It involves directly modifying the database and generating your own HMAC signature.&rdquo;</em></p>
+</li>
+<li>
+<p>Playing around the command, the &ndash;new-card has generated following output:</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">slh@slhconsole<span class="se">\&gt;</span> slh --new-card
+</span></span><span class="line"><span class="cl">Generate new card with uuid: f8aae97c-8345-4684-84fe-d50b9f7b5a3d
+</span></span></code></pre></div><ul>
+<li>As the Elf said, need to modify the database, so let&rsquo;s check file type of access_cards:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">file access_cards 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">access_cards: SQLite 3.x database, last written using SQLite version 3040001, file counter 4, database pages 32, cookie 0x2, schema 4, UTF-8, version-valid-for <span class="m">4</span>
+</span></span></code></pre></div><ul>
+<li>We will use <strong>sqllite3</strong> tool available in the challenge console.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sqllite3 access_access_cards
+</span></span></code></pre></div><h3 id="database">
+  Database
+  <a class="heading-link" href="#database">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<ul>
+<li>2 tables:
+<ul>
+<li>access_cards</li>
+<li>config</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sqlite&gt; .tables
+</span></span><span class="line"><span class="cl">access_cards  config 
+</span></span></code></pre></div><ul>
+<li>Reveal content of databases:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-SQL" data-lang="SQL"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">config</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="mi">1</span><span class="o">|</span><span class="n">hmac_secret</span><span class="o">|</span><span class="mi">9</span><span class="n">ed1515819dec61fd361d5fdabb57f41ecce1a5fe1fe263b98c0d6943b9b232e</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="mi">2</span><span class="o">|</span><span class="n">hmac_message_format</span><span class="o">|</span><span class="err">{</span><span class="k">access</span><span class="err">}{</span><span class="n">uuid</span><span class="err">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="mi">3</span><span class="o">|</span><span class="n">admin_password</span><span class="o">|</span><span class="mi">3</span><span class="n">a40ae3f3fd57b2a4513cca783609589dbe51ce5e69739a33141c5717c20c9c1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="mi">4</span><span class="o">|</span><span class="n">app_version</span><span class="o">|</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="w">
+</span></span></span></code></pre></div><ul>
+<li>Let&rsquo;s check content of Access Card 42:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-SQL" data-lang="SQL"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">access_cards</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">OFFSET</span><span class="w"> </span><span class="mi">41</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="mi">42</span><span class="o">|</span><span class="n">c06018b6</span><span class="o">-</span><span class="mi">5</span><span class="n">e80</span><span class="o">-</span><span class="mi">4395</span><span class="o">-</span><span class="n">ab71</span><span class="o">-</span><span class="n">ae5124560189</span><span class="o">|</span><span class="mi">0</span><span class="o">|</span><span class="n">ecb9de15a057305e5887502d46d434c9394f5ed7ef1a51d2930ad786b02f6ffd</span><span class="w">
+</span></span></span></code></pre></div><ul>
+<li>
+<p>Now we know know all needed information:</p>
+<ul>
+<li>HMAC secret</li>
+<li>HMAC format</li>
+<li>The card NO. which need to be modified (42).</li>
+<li>Needed access level: <strong>FULL (1)</strong></li>
+</ul>
+</li>
+<li>
+<p><strong>Hint:</strong> We got hint from previous challenge that we need to use HMAC to sign the card signature:</p>
+<ul>
+<li>
+<p>In cyberchef I used following recipe: <a href="https://gchq.github.io/CyberChef/#recipe=HMAC%28%7B%27option%27:%27UTF8%27,%27string%27:%279ed1515819dec61fd361d5fdabb57f41ecce1a5fe1fe263b98c0d6943b9b232e%27%7D,%27SHA256%27%29&amp;input=MWMwNjAxOGI2LTVlODAtNDM5NS1hYjcxLWFlNTEyNDU2MDE4OQ"  class="external-link" target="_blank" rel="noopener">https://gchq.github.io/CyberChef/#recipe=HMAC(%7B'option':'UTF8','string':'9ed1515819dec61fd361d5fdabb57f41ecce1a5fe1fe263b98c0d6943b9b232e'%7D,'SHA256')&input=MWMwNjAxOGI2LTVlODAtNDM5NS1hYjcxLWFlNTEyNDU2MDE4OQ</a></p>
+</li>
+<li>
+<p>Modifying the access level (1) for card 42:</p>
+</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-SQL" data-lang="SQL"><span class="line"><span class="cl"><span class="n">sqlite</span><span class="o">&gt;</span><span class="w"> </span><span class="k">UPDATE</span><span class="w"> </span><span class="n">access_cards</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="k">access</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">sig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;135a32d5026c5628b1753e6c67015c0f04e26051ef7391c2552de2816b1b7096&#39;</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">42</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="o">*</span><span class="w">   </span><span class="o">*</span><span class="w">   </span><span class="o">*</span><span class="w">   </span><span class="o">*</span><span class="w">   </span><span class="o">*</span><span class="w">   </span><span class="o">*</span><span class="w">   </span><span class="o">*</span><span class="w">   </span><span class="o">*</span><span class="w">   </span><span class="o">*</span><span class="w">   </span><span class="o">*</span><span class="w">   </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="o">*</span><span class="w">                                             </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">*</span><span class="w">      </span><span class="err">❄</span><span class="w">  </span><span class="err">❄</span><span class="w">  </span><span class="err">❄</span><span class="w">  </span><span class="err">❄</span><span class="w">  </span><span class="err">❄</span><span class="w">  </span><span class="err">❄</span><span class="w">  </span><span class="err">❄</span><span class="w">  </span><span class="err">❄</span><span class="w">  </span><span class="err">❄</span><span class="w">  </span><span class="err">❄</span><span class="w">  </span><span class="err">❄</span><span class="w">  </span><span class="err">❄</span><span class="w">  </span><span class="err">❄</span><span class="w">     </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="o">*</span><span class="w">  </span><span class="err">$$$$$$\</span><span class="w">   </span><span class="err">$$$$$$\</span><span class="w">   </span><span class="err">$$$$$$\</span><span class="w">  </span><span class="err">$$$$$$$$\</span><span class="w">  </span><span class="err">$$$$$$\</span><span class="w">   </span><span class="err">$$$$$$\</span><span class="w">  </span><span class="o">*</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="o">*</span><span class="w"> </span><span class="err">$$</span><span class="w">  </span><span class="n">__$$</span><span class="err">\</span><span class="w"> </span><span class="err">$$</span><span class="w">  </span><span class="n">__$$</span><span class="err">\</span><span class="w"> </span><span class="err">$$</span><span class="w">  </span><span class="n">__$$</span><span class="err">\</span><span class="w"> </span><span class="err">$$</span><span class="w">  </span><span class="n">_____</span><span class="o">|</span><span class="err">$$</span><span class="w">  </span><span class="n">__$$</span><span class="err">\</span><span class="w"> </span><span class="err">$$</span><span class="w">  </span><span class="n">__$$</span><span class="err">\</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="o">*</span><span class="err">$$</span><span class="w"> </span><span class="o">/</span><span class="w">  </span><span class="err">$$</span><span class="w"> </span><span class="o">|</span><span class="err">$$</span><span class="w"> </span><span class="o">/</span><span class="w">  </span><span class="err">\</span><span class="n">__</span><span class="o">|</span><span class="err">$$</span><span class="w"> </span><span class="o">/</span><span class="w">  </span><span class="err">\</span><span class="n">__</span><span class="o">|</span><span class="err">$$</span><span class="w"> </span><span class="o">|</span><span class="w">      </span><span class="err">$$</span><span class="w"> </span><span class="o">/</span><span class="w">  </span><span class="err">\</span><span class="n">__</span><span class="o">|</span><span class="err">$$</span><span class="w"> </span><span class="o">/</span><span class="w">  </span><span class="err">\</span><span class="n">__</span><span class="o">|</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="err">$$$$$$$$</span><span class="w"> </span><span class="o">|</span><span class="err">$$</span><span class="w"> </span><span class="o">|</span><span class="w">      </span><span class="err">$$</span><span class="w"> </span><span class="o">|</span><span class="w">      </span><span class="err">$$$$$\</span><span class="w">    </span><span class="err">\$$$$$$\</span><span class="w">  </span><span class="err">\$$$$$$\</span><span class="w">   
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="o">*</span><span class="err">$$</span><span class="w">  </span><span class="n">__$$</span><span class="w"> </span><span class="o">|</span><span class="err">$$</span><span class="w"> </span><span class="o">|</span><span class="w">      </span><span class="err">$$</span><span class="w"> </span><span class="o">|</span><span class="w">      </span><span class="err">$$</span><span class="w">  </span><span class="n">__</span><span class="o">|</span><span class="w">    </span><span class="err">\</span><span class="n">____$$</span><span class="err">\</span><span class="w">  </span><span class="err">\</span><span class="n">____$$</span><span class="err">\</span><span class="w">  </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="o">*</span><span class="w"> </span><span class="err">$$</span><span class="w"> </span><span class="o">|</span><span class="w">  </span><span class="err">$$</span><span class="w"> </span><span class="o">|</span><span class="err">$$</span><span class="w"> </span><span class="o">|</span><span class="w">  </span><span class="err">$$\</span><span class="w"> </span><span class="err">$$</span><span class="w"> </span><span class="o">|</span><span class="w">  </span><span class="err">$$\</span><span class="w"> </span><span class="err">$$</span><span class="w"> </span><span class="o">|</span><span class="w">      </span><span class="err">$$\</span><span class="w">   </span><span class="err">$$</span><span class="w"> </span><span class="o">|</span><span class="err">$$\</span><span class="w">   </span><span class="err">$$</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">*</span><span class="w">   </span><span class="err">$$</span><span class="w"> </span><span class="o">|</span><span class="w">  </span><span class="err">$$</span><span class="w"> </span><span class="o">|</span><span class="err">\$$$$$$</span><span class="w">  </span><span class="o">|</span><span class="err">\$$$$$$</span><span class="w">  </span><span class="o">|</span><span class="err">$$$$$$$$\</span><span class="w"> </span><span class="err">\$$$$$$</span><span class="w">  </span><span class="o">|</span><span class="err">\$$$$$$</span><span class="w">  </span><span class="o">|</span><span class="w">   </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="o">*</span><span class="w">  </span><span class="err">\</span><span class="n">__</span><span class="o">|</span><span class="w">  </span><span class="err">\</span><span class="n">__</span><span class="o">|</span><span class="w"> </span><span class="err">\</span><span class="n">______</span><span class="o">/</span><span class="w">  </span><span class="err">\</span><span class="n">______</span><span class="o">/</span><span class="w"> </span><span class="err">\</span><span class="n">________</span><span class="o">|</span><span class="w"> </span><span class="err">\</span><span class="n">______</span><span class="o">/</span><span class="w">  </span><span class="err">\</span><span class="n">______</span><span class="o">/</span><span class="w">  </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">*</span><span class="w">         </span><span class="o">*</span><span class="w">    </span><span class="err">❄</span><span class="w">             </span><span class="err">❄</span><span class="w">           </span><span class="o">*</span><span class="w">        </span><span class="err">❄</span><span class="w">    </span><span class="err">❄</span><span class="w">    </span><span class="err">❄</span><span class="w">   </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="o">*</span><span class="w">        </span><span class="o">*</span><span class="w">     </span><span class="o">*</span><span class="w">     </span><span class="o">*</span><span class="w">      </span><span class="o">*</span><span class="w">     </span><span class="o">*</span><span class="w">      </span><span class="o">*</span><span class="w">    </span><span class="o">*</span><span class="w">      </span><span class="o">*</span><span class="w">      </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="o">*</span><span class="w">  </span><span class="err">$$$$$$\</span><span class="w">  </span><span class="err">$$$$$$$\</span><span class="w">   </span><span class="err">$$$$$$\</span><span class="w">  </span><span class="err">$$\</span><span class="w">   </span><span class="err">$$\</span><span class="w"> </span><span class="err">$$$$$$$$\</span><span class="w"> </span><span class="err">$$$$$$$$\</span><span class="w"> </span><span class="err">$$$$$$$\</span><span class="w">  </span><span class="err">$$\</span><span class="w">  </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="err">$$</span><span class="w">  </span><span class="n">__$$</span><span class="err">\</span><span class="w"> </span><span class="err">$$</span><span class="w">  </span><span class="n">__$$</span><span class="err">\</span><span class="w"> </span><span class="err">$$</span><span class="w">  </span><span class="n">__$$</span><span class="err">\</span><span class="w"> </span><span class="err">$$$\</span><span class="w">  </span><span class="err">$$</span><span class="w"> </span><span class="o">|</span><span class="err">\</span><span class="n">__$$</span><span class="w">  </span><span class="n">__</span><span class="o">|</span><span class="err">$$</span><span class="w">  </span><span class="n">_____</span><span class="o">|</span><span class="err">$$</span><span class="w">  </span><span class="n">__$$</span><span class="err">\</span><span class="w"> </span><span class="err">$$</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="o">*</span><span class="w">  </span><span class="err">$$</span><span class="w"> </span><span class="o">/</span><span class="w">  </span><span class="err">\</span><span class="n">__</span><span class="o">|</span><span class="err">$$</span><span class="w"> </span><span class="o">|</span><span class="w">  </span><span class="err">$$</span><span class="w"> </span><span class="o">|</span><span class="err">$$</span><span class="w"> </span><span class="o">/</span><span class="w">  </span><span class="err">$$</span><span class="w"> </span><span class="o">|</span><span class="err">$$$$\</span><span class="w"> </span><span class="err">$$</span><span class="w"> </span><span class="o">|</span><span class="w">   </span><span class="err">$$</span><span class="w"> </span><span class="o">|</span><span class="w">   </span><span class="err">$$</span><span class="w"> </span><span class="o">|</span><span class="w">      </span><span class="err">$$</span><span class="w"> </span><span class="o">|</span><span class="w">  </span><span class="err">$$</span><span class="w"> </span><span class="o">|</span><span class="err">$$</span><span class="w"> </span><span class="o">|*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="o">*</span><span class="w">  </span><span class="err">$$</span><span class="w"> </span><span class="o">|</span><span class="err">$$$$\</span><span class="w"> </span><span class="err">$$$$$$$</span><span class="w">  </span><span class="o">|</span><span class="err">$$$$$$$$</span><span class="w"> </span><span class="o">|</span><span class="err">$$</span><span class="w"> </span><span class="err">$$\$$</span><span class="w"> </span><span class="o">|</span><span class="w">   </span><span class="err">$$</span><span class="w"> </span><span class="o">|</span><span class="w">   </span><span class="err">$$$$$\</span><span class="w">    </span><span class="err">$$</span><span class="w"> </span><span class="o">|</span><span class="w">  </span><span class="err">$$</span><span class="w"> </span><span class="o">|</span><span class="err">$$</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="o">*</span><span class="w">   </span><span class="err">$$</span><span class="w"> </span><span class="o">|</span><span class="err">\</span><span class="n">_$$</span><span class="w"> </span><span class="o">|</span><span class="err">$$</span><span class="w">  </span><span class="n">__$$</span><span class="o">&lt;</span><span class="w"> </span><span class="err">$$</span><span class="w">  </span><span class="n">__$$</span><span class="w"> </span><span class="o">|</span><span class="err">$$</span><span class="w"> </span><span class="err">\$$$$</span><span class="w"> </span><span class="o">|</span><span class="w">   </span><span class="err">$$</span><span class="w"> </span><span class="o">|</span><span class="w">   </span><span class="err">$$</span><span class="w">  </span><span class="n">__</span><span class="o">|</span><span class="w">   </span><span class="err">$$</span><span class="w"> </span><span class="o">|</span><span class="w">  </span><span class="err">$$</span><span class="w"> </span><span class="o">|</span><span class="err">\</span><span class="n">__</span><span class="o">|*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="o">*</span><span class="w">  </span><span class="err">$$</span><span class="w"> </span><span class="o">|</span><span class="w">  </span><span class="err">$$</span><span class="w"> </span><span class="o">|</span><span class="err">$$</span><span class="w"> </span><span class="o">|</span><span class="w">  </span><span class="err">$$</span><span class="w"> </span><span class="o">|</span><span class="err">$$</span><span class="w"> </span><span class="o">|</span><span class="w">  </span><span class="err">$$</span><span class="w"> </span><span class="o">|</span><span class="err">$$</span><span class="w"> </span><span class="o">|</span><span class="err">\$$$</span><span class="w"> </span><span class="o">|</span><span class="w">   </span><span class="err">$$</span><span class="w"> </span><span class="o">|</span><span class="w">   </span><span class="err">$$</span><span class="w"> </span><span class="o">|</span><span class="w">      </span><span class="err">$$</span><span class="w"> </span><span class="o">|</span><span class="w">  </span><span class="err">$$</span><span class="w"> </span><span class="o">|</span><span class="w">   </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">*</span><span class="w">    </span><span class="err">\$$$$$$</span><span class="w">  </span><span class="o">|</span><span class="err">$$</span><span class="w"> </span><span class="o">|</span><span class="w">  </span><span class="err">$$</span><span class="w"> </span><span class="o">|</span><span class="err">$$</span><span class="w"> </span><span class="o">|</span><span class="w">  </span><span class="err">$$</span><span class="w"> </span><span class="o">|</span><span class="err">$$</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="err">\$$</span><span class="w"> </span><span class="o">|</span><span class="w">   </span><span class="err">$$</span><span class="w"> </span><span class="o">|</span><span class="w">   </span><span class="err">$$$$$$$$\</span><span class="w"> </span><span class="err">$$$$$$$</span><span class="w">  </span><span class="o">|</span><span class="err">$$\</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="o">*</span><span class="w">    </span><span class="err">\</span><span class="n">______</span><span class="o">/</span><span class="w"> </span><span class="err">\</span><span class="n">__</span><span class="o">|</span><span class="w">  </span><span class="err">\</span><span class="n">__</span><span class="o">|</span><span class="err">\</span><span class="n">__</span><span class="o">|</span><span class="w">  </span><span class="err">\</span><span class="n">__</span><span class="o">|</span><span class="err">\</span><span class="n">__</span><span class="o">|</span><span class="w">  </span><span class="err">\</span><span class="n">__</span><span class="o">|</span><span class="w">   </span><span class="err">\</span><span class="n">__</span><span class="o">|</span><span class="w">   </span><span class="err">\</span><span class="n">________</span><span class="o">|</span><span class="err">\</span><span class="n">_______</span><span class="o">/</span><span class="w"> </span><span class="err">\</span><span class="n">__</span><span class="o">|</span><span class="w">  </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="o">*</span><span class="w">                                                            </span><span class="err">❄</span><span class="w">    </span><span class="err">❄</span><span class="w">    </span><span class="err">❄</span><span class="w">   </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="o">*</span><span class="w">      </span><span class="o">*</span><span class="w">    </span><span class="o">*</span><span class="w">    </span><span class="o">*</span><span class="w">    </span><span class="o">*</span><span class="w">    </span><span class="o">*</span><span class="w">    </span><span class="o">*</span><span class="w">    </span><span class="o">*</span><span class="w">    </span><span class="o">*</span><span class="w">    </span><span class="o">*</span><span class="w">    </span><span class="o">*</span><span class="w">    </span><span class="o">*</span><span class="w">    </span><span class="o">*</span><span class="w">    </span><span class="o">*</span><span class="w">    </span><span class="o">*</span><span class="w">         
+</span></span></span></code></pre></div>
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+    2025
+     ArmBraker 👨‍💻 
+    ·
+    
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/blog/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>
