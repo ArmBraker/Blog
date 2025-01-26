@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DFIR on Journey into IT Knowledge</title>
+    <link>http://localhost:1313/blog/categories/dfir/</link>
+    <description>Recent content in DFIR on Journey into IT Knowledge</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 26 Jan 2025 14:59:25 +0100</lastBuildDate>
+    <atom:link href="http://localhost:1313/blog/categories/dfir/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HHC24 - Frostbit Decryption</title>
+      <link>http://localhost:1313/blog/posts/hhc24/frostbitdecrypt/</link>
+      <pubDate>Sun, 26 Jan 2025 14:59:25 +0100</pubDate>
+      <guid>http://localhost:1313/blog/posts/hhc24/frostbitdecrypt/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;&#xA;  Introduction&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#introduction&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Hardest challenge of HHC24! This was chllenge require series of multiple detective and attack techniques. Lot&amp;rsquo;s of folks loose thier sanity during this road 🛣.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;h2 id=&#34;notes&#34;&gt;&#xA;  Notes&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#notes&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Start by finding a way to decrypt the TLS traffic in the PCAP.  This should give you a value for a nonce.  If that value contains 2f in it, rgenerate the artifacts and start over, as otherwise the whole thing will be a lot more complicated&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

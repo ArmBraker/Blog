@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>GameHacking on Journey into IT Knowledge</title>
+    <link>https://armbraker.github.io/blog/categories/gamehacking/</link>
+    <description>Recent content in GameHacking on Journey into IT Knowledge</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 26 Jan 2025 14:58:10 +0100</lastBuildDate>
+    <atom:link href="https://armbraker.github.io/blog/categories/gamehacking/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HHC24 - Snowball-Showdown</title>
+      <link>https://armbraker.github.io/blog/posts/hhc24/snowball-showdown/</link>
+      <pubDate>Sun, 26 Jan 2025 14:58:10 +0100</pubDate>
+      <guid>https://armbraker.github.io/blog/posts/hhc24/snowball-showdown/</guid>
+      <description>&lt;h2 id=&#34;bronze-&#34;&gt;&#xA;  Bronze 🥉&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#bronze-&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;&lt;code&gt;Raring to go? Terrific! Here&#39;s a real brain tickler. Navigator of chaos or maestro of subtlety, which will you be? Either way, remember our objective: bring victory to Alabaster.&lt;/code&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;There is a hint from Dusty Giftwrap: &lt;code&gt;Adjust the right elements and victory for Alabaster can be secured with more subtlety. Intriguing, right?&lt;/code&gt;&#xA;Means: That we would need to alter the client-side values in JS or in cookies as usual for this kind of challenges.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

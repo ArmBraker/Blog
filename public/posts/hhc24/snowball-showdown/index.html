@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>
+  HHC24 - Snowball-Showdown · Journey into IT Knowledge
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="ArmBraker 👨‍💻">
+<meta name="description" content="Hacking of browser game by tweaking of JS files">
+<meta name="keywords" content="blog,knowledge,IT Security,hacking,personal,networking">
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="HHC24 - Snowball-Showdown">
+  <meta name="twitter:description" content="Hacking of browser game by tweaking of JS files">
+
+<meta property="og:url" content="https://armbraker.github.io/blog/posts/hhc24/snowball-showdown/">
+  <meta property="og:site_name" content="Journey into IT Knowledge">
+  <meta property="og:title" content="HHC24 - Snowball-Showdown">
+  <meta property="og:description" content="Hacking of browser game by tweaking of JS files">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-01-26T14:58:10+01:00">
+    <meta property="article:modified_time" content="2025-01-26T14:58:10+01:00">
+    <meta property="article:tag" content="HHC24">
+    <meta property="article:tag" content="Sans">
+    <meta property="article:tag" content="CTF">
+      <meta property="og:see_also" content="https://armbraker.github.io/blog/posts/hhc24/frostbitdeactivation/">
+      <meta property="og:see_also" content="https://armbraker.github.io/blog/posts/hhc24/elfstack/">
+      <meta property="og:see_also" content="https://armbraker.github.io/blog/posts/hhc24/santavision/">
+      <meta property="og:see_also" content="https://armbraker.github.io/blog/posts/hhc24/dronmagedon/">
+      <meta property="og:see_also" content="https://armbraker.github.io/blog/posts/hhc24/powershell/">
+      <meta property="og:see_also" content="https://armbraker.github.io/blog/posts/hhc24/hardwarehacking_101/">
+
+
+
+
+<link rel="canonical" href="https://armbraker.github.io/blog/posts/hhc24/snowball-showdown/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/blog/css/coder.min.f04d4c2b3aa2d369dd0f02bc87d53b60d811a0f74526c9ef8a434ee3248b3606.css" integrity="sha256-8E1MKzqi02ndDwK8h9U7YNgRoPdFJsnvikNO4ySLNgY=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/blog/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="https://armbraker.github.io/blog/">
+      Journey into IT Knowledge
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/blog/">Home</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/blog/posts/">Blog</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/blog/about/">About</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://armbraker.github.io/blog/posts/hhc24/snowball-showdown/">
+              HHC24 - Snowball-Showdown
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2025-01-26T14:58:10&#43;01:00">
+                January 26, 2025
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              2-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/blog/categories/writeup/">Writeup</a>
+      <span class="separator">•</span>
+    <a href="/blog/categories/js/">JS</a>
+      <span class="separator">•</span>
+    <a href="/blog/categories/gamehacking/">GameHacking</a></div>
+
+          <div class="tags">
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/blog/tags/hhc24/">HHC24</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/blog/tags/sans/">Sans</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/blog/tags/ctf/">CTF</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <h2 id="bronze-">
+  Bronze 🥉
+  <a class="heading-link" href="#bronze-">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p><code>Raring to go? Terrific! Here's a real brain tickler. Navigator of chaos or maestro of subtlety, which will you be? Either way, remember our objective: bring victory to Alabaster.</code></p>
+<ul>
+<li>
+<p>There is a hint from Dusty Giftwrap: <code>Adjust the right elements and victory for Alabaster can be secured with more subtlety. Intriguing, right?</code>
+Means: That we would need to alter the client-side values in JS or in cookies as usual for this kind of challenges.</p>
+</li>
+<li>
+<p>Let&rsquo;s dive in. 🤿</p>
+</li>
+<li>
+<p><strong>Disclaimer</strong>: I am not sure how I got the bronze, but you can setup a multiplayer session in single player lobby and then join the game with another active window. It will stop the Womble elf for play and your team will easily win by score.</p>
+</li>
+</ul>
+<h2 id="silver-">
+  Silver 🥈
+  <a class="heading-link" href="#silver-">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li>
+<p>As was spoiled in bronze section, we need to adjust the JS variables to tweak the game&rsquo;s results.</p>
+</li>
+<li>
+<p>To achieve this, I used the Google Chrome override function for JS files and modified <code>phaser-snowball-game.js</code></p>
+<p><strong>Note:</strong> This is persistent overwrite so your changes will have an effect after reload/refresh.
+This JS files contains various variables for game&rsquo;s engine configuration of the scene.</p>
+</li>
+</ul>
+<p>I tweaked the <code>this.snowBallBlastRadius</code> variable to allow our snowball cause a bigger <em>&ldquo;damage&rdquo;</em> as it is client-side rendered object:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#ff6ac1">this</span>.snowBallBlastRadius <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">240</span>;
+</span></span></code></pre></div><p>After the change I reloaded the game and destroy the wall with my new <strong>snowball of disaster</strong> and goes to the Wombley&rsquo;s side of game. Then I freeze all elf on his side and easily won the game by score! 🥈</p>
+<h2 id="gold-">
+  Gold 🥇
+  <a class="heading-link" href="#gold-">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Dusty Giftwrap gives us another hints:</p>
+<p><code>Christmas is on the line! For a mischievous edge-up, dive into the game’s code - a few client-side tweaks to speed, movement, or power might shift the balance… or just help us find that secret weapon we misplaced!</code></p>
+<ul>
+<li>
+<p>The above notes seems that we need to alter another variables in JS files of the game.
+Question is, what can be the <em><strong>secret weapon</strong></em>?</p>
+</li>
+<li>
+<p>I didn&rsquo;t find the way for a gold yet, but I discover the fire-rate check which I modified as follows:</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#78787e">// Check if the percentage shot power is zero or if the throw rate limit is exceeded
+</span></span></span><span style="display:flex;"><span><span style="color:#78787e"></span>        <span style="color:#ff6ac1">if</span> ((<span style="color:#ff6ac1">false</span>) <span style="color:#ff6ac1">&amp;&amp;</span> <span style="color:#ff6ac1">!</span>archonly) {
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">return</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span></code></pre></div><ul>
+<li>for the whole time, the answer for <em><strong>secret weapon</strong></em> was:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#ff6ac1">this</span>.moasb <span style="color:#ff6ac1">=</span> () =&gt; { <span style="color:#ff6ac1">this</span>.ws.sendMessage({ <span style="color:#5af78e">&#39;type&#39;</span><span style="color:#ff6ac1">:</span> <span style="color:#5af78e">&#39;moasb&#39;</span> }) }
+</span></span></code></pre></div>
+      </div>
+
+
+      <footer>
+        
+
+<section class="see-also">
+  
+    
+    
+    
+      <h3 id="see-also-in-hhc24">
+        See also in HHC24
+        <a class="heading-link" href="#see-also-in-hhc24">
+          <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+          <span class="sr-only">Link to heading</span>
+        </a>
+      </h3>
+      <nav>
+        <ul>
+        
+        
+          
+            <li>
+              <a href="/blog/posts/hhc24/frostbitdeactivation/">HHC24 - Frostbit Deactivation</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/blog/posts/hhc24/elfstack/">HHC24 - ElfStack</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/blog/posts/hhc24/santavision/">HHC24 - SantaVision</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/blog/posts/hhc24/dronmagedon/">HHC24 - Dronmagedon</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/blog/posts/hhc24/powershell/">HHC24 - Powershell</a>
+            </li>
+          
+        
+          
+        
+        </ul>
+      </nav>
+    
+  
+</section>
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+    2025
+     ArmBraker 👨‍💻 
+    ·
+    
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/blog/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

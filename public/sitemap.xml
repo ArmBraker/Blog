@@ -2,11 +2,122 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://armbraker.github.io/blog/categories/aql-database/</loc>
+    <lastmod>2025-01-26T14:59:34+01:00</lastmod>
+  </url><url>
+    <loc>https://armbraker.github.io/blog/categories/blind-injection/</loc>
+    <lastmod>2025-01-26T14:59:34+01:00</lastmod>
+  </url><url>
     <loc>https://armbraker.github.io/blog/categories/</loc>
-    <lastmod>2025-01-19T16:19:30+01:00</lastmod>
+    <lastmod>2025-01-26T14:59:34+01:00</lastmod>
   </url><url>
     <loc>https://armbraker.github.io/blog/tags/ctf/</loc>
-    <lastmod>2025-01-19T16:19:30+01:00</lastmod>
+    <lastmod>2025-01-26T14:59:34+01:00</lastmod>
+  </url><url>
+    <loc>https://armbraker.github.io/blog/tags/hhc24/</loc>
+    <lastmod>2025-01-26T14:59:34+01:00</lastmod>
+  </url><url>
+    <loc>https://armbraker.github.io/blog/series/hhc24/</loc>
+    <lastmod>2025-01-26T14:59:34+01:00</lastmod>
+  </url><url>
+    <loc>https://armbraker.github.io/blog/posts/hhc24/frostbitdeactivation/</loc>
+    <lastmod>2025-01-26T14:59:34+01:00</lastmod>
+  </url><url>
+    <loc>https://armbraker.github.io/blog/</loc>
+    <lastmod>2025-01-26T14:59:34+01:00</lastmod>
+  </url><url>
+    <loc>https://armbraker.github.io/blog/posts/</loc>
+    <lastmod>2025-01-26T14:59:34+01:00</lastmod>
+  </url><url>
+    <loc>https://armbraker.github.io/blog/categories/python/</loc>
+    <lastmod>2025-01-26T14:59:34+01:00</lastmod>
+  </url><url>
+    <loc>https://armbraker.github.io/blog/tags/sans/</loc>
+    <lastmod>2025-01-26T14:59:34+01:00</lastmod>
+  </url><url>
+    <loc>https://armbraker.github.io/blog/series/</loc>
+    <lastmod>2025-01-26T14:59:34+01:00</lastmod>
+  </url><url>
+    <loc>https://armbraker.github.io/blog/tags/</loc>
+    <lastmod>2025-01-26T14:59:34+01:00</lastmod>
+  </url><url>
+    <loc>https://armbraker.github.io/blog/categories/web-app-hacking/</loc>
+    <lastmod>2025-01-26T14:59:34+01:00</lastmod>
+  </url><url>
+    <loc>https://armbraker.github.io/blog/categories/writeup/</loc>
+    <lastmod>2025-01-26T14:59:34+01:00</lastmod>
+  </url><url>
+    <loc>https://armbraker.github.io/blog/categories/blueteam/</loc>
+    <lastmod>2025-01-26T14:59:04+01:00</lastmod>
+  </url><url>
+    <loc>https://armbraker.github.io/blog/posts/hhc24/elfstack/</loc>
+    <lastmod>2025-01-26T14:59:04+01:00</lastmod>
+  </url><url>
+    <loc>https://armbraker.github.io/blog/categories/loganalytics/</loc>
+    <lastmod>2025-01-26T14:59:04+01:00</lastmod>
+  </url><url>
+    <loc>https://armbraker.github.io/blog/categories/siem/</loc>
+    <lastmod>2025-01-26T14:59:04+01:00</lastmod>
+  </url><url>
+    <loc>https://armbraker.github.io/blog/posts/hhc24/santavision/</loc>
+    <lastmod>2025-01-26T14:58:53+01:00</lastmod>
+  </url><url>
+    <loc>https://armbraker.github.io/blog/categories/iot/</loc>
+    <lastmod>2025-01-26T14:58:53+01:00</lastmod>
+  </url><url>
+    <loc>https://armbraker.github.io/blog/categories/jffs2/</loc>
+    <lastmod>2025-01-26T14:58:53+01:00</lastmod>
+  </url><url>
+    <loc>https://armbraker.github.io/blog/categories/mqtt/</loc>
+    <lastmod>2025-01-26T14:58:53+01:00</lastmod>
+  </url><url>
+    <loc>https://armbraker.github.io/blog/categories/reverseengineering/</loc>
+    <lastmod>2025-01-26T14:58:53+01:00</lastmod>
+  </url><url>
+    <loc>https://armbraker.github.io/blog/categories/rot13/</loc>
+    <lastmod>2025-01-26T14:58:53+01:00</lastmod>
+  </url><url>
+    <loc>https://armbraker.github.io/blog/categories/cartographic/</loc>
+    <lastmod>2025-01-26T14:58:44+01:00</lastmod>
+  </url><url>
+    <loc>https://armbraker.github.io/blog/categories/googleearth/</loc>
+    <lastmod>2025-01-26T14:58:44+01:00</lastmod>
+  </url><url>
+    <loc>https://armbraker.github.io/blog/posts/hhc24/dronmagedon/</loc>
+    <lastmod>2025-01-26T14:58:44+01:00</lastmod>
+  </url><url>
+    <loc>https://armbraker.github.io/blog/categories/osint/</loc>
+    <lastmod>2025-01-26T14:58:44+01:00</lastmod>
+  </url><url>
+    <loc>https://armbraker.github.io/blog/categories/sqlinjection/</loc>
+    <lastmod>2025-01-26T14:58:44+01:00</lastmod>
+  </url><url>
+    <loc>https://armbraker.github.io/blog/categories/authentication/</loc>
+    <lastmod>2025-01-26T14:58:33+01:00</lastmod>
+  </url><url>
+    <loc>https://armbraker.github.io/blog/categories/authorization/</loc>
+    <lastmod>2025-01-26T14:58:33+01:00</lastmod>
+  </url><url>
+    <loc>https://armbraker.github.io/blog/categories/automation/</loc>
+    <lastmod>2025-01-26T14:58:33+01:00</lastmod>
+  </url><url>
+    <loc>https://armbraker.github.io/blog/posts/hhc24/powershell/</loc>
+    <lastmod>2025-01-26T14:58:33+01:00</lastmod>
+  </url><url>
+    <loc>https://armbraker.github.io/blog/categories/poweshell/</loc>
+    <lastmod>2025-01-26T14:58:33+01:00</lastmod>
+  </url><url>
+    <loc>https://armbraker.github.io/blog/categories/web-application-hacking/</loc>
+    <lastmod>2025-01-26T14:58:33+01:00</lastmod>
+  </url><url>
+    <loc>https://armbraker.github.io/blog/categories/gamehacking/</loc>
+    <lastmod>2025-01-26T14:58:10+01:00</lastmod>
+  </url><url>
+    <loc>https://armbraker.github.io/blog/posts/hhc24/snowball-showdown/</loc>
+    <lastmod>2025-01-26T14:58:10+01:00</lastmod>
+  </url><url>
+    <loc>https://armbraker.github.io/blog/categories/js/</loc>
+    <lastmod>2025-01-26T14:58:10+01:00</lastmod>
   </url><url>
     <loc>https://armbraker.github.io/blog/categories/databases/</loc>
     <lastmod>2025-01-19T16:19:30+01:00</lastmod>
@@ -17,28 +128,7 @@
     <loc>https://armbraker.github.io/blog/categories/hashing/</loc>
     <lastmod>2025-01-19T16:19:30+01:00</lastmod>
   </url><url>
-    <loc>https://armbraker.github.io/blog/tags/hhc24/</loc>
-    <lastmod>2025-01-19T16:19:30+01:00</lastmod>
-  </url><url>
     <loc>https://armbraker.github.io/blog/posts/hhc24/hardwarehacking_101/</loc>
-    <lastmod>2025-01-19T16:19:30+01:00</lastmod>
-  </url><url>
-    <loc>https://armbraker.github.io/blog/</loc>
-    <lastmod>2025-01-19T16:19:30+01:00</lastmod>
-  </url><url>
-    <loc>https://armbraker.github.io/blog/posts/</loc>
-    <lastmod>2025-01-19T16:19:30+01:00</lastmod>
-  </url><url>
-    <loc>https://armbraker.github.io/blog/categories/reverseengineering/</loc>
-    <lastmod>2025-01-19T16:19:30+01:00</lastmod>
-  </url><url>
-    <loc>https://armbraker.github.io/blog/tags/sans/</loc>
-    <lastmod>2025-01-19T16:19:30+01:00</lastmod>
-  </url><url>
-    <loc>https://armbraker.github.io/blog/tags/</loc>
-    <lastmod>2025-01-19T16:19:30+01:00</lastmod>
-  </url><url>
-    <loc>https://armbraker.github.io/blog/categories/writeup/</loc>
     <lastmod>2025-01-19T16:19:30+01:00</lastmod>
   </url><url>
     <loc>https://armbraker.github.io/blog/categories/android/</loc>
@@ -81,9 +171,6 @@
     <lastmod>2025-01-18T15:25:21+01:00</lastmod>
   </url><url>
     <loc>https://armbraker.github.io/blog/posts/git_setup/</loc>
-    <lastmod>2025-01-18T15:25:21+01:00</lastmod>
-  </url><url>
-    <loc>https://armbraker.github.io/blog/series/</loc>
     <lastmod>2025-01-18T15:25:21+01:00</lastmod>
   </url><url>
     <loc>https://armbraker.github.io/blog/authors/</loc>

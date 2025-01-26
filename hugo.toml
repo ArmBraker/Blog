@@ -6,7 +6,7 @@ defaultContentLanguage = "en"
 enableEmoji = true
 
 [pagination]
-pagerSize = 6
+pagerSize = 10
 
 [services]
 [services.disqus]
@@ -15,8 +15,9 @@ pagerSize = 6
 
 [markup]
 [markup.highlight]
-noClasses = false
+#noClasses = false
 style = "base16-snazzy"
+#style = "monokai"
 [markup.goldmark]
 [markup.goldmark.renderer]
 unsafe = true
@@ -145,7 +146,7 @@ author = "authors"
 name = "Github"
 icon = "fa-brands fa-github fa-2x"
 weight = 1
-url = "https://github.com/johndoe/"
+url = "https://github.com/ArmBraker"
 
 #[[params.social]]
 #name = "Gitlab"

@@ -18,7 +18,9 @@ categories = [
 
 ]
 externalLink = ""
-series = []
+series = [
+    "HHC24",
+]
 +++
 
 ## Bronz 🥉

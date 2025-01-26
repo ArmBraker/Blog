@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>
+  HHC24 - ElfStack · Journey into IT Knowledge
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="ArmBraker 👨‍💻">
+<meta name="description" content="Blue team operation by using ELK stack based SIEM system.">
+<meta name="keywords" content="blog,knowledge,IT Security,hacking,personal,networking">
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="HHC24 - ElfStack">
+  <meta name="twitter:description" content="Blue team operation by using ELK stack based SIEM system.">
+
+<meta property="og:url" content="https://armbraker.github.io/blog/posts/hhc24/elfstack/">
+  <meta property="og:site_name" content="Journey into IT Knowledge">
+  <meta property="og:title" content="HHC24 - ElfStack">
+  <meta property="og:description" content="Blue team operation by using ELK stack based SIEM system.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-01-26T14:59:04+01:00">
+    <meta property="article:modified_time" content="2025-01-26T14:59:04+01:00">
+    <meta property="article:tag" content="HHC24">
+    <meta property="article:tag" content="Sans">
+    <meta property="article:tag" content="CTF">
+      <meta property="og:see_also" content="https://armbraker.github.io/blog/posts/hhc24/frostbitdeactivation/">
+      <meta property="og:see_also" content="https://armbraker.github.io/blog/posts/hhc24/santavision/">
+      <meta property="og:see_also" content="https://armbraker.github.io/blog/posts/hhc24/dronmagedon/">
+      <meta property="og:see_also" content="https://armbraker.github.io/blog/posts/hhc24/powershell/">
+      <meta property="og:see_also" content="https://armbraker.github.io/blog/posts/hhc24/snowball-showdown/">
+      <meta property="og:see_also" content="https://armbraker.github.io/blog/posts/hhc24/hardwarehacking_101/">
+
+
+
+
+<link rel="canonical" href="https://armbraker.github.io/blog/posts/hhc24/elfstack/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/blog/css/coder.min.f04d4c2b3aa2d369dd0f02bc87d53b60d811a0f74526c9ef8a434ee3248b3606.css" integrity="sha256-8E1MKzqi02ndDwK8h9U7YNgRoPdFJsnvikNO4ySLNgY=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/blog/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="https://armbraker.github.io/blog/">
+      Journey into IT Knowledge
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/blog/">Home</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/blog/posts/">Blog</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/blog/about/">About</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://armbraker.github.io/blog/posts/hhc24/elfstack/">
+              HHC24 - ElfStack
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2025-01-26T14:59:04&#43;01:00">
+                January 26, 2025
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              8-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/blog/categories/writeup/">Writeup</a>
+      <span class="separator">•</span>
+    <a href="/blog/categories/siem/">SIEM</a>
+      <span class="separator">•</span>
+    <a href="/blog/categories/loganalytics/">LogAnalytics</a>
+      <span class="separator">•</span>
+    <a href="/blog/categories/blueteam/">BlueTeam</a></div>
+
+          <div class="tags">
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/blog/tags/hhc24/">HHC24</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/blog/tags/sans/">Sans</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/blog/tags/ctf/">CTF</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <h2 id="introduction">
+  Introduction
+  <a class="heading-link" href="#introduction">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li>At the beginning there is an information table informing players that the challenge can be solved by using SIEM solution based on ELK <code>(Elastic, Logdash, Kibana)</code> stack.</li>
+<li>Of course I used the easier way and jump for an option with SIEM solution. But, I for some challenges I was forced to parse them manually with good-old <strong>Linux</strong> tools.</li>
+</ul>
+<h2 id="easy-mode---">
+  Easy mode - 🥈
+  <a class="heading-link" href="#easy-mode---">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li>
+<p><strong>Question</strong> 1: How many unique values are there for the event_source field in all logs?</p>
+</li>
+<li>
+<p><em><strong>Answer</strong></em>: 5</p>
+</li>
+<li>
+<p><strong>Question</strong> 2: Which event_source has the fewest number of events related to it?</p>
+</li>
+<li>
+<p><em><strong>Answer</strong></em>: AuthLog</p>
+</li>
+<li>
+<p><strong>Question</strong> 3: Using the event_source from the previous question as a filter, what is the field name that contains the name of the system the log event originated from?</p>
+</li>
+<li>
+<p><em><strong>Answer</strong></em>: event.hostname</p>
+</li>
+<li>
+<p><strong>Question</strong> 4: Which event_source has the second highest number of events related to it?</p>
+</li>
+<li>
+<p>AuthLog:269</p>
+</li>
+<li>
+<p>GreenCoat: 7496</p>
+</li>
+<li>
+<p>NetflowPmacct: 34679</p>
+</li>
+<li>
+<p>SnowGlowMailPxy: 1398</p>
+</li>
+<li>
+<p>WindowsEvent: 2299324</p>
+</li>
+<li>
+<p><em><strong>Answer</strong></em>: NetflowPmacct</p>
+</li>
+<li>
+<p><strong>Question</strong> 5: Using the event_source from the previous question as a filter, what is the name of the field that defines the destination port of the Netflow logs?</p>
+</li>
+<li>
+<p><em><strong>Answer</strong></em>: event.port_dst</p>
+</li>
+<li>
+<p><strong>Question</strong> 6: Which event_source is related to email traffic?</p>
+</li>
+<li>
+<p><em><strong>Answer</strong></em>: SnowGlowMailPxy</p>
+</li>
+<li>
+<p><strong>Question</strong> 7: Looking at the event source from the last question, what is the name of the field that contains the actual email text?</p>
+</li>
+<li>
+<p><em><strong>Answer</strong></em>: event.Body</p>
+</li>
+<li>
+<p><strong>Question</strong> 8: Using the &lsquo;GreenCoat&rsquo; event_source, what is the only value in the hostname field?</p>
+</li>
+<li>
+<p><em><strong>Answer</strong></em>: SecureElfGwy</p>
+</li>
+<li>
+<p><strong>Question</strong> 9: Using the &lsquo;GreenCoat&rsquo; event_source, what is the name of the field that contains the site visited by a client in the network?</p>
+</li>
+<li>
+<p><em><strong>Answer</strong></em>: event.url</p>
+</li>
+<li>
+<p><strong>Question</strong> 10: Using the &lsquo;GreenCoat&rsquo; event_source, which unique URL and port (URL:port) did clients in the TinselStream network visit most?</p>
+</li>
+<li>
+<p><em><strong>Answer</strong></em>: pagead2.googlesyndication.com:443</p>
+</li>
+<li>
+<p><strong>Question</strong> 11: Using the &lsquo;WindowsEvent&rsquo; event_source, how many unique Channels is the SIEM receiving Windows event logs from?</p>
+</li>
+<li>
+<p><em><strong>Answer</strong></em>: 5</p>
+</li>
+<li>
+<p><strong>Question</strong> 12: What is the name of the event.Channel (or Channel) with the second highest number of events?</p>
+</li>
+<li>
+<p>Microsoft-Windows-PowerShell/Operational: 11751</p>
+</li>
+<li>
+<p>Microsoft-Windows-Sysmon/Operational: 17713</p>
+</li>
+<li>
+<p>Security: 2268402</p>
+</li>
+<li>
+<p>Windows PowerShell: 50</p>
+</li>
+<li>
+<p><em><strong>Answer</strong></em>: Microsoft-Windows-Sysmon/Operational</p>
+</li>
+<li>
+<p><strong>Question</strong> 13: Our environment is using Sysmon to track many different events on Windows systems. What is the Sysmon Event ID related to loading of a driver?</p>
+</li>
+<li>
+<p><em><strong>Answer</strong></em>: 6</p>
+</li>
+<li>
+<p><strong>Question</strong> 14: What is the Windows event ID that is recorded when a new service is installed on a system?</p>
+</li>
+<li>
+<p><em><strong>Answer</strong></em>: 4697</p>
+</li>
+<li>
+<p><strong>Question</strong> 15: Using the WindowsEvent event_source as your initial filter, how many user accounts were created?</p>
+</li>
+<li>
+<p><em><strong>Answer</strong></em>: 0</p>
+</li>
+</ul>
+<p>===</p>
+<h2 id="hard-mode---gold-">
+  Hard mode - Gold 🥇
+  <a class="heading-link" href="#hard-mode---gold-">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li>
+<p><strong>Question</strong> 1: What is the event.EventID number for Sysmon event logs relating to process creation?</p>
+</li>
+<li>
+<p><em><strong>Answer</strong></em>: 1</p>
+</li>
+<li>
+<p><strong>Question</strong> 2: How many unique values are there for the &rsquo;event_source&rsquo; field in all of the logs?</p>
+</li>
+<li>
+<p><em><strong>Answer</strong></em>: 5</p>
+</li>
+<li>
+<p><strong>Question</strong> 3: What is the event_source name that contains the email logs?</p>
+</li>
+<li>
+<p><em><strong>Answer</strong></em>: SnowGlowMailPxy</p>
+</li>
+<li>
+<p><strong>Question</strong> 4: The North Pole network was compromised recently through a sophisticated phishing attack sent to one of our elves. The attacker found a way to bypass the middleware that prevented phishing emails from getting to North Pole elves. As a result, one of the Received IPs will likely be different from what most email logs contain. Find the email log in question and submit the value in the event &lsquo;From:&rsquo; field for this email log event.</p>
+</li>
+<li>
+<p><em><strong>Answer</strong></em>: <a href="mailto:kriskring1e@northpole.local" >kriskring1e@northpole.local</a></p>
+</li>
+<li>
+<p><strong>Question</strong> 5: Our ElfSOC analysts need your help identifying the hostname of the domain computer that established a connection to the attacker after receiving the phishing email from the previous question. You can take a look at our GreenCoat proxy logs as an event source. Since it is a domain computer, we only need the hostname, not the fully qualified domain name (FQDN) of the system.</p>
+</li>
+<li>
+<p><em><strong>Answer</strong></em>:  SleighRider</p>
+</li>
+<li>
+<p><strong>Question</strong> 6: What was the IP address of the system you found in the previous question?</p>
+</li>
+<li>
+<p><em><strong>Answer</strong></em>: 172.24.25.12</p>
+</li>
+<li>
+<p><strong>Question</strong> 7: A process was launched when the user executed the program AFTER they downloaded it. What was that Process ID number (digits only please)?</p>
+</li>
+<li>
+<p><em><strong>Answer</strong></em>: 10014</p>
+</li>
+<li>
+<p><strong>Question</strong> 8: Did the attacker&rsquo;s payload make an outbound network connection? Our ElfSOC analysts need your help identifying the destination TCP port of this connection.</p>
+</li>
+<li>
+<p><em><strong>Answer</strong></em>: 8443</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">&#34;_index&#34;</span>: <span style="color:#5af78e">&#34;.ds-logs-generic-default-2024.12.30-000001&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">&#34;_id&#34;</span>: <span style="color:#5af78e">&#34;8999f8e78e346f8b074f33cb9d0362b8ae1f8a15&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">&#34;_version&#34;</span>: <span style="color:#ff9f43">1</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">&#34;_score&#34;</span>: <span style="color:#ff9f43">0</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">&#34;_source&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;hostname&#34;</span>: <span style="color:#5af78e">&#34;SleighRider.northpole.local&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;@timestamp&#34;</span>: <span style="color:#5af78e">&#34;2024-09-15T14:37:51.000Z&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;log&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">&#34;syslog&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">&#34;severity&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#ff6ac1">&#34;code&#34;</span>: <span style="color:#ff9f43">5</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#ff6ac1">&#34;name&#34;</span>: <span style="color:#5af78e">&#34;notice&#34;</span>
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">&#34;facility&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#ff6ac1">&#34;code&#34;</span>: <span style="color:#ff9f43">1</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#ff6ac1">&#34;name&#34;</span>: <span style="color:#5af78e">&#34;user-level&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;data_stream&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">&#34;namespace&#34;</span>: <span style="color:#5af78e">&#34;default&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">&#34;type&#34;</span>: <span style="color:#5af78e">&#34;logs&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">&#34;dataset&#34;</span>: <span style="color:#5af78e">&#34;generic&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;@version&#34;</span>: <span style="color:#5af78e">&#34;1&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;host&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">&#34;ip&#34;</span>: <span style="color:#5af78e">&#34;172.18.0.5&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;event_source&#34;</span>: <span style="color:#5af78e">&#34;WindowsEvent&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;type&#34;</span>: <span style="color:#5af78e">&#34;syslog&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;event&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">&#34;Task&#34;</span>: <span style="color:#ff9f43">3</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">&#34;Category&#34;</span>: <span style="color:#5af78e">&#34;Network connection detected (rule: NetworkConnect)&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">&#34;Keywords&#34;</span>: <span style="color:#5af78e">&#34;-9223372036854775808&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">&#34;User&#34;</span>: <span style="color:#5af78e">&#34;NORTHPOLE\\elf_user02&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">&#34;EventType&#34;</span>: <span style="color:#5af78e">&#34;INFO&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">&#34;SourcePort&#34;</span>: <span style="color:#ff9f43">64543</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">&#34;Image&#34;</span>: <span style="color:#5af78e">&#34;C:\\Users\\elf_user02\\Downloads\\howtosavexmas\\howtosavexmas.pdf.exe&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">&#34;DestinationPort&#34;</span>: <span style="color:#ff9f43">8443</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">&#34;MoreDetails&#34;</span>: <span style="color:#5af78e">&#34;Network connection detected:&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">&#34;ProcessGuid&#34;</span>: <span style="color:#5af78e">&#34;{face0b26-426e-660c-eb0f-000000000700}&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">&#34;DestinationPortName&#34;</span>: <span style="color:#5af78e">&#34;-&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">&#34;Initiated&#34;</span>: <span style="color:#ff6ac1">true</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">&#34;DestinationIp&#34;</span>: <span style="color:#5af78e">&#34;103.12.187.43&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">&#34;Version&#34;</span>: <span style="color:#ff9f43">5</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">&#34;SeverityValue&#34;</span>: <span style="color:#ff9f43">2</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">&#34;UserID&#34;</span>: <span style="color:#5af78e">&#34;S-1-5-18&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">&#34;DestinationIsIpv6&#34;</span>: <span style="color:#ff6ac1">false</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">&#34;ProcessID&#34;</span>: <span style="color:#ff9f43">10014</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">&#34;RuleName&#34;</span>: <span style="color:#5af78e">&#34;Usermode&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">&#34;ProtocolText&#34;</span>: <span style="color:#5af78e">&#34;tcp&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">&#34;OpcodeValue&#34;</span>: <span style="color:#ff9f43">0</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">&#34;SourceModuleType&#34;</span>: <span style="color:#5af78e">&#34;im_msvistalog&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">&#34;Channel&#34;</span>: <span style="color:#5af78e">&#34;Microsoft-Windows-Sysmon/Operational&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">&#34;Hostname&#34;</span>: <span style="color:#5af78e">&#34;SleighRider.northpole.local&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">&#34;SourceName&#34;</span>: <span style="color:#5af78e">&#34;Microsoft-Windows-Sysmon&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">&#34;Severity&#34;</span>: <span style="color:#5af78e">&#34;INFO&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">&#34;SourceHostname&#34;</span>: <span style="color:#5af78e">&#34;SleighRider.northpole.local&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">&#34;AccountType&#34;</span>: <span style="color:#5af78e">&#34;User&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">&#34;DestinationHostname&#34;</span>: <span style="color:#5af78e">&#34;19.148.239.35.bc.googleusercontent.com&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">&#34;SourcePortName&#34;</span>: <span style="color:#5af78e">&#34;-&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">&#34;SourceModuleName&#34;</span>: <span style="color:#5af78e">&#34;inSysmon&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">&#34;ProviderGuid&#34;</span>: <span style="color:#5af78e">&#34;{5770385F-C22A-43E0-BF4C-06F5698FFBD9}&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">&#34;SourceIp&#34;</span>: <span style="color:#5af78e">&#34;172.24.25.12&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">&#34;SourceIsIpv6&#34;</span>: <span style="color:#ff6ac1">false</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">&#34;OpcodeDisplayNameText&#34;</span>: <span style="color:#5af78e">&#34;Info&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">&#34;ThreadID&#34;</span>: <span style="color:#ff9f43">5844</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">&#34;EventTime&#34;</span>: <span style="color:#5af78e">&#34;2024-09-15T14:37:51.000Z&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">&#34;EventID&#34;</span>: <span style="color:#ff9f43">3</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">&#34;ProcessId&#34;</span>: <span style="color:#ff9f43">8096</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">&#34;Domain&#34;</span>: <span style="color:#5af78e">&#34;NT AUTHORITY&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">&#34;RecordNumber&#34;</span>: <span style="color:#ff9f43">729</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">&#34;AccountName&#34;</span>: <span style="color:#5af78e">&#34;SYSTEM&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;tags&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#5af78e">&#34;match&#34;</span>
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">&#34;fields&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;event.DestinationIsIpv6&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">false</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;event.ProcessID&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#ff9f43">10014</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;event.SourcePortName&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#5af78e">&#34;-&#34;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;event.ProviderGuid&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#5af78e">&#34;{5770385F-C22A-43E0-BF4C-06F5698FFBD9}&#34;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;event_source&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#5af78e">&#34;WindowsEvent&#34;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;event.DestinationHostname&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#5af78e">&#34;19.148.239.35.bc.googleusercontent.com&#34;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;type&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#5af78e">&#34;syslog&#34;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;event.RecordNumber&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#ff9f43">729</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;event.Task&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#ff9f43">3</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;hostname&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#5af78e">&#34;SleighRider.northpole.local&#34;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;log.syslog.facility.name&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#5af78e">&#34;user-level&#34;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;event.AccountName&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#5af78e">&#34;SYSTEM&#34;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;event.SourcePort&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#ff9f43">64543</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;event.Channel&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#5af78e">&#34;Microsoft-Windows-Sysmon/Operational&#34;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;event.Domain&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#5af78e">&#34;NT AUTHORITY&#34;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;event.SourceName&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#5af78e">&#34;Microsoft-Windows-Sysmon&#34;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;log.syslog.severity.name&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#5af78e">&#34;notice&#34;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;event.ThreadID&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#ff9f43">5844</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;event.ProcessId&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#ff9f43">8096</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;log.syslog.severity.code&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#ff9f43">5</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;event.OpcodeValue&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#ff9f43">0</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;data_stream.type&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#5af78e">&#34;logs&#34;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;tags&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#5af78e">&#34;match&#34;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;event.DestinationPort&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#ff9f43">8443</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;event.DestinationIp&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#5af78e">&#34;103.12.187.43&#34;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;event.Initiated&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">true</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;event.RuleName&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#5af78e">&#34;Usermode&#34;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;event.Image&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#5af78e">&#34;C:\\Users\\elf_user02\\Downloads\\howtosavexmas\\howtosavexmas.pdf.exe&#34;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;event.Severity&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#5af78e">&#34;INFO&#34;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;event.DestinationPortName&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#5af78e">&#34;-&#34;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;event.Category&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#5af78e">&#34;Network connection detected (rule: NetworkConnect)&#34;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;event.Keywords&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#5af78e">&#34;-9223372036854775808&#34;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;event.EventID&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#ff9f43">3</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;event.UserID&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#5af78e">&#34;S-1-5-18&#34;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;event.ProtocolText&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#5af78e">&#34;tcp&#34;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;event.SourceModuleType&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#5af78e">&#34;im_msvistalog&#34;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;host.ip&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#5af78e">&#34;172.18.0.5&#34;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;event.SourceIp&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#5af78e">&#34;172.24.25.12&#34;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;event.User&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#5af78e">&#34;NORTHPOLE\\elf_user02&#34;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;event.MoreDetails&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#5af78e">&#34;Network connection detected:&#34;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;@version&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#5af78e">&#34;1&#34;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;event.SourceIsIpv6&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">false</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;event.AccountType&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#5af78e">&#34;User&#34;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;log.syslog.severity.name.text&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#5af78e">&#34;notice&#34;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;event.OpcodeDisplayNameText&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#5af78e">&#34;Info&#34;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;event.EventTime&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#5af78e">&#34;2024-09-15T14:37:51.000Z&#34;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;data_stream.namespace&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#5af78e">&#34;default&#34;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;event.Version&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#ff9f43">5</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;event.Hostname&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#5af78e">&#34;SleighRider.northpole.local&#34;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;event.SeverityValue&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#ff9f43">2</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;event.SourceModuleName&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#5af78e">&#34;inSysmon&#34;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;@timestamp&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#5af78e">&#34;2024-09-15T14:37:51.000Z&#34;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;event.SourceHostname&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#5af78e">&#34;SleighRider.northpole.local&#34;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;log.syslog.facility.name.text&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#5af78e">&#34;user-level&#34;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;data_stream.dataset&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#5af78e">&#34;generic&#34;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;event.EventType&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#5af78e">&#34;INFO&#34;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;event.ProcessGuid&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#5af78e">&#34;{face0b26-426e-660c-eb0f-000000000700}&#34;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;log.syslog.facility.code&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#ff9f43">1</span>
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>
+<p><strong>Question</strong> 9: The attacker escalated their privileges to the SYSTEM account by creating an inter-process communication (IPC) channel. Submit the alpha-numeric name for the IPC channel used by the attacker.</p>
+</li>
+<li>
+<p><em><strong>Answer</strong></em>: ddpvccdbr</p>
+</li>
+<li>
+<p><strong>Question</strong> 10: The attacker&rsquo;s process attempted to access a file. Submit the full and complete file path accessed by the attacker&rsquo;s process.</p>
+</li>
+<li>
+<p><em><strong>Answer</strong></em>: C:\Users\elf_user02\Desktop\kkringl315@10.12.25.24.pem</p>
+</li>
+<li>
+<p><strong>Question</strong> 11: The attacker attempted to use a secure protocol to connect to a remote system. What is the hostname of the target server?</p>
+</li>
+<li>
+<p><em><strong>Answer</strong></em>: kringleSSleigH</p>
+</li>
+<li>
+<p><strong>Question</strong> 12: The attacker created an account to establish their persistence on the Linux host. What is the name of the new account created by the attacker?</p>
+</li>
+<li>
+<p><em><strong>Answer</strong></em>:  ssdh</p>
+</li>
+<li>
+<p><strong>Question</strong> 13: The attacker wanted to maintain persistence on the Linux host they gained access to and executed multiple binaries to achieve their goal. What was the full CLI syntax of the binary the attacker executed after they created the new user account?</p>
+</li>
+<li>
+<p><em><strong>Answer</strong></em>: /usr/sbin/usermod -a -G sudo ssdh</p>
+</li>
+<li>
+<p><strong>Question</strong> 14: The attacker enumerated Active Directory using a well known tool to map our Active Directory domain over LDAP. Submit the full ISO8601 compliant timestamp when the first request of the data collection attack sequence was initially recorded against the domain controller.</p>
+</li>
+<li>
+<p><em><strong>Answer</strong></em>: 2024-09-16T11:10:12-04:00</p>
+</li>
+<li>
+<p>Note: <a href="https://www.manageengine.com/products/active-directory-audit/kb/system-events/event-id-2889.html"  class="external-link" target="_blank" rel="noopener">https://www.manageengine.com/products/active-directory-audit/kb/system-events/event-id-2889.html</a></p>
+</li>
+<li>
+<p><strong>Question</strong> 15: The attacker attempted to perform an ADCS ESC1 attack, but certificate services denied their certificate request. Submit the name of the software responsible for preventing this initial attack.</p>
+</li>
+<li>
+<p><em><strong>Answer</strong></em>: KringleGuard</p>
+</li>
+<li>
+<p><strong>Question</strong> 16: On what behalf certificate was successfully issued?</p>
+</li>
+<li>
+<p><em><strong>Answer</strong></em>: nutcrakr</p>
+</li>
+<li>
+<p><strong>Question</strong> 17: One of our file shares was accessed by the attacker using the elevated user account (from the AD-CS attack). Submit the folder name of the share they accessed.</p>
+</li>
+<li>
+<p><em><strong>Answer</strong></em>: WishLists</p>
+</li>
+<li>
+<p><strong>Question</strong> 18: The naughty attacker continued to use their privileged account to execute a PowerShell script to gain domain administrative privileges. What is the password for the account the attacker used in their attack payload?</p>
+</li>
+<li>
+<p><em><strong>Answer</strong></em>: fR0s3nF1@k3_s</p>
+</li>
+<li>
+<p>Note: worked only with local grep of log file, ELK is not properly parsing these events (4103).</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat log_chunk_2.log | grep nutcrakr | grep <span style="color:#5af78e">&#34;Domain Admins&#34;</span> -i
+</span></span></code></pre></div><ul>
+<li>
+<p><strong>Question</strong> 19: The attacker then used remote desktop to remotely access one of our domain computers. What is the full ISO8601 compliant UTC EventTime when they established this connection?</p>
+</li>
+<li>
+<p><em><strong>Answer</strong></em>: 2024-09-16T15:35:57.000Z</p>
+</li>
+<li>
+<p>Note: event.EventID : 4648</p>
+</li>
+<li>
+<p><strong>Question</strong> 20: The attacker is trying to create their own naughty and nice list! What is the full file path they created using their remote desktop connection?</p>
+</li>
+<li>
+<p><em><strong>Answer</strong></em>: C:\WishLists\santadms_only\its_my_fakelst.txt</p>
+</li>
+<li>
+<p><strong>Question</strong> 21: The Wombley faction has user accounts in our environment. How many unique Wombley faction users sent an email message within the domain?</p>
+</li>
+<li>
+<p><em><strong>Answer</strong></em>: 4</p>
+</li>
+<li>
+<p><strong>Question</strong> 22: The Alabaster faction also has some user accounts in our environment. How many emails were sent by the Alabaster users to the Wombley faction users?</p>
+</li>
+<li>
+<p><em><strong>Answer</strong></em>: 22</p>
+</li>
+<li>
+<p><strong>Question</strong> 23: Of all the reindeer, there are only nine. What&rsquo;s the full domain for the one whose nose does glow and shine? To help you narrow your search, search the events in the &lsquo;SnowGlowMailPxy&rsquo; event source.</p>
+</li>
+<li>
+<p><em><strong>Answer</strong></em>: rud01ph.glow</p>
+</li>
+<li>
+<p><strong>Question</strong> 24: With a fiery tail seen once in great years, what&rsquo;s the domain for the reindeer who flies without fears? To help you narrow your search, search the events in the &lsquo;SnowGlowMailPxy&rsquo; event source.</p>
+</li>
+<li>
+<p><em><strong>Answer</strong></em>: c0m3t.halleys</p>
+</li>
+</ul>
+
+      </div>
+
+
+      <footer>
+        
+
+<section class="see-also">
+  
+    
+    
+    
+      <h3 id="see-also-in-hhc24">
+        See also in HHC24
+        <a class="heading-link" href="#see-also-in-hhc24">
+          <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+          <span class="sr-only">Link to heading</span>
+        </a>
+      </h3>
+      <nav>
+        <ul>
+        
+        
+          
+            <li>
+              <a href="/blog/posts/hhc24/frostbitdeactivation/">HHC24 - Frostbit Deactivation</a>
+            </li>
+          
+        
+          
+        
+          
+            <li>
+              <a href="/blog/posts/hhc24/santavision/">HHC24 - SantaVision</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/blog/posts/hhc24/dronmagedon/">HHC24 - Dronmagedon</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/blog/posts/hhc24/powershell/">HHC24 - Powershell</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/blog/posts/hhc24/snowball-showdown/">HHC24 - Snowball-Showdown</a>
+            </li>
+          
+        
+        </ul>
+      </nav>
+    
+  
+</section>
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+    2025
+     ArmBraker 👨‍💻 
+    ·
+    
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/blog/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

@@ -18,7 +18,9 @@ categories = [
     "ReverseEngineering",
 ]
 externalLink = ""
-series = []
+series = [
+    "HHC24",
+]
 +++
 
 
@@ -192,7 +194,8 @@ SELECT * FROM access_cards LIMIT 1 OFFSET 41;
 
 - **Hint:** We got hint from previous challenge that we need to use HMAC to sign the card signature:
 
-  - In cyberchef I used following recipe: <https://gchq.github.io/CyberChef/#recipe=HMAC(%7B'option':'UTF8','string':'9ed1515819dec61fd361d5fdabb57f41ecce1a5fe1fe263b98c0d6943b9b232e'%7D,'SHA256')&input=MWMwNjAxOGI2LTVlODAtNDM5NS1hYjcxLWFlNTEyNDU2MDE4OQ>
+  - In CyberChef I used following recipe: 
+  <https://gchq.github.io/CyberChef/#recipe=HMAC(%7B'option':'UTF8','string':'9ed1515819dec61fd361d5fdabb57f41ecce1a5fe1fe263b98c0d6943b9b232e'%7D,'SHA256')&input=MWMwNjAxOGI2LTVlODAtNDM5NS1hYjcxLWFlNTEyNDU2MDE4OQ>
 
   - Modifying the access level (1) for card 42:
 

@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>
+  HHC24 - Dronmagedon · Journey into IT Knowledge
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="ArmBraker 👨‍💻">
+<meta name="description" content="OSINT/Web-based hacking challenge">
+<meta name="keywords" content="blog,knowledge,IT Security,hacking,personal,networking">
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="HHC24 - Dronmagedon">
+  <meta name="twitter:description" content="OSINT/Web-based hacking challenge">
+
+<meta property="og:url" content="https://armbraker.github.io/blog/posts/hhc24/dronmagedon/">
+  <meta property="og:site_name" content="Journey into IT Knowledge">
+  <meta property="og:title" content="HHC24 - Dronmagedon">
+  <meta property="og:description" content="OSINT/Web-based hacking challenge">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-01-26T14:58:44+01:00">
+    <meta property="article:modified_time" content="2025-01-26T14:58:44+01:00">
+    <meta property="article:tag" content="HHC24">
+    <meta property="article:tag" content="Sans">
+    <meta property="article:tag" content="CTF">
+      <meta property="og:see_also" content="https://armbraker.github.io/blog/posts/hhc24/frostbitdeactivation/">
+      <meta property="og:see_also" content="https://armbraker.github.io/blog/posts/hhc24/elfstack/">
+      <meta property="og:see_also" content="https://armbraker.github.io/blog/posts/hhc24/santavision/">
+      <meta property="og:see_also" content="https://armbraker.github.io/blog/posts/hhc24/powershell/">
+      <meta property="og:see_also" content="https://armbraker.github.io/blog/posts/hhc24/snowball-showdown/">
+      <meta property="og:see_also" content="https://armbraker.github.io/blog/posts/hhc24/hardwarehacking_101/">
+
+
+
+
+<link rel="canonical" href="https://armbraker.github.io/blog/posts/hhc24/dronmagedon/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/blog/css/coder.min.f04d4c2b3aa2d369dd0f02bc87d53b60d811a0f74526c9ef8a434ee3248b3606.css" integrity="sha256-8E1MKzqi02ndDwK8h9U7YNgRoPdFJsnvikNO4ySLNgY=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/blog/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="https://armbraker.github.io/blog/">
+      Journey into IT Knowledge
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/blog/">Home</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/blog/posts/">Blog</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/blog/about/">About</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://armbraker.github.io/blog/posts/hhc24/dronmagedon/">
+              HHC24 - Dronmagedon
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2025-01-26T14:58:44&#43;01:00">
+                January 26, 2025
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              5-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/blog/categories/writeup/">Writeup</a>
+      <span class="separator">•</span>
+    <a href="/blog/categories/osint/">OSINT</a>
+      <span class="separator">•</span>
+    <a href="/blog/categories/googleearth/">GoogleEarth</a>
+      <span class="separator">•</span>
+    <a href="/blog/categories/cartographic/">Cartographic</a>
+      <span class="separator">•</span>
+    <a href="/blog/categories/sqlinjection/">SQLinjection</a></div>
+
+          <div class="tags">
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/blog/tags/hhc24/">HHC24</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/blog/tags/sans/">Sans</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/blog/tags/ctf/">CTF</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <h2 id="introduction">
+  Introduction
+  <a class="heading-link" href="#introduction">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Elf give us a hint that we will work with GEO data in <code>.KML</code> file. This files can be imported into GIS programs or to well known Google Earth.</p>
+<h2 id="silver-">
+  Silver 🥈
+  <a class="heading-link" href="#silver-">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<h3 id="1-phase---login">
+  1 Phase - Login
+  <a class="heading-link" href="#1-phase---login">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>After uploading the file into Google Earth we got a &ldquo;password&rdquo; into web application: <code>GUMDROP1</code>.
+The username for the application is also stored in the <code>.KML</code> file :</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#ff6ac1">&lt;name&gt;</span>fritjolf-Path<span style="color:#ff6ac1">&lt;/name&gt;</span>
+</span></span></code></pre></div><p>The username is: <code>fritjolf</code></p>
+<p>Now we are Authenticated.</p>
+<h3 id="2-phase">
+  2 Phase
+  <a class="heading-link" href="#2-phase">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>We found a CSV file in pilot profile.
+The file contains some coordinates, so lets create our own KML file:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#78787e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&lt;kml</span> <span style="color:#57c7ff">xmlns=</span><span style="color:#5af78e">&#34;http://www.opengis.net/kml/2.2&#34;</span> <span style="color:#57c7ff">xmlns:gx=</span><span style="color:#5af78e">&#34;http://www.google.com/kml/ext/2.2&#34;</span> <span style="color:#57c7ff">xmlns:kml=</span><span style="color:#5af78e">&#34;http://www.opengis.net/kml/2.2&#34;</span> <span style="color:#57c7ff">xmlns:atom=</span><span style="color:#5af78e">&#34;http://www.w3.org/2005/Atom&#34;</span><span style="color:#ff6ac1">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&lt;Document&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&lt;name&gt;</span>fritjolf-Path<span style="color:#ff6ac1">&lt;/name&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&lt;gx:CascadingStyle</span> <span style="color:#57c7ff">kml:id=</span><span style="color:#5af78e">&#34;__managed_style_2398E937F13251C4AAA6&#34;</span><span style="color:#ff6ac1">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">&lt;Style&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">&lt;IconStyle&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#ff6ac1">&lt;scale&gt;</span>1.2<span style="color:#ff6ac1">&lt;/scale&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#ff6ac1">&lt;Icon&gt;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#ff6ac1">&lt;href&gt;</span>https://earth.google.com/earth/rpc/cc/icon?color=1976d2&amp;amp;id=2000&amp;amp;scale=4<span style="color:#ff6ac1">&lt;/href&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#ff6ac1">&lt;/Icon&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#ff6ac1">&lt;hotSpot</span> <span style="color:#57c7ff">x=</span><span style="color:#5af78e">&#34;64&#34;</span> <span style="color:#57c7ff">y=</span><span style="color:#5af78e">&#34;128&#34;</span> <span style="color:#57c7ff">xunits=</span><span style="color:#5af78e">&#34;pixels&#34;</span> <span style="color:#57c7ff">yunits=</span><span style="color:#5af78e">&#34;insetPixels&#34;</span><span style="color:#ff6ac1">/&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">&lt;/IconStyle&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">&lt;LabelStyle&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">&lt;/LabelStyle&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">&lt;LineStyle&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#ff6ac1">&lt;color&gt;</span>ff2dc0fb<span style="color:#ff6ac1">&lt;/color&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#ff6ac1">&lt;width&gt;</span>6<span style="color:#ff6ac1">&lt;/width&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">&lt;/LineStyle&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">&lt;PolyStyle&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#ff6ac1">&lt;color&gt;</span>40ffffff<span style="color:#ff6ac1">&lt;/color&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">&lt;/PolyStyle&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">&lt;BalloonStyle&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#ff6ac1">&lt;displayMode&gt;</span>hide<span style="color:#ff6ac1">&lt;/displayMode&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">&lt;/BalloonStyle&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">&lt;/Style&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&lt;/gx:CascadingStyle&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&lt;gx:CascadingStyle</span> <span style="color:#57c7ff">kml:id=</span><span style="color:#5af78e">&#34;__managed_style_177256F1433251C4AAA6&#34;</span><span style="color:#ff6ac1">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">&lt;Style&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">&lt;IconStyle&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#ff6ac1">&lt;Icon&gt;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#ff6ac1">&lt;href&gt;</span>https://earth.google.com/earth/rpc/cc/icon?color=1976d2&amp;amp;id=2000&amp;amp;scale=4<span style="color:#ff6ac1">&lt;/href&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#ff6ac1">&lt;/Icon&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#ff6ac1">&lt;hotSpot</span> <span style="color:#57c7ff">x=</span><span style="color:#5af78e">&#34;64&#34;</span> <span style="color:#57c7ff">y=</span><span style="color:#5af78e">&#34;128&#34;</span> <span style="color:#57c7ff">xunits=</span><span style="color:#5af78e">&#34;pixels&#34;</span> <span style="color:#57c7ff">yunits=</span><span style="color:#5af78e">&#34;insetPixels&#34;</span><span style="color:#ff6ac1">/&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">&lt;/IconStyle&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">&lt;LabelStyle&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">&lt;/LabelStyle&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">&lt;LineStyle&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#ff6ac1">&lt;color&gt;</span>ff2dc0fb<span style="color:#ff6ac1">&lt;/color&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#ff6ac1">&lt;width&gt;</span>4<span style="color:#ff6ac1">&lt;/width&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">&lt;/LineStyle&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">&lt;PolyStyle&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#ff6ac1">&lt;color&gt;</span>40ffffff<span style="color:#ff6ac1">&lt;/color&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">&lt;/PolyStyle&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">&lt;BalloonStyle&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#ff6ac1">&lt;displayMode&gt;</span>hide<span style="color:#ff6ac1">&lt;/displayMode&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">&lt;/BalloonStyle&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">&lt;/Style&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&lt;/gx:CascadingStyle&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&lt;StyleMap</span> <span style="color:#57c7ff">id=</span><span style="color:#5af78e">&#34;__managed_style_08C7CAFB983251C4AAA6&#34;</span><span style="color:#ff6ac1">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">&lt;Pair&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">&lt;key&gt;</span>normal<span style="color:#ff6ac1">&lt;/key&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">&lt;styleUrl&gt;</span>#__managed_style_177256F1433251C4AAA6<span style="color:#ff6ac1">&lt;/styleUrl&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">&lt;/Pair&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">&lt;Pair&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">&lt;key&gt;</span>highlight<span style="color:#ff6ac1">&lt;/key&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">&lt;styleUrl&gt;</span>#__managed_style_2398E937F13251C4AAA6<span style="color:#ff6ac1">&lt;/styleUrl&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">&lt;/Pair&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&lt;/StyleMap&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&lt;Placemark</span> <span style="color:#57c7ff">id=</span><span style="color:#5af78e">&#34;06AEB73AFD323DB38AEB&#34;</span><span style="color:#ff6ac1">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">&lt;name&gt;</span>fritjolf-Path<span style="color:#ff6ac1">&lt;/name&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">&lt;LookAt&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">&lt;longitude&gt;</span>98.45958448116764<span style="color:#ff6ac1">&lt;/longitude&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">&lt;latitude&gt;</span>-86.34782448283728<span style="color:#ff6ac1">&lt;/latitude&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">&lt;altitude&gt;</span>3933.282925076723<span style="color:#ff6ac1">&lt;/altitude&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">&lt;heading&gt;</span>266.5424437916514<span style="color:#ff6ac1">&lt;/heading&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">&lt;tilt&gt;</span>0<span style="color:#ff6ac1">&lt;/tilt&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">&lt;gx:fovy&gt;</span>35<span style="color:#ff6ac1">&lt;/gx:fovy&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">&lt;range&gt;</span>5615503.459923863<span style="color:#ff6ac1">&lt;/range&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">&lt;altitudeMode&gt;</span>absolute<span style="color:#ff6ac1">&lt;/altitudeMode&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">&lt;/LookAt&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">&lt;styleUrl&gt;</span>#__managed_style_08C7CAFB983251C4AAA6<span style="color:#ff6ac1">&lt;/styleUrl&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">&lt;LineString&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">&lt;coordinates&gt;</span>
+</span></span><span style="display:flex;"><span>                144.8567879816271,-37.42277804382341,329.1721074691694 
+</span></span><span style="display:flex;"><span>                142.4357677725014,-38.0569169391843,136.9853073940529 
+</span></span><span style="display:flex;"><span>                143.9329094555584,-37.80217469906655,377.501624914929 
+</span></span><span style="display:flex;"><span>                142.2754454646221,-38.0682499155867,143.2939472276593 
+</span></span><span style="display:flex;"><span>                141.756352258091,-34.52324587244343,61.14087621810435 
+</span></span><span style="display:flex;"><span>                145.513859306511,-36.74357572393437,168.6693280467137 
+</span></span><span style="display:flex;"><span>                144.745994150535,-37.89721189352699,4.240033669814256 
+</span></span><span style="display:flex;"><span>                145.8966329539992,-37.00702150480869,303.1828443856635
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">&lt;/coordinates&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">&lt;/LineString&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&lt;/Placemark&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&lt;/Document&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&lt;/kml&gt;</span>
+</span></span></code></pre></div><ul>
+<li>Importing to Google Earth, it will create a new flying&rsquo;s coordinates.
+After looking into the new map, we noticed that each point is hiding some letters:</li>
+</ul>
+<p><code>K,w,A,H,I,E,L,F</code></p>
+<ul>
+<li>Seems that the string doesn&rsquo;t make any sense, lets follow the coordinates in order:
+<code>E-FLHAWK</code></li>
+<li>The string still doesn&rsquo;t make any sense, may I make a typo, but in shor iteration I found a correct name:
+<code>ELF-HAWK</code></li>
+<li>Drone details:</li>
+</ul>
+<pre tabindex="0"><code>Name: ELF-HAWK, Quantity: 40, Weapons: Snowball-launcher
+Comments for ELF-HAWK
+These drones will work great to find Alabasters snowball warehouses. I have hid the activation code in the dataset ELF-HAWK-dump.csv. We need to keep it safe, for now it&#39;s under /files/secret.
+We need to make sure we have enough of these drones ready for the upcoming operation. Well done on hiding the activation code in the dataset. If anyone finds it, it will take them a LONG time or forever to carve the data out, preferably the LATTER.
+</code></pre><p><code>https://hhc24-dronepath.holidayhackchallenge.com/files/secret/ELF-HAWK-dump.csv</code></p>
+<ul>
+<li>
+<p>Examine the CSV and found the same patter of Admin Code hidden in coordinates. I used Query tool of CSV Rainbow and extract these coordinated and create a new KML file from previous template. After importing this KML file into Google Earth and noticed that coordinates are re-written on 3D model of planet, so I tried to look for another online GIS tool which created me a flat 2D model of flight patter on 2D map.</p>
+</li>
+<li>
+<p>Admin password for Silver medal 🥈 was: <code>DroneDataAnalystExpertMedal</code></p>
+</li>
+</ul>
+<h3 id="gold">
+  GOLD
+  <a class="heading-link" href="#gold">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<ul>
+<li>SQLinjection in workshop&rsquo; endpoint:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span>ELF<span style="color:#ff6ac1">-</span>HAWK<span style="color:#5af78e">&#39;OR &#39;</span><span style="color:#ff9f43">1</span><span style="color:#5af78e">&#39; = &#39;</span><span style="color:#ff9f43">1</span>
+</span></span></code></pre></div><ul>
+<li>Reveals all drons&rsquo; names:</li>
+</ul>
+<p><strong>Name</strong>: ELF-HAWK, Quantity: 40, Weapons: Snowball-launcher
+<strong>Name</strong>: Pigeon-Lookalike-v4, Quantity: 20, Weapons: Surveillance Camera
+<strong>Name</strong>: FlyingZoomer, Quantity: 4, Weapons: Snowball-Dropper
+<strong>Name</strong>: Zapper, Quantity: 5, Weapons: CarrotSpike</p>
+<ul>
+<li>Comments for each drone:</li>
+</ul>
+<p><em><strong>Comments for Pigeon-Lookalike-v4</strong></em></p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>This is a great drone for surveillance, but we need to keep it out of the rain.
+</span></span><span style="display:flex;"><span>I cant believe we are using pigeons for surveillance. If anyone finds out, there will most likely be a conspiracy theory about it.
+</span></span><span style="display:flex;"><span>I heard a rumor that there is something fishing with some of the files. There was some talk about only TRUE carvers would find secrets and that FALSE ones would never find it.
+</span></span></code></pre></div><p><em><strong>Comments for FlyingZoomer</strong></em></p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>This drone is perfect for dropping snowballs on unsuspecting targets
+</span></span></code></pre></div><p><em><strong>Comments for Zapper</strong></em></p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>This is sort of primitive, but it works!
+</span></span></code></pre></div><ul>
+<li>
+<p>From comments of Pigeon-Lookalike-v4 <code>I heard a rumor that there is something fishing with some of the files. There was some talk about only TRUE carvers would find secrets and that FALSE ones would never find it.</code> I know that I have to look into already provided files and looks for <code>True</code> or <code>False</code> values.</p>
+</li>
+<li>
+<p>The latest obtained file <code>ELF-HAWK-dump.csv</code> contains lots of columns with <code>True</code> or <code>False</code> values.</p>
+</li>
+<li>
+<p>After couple of hours, I figure out the meaning of the HINT. I need to replace the True and False with Binary representations of the values (0,1).</p>
+</li>
+<li>
+<p>Excel or Google Docs are great tools for this.</p>
+</li>
+<li>
+<p>After a clean up of the .CSV and transfiguration of Booleans, I copied the values into CyberChef with following recipe: <a href="https://gchq.github.io/CyberChef/#recipe=From_Binary%28%27None%27,8%29Unicode_Text_Format%28false,false%29Remove_null_bytes%28%29&amp;oenc=65001&amp;ieol=CRLF"  class="external-link" target="_blank" rel="noopener">https://gchq.github.io/CyberChef/#recipe=From_Binary('None',8)Unicode_Text_Format(false,false)Remove_null_bytes()&oenc=65001&ieol=CRLF</a></p>
+</li>
+<li>
+<p>The result was ASCII art:</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+</span></span><span style="display:flex;"><span>:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+</span></span><span style="display:flex;"><span>:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+</span></span><span style="display:flex;"><span>::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*::::::::::::::::::
+</span></span><span style="display:flex;"><span>:::::::::::::::::::::::::::::::-------------=--------::::::::::::::::::::::::::::::::::::
+</span></span><span style="display:flex;"><span>::::::::::::::::::::::------------------------===-=======--=-::::::::::-:::::::::::::::::
+</span></span><span style="display:flex;"><span>::::::::::::::::::::------------:------------=-====================---:::::::::=+::::::::
+</span></span><span style="display:flex;"><span>:::::::::::::::::------------------------------=====================-------::::::::::::::
+</span></span><span style="display:flex;"><span>::::::::::::::-------------------------------------================:------:::::::::::::::
+</span></span><span style="display:flex;"><span>::::::::::::--------------------------------------==============-::--------:::::::::-::::
+</span></span><span style="display:flex;"><span>::::::::::::-------:--------@+:::::::::--=@--------:===========-::-::----==---:::::::::::
+</span></span><span style="display:flex;"><span>::::-------:::::----------@---::::::---+-==+@--------=========-:--:------=====---::::::::
+</span></span><span style="display:flex;"><span>::::--------::::::-------#--------------=-+@------------===------::-----====--==---::::::
+</span></span><span style="display:flex;"><span>::::-------:-:::::::------@=@=++#+++++@@@@@=-----------------:::--------------==---::::::
+</span></span><span style="display:flex;"><span>::::----------::::=-#-:----**%@+++++++%@@=::::::---%@------:--------:--@-+::-------::::::
+</span></span><span style="display:flex;"><span>::::-----:----:::::::::::--::@@**%@--::::::::::::::--=+@------------@--:::::------@::::::
+</span></span><span style="display:flex;"><span>::::---+@::::::---+@:::::::::#@-@--:::::-:=*=-::-----=+*=*=--------@:--:::::::-----=:::::
+</span></span><span style="display:flex;"><span>::::@-:::-::::::-----=@:-:::@+@%---------------==-==+@@@@@=@------@---------:::::--==+%::
+</span></span><span style="display:flex;"><span>:::#:::::::::::-----=+*@:::%#@#-=---------===++*%@@+@=+*#-+*=@-----#====-----------**-%::
+</span></span><span style="display:flex;"><span>::@--::-:::--:---==++*@-:@=+@=+-@=*+++++++**@#%*@-##**-@##%=#%@@@@#*@###@=+**@*****@@@:::
+</span></span><span style="display:flex;"><span>:::@*=--++++++++**@@@@@@*#@-+%@*=*+****@@@+@***@%@@%%%@-%@*@@@@@@@@@@@@@@%%#%%%@@@@@%::::
+</span></span><span style="display:flex;"><span>:::@@@@@@@++#*####@@@@@@@==---====+##@*%=+@*@*%%@@@@@@@@@@@@@@@=--@+@@@@+@@@@@@@@@@-:::::
+</span></span><span style="display:flex;"><span>::::=*%%%%%%%%%%%@@%@@#@-#*+++++====@-++###@%@*@@@@+@@@@-**+--::::--@@%@%%@%%%%%@@@-:::::
+</span></span><span style="display:flex;"><span>::::---@@@@##@@@@@@@@@--+@%-#+#**+=+++**%@@@@@@@##%**%--:::::::--*----=*@@@@@@@*@@---::::
+</span></span><span style="display:flex;"><span>::::---@@***%%%%@@@@*@-=-+=@#=#%##***##@@@@@#@@*@%%==---:::::::::::----=+---------=--::::
+</span></span><span style="display:flex;"><span>::::----@+=%#@@@=@@-----##@+:-=%@@%##%@@@@@@@@@@@@*+=-----::::::::::::=+*-@:----===--::::
+</span></span><span style="display:flex;"><span>::::---------------------*@##=+@@%@==-+@@@@@@@@@@@-+=---------------===+**--=======-:::::
+</span></span><span style="display:flex;"><span>:::---------------:------%+#%@@@@@#%%%%@@@@#@@@@@@@-+======---------==***#@========-:::::
+</span></span><span style="display:flex;"><span>:::-%-%---------:---------*-*##%@@@@@@@@@@@@@@@@@--=@@-*===++++++++++***@*===++++++=-::::
+</span></span><span style="display:flex;"><span>:::--+---------=-------:-----#==#@%%%@@@@@*@%@@@----@+@@@=***@@@@***@@@@%===++++-++=-::::
+</span></span><span style="display:flex;"><span>:::--------------:::::--------------##-----@@--------@%@#@@%%%%@@@@@@#@=====+++++++=-::::
+</span></span><span style="display:flex;"><span>:::---------------::::::---------------------=====---@@##@@@@@@@@@@@#%#-=====+++++--:::::
+</span></span><span style="display:flex;"><span>:::---======-------------------------=----==========--*=@@%@++*@@%%%@@-======:----==-::::
+</span></span><span style="display:flex;"><span>:::---===============------------------===============-----#@@@@@-----===-::---=====-::::
+</span></span><span style="display:flex;"><span>:::--=============+===--------------===-==================--------======::----=======-:::
+</span></span><span style="display:flex;"><span>:::--================---::::-=======-======================+=====+====::------===+===-:::
+</span></span><span style="display:flex;"><span>:::--===================--:::::====================+====-:---==+++=::-----=======---=-:::
+</span></span><span style="display:flex;"><span>:::--========:===========------:=====================:::-----====:-----==========+===-:::
+</span></span><span style="display:flex;"><span> / ___/ _ \|  _ \| ____\ \      / / _ \|  _ \|  _ \   _____  ====:-----==========+===-:::
+</span></span><span style="display:flex;"><span>| |  | | | | | | |  _|  \ \ /\ / / | | | |_) | | | | |_____| ====:-----==========+===-:::
+</span></span><span style="display:flex;"><span>| |__| |_| | |_| | |___  \ V  V /| |_| |  _ &lt;| |_| | |_____| ====:-----==========+===-:::
+</span></span><span style="display:flex;"><span> \____\___/|____/|_____|__\_/\_/__\___/|_| \_\____/  _  _________   ______    _    ____  
+</span></span><span style="display:flex;"><span>| ____\ \/ /  _ \| ____|  _ \_   _|_   _| | | |  _ \| |/ / ____\ \ / / ___|  / \  |  _ \ 
+</span></span><span style="display:flex;"><span>|  _|  \  /| |_) |  _| | |_) || |   | | | | | | |_) | &#39; /|  _|  \ V / |     / _ \ | |_) |
+</span></span><span style="display:flex;"><span>| |___ /  \|  __/| |___|  _ &lt; | |   | | | |_| |  _ &lt;| . \| |___  | || |___ / ___ \|  _ &lt; 
+</span></span><span style="display:flex;"><span>|_____/_/\_\_| __|_____|_|_\_\|_| __|_|  \___/|_| \_\_|\_\_____| |_| \____/_/   \_\_| \_\
+</span></span><span style="display:flex;"><span>\ \   / / ____|  _ \|  \/  | ____|  _ \  / \  | |    ==========---======++++=+=--+++=-:::
+</span></span><span style="display:flex;"><span> \ \ / /|  _| | |_) | |\/| |  _| | | | |/ _ \ | |    ==========---======++++=+=--+++=-:::
+</span></span><span style="display:flex;"><span>  \ V / | |___|  _ &lt;| |  | | |___| |_| / ___ \| |___ ==========---======++++=+=--+++=-:::
+</span></span><span style="display:flex;"><span>   \_/  |_____|_| \_\_|  |_|_____|____/_/   \_\_____|==========---======++++=+=--+++=-:::
+</span></span><span style="display:flex;"><span>::::--====+++=---++++++=+========------::::=-:---==============---======++++=+=--+++=-:::
+</span></span><span style="display:flex;"><span>::::--==+++++++==---+++++++++++========-----================++++==-========-++=++====-:::
+</span></span><span style="display:flex;"><span>:::::--====+++++-++--++++++++++=--------=-==============+++---------=====++=+++++::::::::
+</span></span><span style="display:flex;"><span>::::::::======+++=+++=+++++++++++++++=++++===========++++:-------=---=-=----:::::::::::::
+</span></span><span style="display:flex;"><span>::::::::::::::::--=-=======++=++++++++++++++============--------------:::::::::::::::::::
+</span></span><span style="display:flex;"><span>:::::::::::::::::::::::::::------===-==-===-==-----::-:::::::::::::::::::::::::::::::::::
+</span></span><span style="display:flex;"><span>:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+</span></span><span style="display:flex;"><span>:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+</span></span></code></pre></div><ul>
+<li>Admin password for GOLD 🥇 was <code>EXPERTTURKEYCARVERMEDAL</code></li>
+</ul>
+
+      </div>
+
+
+      <footer>
+        
+
+<section class="see-also">
+  
+    
+    
+    
+      <h3 id="see-also-in-hhc24">
+        See also in HHC24
+        <a class="heading-link" href="#see-also-in-hhc24">
+          <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+          <span class="sr-only">Link to heading</span>
+        </a>
+      </h3>
+      <nav>
+        <ul>
+        
+        
+          
+            <li>
+              <a href="/blog/posts/hhc24/frostbitdeactivation/">HHC24 - Frostbit Deactivation</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/blog/posts/hhc24/elfstack/">HHC24 - ElfStack</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/blog/posts/hhc24/santavision/">HHC24 - SantaVision</a>
+            </li>
+          
+        
+          
+        
+          
+            <li>
+              <a href="/blog/posts/hhc24/powershell/">HHC24 - Powershell</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/blog/posts/hhc24/snowball-showdown/">HHC24 - Snowball-Showdown</a>
+            </li>
+          
+        
+        </ul>
+      </nav>
+    
+  
+</section>
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+    2025
+     ArmBraker 👨‍💻 
+    ·
+    
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/blog/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

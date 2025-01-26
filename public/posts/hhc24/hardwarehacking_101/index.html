@@ -34,6 +34,12 @@
     <meta property="article:tag" content="HHC24">
     <meta property="article:tag" content="Sans">
     <meta property="article:tag" content="CTF">
+      <meta property="og:see_also" content="https://armbraker.github.io/blog/posts/hhc24/frostbitdeactivation/">
+      <meta property="og:see_also" content="https://armbraker.github.io/blog/posts/hhc24/elfstack/">
+      <meta property="og:see_also" content="https://armbraker.github.io/blog/posts/hhc24/santavision/">
+      <meta property="og:see_also" content="https://armbraker.github.io/blog/posts/hhc24/dronmagedon/">
+      <meta property="og:see_also" content="https://armbraker.github.io/blog/posts/hhc24/powershell/">
+      <meta property="og:see_also" content="https://armbraker.github.io/blog/posts/hhc24/snowball-showdown/">
 
 
 
@@ -48,7 +54,7 @@
 
   
   
-  <link rel="stylesheet" href="/blog/css/coder.min.bb7a78bfb4e57aba6e78691ce9ad3fef35238fff2f55149e48bb3c43becd260c.css" integrity="sha256-u3p4v7TlerpueGkc6a0/7zUjj/8vVRSeSLs8Q77NJgw=" crossorigin="anonymous" media="screen" />
+  <link rel="stylesheet" href="/blog/css/coder.min.f04d4c2b3aa2d369dd0f02bc87d53b60d811a0f74526c9ef8a434ee3248b3606.css" integrity="sha256-8E1MKzqi02ndDwK8h9U7YNgRoPdFJsnvikNO4ySLNgY=" crossorigin="anonymous" media="screen" />
 
 
 
@@ -203,100 +209,100 @@
   </a>
 </h2>
 <p>We need to access the terminal and modify the access database. We&rsquo;re looking to grant access to card number 42.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">--------------------------------------------------------
-</span></span><span class="line"><span class="cl">                   ___     _      _  _   
-</span></span><span class="line"><span class="cl">                  / __<span class="p">|</span>   <span class="p">|</span> <span class="p">|</span>    <span class="p">|</span> <span class="o">||</span> <span class="p">|</span>  
-</span></span><span class="line"><span class="cl">                  <span class="se">\_</span>_ <span class="se">\ </span>  <span class="p">|</span> <span class="p">|</span>__  <span class="p">|</span> __ <span class="p">|</span>  
-</span></span><span class="line"><span class="cl">                  <span class="p">|</span>___/   <span class="p">|</span>____<span class="p">|</span> <span class="p">|</span>_<span class="o">||</span>_<span class="p">|</span>  
-</span></span><span class="line"><span class="cl">                _<span class="p">|</span><span class="s2">&#34;&#34;&#34;&#34;&#34;|_|&#34;&#34;&#34;&#34;&#34;</span><span class="p">|</span>_<span class="p">|</span><span class="s2">&#34;&#34;&#34;&#34;&#34;| 
-</span></span></span><span class="line"><span class="cl"><span class="s2">                &#34;</span><span class="sb">`</span>-0-0-<span class="s1">&#39;&#34;`-0-0-&#39;</span><span class="s2">&#34;`-0-0-&#39; 
-</span></span></span><span class="line"><span class="cl"><span class="s2">--------------------------------------------------------
-</span></span></span><span class="line"><span class="cl"><span class="s2">  Santa&#39;s Little Helper - Access Card Maintenance Tool
-</span></span></span><span class="line"><span class="cl"><span class="s2">
-</span></span></span><span class="line"><span class="cl"><span class="s2">          Tool Name: slh
-</span></span></span><span class="line"><span class="cl"><span class="s2">
-</span></span></span><span class="line"><span class="cl"><span class="s2">options:
-</span></span></span><span class="line"><span class="cl"><span class="s2">  -h, --help            show this help message and exit
-</span></span></span><span class="line"><span class="cl"><span class="s2">  --view-config         View current configuration.
-</span></span></span><span class="line"><span class="cl"><span class="s2">  --view-cards          View current values of all access cards.
-</span></span></span><span class="line"><span class="cl"><span class="s2">  --view-card ID        View a single access card by ID.
-</span></span></span><span class="line"><span class="cl"><span class="s2">  --set-access ACCESS_LEVEL
-</span></span></span><span class="line"><span class="cl"><span class="s2">                        Set access level of access card. Must be 0 (No Access) or 1 (Full Access).
-</span></span></span><span class="line"><span class="cl"><span class="s2">  --id ID               ID of card to modify.
-</span></span></span><span class="line"><span class="cl"><span class="s2">  --passcode PASSCODE   Passcode to make changes.
-</span></span></span><span class="line"><span class="cl"><span class="s2">  --new-card            Generate a new card ID.
-</span></span></span><span class="line"><span class="cl"><span class="s2">--------------------------------------------------------
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>--------------------------------------------------------
+</span></span><span style="display:flex;"><span>                   ___     _      _  _   
+</span></span><span style="display:flex;"><span>                  / __|   | |    | <span style="color:#ff6ac1">||</span> |  
+</span></span><span style="display:flex;"><span>                  <span style="color:#5af78e">\_</span>_ <span style="color:#5af78e">\ </span>  | |__  | __ |  
+</span></span><span style="display:flex;"><span>                  |___/   |____| |_<span style="color:#ff6ac1">||</span>_|  
+</span></span><span style="display:flex;"><span>                _|<span style="color:#5af78e">&#34;&#34;&#34;&#34;&#34;|_|&#34;&#34;&#34;&#34;&#34;</span>|_|<span style="color:#5af78e">&#34;&#34;&#34;&#34;&#34;| 
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">                &#34;</span><span style="color:#5af78e">`</span>-0-0-<span style="color:#5af78e">&#39;&#34;`-0-0-&#39;</span><span style="color:#5af78e">&#34;`-0-0-&#39; 
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">--------------------------------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">  Santa&#39;s Little Helper - Access Card Maintenance Tool
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">          Tool Name: slh
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">options:
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">  -h, --help            show this help message and exit
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">  --view-config         View current configuration.
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">  --view-cards          View current values of all access cards.
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">  --view-card ID        View a single access card by ID.
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">  --set-access ACCESS_LEVEL
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">                        Set access level of access card. Must be 0 (No Access) or 1 (Full Access).
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">  --id ID               ID of card to modify.
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">  --passcode PASSCODE   Passcode to make changes.
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">  --new-card            Generate a new card ID.
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">--------------------------------------------------------
 </span></span></span></code></pre></div><ul>
 <li>History command revealed following information:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">   <span class="m">1</span>  <span class="nb">cd</span> /var/www/html
-</span></span><span class="line"><span class="cl">    <span class="m">2</span>  ls -l
-</span></span><span class="line"><span class="cl">    <span class="m">3</span>  sudo nano index.html
-</span></span><span class="line"><span class="cl">    <span class="m">4</span>  <span class="nb">cd</span> ..
-</span></span><span class="line"><span class="cl">    <span class="m">5</span>  rm -rf repo
-</span></span><span class="line"><span class="cl">    <span class="m">6</span>  sudo apt update
-</span></span><span class="line"><span class="cl">    <span class="m">7</span>  sudo apt upgrade -y
-</span></span><span class="line"><span class="cl">    <span class="m">8</span>  ping 1.1.1.1
-</span></span><span class="line"><span class="cl">    <span class="m">9</span>  slh --help
-</span></span><span class="line"><span class="cl">   <span class="m">10</span>  slg --config
-</span></span><span class="line"><span class="cl">   <span class="m">11</span>  slh --passcode CandyCaneCrunch77 --set-access <span class="m">1</span> --id <span class="m">143</span>
-</span></span><span class="line"><span class="cl">   <span class="m">12</span>  df -h
-</span></span><span class="line"><span class="cl">   <span class="m">13</span>  top
-</span></span><span class="line"><span class="cl">   <span class="m">14</span>  ps aux <span class="p">|</span> grep apache
-</span></span><span class="line"><span class="cl">   <span class="m">15</span>  sudo systemctl restart apache2
-</span></span><span class="line"><span class="cl">   <span class="m">16</span>  <span class="nb">history</span> <span class="p">|</span> grep ssh
-</span></span><span class="line"><span class="cl">   <span class="m">17</span>  clear
-</span></span><span class="line"><span class="cl">   <span class="m">18</span>  whoami
-</span></span><span class="line"><span class="cl">   <span class="m">19</span>  crontab -e
-</span></span><span class="line"><span class="cl">   <span class="m">20</span>  crontab -l
-</span></span><span class="line"><span class="cl">   <span class="m">21</span>  <span class="nb">alias</span> <span class="nv">ll</span><span class="o">=</span><span class="s1">&#39;ls -lah&#39;</span>
-</span></span><span class="line"><span class="cl">   <span class="m">22</span>  <span class="nb">unalias</span> ll
-</span></span><span class="line"><span class="cl">   <span class="m">23</span>  <span class="nb">echo</span> <span class="s2">&#34;Hello, World!&#34;</span>
-</span></span><span class="line"><span class="cl">   <span class="m">24</span>  cat /etc/passwd
-</span></span><span class="line"><span class="cl">   <span class="m">25</span>  sudo tail -f /var/log/syslog
-</span></span><span class="line"><span class="cl">   <span class="m">26</span>  mv archive.tar.gz /backup/
-</span></span><span class="line"><span class="cl">   <span class="m">27</span>  rm archive.tar.gz
-</span></span><span class="line"><span class="cl">   <span class="m">28</span>  find / -name <span class="s2">&#34;*.log&#34;</span>
-</span></span><span class="line"><span class="cl">   <span class="m">29</span>  grep <span class="s2">&#34;error&#34;</span> /var/log/apache2/error.log
-</span></span><span class="line"><span class="cl">   <span class="m">30</span>  <span class="nb">history</span>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>   <span style="color:#ff9f43">1</span>  <span style="color:#ff5c57">cd</span> /var/www/html
+</span></span><span style="display:flex;"><span>    <span style="color:#ff9f43">2</span>  ls -l
+</span></span><span style="display:flex;"><span>    <span style="color:#ff9f43">3</span>  sudo nano index.html
+</span></span><span style="display:flex;"><span>    <span style="color:#ff9f43">4</span>  <span style="color:#ff5c57">cd</span> ..
+</span></span><span style="display:flex;"><span>    <span style="color:#ff9f43">5</span>  rm -rf repo
+</span></span><span style="display:flex;"><span>    <span style="color:#ff9f43">6</span>  sudo apt update
+</span></span><span style="display:flex;"><span>    <span style="color:#ff9f43">7</span>  sudo apt upgrade -y
+</span></span><span style="display:flex;"><span>    <span style="color:#ff9f43">8</span>  ping 1.1.1.1
+</span></span><span style="display:flex;"><span>    <span style="color:#ff9f43">9</span>  slh --help
+</span></span><span style="display:flex;"><span>   <span style="color:#ff9f43">10</span>  slg --config
+</span></span><span style="display:flex;"><span>   <span style="color:#ff9f43">11</span>  slh --passcode CandyCaneCrunch77 --set-access <span style="color:#ff9f43">1</span> --id <span style="color:#ff9f43">143</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#ff9f43">12</span>  df -h
+</span></span><span style="display:flex;"><span>   <span style="color:#ff9f43">13</span>  top
+</span></span><span style="display:flex;"><span>   <span style="color:#ff9f43">14</span>  ps aux | grep apache
+</span></span><span style="display:flex;"><span>   <span style="color:#ff9f43">15</span>  sudo systemctl restart apache2
+</span></span><span style="display:flex;"><span>   <span style="color:#ff9f43">16</span>  <span style="color:#ff5c57">history</span> | grep ssh
+</span></span><span style="display:flex;"><span>   <span style="color:#ff9f43">17</span>  clear
+</span></span><span style="display:flex;"><span>   <span style="color:#ff9f43">18</span>  whoami
+</span></span><span style="display:flex;"><span>   <span style="color:#ff9f43">19</span>  crontab -e
+</span></span><span style="display:flex;"><span>   <span style="color:#ff9f43">20</span>  crontab -l
+</span></span><span style="display:flex;"><span>   <span style="color:#ff9f43">21</span>  <span style="color:#ff5c57">alias</span> <span style="color:#ff5c57">ll</span><span style="color:#ff6ac1">=</span><span style="color:#5af78e">&#39;ls -lah&#39;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#ff9f43">22</span>  <span style="color:#ff5c57">unalias</span> ll
+</span></span><span style="display:flex;"><span>   <span style="color:#ff9f43">23</span>  <span style="color:#ff5c57">echo</span> <span style="color:#5af78e">&#34;Hello, World!&#34;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#ff9f43">24</span>  cat /etc/passwd
+</span></span><span style="display:flex;"><span>   <span style="color:#ff9f43">25</span>  sudo tail -f /var/log/syslog
+</span></span><span style="display:flex;"><span>   <span style="color:#ff9f43">26</span>  mv archive.tar.gz /backup/
+</span></span><span style="display:flex;"><span>   <span style="color:#ff9f43">27</span>  rm archive.tar.gz
+</span></span><span style="display:flex;"><span>   <span style="color:#ff9f43">28</span>  find / -name <span style="color:#5af78e">&#34;*.log&#34;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#ff9f43">29</span>  grep <span style="color:#5af78e">&#34;error&#34;</span> /var/log/apache2/error.log
+</span></span><span style="display:flex;"><span>   <span style="color:#ff9f43">30</span>  <span style="color:#ff5c57">history</span>
 </span></span></code></pre></div><ul>
 <li>Card ID 143 content:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">slh --view-card <span class="m">143</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">(</span>143, <span class="s1">&#39;fa9717e8-e1af-42e9-ad68-eeb96ab39d13&#39;</span>, 0, <span class="s1">&#39;728f25dda2ef6168ada53065883756140cfe663bce4e827084b745a32255157d&#39;</span><span class="o">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>slh --view-card <span style="color:#ff9f43">143</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">(</span>143, <span style="color:#5af78e">&#39;fa9717e8-e1af-42e9-ad68-eeb96ab39d13&#39;</span>, 0, <span style="color:#5af78e">&#39;728f25dda2ef6168ada53065883756140cfe663bce4e827084b745a32255157d&#39;</span><span style="color:#ff6ac1">)</span>
 </span></span></code></pre></div><ul>
 <li>According to documentation, the full access is <strong>1</strong>, but the card with ID 143 has value <strong>0</strong>.</li>
 <li>To finish the objective for broz, following command needs to be executed:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"> slh --passcode CandyCaneCrunch77 --set-access <span class="m">1</span> --id <span class="m">42</span> 
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span> slh --passcode CandyCaneCrunch77 --set-access <span style="color:#ff9f43">1</span> --id <span style="color:#ff9f43">42</span> 
 </span></span></code></pre></div><ul>
 <li><strong>SUCCESS</strong></li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">       <span class="p">*</span>   <span class="p">*</span>   <span class="p">*</span>   <span class="p">*</span>   <span class="p">*</span>   <span class="p">*</span>   <span class="p">*</span>   <span class="p">*</span>   <span class="p">*</span>   <span class="p">*</span>   <span class="p">*</span>
-</span></span><span class="line"><span class="cl">   <span class="p">*</span>                                             <span class="p">*</span>
-</span></span><span class="line"><span class="cl"><span class="p">*</span>      <span class="err">❄</span>  <span class="err">❄</span>  <span class="err">❄</span>  <span class="err">❄</span>  <span class="err">❄</span>  <span class="err">❄</span>  <span class="err">❄</span>  <span class="err">❄</span>  <span class="err">❄</span>  <span class="err">❄</span>  <span class="err">❄</span>  <span class="err">❄</span>  <span class="err">❄</span>     <span class="p">*</span>
-</span></span><span class="line"><span class="cl"> <span class="p">*</span>  <span class="p">$$$$$$\</span>   <span class="p">$$$$$$\</span>   <span class="p">$$$$$$\</span>  <span class="p">$$$$$$$$\</span>  <span class="p">$$$$$$\</span>   <span class="p">$$$$$$\</span>  <span class="p">*</span> 
-</span></span><span class="line"><span class="cl">  <span class="p">*</span> <span class="p">$$</span>  <span class="n">__</span><span class="p">$$\</span> <span class="p">$$</span>  <span class="n">__</span><span class="p">$$\</span> <span class="p">$$</span>  <span class="n">__</span><span class="p">$$\</span> <span class="p">$$</span>  <span class="n">_____</span><span class="p">|$$</span>  <span class="n">__</span><span class="p">$$\</span> <span class="p">$$</span>  <span class="n">__</span><span class="p">$$\</span> <span class="p">*</span>
-</span></span><span class="line"><span class="cl">   <span class="p">*$$</span> <span class="p">/</span>  <span class="p">$$</span> <span class="p">|$$</span> <span class="p">/</span>  <span class="p">\</span><span class="n">__</span><span class="p">|$$</span> <span class="p">/</span>  <span class="p">\</span><span class="n">__</span><span class="p">|$$</span> <span class="p">|</span>      <span class="p">$$</span> <span class="p">/</span>  <span class="p">\</span><span class="n">__</span><span class="p">|$$</span> <span class="p">/</span>  <span class="p">\</span><span class="n">__</span><span class="p">|</span> <span class="p">*</span>
-</span></span><span class="line"><span class="cl">    <span class="p">$$$$$$$$</span> <span class="p">|$$</span> <span class="p">|</span>      <span class="p">$$</span> <span class="p">|</span>      <span class="p">$$$$$\</span>    <span class="p">\$$$$$$\</span>  <span class="p">\$$$$$$\</span>   
-</span></span><span class="line"><span class="cl">   <span class="p">*$$</span>  <span class="n">__</span><span class="p">$$</span> <span class="p">|$$</span> <span class="p">|</span>      <span class="p">$$</span> <span class="p">|</span>      <span class="p">$$</span>  <span class="n">__</span><span class="p">|</span>    <span class="p">\</span><span class="n">____</span><span class="p">$$\</span>  <span class="p">\</span><span class="n">____</span><span class="p">$$\</span>  <span class="p">*</span>
-</span></span><span class="line"><span class="cl">  <span class="p">*</span> <span class="p">$$</span> <span class="p">|</span>  <span class="p">$$</span> <span class="p">|$$</span> <span class="p">|</span>  <span class="p">$$\</span> <span class="p">$$</span> <span class="p">|</span>  <span class="p">$$\</span> <span class="p">$$</span> <span class="p">|</span>      <span class="p">$$\</span>   <span class="p">$$</span> <span class="p">|$$\</span>   <span class="p">$$</span> <span class="p">|</span> <span class="p">*</span>
-</span></span><span class="line"><span class="cl"><span class="p">*</span>   <span class="p">$$</span> <span class="p">|</span>  <span class="p">$$</span> <span class="p">|\$$$$$$</span>  <span class="p">|\$$$$$$</span>  <span class="p">|$$$$$$$$\</span> <span class="p">\$$$$$$</span>  <span class="p">|\$$$$$$</span>  <span class="p">|</span>   <span class="p">*</span>
-</span></span><span class="line"><span class="cl"> <span class="p">*</span>  <span class="p">\</span><span class="n">__</span><span class="p">|</span>  <span class="p">\</span><span class="n">__</span><span class="p">|</span> <span class="p">\</span><span class="n">______</span><span class="p">/</span>  <span class="p">\</span><span class="n">______</span><span class="p">/</span> <span class="p">\</span><span class="n">________</span><span class="p">|</span> <span class="p">\</span><span class="n">______</span><span class="p">/</span>  <span class="p">\</span><span class="n">______</span><span class="p">/</span>  <span class="p">*</span>
-</span></span><span class="line"><span class="cl"><span class="p">*</span>         <span class="p">*</span>    <span class="err">❄</span>             <span class="err">❄</span>           <span class="p">*</span>        <span class="err">❄</span>    <span class="err">❄</span>    <span class="err">❄</span>   <span class="p">*</span>
-</span></span><span class="line"><span class="cl">   <span class="p">*</span>        <span class="p">*</span>     <span class="p">*</span>     <span class="p">*</span>      <span class="p">*</span>     <span class="p">*</span>      <span class="p">*</span>    <span class="p">*</span>      <span class="p">*</span>      <span class="p">*</span>
-</span></span><span class="line"><span class="cl">   <span class="p">*</span>  <span class="p">$$$$$$\</span>  <span class="p">$$$$$$$\</span>   <span class="p">$$$$$$\</span>  <span class="p">$$\</span>   <span class="p">$$\</span> <span class="p">$$$$$$$$\</span> <span class="p">$$$$$$$$\</span> <span class="p">$$$$$$$\</span>  <span class="p">$$\</span>  <span class="p">*</span>
-</span></span><span class="line"><span class="cl">   <span class="p">*</span> <span class="p">$$</span>  <span class="n">__</span><span class="p">$$\</span> <span class="p">$$</span>  <span class="n">__</span><span class="p">$$\</span> <span class="p">$$</span>  <span class="n">__</span><span class="p">$$\</span> <span class="p">$$$\</span>  <span class="p">$$</span> <span class="p">|\</span><span class="n">__</span><span class="p">$$</span>  <span class="n">__</span><span class="p">|$$</span>  <span class="n">_____</span><span class="p">|$$</span>  <span class="n">__</span><span class="p">$$\</span> <span class="p">$$</span> <span class="p">|</span> <span class="p">*</span>
-</span></span><span class="line"><span class="cl">  <span class="p">*</span>  <span class="p">$$</span> <span class="p">/</span>  <span class="p">\</span><span class="n">__</span><span class="p">|$$</span> <span class="p">|</span>  <span class="p">$$</span> <span class="p">|$$</span> <span class="p">/</span>  <span class="p">$$</span> <span class="p">|$$$$\</span> <span class="p">$$</span> <span class="p">|</span>   <span class="p">$$</span> <span class="p">|</span>   <span class="p">$$</span> <span class="p">|</span>      <span class="p">$$</span> <span class="p">|</span>  <span class="p">$$</span> <span class="p">|$$</span> <span class="p">|*</span>
-</span></span><span class="line"><span class="cl">  <span class="p">*</span>  <span class="p">$$</span> <span class="p">|$$$$\</span> <span class="p">$$$$$$$</span>  <span class="p">|$$$$$$$$</span> <span class="p">|$$</span> <span class="p">$$\$$</span> <span class="p">|</span>   <span class="p">$$</span> <span class="p">|</span>   <span class="p">$$$$$\</span>    <span class="p">$$</span> <span class="p">|</span>  <span class="p">$$</span> <span class="p">|$$</span> <span class="p">|</span> <span class="p">*</span>
-</span></span><span class="line"><span class="cl"> <span class="p">*</span>   <span class="p">$$</span> <span class="p">|\</span><span class="n">_</span><span class="p">$$</span> <span class="p">|$$</span>  <span class="n">__</span><span class="p">$$&lt;</span> <span class="p">$$</span>  <span class="n">__</span><span class="p">$$</span> <span class="p">|$$</span> <span class="p">\$$$$</span> <span class="p">|</span>   <span class="p">$$</span> <span class="p">|</span>   <span class="p">$$</span>  <span class="n">__</span><span class="p">|</span>   <span class="p">$$</span> <span class="p">|</span>  <span class="p">$$</span> <span class="p">|\</span><span class="n">__</span><span class="p">|*</span>
-</span></span><span class="line"><span class="cl">  <span class="p">*</span>  <span class="p">$$</span> <span class="p">|</span>  <span class="p">$$</span> <span class="p">|$$</span> <span class="p">|</span>  <span class="p">$$</span> <span class="p">|$$</span> <span class="p">|</span>  <span class="p">$$</span> <span class="p">|$$</span> <span class="p">|\$$$</span> <span class="p">|</span>   <span class="p">$$</span> <span class="p">|</span>   <span class="p">$$</span> <span class="p">|</span>      <span class="p">$$</span> <span class="p">|</span>  <span class="p">$$</span> <span class="p">|</span>   <span class="p">*</span>
-</span></span><span class="line"><span class="cl"><span class="p">*</span>    <span class="p">\$$$$$$</span>  <span class="p">|$$</span> <span class="p">|</span>  <span class="p">$$</span> <span class="p">|$$</span> <span class="p">|</span>  <span class="p">$$</span> <span class="p">|$$</span> <span class="p">|</span> <span class="p">\$$</span> <span class="p">|</span>   <span class="p">$$</span> <span class="p">|</span>   <span class="p">$$$$$$$$\</span> <span class="p">$$$$$$$</span>  <span class="p">|$$\</span> <span class="p">*</span>
-</span></span><span class="line"><span class="cl"> <span class="p">*</span>    <span class="p">\</span><span class="n">______</span><span class="p">/</span> <span class="p">\</span><span class="n">__</span><span class="p">|</span>  <span class="p">\</span><span class="n">__</span><span class="p">|\</span><span class="n">__</span><span class="p">|</span>  <span class="p">\</span><span class="n">__</span><span class="p">|\</span><span class="n">__</span><span class="p">|</span>  <span class="p">\</span><span class="n">__</span><span class="p">|</span>   <span class="p">\</span><span class="n">__</span><span class="p">|</span>   <span class="p">\</span><span class="n">________</span><span class="p">|\</span><span class="n">_______</span><span class="p">/</span> <span class="p">\</span><span class="n">__</span><span class="p">|</span>  <span class="p">*</span>
-</span></span><span class="line"><span class="cl">  <span class="p">*</span>                                                            <span class="err">❄</span>    <span class="err">❄</span>    <span class="err">❄</span>   <span class="p">*</span>
-</span></span><span class="line"><span class="cl">   <span class="p">*</span>      <span class="p">*</span>    <span class="p">*</span>    <span class="p">*</span>    <span class="p">*</span>    <span class="p">*</span>    <span class="p">*</span>    <span class="p">*</span>    <span class="p">*</span>    <span class="p">*</span>    <span class="p">*</span>    <span class="p">*</span>    <span class="p">*</span>    <span class="p">*</span>    <span class="p">*</span>    
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>       *   *   *   *   *   *   *   *   *   *   *
+</span></span><span style="display:flex;"><span>   *                                             *
+</span></span><span style="display:flex;"><span>*      <span style="color:#ff5c57">❄</span>  <span style="color:#ff5c57">❄</span>  <span style="color:#ff5c57">❄</span>  <span style="color:#ff5c57">❄</span>  <span style="color:#ff5c57">❄</span>  <span style="color:#ff5c57">❄</span>  <span style="color:#ff5c57">❄</span>  <span style="color:#ff5c57">❄</span>  <span style="color:#ff5c57">❄</span>  <span style="color:#ff5c57">❄</span>  <span style="color:#ff5c57">❄</span>  <span style="color:#ff5c57">❄</span>  <span style="color:#ff5c57">❄</span>     *
+</span></span><span style="display:flex;"><span> *  $$$$$$\   $$$$$$\   $$$$$$\  $$$$$$$$\  $$$$$$\   $$$$$$\  * 
+</span></span><span style="display:flex;"><span>  * $$  __$$\ $$  __$$\ $$  __$$\ $$  _____|$$  __$$\ $$  __$$\ *
+</span></span><span style="display:flex;"><span>   *$$ /  $$ |$$ /  \__|$$ /  \__|$$ |      $$ /  \__|$$ /  \__| *
+</span></span><span style="display:flex;"><span>    $$$$$$$$ |$$ |      $$ |      $$$$$\    \$$$$$$\  \$$$$$$\   
+</span></span><span style="display:flex;"><span>   *$$  __$$ |$$ |      $$ |      $$  __|    \____$$\  \____$$\  *
+</span></span><span style="display:flex;"><span>  * $$ |  $$ |$$ |  $$\ $$ |  $$\ $$ |      $$\   $$ |$$\   $$ | *
+</span></span><span style="display:flex;"><span>*   $$ |  $$ |\$$$$$$  |\$$$$$$  |$$$$$$$$\ \$$$$$$  |\$$$$$$  |   *
+</span></span><span style="display:flex;"><span> *  \__|  \__| \______/  \______/ \________| \______/  \______/  *
+</span></span><span style="display:flex;"><span>*         *    <span style="color:#ff5c57">❄</span>             <span style="color:#ff5c57">❄</span>           *        <span style="color:#ff5c57">❄</span>    <span style="color:#ff5c57">❄</span>    <span style="color:#ff5c57">❄</span>   *
+</span></span><span style="display:flex;"><span>   *        *     *     *      *     *      *    *      *      *
+</span></span><span style="display:flex;"><span>   *  $$$$$$\  $$$$$$$\   $$$$$$\  $$\   $$\ $$$$$$$$\ $$$$$$$$\ $$$$$$$\  $$\  *
+</span></span><span style="display:flex;"><span>   * $$  __$$\ $$  __$$\ $$  __$$\ $$$\  $$ |\__$$  __|$$  _____|$$  __$$\ $$ | *
+</span></span><span style="display:flex;"><span>  *  $$ /  \__|$$ |  $$ |$$ /  $$ |$$$$\ $$ |   $$ |   $$ |      $$ |  $$ |$$ |*
+</span></span><span style="display:flex;"><span>  *  $$ |$$$$\ $$$$$$$  |$$$$$$$$ |$$ $$\$$ |   $$ |   $$$$$\    $$ |  $$ |$$ | *
+</span></span><span style="display:flex;"><span> *   $$ |\_$$ |$$  __$$&lt; $$  __$$ |$$ \$$$$ |   $$ |   $$  __|   $$ |  $$ |\__|*
+</span></span><span style="display:flex;"><span>  *  $$ |  $$ |$$ |  $$ |$$ |  $$ |$$ |\$$$ |   $$ |   $$ |      $$ |  $$ |   *
+</span></span><span style="display:flex;"><span>*    \$$$$$$  |$$ |  $$ |$$ |  $$ |$$ | \$$ |   $$ |   $$$$$$$$\ $$$$$$$  |$$\ *
+</span></span><span style="display:flex;"><span> *    \______/ \__|  \__|\__|  \__|\__|  \__|   \__|   \________|\_______/ \__|  *
+</span></span><span style="display:flex;"><span>  *                                                            <span style="color:#ff5c57">❄</span>    <span style="color:#ff5c57">❄</span>    <span style="color:#ff5c57">❄</span>   *
+</span></span><span style="display:flex;"><span>   *      *    *    *    *    *    *    *    *    *    *    *    *    *    *    
 </span></span></code></pre></div><h2 id="gold">
   Gold
   <a class="heading-link" href="#gold">
@@ -312,18 +318,18 @@
 <p>Playing around the command, the &ndash;new-card has generated following output:</p>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">slh@slhconsole<span class="se">\&gt;</span> slh --new-card
-</span></span><span class="line"><span class="cl">Generate new card with uuid: f8aae97c-8345-4684-84fe-d50b9f7b5a3d
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>slh@slhconsole<span style="color:#5af78e">\&gt;</span> slh --new-card
+</span></span><span style="display:flex;"><span>Generate new card with uuid: f8aae97c-8345-4684-84fe-d50b9f7b5a3d
 </span></span></code></pre></div><ul>
 <li>As the Elf said, need to modify the database, so let&rsquo;s check file type of access_cards:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">file access_cards 
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">access_cards: SQLite 3.x database, last written using SQLite version 3040001, file counter 4, database pages 32, cookie 0x2, schema 4, UTF-8, version-valid-for <span class="m">4</span>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>file access_cards 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>access_cards: SQLite 3.x database, last written using SQLite version 3040001, file counter 4, database pages 32, cookie 0x2, schema 4, UTF-8, version-valid-for <span style="color:#ff9f43">4</span>
 </span></span></code></pre></div><ul>
 <li>We will use <strong>sqllite3</strong> tool available in the challenge console.</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sqllite3 access_access_cards
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sqllite3 access_access_cards
 </span></span></code></pre></div><h3 id="database">
   Database
   <a class="heading-link" href="#database">
@@ -339,22 +345,22 @@
 </ul>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sqlite&gt; .tables
-</span></span><span class="line"><span class="cl">access_cards  config 
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sqlite&gt; .tables
+</span></span><span style="display:flex;"><span>access_cards  config 
 </span></span></code></pre></div><ul>
 <li>Reveal content of databases:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-SQL" data-lang="SQL"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">config</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="mi">1</span><span class="o">|</span><span class="n">hmac_secret</span><span class="o">|</span><span class="mi">9</span><span class="n">ed1515819dec61fd361d5fdabb57f41ecce1a5fe1fe263b98c0d6943b9b232e</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="mi">2</span><span class="o">|</span><span class="n">hmac_message_format</span><span class="o">|</span><span class="err">{</span><span class="k">access</span><span class="err">}{</span><span class="n">uuid</span><span class="err">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="mi">3</span><span class="o">|</span><span class="n">admin_password</span><span class="o">|</span><span class="mi">3</span><span class="n">a40ae3f3fd57b2a4513cca783609589dbe51ce5e69739a33141c5717c20c9c1</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="mi">4</span><span class="o">|</span><span class="n">app_version</span><span class="o">|</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="w">
-</span></span></span></code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span><span style="color:#ff6ac1">SELECT</span> <span style="color:#ff6ac1">*</span> <span style="color:#ff6ac1">FROM</span> config
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">1</span><span style="color:#ff6ac1">|</span>hmac_secret<span style="color:#ff6ac1">|</span><span style="color:#ff9f43">9</span>ed1515819dec61fd361d5fdabb57f41ecce1a5fe1fe263b98c0d6943b9b232e
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">2</span><span style="color:#ff6ac1">|</span>hmac_message_format<span style="color:#ff6ac1">|</span><span style="color:#ff5c57">{</span><span style="color:#ff6ac1">access</span><span style="color:#ff5c57">}{</span>uuid<span style="color:#ff5c57">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">3</span><span style="color:#ff6ac1">|</span>admin_password<span style="color:#ff6ac1">|</span><span style="color:#ff9f43">3</span>a40ae3f3fd57b2a4513cca783609589dbe51ce5e69739a33141c5717c20c9c1
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">4</span><span style="color:#ff6ac1">|</span>app_version<span style="color:#ff6ac1">|</span><span style="color:#ff9f43">1</span>.<span style="color:#ff9f43">0</span>
+</span></span></code></pre></div><ul>
 <li>Let&rsquo;s check content of Access Card 42:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-SQL" data-lang="SQL"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">access_cards</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">OFFSET</span><span class="w"> </span><span class="mi">41</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="mi">42</span><span class="o">|</span><span class="n">c06018b6</span><span class="o">-</span><span class="mi">5</span><span class="n">e80</span><span class="o">-</span><span class="mi">4395</span><span class="o">-</span><span class="n">ab71</span><span class="o">-</span><span class="n">ae5124560189</span><span class="o">|</span><span class="mi">0</span><span class="o">|</span><span class="n">ecb9de15a057305e5887502d46d434c9394f5ed7ef1a51d2930ad786b02f6ffd</span><span class="w">
-</span></span></span></code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span><span style="color:#ff6ac1">SELECT</span> <span style="color:#ff6ac1">*</span> <span style="color:#ff6ac1">FROM</span> access_cards <span style="color:#ff6ac1">LIMIT</span> <span style="color:#ff9f43">1</span> <span style="color:#ff6ac1">OFFSET</span> <span style="color:#ff9f43">41</span>;
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">42</span><span style="color:#ff6ac1">|</span>c06018b6<span style="color:#ff6ac1">-</span><span style="color:#ff9f43">5</span>e80<span style="color:#ff6ac1">-</span><span style="color:#ff9f43">4395</span><span style="color:#ff6ac1">-</span>ab71<span style="color:#ff6ac1">-</span>ae5124560189<span style="color:#ff6ac1">|</span><span style="color:#ff9f43">0</span><span style="color:#ff6ac1">|</span>ecb9de15a057305e5887502d46d434c9394f5ed7ef1a51d2930ad786b02f6ffd
+</span></span></code></pre></div><ul>
 <li>
 <p>Now we know know all needed information:</p>
 <ul>
@@ -368,7 +374,8 @@
 <p><strong>Hint:</strong> We got hint from previous challenge that we need to use HMAC to sign the card signature:</p>
 <ul>
 <li>
-<p>In cyberchef I used following recipe: <a href="https://gchq.github.io/CyberChef/#recipe=HMAC%28%7B%27option%27:%27UTF8%27,%27string%27:%279ed1515819dec61fd361d5fdabb57f41ecce1a5fe1fe263b98c0d6943b9b232e%27%7D,%27SHA256%27%29&amp;input=MWMwNjAxOGI2LTVlODAtNDM5NS1hYjcxLWFlNTEyNDU2MDE4OQ"  class="external-link" target="_blank" rel="noopener">https://gchq.github.io/CyberChef/#recipe=HMAC(%7B'option':'UTF8','string':'9ed1515819dec61fd361d5fdabb57f41ecce1a5fe1fe263b98c0d6943b9b232e'%7D,'SHA256')&input=MWMwNjAxOGI2LTVlODAtNDM5NS1hYjcxLWFlNTEyNDU2MDE4OQ</a></p>
+<p>In CyberChef I used following recipe:
+<a href="https://gchq.github.io/CyberChef/#recipe=HMAC%28%7B%27option%27:%27UTF8%27,%27string%27:%279ed1515819dec61fd361d5fdabb57f41ecce1a5fe1fe263b98c0d6943b9b232e%27%7D,%27SHA256%27%29&amp;input=MWMwNjAxOGI2LTVlODAtNDM5NS1hYjcxLWFlNTEyNDU2MDE4OQ"  class="external-link" target="_blank" rel="noopener">https://gchq.github.io/CyberChef/#recipe=HMAC(%7B'option':'UTF8','string':'9ed1515819dec61fd361d5fdabb57f41ecce1a5fe1fe263b98c0d6943b9b232e'%7D,'SHA256')&input=MWMwNjAxOGI2LTVlODAtNDM5NS1hYjcxLWFlNTEyNDU2MDE4OQ</a></p>
 </li>
 <li>
 <p>Modifying the access level (1) for card 42:</p>
@@ -376,36 +383,94 @@
 </ul>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-SQL" data-lang="SQL"><span class="line"><span class="cl"><span class="n">sqlite</span><span class="o">&gt;</span><span class="w"> </span><span class="k">UPDATE</span><span class="w"> </span><span class="n">access_cards</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="k">access</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">sig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;135a32d5026c5628b1753e6c67015c0f04e26051ef7391c2552de2816b1b7096&#39;</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">42</span><span class="p">;</span><span class="w">
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl">       <span class="p">*</span>   <span class="p">*</span>   <span class="p">*</span>   <span class="p">*</span>   <span class="p">*</span>   <span class="p">*</span>   <span class="p">*</span>   <span class="p">*</span>   <span class="p">*</span>   <span class="p">*</span>   <span class="p">*</span>
-</span></span><span class="line"><span class="cl">   <span class="p">*</span>                                             <span class="p">*</span>
-</span></span><span class="line"><span class="cl"><span class="p">*</span>      <span class="err">❄</span>  <span class="err">❄</span>  <span class="err">❄</span>  <span class="err">❄</span>  <span class="err">❄</span>  <span class="err">❄</span>  <span class="err">❄</span>  <span class="err">❄</span>  <span class="err">❄</span>  <span class="err">❄</span>  <span class="err">❄</span>  <span class="err">❄</span>  <span class="err">❄</span>     <span class="p">*</span>
-</span></span><span class="line"><span class="cl"> <span class="p">*</span>  <span class="p">$$$$$$\</span>   <span class="p">$$$$$$\</span>   <span class="p">$$$$$$\</span>  <span class="p">$$$$$$$$\</span>  <span class="p">$$$$$$\</span>   <span class="p">$$$$$$\</span>  <span class="p">*</span> 
-</span></span><span class="line"><span class="cl">  <span class="p">*</span> <span class="p">$$</span>  <span class="n">__</span><span class="p">$$\</span> <span class="p">$$</span>  <span class="n">__</span><span class="p">$$\</span> <span class="p">$$</span>  <span class="n">__</span><span class="p">$$\</span> <span class="p">$$</span>  <span class="n">_____</span><span class="p">|$$</span>  <span class="n">__</span><span class="p">$$\</span> <span class="p">$$</span>  <span class="n">__</span><span class="p">$$\</span> <span class="p">*</span>
-</span></span><span class="line"><span class="cl">   <span class="p">*$$</span> <span class="p">/</span>  <span class="p">$$</span> <span class="p">|$$</span> <span class="p">/</span>  <span class="p">\</span><span class="n">__</span><span class="p">|$$</span> <span class="p">/</span>  <span class="p">\</span><span class="n">__</span><span class="p">|$$</span> <span class="p">|</span>      <span class="p">$$</span> <span class="p">/</span>  <span class="p">\</span><span class="n">__</span><span class="p">|$$</span> <span class="p">/</span>  <span class="p">\</span><span class="n">__</span><span class="p">|</span> <span class="p">*</span>
-</span></span><span class="line"><span class="cl">    <span class="p">$$$$$$$$</span> <span class="p">|$$</span> <span class="p">|</span>      <span class="p">$$</span> <span class="p">|</span>      <span class="p">$$$$$\</span>    <span class="p">\$$$$$$\</span>  <span class="p">\$$$$$$\</span>   
-</span></span><span class="line"><span class="cl">   <span class="p">*$$</span>  <span class="n">__</span><span class="p">$$</span> <span class="p">|$$</span> <span class="p">|</span>      <span class="p">$$</span> <span class="p">|</span>      <span class="p">$$</span>  <span class="n">__</span><span class="p">|</span>    <span class="p">\</span><span class="n">____</span><span class="p">$$\</span>  <span class="p">\</span><span class="n">____</span><span class="p">$$\</span>  <span class="p">*</span>
-</span></span><span class="line"><span class="cl">  <span class="p">*</span> <span class="p">$$</span> <span class="p">|</span>  <span class="p">$$</span> <span class="p">|$$</span> <span class="p">|</span>  <span class="p">$$\</span> <span class="p">$$</span> <span class="p">|</span>  <span class="p">$$\</span> <span class="p">$$</span> <span class="p">|</span>      <span class="p">$$\</span>   <span class="p">$$</span> <span class="p">|$$\</span>   <span class="p">$$</span> <span class="p">|</span> <span class="p">*</span>
-</span></span><span class="line"><span class="cl"><span class="p">*</span>   <span class="p">$$</span> <span class="p">|</span>  <span class="p">$$</span> <span class="p">|\$$$$$$</span>  <span class="p">|\$$$$$$</span>  <span class="p">|$$$$$$$$\</span> <span class="p">\$$$$$$</span>  <span class="p">|\$$$$$$</span>  <span class="p">|</span>   <span class="p">*</span>
-</span></span><span class="line"><span class="cl"> <span class="p">*</span>  <span class="p">\</span><span class="n">__</span><span class="p">|</span>  <span class="p">\</span><span class="n">__</span><span class="p">|</span> <span class="p">\</span><span class="n">______</span><span class="p">/</span>  <span class="p">\</span><span class="n">______</span><span class="p">/</span> <span class="p">\</span><span class="n">________</span><span class="p">|</span> <span class="p">\</span><span class="n">______</span><span class="p">/</span>  <span class="p">\</span><span class="n">______</span><span class="p">/</span>  <span class="p">*</span>
-</span></span><span class="line"><span class="cl"><span class="p">*</span>         <span class="p">*</span>    <span class="err">❄</span>             <span class="err">❄</span>           <span class="p">*</span>        <span class="err">❄</span>    <span class="err">❄</span>    <span class="err">❄</span>   <span class="p">*</span>
-</span></span><span class="line"><span class="cl">   <span class="p">*</span>        <span class="p">*</span>     <span class="p">*</span>     <span class="p">*</span>      <span class="p">*</span>     <span class="p">*</span>      <span class="p">*</span>    <span class="p">*</span>      <span class="p">*</span>      <span class="p">*</span>
-</span></span><span class="line"><span class="cl">   <span class="p">*</span>  <span class="p">$$$$$$\</span>  <span class="p">$$$$$$$\</span>   <span class="p">$$$$$$\</span>  <span class="p">$$\</span>   <span class="p">$$\</span> <span class="p">$$$$$$$$\</span> <span class="p">$$$$$$$$\</span> <span class="p">$$$$$$$\</span>  <span class="p">$$\</span>  <span class="p">*</span>
-</span></span><span class="line"><span class="cl">   <span class="p">*</span> <span class="p">$$</span>  <span class="n">__</span><span class="p">$$\</span> <span class="p">$$</span>  <span class="n">__</span><span class="p">$$\</span> <span class="p">$$</span>  <span class="n">__</span><span class="p">$$\</span> <span class="p">$$$\</span>  <span class="p">$$</span> <span class="p">|\</span><span class="n">__</span><span class="p">$$</span>  <span class="n">__</span><span class="p">|$$</span>  <span class="n">_____</span><span class="p">|$$</span>  <span class="n">__</span><span class="p">$$\</span> <span class="p">$$</span> <span class="p">|</span> <span class="p">*</span>
-</span></span><span class="line"><span class="cl">  <span class="p">*</span>  <span class="p">$$</span> <span class="p">/</span>  <span class="p">\</span><span class="n">__</span><span class="p">|$$</span> <span class="p">|</span>  <span class="p">$$</span> <span class="p">|$$</span> <span class="p">/</span>  <span class="p">$$</span> <span class="p">|$$$$\</span> <span class="p">$$</span> <span class="p">|</span>   <span class="p">$$</span> <span class="p">|</span>   <span class="p">$$</span> <span class="p">|</span>      <span class="p">$$</span> <span class="p">|</span>  <span class="p">$$</span> <span class="p">|$$</span> <span class="p">|*</span>
-</span></span><span class="line"><span class="cl">  <span class="p">*</span>  <span class="p">$$</span> <span class="p">|$$$$\</span> <span class="p">$$$$$$$</span>  <span class="p">|$$$$$$$$</span> <span class="p">|$$</span> <span class="p">$$\$$</span> <span class="p">|</span>   <span class="p">$$</span> <span class="p">|</span>   <span class="p">$$$$$\</span>    <span class="p">$$</span> <span class="p">|</span>  <span class="p">$$</span> <span class="p">|$$</span> <span class="p">|</span> <span class="p">*</span>
-</span></span><span class="line"><span class="cl"> <span class="p">*</span>   <span class="p">$$</span> <span class="p">|\</span><span class="n">_</span><span class="p">$$</span> <span class="p">|$$</span>  <span class="n">__</span><span class="p">$$&lt;</span> <span class="p">$$</span>  <span class="n">__</span><span class="p">$$</span> <span class="p">|$$</span> <span class="p">\$$$$</span> <span class="p">|</span>   <span class="p">$$</span> <span class="p">|</span>   <span class="p">$$</span>  <span class="n">__</span><span class="p">|</span>   <span class="p">$$</span> <span class="p">|</span>  <span class="p">$$</span> <span class="p">|\</span><span class="n">__</span><span class="p">|*</span>
-</span></span><span class="line"><span class="cl">  <span class="p">*</span>  <span class="p">$$</span> <span class="p">|</span>  <span class="p">$$</span> <span class="p">|$$</span> <span class="p">|</span>  <span class="p">$$</span> <span class="p">|$$</span> <span class="p">|</span>  <span class="p">$$</span> <span class="p">|$$</span> <span class="p">|\$$$</span> <span class="p">|</span>   <span class="p">$$</span> <span class="p">|</span>   <span class="p">$$</span> <span class="p">|</span>      <span class="p">$$</span> <span class="p">|</span>  <span class="p">$$</span> <span class="p">|</span>   <span class="p">*</span>
-</span></span><span class="line"><span class="cl"><span class="p">*</span>    <span class="p">\$$$$$$</span>  <span class="p">|$$</span> <span class="p">|</span>  <span class="p">$$</span> <span class="p">|$$</span> <span class="p">|</span>  <span class="p">$$</span> <span class="p">|$$</span> <span class="p">|</span> <span class="p">\$$</span> <span class="p">|</span>   <span class="p">$$</span> <span class="p">|</span>   <span class="p">$$$$$$$$\</span> <span class="p">$$$$$$$</span>  <span class="p">|$$\</span> <span class="p">*</span>
-</span></span><span class="line"><span class="cl"> <span class="p">*</span>    <span class="p">\</span><span class="n">______</span><span class="p">/</span> <span class="p">\</span><span class="n">__</span><span class="p">|</span>  <span class="p">\</span><span class="n">__</span><span class="p">|\</span><span class="n">__</span><span class="p">|</span>  <span class="p">\</span><span class="n">__</span><span class="p">|\</span><span class="n">__</span><span class="p">|</span>  <span class="p">\</span><span class="n">__</span><span class="p">|</span>   <span class="p">\</span><span class="n">__</span><span class="p">|</span>   <span class="p">\</span><span class="n">________</span><span class="p">|\</span><span class="n">_______</span><span class="p">/</span> <span class="p">\</span><span class="n">__</span><span class="p">|</span>  <span class="p">*</span>
-</span></span><span class="line"><span class="cl">  <span class="p">*</span>                                                            <span class="err">❄</span>    <span class="err">❄</span>    <span class="err">❄</span>   <span class="p">*</span>
-</span></span><span class="line"><span class="cl">   <span class="p">*</span>      <span class="p">*</span>    <span class="p">*</span>    <span class="p">*</span>    <span class="p">*</span>    <span class="p">*</span>    <span class="p">*</span>    <span class="p">*</span>    <span class="p">*</span>    <span class="p">*</span>    <span class="p">*</span>    <span class="p">*</span>    <span class="p">*</span>    <span class="p">*</span>    <span class="p">*</span>         
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span>sqlite<span style="color:#ff6ac1">&gt;</span> <span style="color:#ff6ac1">UPDATE</span> access_cards <span style="color:#ff6ac1">SET</span> <span style="color:#ff6ac1">access</span> <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">1</span>, sig <span style="color:#ff6ac1">=</span> <span style="color:#5af78e">&#39;135a32d5026c5628b1753e6c67015c0f04e26051ef7391c2552de2816b1b7096&#39;</span> <span style="color:#ff6ac1">WHERE</span> id <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">42</span>;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>       *   *   *   *   *   *   *   *   *   *   *
+</span></span><span style="display:flex;"><span>   *                                             *
+</span></span><span style="display:flex;"><span>*      <span style="color:#ff5c57">❄</span>  <span style="color:#ff5c57">❄</span>  <span style="color:#ff5c57">❄</span>  <span style="color:#ff5c57">❄</span>  <span style="color:#ff5c57">❄</span>  <span style="color:#ff5c57">❄</span>  <span style="color:#ff5c57">❄</span>  <span style="color:#ff5c57">❄</span>  <span style="color:#ff5c57">❄</span>  <span style="color:#ff5c57">❄</span>  <span style="color:#ff5c57">❄</span>  <span style="color:#ff5c57">❄</span>  <span style="color:#ff5c57">❄</span>     *
+</span></span><span style="display:flex;"><span> *  $$$$$$\   $$$$$$\   $$$$$$\  $$$$$$$$\  $$$$$$\   $$$$$$\  * 
+</span></span><span style="display:flex;"><span>  * $$  __$$\ $$  __$$\ $$  __$$\ $$  _____|$$  __$$\ $$  __$$\ *
+</span></span><span style="display:flex;"><span>   *$$ /  $$ |$$ /  \__|$$ /  \__|$$ |      $$ /  \__|$$ /  \__| *
+</span></span><span style="display:flex;"><span>    $$$$$$$$ |$$ |      $$ |      $$$$$\    \$$$$$$\  \$$$$$$\   
+</span></span><span style="display:flex;"><span>   *$$  __$$ |$$ |      $$ |      $$  __|    \____$$\  \____$$\  *
+</span></span><span style="display:flex;"><span>  * $$ |  $$ |$$ |  $$\ $$ |  $$\ $$ |      $$\   $$ |$$\   $$ | *
+</span></span><span style="display:flex;"><span>*   $$ |  $$ |\$$$$$$  |\$$$$$$  |$$$$$$$$\ \$$$$$$  |\$$$$$$  |   *
+</span></span><span style="display:flex;"><span> *  \__|  \__| \______/  \______/ \________| \______/  \______/  *
+</span></span><span style="display:flex;"><span>*         *    <span style="color:#ff5c57">❄</span>             <span style="color:#ff5c57">❄</span>           *        <span style="color:#ff5c57">❄</span>    <span style="color:#ff5c57">❄</span>    <span style="color:#ff5c57">❄</span>   *
+</span></span><span style="display:flex;"><span>   *        *     *     *      *     *      *    *      *      *
+</span></span><span style="display:flex;"><span>   *  $$$$$$\  $$$$$$$\   $$$$$$\  $$\   $$\ $$$$$$$$\ $$$$$$$$\ $$$$$$$\  $$\  *
+</span></span><span style="display:flex;"><span>   * $$  __$$\ $$  __$$\ $$  __$$\ $$$\  $$ |\__$$  __|$$  _____|$$  __$$\ $$ | *
+</span></span><span style="display:flex;"><span>  *  $$ /  \__|$$ |  $$ |$$ /  $$ |$$$$\ $$ |   $$ |   $$ |      $$ |  $$ |$$ |*
+</span></span><span style="display:flex;"><span>  *  $$ |$$$$\ $$$$$$$  |$$$$$$$$ |$$ $$\$$ |   $$ |   $$$$$\    $$ |  $$ |$$ | *
+</span></span><span style="display:flex;"><span> *   $$ |\_$$ |$$  __$$&lt; $$  __$$ |$$ \$$$$ |   $$ |   $$  __|   $$ |  $$ |\__|*
+</span></span><span style="display:flex;"><span>  *  $$ |  $$ |$$ |  $$ |$$ |  $$ |$$ |\$$$ |   $$ |   $$ |      $$ |  $$ |   *
+</span></span><span style="display:flex;"><span>*    \$$$$$$  |$$ |  $$ |$$ |  $$ |$$ | \$$ |   $$ |   $$$$$$$$\ $$$$$$$  |$$\ *
+</span></span><span style="display:flex;"><span> *    \______/ \__|  \__|\__|  \__|\__|  \__|   \__|   \________|\_______/ \__|  *
+</span></span><span style="display:flex;"><span>  *                                                            <span style="color:#ff5c57">❄</span>    <span style="color:#ff5c57">❄</span>    <span style="color:#ff5c57">❄</span>   *
+</span></span><span style="display:flex;"><span>   *      *    *    *    *    *    *    *    *    *    *    *    *    *    *         
 </span></span></code></pre></div>
       </div>
 
 
       <footer>
         
+
+<section class="see-also">
+  
+    
+    
+    
+      <h3 id="see-also-in-hhc24">
+        See also in HHC24
+        <a class="heading-link" href="#see-also-in-hhc24">
+          <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+          <span class="sr-only">Link to heading</span>
+        </a>
+      </h3>
+      <nav>
+        <ul>
+        
+        
+          
+            <li>
+              <a href="/blog/posts/hhc24/frostbitdeactivation/">HHC24 - Frostbit Deactivation</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/blog/posts/hhc24/elfstack/">HHC24 - ElfStack</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/blog/posts/hhc24/santavision/">HHC24 - SantaVision</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/blog/posts/hhc24/dronmagedon/">HHC24 - Dronmagedon</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/blog/posts/hhc24/powershell/">HHC24 - Powershell</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/blog/posts/hhc24/snowball-showdown/">HHC24 - Snowball-Showdown</a>
+            </li>
+          
+        
+        </ul>
+      </nav>
+    
+  
+</section>
 
 
         

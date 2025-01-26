@@ -6,8 +6,15 @@
     <description>Recent content in Series on Journey into IT Knowledge</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 18 Jan 2025 15:25:21 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 26 Jan 2025 14:59:34 +0100</lastBuildDate>
     <atom:link href="https://armbraker.github.io/blog/series/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HHC24</title>
+      <link>https://armbraker.github.io/blog/series/hhc24/</link>
+      <pubDate>Sun, 26 Jan 2025 14:59:34 +0100</pubDate>
+      <guid>https://armbraker.github.io/blog/series/hhc24/</guid>
+      <description></description>
+    </item>
     <item>
       <title>GIT</title>
       <link>https://armbraker.github.io/blog/series/git/</link>

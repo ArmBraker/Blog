@@ -24,7 +24,10 @@ I'm a cybersecurity professional who loves exploring the digital world. My journ
 - Teaching & knowledge sharing 👨‍💻
 - Wellbeing & personal development 📕☕
 
-I believe that learning is a never-ending adventure, and sharing knowledge helps everyone grow. *Whether it's securing systems, breaking things (ethically), or understanding how technology shapes our world,*
+---
+
+I believe that learning is a never-ending adventure, and sharing knowledge helps everyone grow.
+*Whether it's securing systems, breaking things (ethically), or understanding how technology shapes our world.*
 
 ### What You’ll Find Here
 
@@ -38,4 +41,4 @@ This blog isn’t just about IT security—it’s about the entire learning proc
 
 ### Join the Journey
 
-🚀 *Mastering IT knowledge, one challenge at a time.*
+> 🚀 *Mastering IT knowledge, one challenge at a time.*

