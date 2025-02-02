@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>LogAnalytics on Journey into IT Knowledge</title>
-    <link>http://localhost:1313/blog/categories/loganalytics/</link>
+    <link>https://armbraker.github.io/blog/categories/loganalytics/</link>
     <description>Recent content in LogAnalytics on Journey into IT Knowledge</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Sun, 26 Jan 2025 14:59:04 +0100</lastBuildDate>
-    <atom:link href="http://localhost:1313/blog/categories/loganalytics/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://armbraker.github.io/blog/categories/loganalytics/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>HHC24 - ElfStack</title>
-      <link>http://localhost:1313/blog/posts/hhc24/elfstack/</link>
+      <link>https://armbraker.github.io/blog/posts/hhc24/elfstack/</link>
       <pubDate>Sun, 26 Jan 2025 14:59:04 +0100</pubDate>
-      <guid>http://localhost:1313/blog/posts/hhc24/elfstack/</guid>
+      <guid>https://armbraker.github.io/blog/posts/hhc24/elfstack/</guid>
       <description>&lt;h2 id=&#34;introduction&#34;&gt;&#xA;  Introduction&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#introduction&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;At the beginning there is an information table informing players that the challenge can be solved by using SIEM solution based on ELK &lt;code&gt;(Elastic, Logdash, Kibana)&lt;/code&gt; stack.&lt;/li&gt;&#xA;&lt;li&gt;Of course I used the easier way and jump for an option with SIEM solution. But, I for some challenges I was forced to parse them manually with good-old &lt;strong&gt;Linux&lt;/strong&gt; tools.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;easy-mode---&#34;&gt;&#xA;  Easy mode - 🥈&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#easy-mode---&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;Question&lt;/strong&gt; 1: How many unique values are there for the event_source field in all logs?&lt;/p&gt;</description>
     </item>
   </channel>

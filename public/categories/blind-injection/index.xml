@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blind Injection on Journey into IT Knowledge</title>
-    <link>http://localhost:1313/blog/categories/blind-injection/</link>
+    <link>https://armbraker.github.io/blog/categories/blind-injection/</link>
     <description>Recent content in Blind Injection on Journey into IT Knowledge</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Sun, 26 Jan 2025 14:59:34 +0100</lastBuildDate>
-    <atom:link href="http://localhost:1313/blog/categories/blind-injection/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://armbraker.github.io/blog/categories/blind-injection/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>HHC24 - Frostbit Deactivation</title>
-      <link>http://localhost:1313/blog/posts/hhc24/frostbitdeactivation/</link>
+      <link>https://armbraker.github.io/blog/posts/hhc24/frostbitdeactivation/</link>
       <pubDate>Sun, 26 Jan 2025 14:59:34 +0100</pubDate>
-      <guid>http://localhost:1313/blog/posts/hhc24/frostbitdeactivation/</guid>
+      <guid>https://armbraker.github.io/blog/posts/hhc24/frostbitdeactivation/</guid>
       <description>&lt;h2 id=&#34;introduction&#34;&gt;&#xA;  Introduction&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#introduction&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;strong&gt;This was the final challenge of HHC24.&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;For this challenge we need to put all given things together to solve this challenge. From previous session we know the next application endpoint where we must deactivate the Frostbit malware:&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://api.frostbit.app/api/v1/frostbitadmin/bot/83270120-3b1c-41f3-b25b-deaa5b5d1327/deactivate&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://api.frostbit.app/api/v1/frostbitadmin/bot/83270120-3b1c-41f3-b25b-deaa5b5d1327/deactivate&lt;/a&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;We got a hint from one of the elves that to be able to disable the Frostbit we need to execute &lt;strong&gt;BLIND&lt;/strong&gt; injection.&lt;/p&gt;</description>
     </item>
   </channel>
