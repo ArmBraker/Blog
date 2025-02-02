@@ -130,7 +130,6 @@ Invoke-WebRequest -Uri $link -WebSession $webSession -Headers
 
 **Summary:**
 
-
 - **Basic Auth** admin:admin
 - **Base URL**: "127.0.0.1:1225"
 

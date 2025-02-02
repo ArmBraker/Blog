@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><script src="/blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=blog/livereload" data-no-instant defer></script>
+  <title>
+  Local LLMs Part1: Introduction to LLM and Ollama · Journey into IT Knowledge
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="ArmBraker 👨‍💻">
+<meta name="description" content="Introducing LLM machine learning models and how to run them locally with the Ollama">
+<meta name="keywords" content="blog,knowledge,IT Security,hacking,personal,networking">
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Local LLMs Part1: Introduction to LLM and Ollama">
+  <meta name="twitter:description" content="Introducing LLM machine learning models and how to run them locally with the Ollama">
+
+<meta property="og:url" content="http://localhost:1313/blog/posts/ai/introduction-llm-part-1/">
+  <meta property="og:site_name" content="Journey into IT Knowledge">
+  <meta property="og:title" content="Local LLMs Part1: Introduction to LLM and Ollama">
+  <meta property="og:description" content="Introducing LLM machine learning models and how to run them locally with the Ollama">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-02-01T14:15:31+01:00">
+    <meta property="article:modified_time" content="2025-02-01T14:15:31+01:00">
+    <meta property="article:tag" content="LLM">
+    <meta property="article:tag" content="Ollama">
+    <meta property="article:tag" content="Machine Learning">
+
+
+
+
+<link rel="canonical" href="http://localhost:1313/blog/posts/ai/introduction-llm-part-1/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/blog/css/coder.css" media="screen">
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/blog/css/coder-dark.css" media="screen">
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="http://localhost:1313/blog/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="http://localhost:1313/blog/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="http://localhost:1313/blog/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="http://localhost:1313/blog/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="http://localhost:1313/blog/images/apple-touch-icon.png">
+
+<link rel="manifest" href="http://localhost:1313/blog/site.webmanifest">
+<link rel="mask-icon" href="http://localhost:1313/blog/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="http://localhost:1313/blog/">
+      Journey into IT Knowledge
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/blog/">Home</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/blog/posts/">Blog</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/blog/about/">About</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="http://localhost:1313/blog/posts/ai/introduction-llm-part-1/">
+              Local LLMs Part1: Introduction to LLM and Ollama
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2025-02-01T14:15:31&#43;01:00">
+                February 1, 2025
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              6-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/blog/categories/local-llm-model/">Local LLM Model</a>
+      <span class="separator">•</span>
+    <a href="/blog/categories/machine-learning/">Machine Learning</a></div>
+
+          <div class="tags">
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/blog/tags/llm/">LLM</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/blog/tags/ollama/">Ollama</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/blog/tags/machine-learning/">Machine Learning</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <h2 id="introduction">
+  Introduction
+  <a class="heading-link" href="#introduction">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Welcome to this new series focused on LLMs (Large Language Models) and running them locally using <a href="https://ollama.com/"  class="external-link" target="_blank" rel="noopener">Ollama</a>).
+Recently, I decided to take a little break from my usual domain of <strong>Cybersecurity</strong> to explore LLMs. This topic is very popular nowadays, and many believe it will impact every domain of our lives and work. I have used and tried various LLMs, such as OpenAI, Gemini, and Claude.
+However, I have concerns about the privacy of my personal or company information, and I believe others share this concern. Therefore, I decided to delve deeper into this topic and learn about LLMs and how to <em><strong>&ldquo;feed&rdquo;</strong></em> them with personal information without worries of providing them into 3rd party.
+<img src="blog/posts/AI/20250202110843.jpg" alt="LLM Meme"></p>
+<h2 id="content-of-the-series-">
+  Content of the series 🧾
+  <a class="heading-link" href="#content-of-the-series-">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li><strong>Part 1: Introduction to LLM and Ollama Tool</strong></li>
+<li><strong>Part 2: Adding Custom Data to Locally Running LLMs</strong></li>
+<li><strong>Part 3: Creating Custom Applications/Models with Ollama</strong></li>
+<li><strong>Part 4: Developing a Coding Agent with Ollama and the Cline Tool</strong></li>
+</ul>
+<hr>
+<h2 id="part-1-introduction-to-llm-and-ollama-tool">
+  <strong>Part 1: Introduction to LLM and Ollama Tool</strong>
+  <a class="heading-link" href="#part-1-introduction-to-llm-and-ollama-tool">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<h3 id="what-are-large-language-models-llms">
+  What are Large Language Models (LLMs)?
+  <a class="heading-link" href="#what-are-large-language-models-llms">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<h4 id="what-are-llms">
+  What are LLMs?
+  <a class="heading-link" href="#what-are-llms">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p><strong>L</strong>arge <strong>L</strong>anguage <strong>M</strong>odels (LLMs) are advanced artificial intelligence systems designed to understand, generate, and respond to human language. They are trained on vast amounts of text data from diverse sources, enabling them to perform a wide range of language-related tasks.</p>
+<p>There are also other variants of LLM, called <strong>&ldquo;Multimodal&rdquo;</strong> LLMs. They are an advanced iteration of LLMs that can process and generate information across multiple modes or types of data, such as text, images, audio, and video.</p>
+<blockquote>
+<p>In a nutshell, LLMs are designed to understand and generate text like a human, in addition to other forms of content, based on the vast amount of data used to train them. They have the ability to infer from context, generate coherent and contextually relevant responses, translate to languages other than English, summarize text, answer questions (general conversation and FAQs) and even assist in creative writing or code generation tasks. 🤖</p>
+</blockquote>
+<h4 id="problems-of-llm-and-ai-">
+  Problems of LLM and AI 🔥
+  <a class="heading-link" href="#problems-of-llm-and-ai-">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>As mentioned earlier, LLMs and AI, in general, have their &ldquo;dark side,&rdquo; including:</p>
+<ul>
+<li><strong>Data privacy</strong> - This is a multi-level problem. Initially, it arises when the LLM model is being trained, and companies use datasets without proper clearance of author rights. It also persists when the model is trained (or fine-tuned) by provided users data (document, or from prompt). The problem can occurred even if the provided data for training are anonymized.</li>
+<li><strong>Hallucinations</strong> -  Happens when a Large Language Model generates content that seems correct but is actually wrong or misleading. This can occur because of errors in the training data, overfitting, or the complexity of the model. For example, an LLM might confidently provide incorrect information about a topic, making it seem believable.</li>
+<li><strong>Resource Intensity</strong>: Training and running LLMs require significant computational resources and energy, which can be costly and environmentally impactful.</li>
+<li><strong>Ethical Concerns</strong>: Ensuring the responsible and ethical use of LLMs is essential to avoid harmful applications for example creating <strong>Cyber Crimes</strong> (Social Engineering and Phishing, Misinformation and Propaganda, Malware and Exploit creation).</li>
+</ul>
+<p><img src="blog/posts/AI/20250202112843.jpg" alt="LLM meme 2"></p>
+<h3 id="what-is-ollama">
+  What is Ollama?
+  <a class="heading-link" href="#what-is-ollama">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>![[Pasted image 20250202120505.png|300]]</p>
+<p>Ollama is an <strong>open-source</strong> project that serves as a powerful and user-friendly platform for running LLMs on your local machine. This offers <strong>enhanced privacy, cost savings, and offline access</strong>. Ollama is providing <strong>full control over data and infrastructure</strong>, making it ideal for those who prioritize data security and customization.</p>
+<blockquote>
+<p>If you need, you can find more on their official website -&gt; <a href="https://ollama.com/"  class="external-link" target="_blank" rel="noopener">Ollama</a> or on their <a href="https://github.com/ollama/ollama"  class="external-link" target="_blank" rel="noopener">GitHub - ollama/ollama: Get up and running with Llama 3.3, DeepSeek-R1, Phi-4, Gemma 2, and other large language models.</a></p>
+</blockquote>
+<h3 id="running-llm-models-locally-with-ollama">
+  Running LLM Models Locally with Ollama
+  <a class="heading-link" href="#running-llm-models-locally-with-ollama">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<h4 id="choosing-a-right-platform">
+  Choosing a Right Platform
+  <a class="heading-link" href="#choosing-a-right-platform">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>I am using Windows as my base operating system, and LLMs run best with a GPU.
+Therefore, I will guide you on how to use Ollama on Windows.</p>
+<p>There is also an option to run Ollama in Docker - <a href="https://hub.docker.com/r/ollama/ollama"  class="external-link" target="_blank" rel="noopener">ollama/ollama - Docker Image | Docker Hub</a>, but it may be little tricky for content sharing with LLMs, as will be described later in this series.</p>
+<p><strong>Note</strong>: I am suggesting to follow their <a href="https://github.com/ollama/ollama"  class="external-link" target="_blank" rel="noopener">GitHub</a> for installation instructions.</p>
+<h4 id="installation">
+  Installation
+  <a class="heading-link" href="#installation">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>As mentioned, I am using Windows and I am big fan of package managers, personally using <a href="https://community.chocolatey.org/"  class="external-link" target="_blank" rel="noopener">Chocolatey</a>.</p>
+<ul>
+<li>To install Ollama with choco is very simple:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Powershell" data-lang="Powershell"><span style="display:flex;"><span>choco install ollama -y
+</span></span></code></pre></div><p>![[Pasted image 20250202122026.png]]</p>
+<h4 id="usage">
+  Usage
+  <a class="heading-link" href="#usage">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>After successful installation, we need to reopen the Terminal to update <em><strong>PATH</strong></em> variables for Ollama commands.:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Powershell" data-lang="Powershell"><span style="display:flex;"><span>Ollama -v
+</span></span><span style="display:flex;"><span>ollama version is <span style="color:#ff9f43">0.5</span>.7
+</span></span></code></pre></div><h4 id="local-model-installation">
+  Local Model Installation
+  <a class="heading-link" href="#local-model-installation">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>![Deepseak](blog/posts/AI/069ccc94-63b0-41e6-b2b3-e8e56068ab1a.webp | 300)
+We will use <em><strong>DeepSeek-R1</strong></em> model, it is  DeepSeek’s first-generation reasoning models, achieving performance comparable to OpenAI-o1 across math, code, and reasoning tasks.</p>
+<p>To be precise, we will use <strong>DeepSeek-R1-Distill-Qwen-7B</strong> as this model should be running smoothly on my computer:</p>
+<ul>
+<li><strong>CPU:</strong> Ryzen 3800</li>
+<li><strong>RAM:</strong> 32GB DDR4</li>
+<li><strong>GPU:</strong> NVidia 1070</li>
+<li><strong>Note:</strong> Please be careful when choosing a model. There is a rule: the denser <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> the model, the higher the hardware requirements it needs.</li>
+</ul>
+<h5 id="download-the-model">
+  Download the Model
+  <a class="heading-link" href="#download-the-model">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h5>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>ollama run <span style="color:#ff5c57">deepseek-r1</span><span style="color:#ff5c57">:</span>7b
+</span></span></code></pre></div><p><img src="blog/posts/AI/20250202124458.png" alt="Downloading Model"></p>
+<h5 id="prompt">
+  Prompt
+  <a class="heading-link" href="#prompt">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h5>
+<ul>
+<li>Finally we have the Ollama installed and desired model downloaded, we can execute our first prompt. I used something a bit complex 👌:</li>
+</ul>
+<blockquote>
+<p>What is your name?</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>&gt;&gt;&gt; what is your name?
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#ff6ac1">think</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#ff6ac1">think</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Greetings! I&#39;m DeepSeek-R1, an artificial intelligence assistant created by DeepSeek. I&#39;m at your service and would be
+</span></span><span style="display:flex;"><span>delighted to assist you with any inquiries or tasks you may have.
+</span></span></code></pre></div><h5 id="usage-1">
+  Usage
+  <a class="heading-link" href="#usage-1">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h5>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Usage:
+</span></span><span style="display:flex;"><span>  ollama [flags]
+</span></span><span style="display:flex;"><span>  ollama [command]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Available Commands:
+</span></span><span style="display:flex;"><span>  serve       Start ollama
+</span></span><span style="display:flex;"><span>  create      Create a model from a Modelfile
+</span></span><span style="display:flex;"><span>  show        Show information for a model
+</span></span><span style="display:flex;"><span>  run         Run a model
+</span></span><span style="display:flex;"><span>  stop        Stop a running model
+</span></span><span style="display:flex;"><span>  pull        Pull a model from a registry
+</span></span><span style="display:flex;"><span>  push        Push a model to a registry
+</span></span><span style="display:flex;"><span>  list        List models
+</span></span><span style="display:flex;"><span>  ps          List running models
+</span></span><span style="display:flex;"><span>  cp          Copy a model
+</span></span><span style="display:flex;"><span>  rm          Remove a model
+</span></span><span style="display:flex;"><span>  help        Help about any command
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Flags:
+</span></span><span style="display:flex;"><span>  -h, --help      help for ollama
+</span></span><span style="display:flex;"><span>  -v, --version   Show version information
+</span></span></code></pre></div><ul>
+<li>
+<p>Example:
+<img src="blog/posts/AI/20250202125919.png" alt="Example"></p>
+</li>
+<li>
+<p>Use <code>Ctrl + d</code> or <code>/bye</code> to exit.</p>
+</li>
+</ul>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>In this context, &ldquo;<em><strong>dense</strong></em>&rdquo; refers to the complexity and size of the model. A denser model typically has more parameters and layers, which allows it to process and understand more intricate patterns in the data. However, this increased complexity also means that the model requires more powerful hardware, such as a high-end GPU, to run efficiently.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+      </div>
+
+
+      <footer>
+        
+
+<section class="see-also">
+  
+    
+    
+    
+  
+</section>
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+    2025
+     ArmBraker 👨‍💻 
+    ·
+    
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/blog/js/coder.js"></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

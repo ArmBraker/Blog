@@ -2,262 +2,276 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Journey into IT Knowledge</title>
-    <link>https://armbraker.github.io/blog/categories/</link>
+    <link>http://localhost:1313/blog/categories/</link>
     <description>Recent content in Categories on Journey into IT Knowledge</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 26 Jan 2025 14:59:34 +0100</lastBuildDate>
-    <atom:link href="https://armbraker.github.io/blog/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 01 Feb 2025 14:15:31 +0100</lastBuildDate>
+    <atom:link href="http://localhost:1313/blog/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Local LLM Model</title>
+      <link>http://localhost:1313/blog/categories/local-llm-model/</link>
+      <pubDate>Sat, 01 Feb 2025 14:15:31 +0100</pubDate>
+      <guid>http://localhost:1313/blog/categories/local-llm-model/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Machine Learning</title>
+      <link>http://localhost:1313/blog/categories/machine-learning/</link>
+      <pubDate>Sat, 01 Feb 2025 14:15:31 +0100</pubDate>
+      <guid>http://localhost:1313/blog/categories/machine-learning/</guid>
+      <description></description>
+    </item>
     <item>
       <title>AQL Database</title>
-      <link>https://armbraker.github.io/blog/categories/aql-database/</link>
+      <link>http://localhost:1313/blog/categories/aql-database/</link>
       <pubDate>Sun, 26 Jan 2025 14:59:34 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/categories/aql-database/</guid>
+      <guid>http://localhost:1313/blog/categories/aql-database/</guid>
       <description></description>
     </item>
     <item>
       <title>Blind Injection</title>
-      <link>https://armbraker.github.io/blog/categories/blind-injection/</link>
+      <link>http://localhost:1313/blog/categories/blind-injection/</link>
       <pubDate>Sun, 26 Jan 2025 14:59:34 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/categories/blind-injection/</guid>
+      <guid>http://localhost:1313/blog/categories/blind-injection/</guid>
       <description></description>
     </item>
     <item>
       <title>Python</title>
-      <link>https://armbraker.github.io/blog/categories/python/</link>
+      <link>http://localhost:1313/blog/categories/python/</link>
       <pubDate>Sun, 26 Jan 2025 14:59:34 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/categories/python/</guid>
+      <guid>http://localhost:1313/blog/categories/python/</guid>
       <description></description>
     </item>
     <item>
       <title>Web-App Hacking</title>
-      <link>https://armbraker.github.io/blog/categories/web-app-hacking/</link>
+      <link>http://localhost:1313/blog/categories/web-app-hacking/</link>
       <pubDate>Sun, 26 Jan 2025 14:59:34 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/categories/web-app-hacking/</guid>
+      <guid>http://localhost:1313/blog/categories/web-app-hacking/</guid>
       <description></description>
     </item>
     <item>
       <title>Writeup</title>
-      <link>https://armbraker.github.io/blog/categories/writeup/</link>
+      <link>http://localhost:1313/blog/categories/writeup/</link>
       <pubDate>Sun, 26 Jan 2025 14:59:34 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/categories/writeup/</guid>
+      <guid>http://localhost:1313/blog/categories/writeup/</guid>
       <description></description>
     </item>
     <item>
       <title>Decryption</title>
-      <link>https://armbraker.github.io/blog/categories/decryption/</link>
+      <link>http://localhost:1313/blog/categories/decryption/</link>
       <pubDate>Sun, 26 Jan 2025 14:59:25 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/categories/decryption/</guid>
+      <guid>http://localhost:1313/blog/categories/decryption/</guid>
       <description></description>
     </item>
     <item>
       <title>DFIR</title>
-      <link>https://armbraker.github.io/blog/categories/dfir/</link>
+      <link>http://localhost:1313/blog/categories/dfir/</link>
       <pubDate>Sun, 26 Jan 2025 14:59:25 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/categories/dfir/</guid>
+      <guid>http://localhost:1313/blog/categories/dfir/</guid>
       <description></description>
     </item>
     <item>
       <title>Ransomware</title>
-      <link>https://armbraker.github.io/blog/categories/ransomware/</link>
+      <link>http://localhost:1313/blog/categories/ransomware/</link>
       <pubDate>Sun, 26 Jan 2025 14:59:25 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/categories/ransomware/</guid>
+      <guid>http://localhost:1313/blog/categories/ransomware/</guid>
       <description></description>
     </item>
     <item>
       <title>RSA</title>
-      <link>https://armbraker.github.io/blog/categories/rsa/</link>
+      <link>http://localhost:1313/blog/categories/rsa/</link>
       <pubDate>Sun, 26 Jan 2025 14:59:25 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/categories/rsa/</guid>
+      <guid>http://localhost:1313/blog/categories/rsa/</guid>
       <description></description>
     </item>
     <item>
       <title>BlueTeam</title>
-      <link>https://armbraker.github.io/blog/categories/blueteam/</link>
+      <link>http://localhost:1313/blog/categories/blueteam/</link>
       <pubDate>Sun, 26 Jan 2025 14:59:04 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/categories/blueteam/</guid>
+      <guid>http://localhost:1313/blog/categories/blueteam/</guid>
       <description></description>
     </item>
     <item>
       <title>LogAnalytics</title>
-      <link>https://armbraker.github.io/blog/categories/loganalytics/</link>
+      <link>http://localhost:1313/blog/categories/loganalytics/</link>
       <pubDate>Sun, 26 Jan 2025 14:59:04 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/categories/loganalytics/</guid>
+      <guid>http://localhost:1313/blog/categories/loganalytics/</guid>
       <description></description>
     </item>
     <item>
       <title>SIEM</title>
-      <link>https://armbraker.github.io/blog/categories/siem/</link>
+      <link>http://localhost:1313/blog/categories/siem/</link>
       <pubDate>Sun, 26 Jan 2025 14:59:04 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/categories/siem/</guid>
+      <guid>http://localhost:1313/blog/categories/siem/</guid>
       <description></description>
     </item>
     <item>
       <title>Iot</title>
-      <link>https://armbraker.github.io/blog/categories/iot/</link>
+      <link>http://localhost:1313/blog/categories/iot/</link>
       <pubDate>Sun, 26 Jan 2025 14:58:53 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/categories/iot/</guid>
+      <guid>http://localhost:1313/blog/categories/iot/</guid>
       <description></description>
     </item>
     <item>
       <title>JFFS2</title>
-      <link>https://armbraker.github.io/blog/categories/jffs2/</link>
+      <link>http://localhost:1313/blog/categories/jffs2/</link>
       <pubDate>Sun, 26 Jan 2025 14:58:53 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/categories/jffs2/</guid>
+      <guid>http://localhost:1313/blog/categories/jffs2/</guid>
       <description></description>
     </item>
     <item>
       <title>MQTT</title>
-      <link>https://armbraker.github.io/blog/categories/mqtt/</link>
+      <link>http://localhost:1313/blog/categories/mqtt/</link>
       <pubDate>Sun, 26 Jan 2025 14:58:53 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/categories/mqtt/</guid>
+      <guid>http://localhost:1313/blog/categories/mqtt/</guid>
       <description></description>
     </item>
     <item>
       <title>ReverseEngineering</title>
-      <link>https://armbraker.github.io/blog/categories/reverseengineering/</link>
+      <link>http://localhost:1313/blog/categories/reverseengineering/</link>
       <pubDate>Sun, 26 Jan 2025 14:58:53 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/categories/reverseengineering/</guid>
+      <guid>http://localhost:1313/blog/categories/reverseengineering/</guid>
       <description></description>
     </item>
     <item>
       <title>ROT13</title>
-      <link>https://armbraker.github.io/blog/categories/rot13/</link>
+      <link>http://localhost:1313/blog/categories/rot13/</link>
       <pubDate>Sun, 26 Jan 2025 14:58:53 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/categories/rot13/</guid>
+      <guid>http://localhost:1313/blog/categories/rot13/</guid>
       <description></description>
     </item>
     <item>
       <title>Cartographic</title>
-      <link>https://armbraker.github.io/blog/categories/cartographic/</link>
+      <link>http://localhost:1313/blog/categories/cartographic/</link>
       <pubDate>Sun, 26 Jan 2025 14:58:44 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/categories/cartographic/</guid>
+      <guid>http://localhost:1313/blog/categories/cartographic/</guid>
       <description></description>
     </item>
     <item>
       <title>GoogleEarth</title>
-      <link>https://armbraker.github.io/blog/categories/googleearth/</link>
+      <link>http://localhost:1313/blog/categories/googleearth/</link>
       <pubDate>Sun, 26 Jan 2025 14:58:44 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/categories/googleearth/</guid>
+      <guid>http://localhost:1313/blog/categories/googleearth/</guid>
       <description></description>
     </item>
     <item>
       <title>OSINT</title>
-      <link>https://armbraker.github.io/blog/categories/osint/</link>
+      <link>http://localhost:1313/blog/categories/osint/</link>
       <pubDate>Sun, 26 Jan 2025 14:58:44 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/categories/osint/</guid>
+      <guid>http://localhost:1313/blog/categories/osint/</guid>
       <description></description>
     </item>
     <item>
       <title>SQLinjection</title>
-      <link>https://armbraker.github.io/blog/categories/sqlinjection/</link>
+      <link>http://localhost:1313/blog/categories/sqlinjection/</link>
       <pubDate>Sun, 26 Jan 2025 14:58:44 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/categories/sqlinjection/</guid>
+      <guid>http://localhost:1313/blog/categories/sqlinjection/</guid>
       <description></description>
     </item>
     <item>
       <title>Authentication</title>
-      <link>https://armbraker.github.io/blog/categories/authentication/</link>
+      <link>http://localhost:1313/blog/categories/authentication/</link>
       <pubDate>Sun, 26 Jan 2025 14:58:33 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/categories/authentication/</guid>
+      <guid>http://localhost:1313/blog/categories/authentication/</guid>
       <description></description>
     </item>
     <item>
       <title>Authorization</title>
-      <link>https://armbraker.github.io/blog/categories/authorization/</link>
+      <link>http://localhost:1313/blog/categories/authorization/</link>
       <pubDate>Sun, 26 Jan 2025 14:58:33 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/categories/authorization/</guid>
+      <guid>http://localhost:1313/blog/categories/authorization/</guid>
       <description></description>
     </item>
     <item>
       <title>Automation</title>
-      <link>https://armbraker.github.io/blog/categories/automation/</link>
+      <link>http://localhost:1313/blog/categories/automation/</link>
       <pubDate>Sun, 26 Jan 2025 14:58:33 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/categories/automation/</guid>
+      <guid>http://localhost:1313/blog/categories/automation/</guid>
       <description></description>
     </item>
     <item>
       <title>Poweshell</title>
-      <link>https://armbraker.github.io/blog/categories/poweshell/</link>
+      <link>http://localhost:1313/blog/categories/poweshell/</link>
       <pubDate>Sun, 26 Jan 2025 14:58:33 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/categories/poweshell/</guid>
+      <guid>http://localhost:1313/blog/categories/poweshell/</guid>
       <description></description>
     </item>
     <item>
       <title>Web-Application Hacking</title>
-      <link>https://armbraker.github.io/blog/categories/web-application-hacking/</link>
+      <link>http://localhost:1313/blog/categories/web-application-hacking/</link>
       <pubDate>Sun, 26 Jan 2025 14:58:33 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/categories/web-application-hacking/</guid>
+      <guid>http://localhost:1313/blog/categories/web-application-hacking/</guid>
       <description></description>
     </item>
     <item>
       <title>GameHacking</title>
-      <link>https://armbraker.github.io/blog/categories/gamehacking/</link>
+      <link>http://localhost:1313/blog/categories/gamehacking/</link>
       <pubDate>Sun, 26 Jan 2025 14:58:10 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/categories/gamehacking/</guid>
+      <guid>http://localhost:1313/blog/categories/gamehacking/</guid>
       <description></description>
     </item>
     <item>
       <title>JS</title>
-      <link>https://armbraker.github.io/blog/categories/js/</link>
+      <link>http://localhost:1313/blog/categories/js/</link>
       <pubDate>Sun, 26 Jan 2025 14:58:10 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/categories/js/</guid>
+      <guid>http://localhost:1313/blog/categories/js/</guid>
       <description></description>
     </item>
     <item>
       <title>Databases</title>
-      <link>https://armbraker.github.io/blog/categories/databases/</link>
+      <link>http://localhost:1313/blog/categories/databases/</link>
       <pubDate>Sun, 19 Jan 2025 16:19:30 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/categories/databases/</guid>
+      <guid>http://localhost:1313/blog/categories/databases/</guid>
       <description></description>
     </item>
     <item>
       <title>Hardware</title>
-      <link>https://armbraker.github.io/blog/categories/hardware/</link>
+      <link>http://localhost:1313/blog/categories/hardware/</link>
       <pubDate>Sun, 19 Jan 2025 16:19:30 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/categories/hardware/</guid>
+      <guid>http://localhost:1313/blog/categories/hardware/</guid>
       <description></description>
     </item>
     <item>
       <title>Hashing</title>
-      <link>https://armbraker.github.io/blog/categories/hashing/</link>
+      <link>http://localhost:1313/blog/categories/hashing/</link>
       <pubDate>Sun, 19 Jan 2025 16:19:30 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/categories/hashing/</guid>
+      <guid>http://localhost:1313/blog/categories/hashing/</guid>
       <description></description>
     </item>
     <item>
       <title>Android</title>
-      <link>https://armbraker.github.io/blog/categories/android/</link>
+      <link>http://localhost:1313/blog/categories/android/</link>
       <pubDate>Sun, 19 Jan 2025 13:29:11 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/categories/android/</guid>
+      <guid>http://localhost:1313/blog/categories/android/</guid>
       <description></description>
     </item>
     <item>
       <title>Encryption</title>
-      <link>https://armbraker.github.io/blog/categories/encryption/</link>
+      <link>http://localhost:1313/blog/categories/encryption/</link>
       <pubDate>Sun, 19 Jan 2025 13:29:11 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/categories/encryption/</guid>
+      <guid>http://localhost:1313/blog/categories/encryption/</guid>
       <description></description>
     </item>
     <item>
       <title>Configuration</title>
-      <link>https://armbraker.github.io/blog/categories/configuration/</link>
+      <link>http://localhost:1313/blog/categories/configuration/</link>
       <pubDate>Sat, 18 Jan 2025 16:55:28 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/categories/configuration/</guid>
+      <guid>http://localhost:1313/blog/categories/configuration/</guid>
       <description></description>
     </item>
     <item>
       <title>Setup</title>
-      <link>https://armbraker.github.io/blog/categories/setup/</link>
+      <link>http://localhost:1313/blog/categories/setup/</link>
       <pubDate>Sat, 18 Jan 2025 16:55:28 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/categories/setup/</guid>
+      <guid>http://localhost:1313/blog/categories/setup/</guid>
       <description></description>
     </item>
     <item>
       <title>Cheatsheet</title>
-      <link>https://armbraker.github.io/blog/categories/cheatsheet/</link>
+      <link>http://localhost:1313/blog/categories/cheatsheet/</link>
       <pubDate>Sat, 18 Jan 2025 15:25:21 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/categories/cheatsheet/</guid>
+      <guid>http://localhost:1313/blog/categories/cheatsheet/</guid>
       <description></description>
     </item>
   </channel>
