@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Series on Journey into IT Knowledge</title>
-    <link>https://armbraker.github.io/blog/series/</link>
+    <link>http://localhost:1313/blog/series/</link>
     <description>Recent content in Series on Journey into IT Knowledge</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Sat, 01 Feb 2025 14:15:31 +0100</lastBuildDate>
-    <atom:link href="https://armbraker.github.io/blog/series/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/blog/series/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Local LLM With Ollama</title>
-      <link>https://armbraker.github.io/blog/series/local-llm-with-ollama/</link>
+      <link>http://localhost:1313/blog/series/local-llm-with-ollama/</link>
       <pubDate>Sat, 01 Feb 2025 14:15:31 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/series/local-llm-with-ollama/</guid>
+      <guid>http://localhost:1313/blog/series/local-llm-with-ollama/</guid>
       <description></description>
     </item>
     <item>
       <title>HHC24</title>
-      <link>https://armbraker.github.io/blog/series/hhc24/</link>
+      <link>http://localhost:1313/blog/series/hhc24/</link>
       <pubDate>Sun, 26 Jan 2025 14:59:34 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/series/hhc24/</guid>
+      <guid>http://localhost:1313/blog/series/hhc24/</guid>
       <description></description>
     </item>
     <item>
       <title>GIT</title>
-      <link>https://armbraker.github.io/blog/series/git/</link>
+      <link>http://localhost:1313/blog/series/git/</link>
       <pubDate>Sat, 18 Jan 2025 15:25:21 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/series/git/</guid>
+      <guid>http://localhost:1313/blog/series/git/</guid>
       <description></description>
     </item>
   </channel>

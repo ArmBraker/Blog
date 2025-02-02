@@ -23,7 +23,7 @@ series = ["Local LLM with Ollama"]
 Welcome to this new series focused on LLMs (Large Language Models) and running them locally using [Ollama](https://ollama.com/)).
 Recently, I decided to take a little break from my usual domain of **Cybersecurity** to explore LLMs. This topic is very popular nowadays, and many believe it will impact every domain of our lives and work. I have used and tried various LLMs, such as OpenAI, Gemini, and Claude.
 However, I have concerns about the privacy of my personal or company information, and I believe others share this concern. Therefore, I decided to delve deeper into this topic and learn about LLMs and how to ***"feed"*** them with personal information without worries of providing them into 3rd party.
-![LLM Meme](/20250202110843.jpg)
+![LLM Meme](../20250202110843.jpg)
 
 ## Content of the series 🧾
 
@@ -55,11 +55,11 @@ As mentioned earlier, LLMs and AI, in general, have their "dark side," including
 - **Resource Intensity**: Training and running LLMs require significant computational resources and energy, which can be costly and environmentally impactful.
 - **Ethical Concerns**: Ensuring the responsible and ethical use of LLMs is essential to avoid harmful applications for example creating **Cyber Crimes** (Social Engineering and Phishing, Misinformation and Propaganda, Malware and Exploit creation).
 
-![LLM meme 2](/AI/20250202112843.jpg)
+![LLM meme 2](../20250202112843.jpg)
 
 ### What is Ollama?
 
-![[Pasted image 20250202120505.png|300]]
+![Ollama Icon](../20250202120505.png|300)
 
 Ollama is an **open-source** project that serves as a powerful and user-friendly platform for running LLMs on your local machine. This offers **enhanced privacy, cost savings, and offline access**. Ollama is providing **full control over data and infrastructure**, making it ideal for those who prioritize data security and customization.
 
@@ -86,7 +86,7 @@ As mentioned, I am using Windows and I am big fan of package managers, personall
 choco install ollama -y
 ```
 
-![Installation with Choco](/20250202122026.png)
+![Installation with Choco](../20250202122026.png)
 
 #### Usage
 
@@ -99,7 +99,7 @@ ollama version is 0.5.7
 
 #### Local Model Installation
 
-![Deepseak](/069ccc94-63b0-41e6-b2b3-e8e56068ab1a.webp | 300)
+![Deepseak](../069ccc94-63b0-41e6-b2b3-e8e56068ab1a.webp | 300)
 We will use ***DeepSeek-R1*** model, it is  DeepSeek’s first-generation reasoning models, achieving performance comparable to OpenAI-o1 across math, code, and reasoning tasks.
 
 To be precise, we will use **DeepSeek-R1-Distill-Qwen-7B** as this model should be running smoothly on my computer:
@@ -115,7 +115,7 @@ To be precise, we will use **DeepSeek-R1-Distill-Qwen-7B** as this model should 
 ollama run deepseek-r1:7b
 ```
 
-![Downloading Model](/20250202124458.png)
+![Downloading Model](../20250202124458.png)
 
 ##### Prompt
 
@@ -160,7 +160,7 @@ Flags:
 ```
 
 - Example:
-![Example](/20250202125919.png)
+![Example](../20250202125919.png)
 
 - Use `Ctrl + d` or `/bye` to exit.
 

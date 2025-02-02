@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>LLM on Journey into IT Knowledge</title>
-    <link>https://armbraker.github.io/blog/tags/llm/</link>
+    <link>http://localhost:1313/blog/tags/llm/</link>
     <description>Recent content in LLM on Journey into IT Knowledge</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Sat, 01 Feb 2025 14:15:31 +0100</lastBuildDate>
-    <atom:link href="https://armbraker.github.io/blog/tags/llm/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/blog/tags/llm/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Local LLMs Part1: Introduction to LLM and Ollama</title>
-      <link>https://armbraker.github.io/blog/posts/ai/introduction-llm-part-1/</link>
+      <link>http://localhost:1313/blog/posts/ai/introduction-llm-part-1/</link>
       <pubDate>Sat, 01 Feb 2025 14:15:31 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/posts/ai/introduction-llm-part-1/</guid>
-      <description>&lt;h2 id=&#34;introduction&#34;&gt;&#xA;  Introduction&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#introduction&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Welcome to this new series focused on LLMs (Large Language Models) and running them locally using &lt;a href=&#34;https://ollama.com/&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Ollama&lt;/a&gt;).&#xA;Recently, I decided to take a little break from my usual domain of &lt;strong&gt;Cybersecurity&lt;/strong&gt; to explore LLMs. This topic is very popular nowadays, and many believe it will impact every domain of our lives and work. I have used and tried various LLMs, such as OpenAI, Gemini, and Claude.&#xA;However, I have concerns about the privacy of my personal or company information, and I believe others share this concern. Therefore, I decided to delve deeper into this topic and learn about LLMs and how to &lt;em&gt;&lt;strong&gt;&amp;ldquo;feed&amp;rdquo;&lt;/strong&gt;&lt;/em&gt; them with personal information without worries of providing them into 3rd party.&#xA;&lt;img src=&#34;https://armbraker.github.io/blog/20250202110843.jpg&#34; alt=&#34;LLM Meme&#34;&gt;&lt;/p&gt;</description>
+      <guid>http://localhost:1313/blog/posts/ai/introduction-llm-part-1/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;&#xA;  Introduction&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#introduction&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Welcome to this new series focused on LLMs (Large Language Models) and running them locally using &lt;a href=&#34;https://ollama.com/&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Ollama&lt;/a&gt;).&#xA;Recently, I decided to take a little break from my usual domain of &lt;strong&gt;Cybersecurity&lt;/strong&gt; to explore LLMs. This topic is very popular nowadays, and many believe it will impact every domain of our lives and work. I have used and tried various LLMs, such as OpenAI, Gemini, and Claude.&#xA;However, I have concerns about the privacy of my personal or company information, and I believe others share this concern. Therefore, I decided to delve deeper into this topic and learn about LLMs and how to &lt;em&gt;&lt;strong&gt;&amp;ldquo;feed&amp;rdquo;&lt;/strong&gt;&lt;/em&gt; them with personal information without worries of providing them into 3rd party.&#xA;&lt;img src=&#34;../20250202110843.jpg&#34; alt=&#34;LLM Meme&#34;&gt;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
