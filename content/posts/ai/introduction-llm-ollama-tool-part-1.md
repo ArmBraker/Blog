@@ -20,12 +20,17 @@ series = ["Local LLM with Ollama"]
 
 ## Introduction
 
-Welcome to this new series focused on LLMs (Large Language Models) and running them locally using [Ollama](https://ollama.com/)).
-Recently, I decided to take a little break from my usual domain of **Cybersecurity** to explore LLMs. This topic is very popular nowadays, and many believe it will impact every domain of our lives and work. I have used and tried various LLMs, such as OpenAI, Gemini, and Claude.
-However, I have concerns about the privacy of my personal or company information, and I believe others share this concern. Therefore, I decided to delve deeper into this topic and learn about LLMs and how to ***"feed"*** them with personal information without worries of providing them into 3rd party.
+Welcome to this new series focused on LLMs (Large Language Models) and running them locally using [Ollama](https://ollama.com/).
+
+Recently, I decided to take a little break from my usual domain of cybersecurity to explore LLMs—a topic that's growing in popularity today. 
+It seems that many believe it will impact every aspect of our lives and work. 
+I've used and tried various *LLMs like OpenAI, Gemini, and Claude.*
+
+However, I have privacy concerns regarding the potential sharing of personal information with third parties. Many people, including myself, share these worries. Therefore, I decided to dive deeper into this topic and learn about LLMs and how to feed them with personal information without worrying about providing it to third-party entities.
+
 ![LLM Meme](../20250202110843.jpg)
 
-## Content of the series 🧾
+## Content of This Series 🧾
 
 - **Part 1: Introduction to LLM and Ollama Tool**
 - **Part 2: Adding Custom Data to Locally Running LLMs**
@@ -59,22 +64,21 @@ As mentioned earlier, LLMs and AI, in general, have their "dark side," including
 
 ### What is Ollama?
 
-![Ollama Icon](../20250202120505.png|300)
+![Ollama Icon](../20250202120505.png)
 
-Ollama is an **open-source** project that serves as a powerful and user-friendly platform for running LLMs on your local machine. This offers **enhanced privacy, cost savings, and offline access**. Ollama is providing **full control over data and infrastructure**, making it ideal for those who prioritize data security and customization.
+Ollama is an **open-source** project that serves as a powerful and user-friendly platform for running LLMs on your local machine. This offers you **enhanced privacy, cost savings, and offline access**. Ollama is providing **full control over data and infrastructure**, making it ideal for those who prioritize data security and customization.
 
 > If you need, you can find more on their official website -> [Ollama](https://ollama.com/) or on their [GitHub - ollama/ollama: Get up and running with Llama 3.3, DeepSeek-R1, Phi-4, Gemma 2, and other large language models.](https://github.com/ollama/ollama)
 
 ### Running LLM Models Locally with Ollama
 
-#### Choosing a Right Platform
+#### Choosing Right Platform
 
-I am using Windows as my base operating system, and LLMs run best with a GPU.
-Therefore, I will guide you on how to use Ollama on Windows.
+I am using Windows as my base operating system, and  as LLMs run best with a GPU it think it will make non-sense to run them in VM.  I will guide you on how to use Ollama on Windows.
 
 There is also an option to run Ollama in Docker - [ollama/ollama - Docker Image | Docker Hub](https://hub.docker.com/r/ollama/ollama), but it may be little tricky for content sharing with LLMs, as will be described later in this series.
 
-**Note**: I am suggesting to follow their [GitHub](https://github.com/ollama/ollama) for installation instructions.
+**Note**: I am suggesting to follow Ollama official installation instruction on their [GitHub](https://github.com/ollama/ollama).
 
 #### Installation
 
@@ -99,7 +103,8 @@ ollama version is 0.5.7
 
 #### Local Model Installation
 
-![Deepseak](../069ccc94-63b0-41e6-b2b3-e8e56068ab1a.webp | 300)
+![DeepSeek](../069ccc94-63b0-41e6-b2b3-e8e56068ab1a.webp)
+
 We will use ***DeepSeek-R1*** model, it is  DeepSeek’s first-generation reasoning models, achieving performance comparable to OpenAI-o1 across math, code, and reasoning tasks.
 
 To be precise, we will use **DeepSeek-R1-Distill-Qwen-7B** as this model should be running smoothly on my computer:
@@ -109,7 +114,7 @@ To be precise, we will use **DeepSeek-R1-Distill-Qwen-7B** as this model should 
 - **GPU:** NVidia 1070
 - **Note:** Please be careful when choosing a model. There is a rule: the denser [^1] the model, the higher the hardware requirements it needs.
 
-##### Download the Model
+##### Download LLM Model
 
 ```powershell
 ollama run deepseek-r1:7b
@@ -119,7 +124,7 @@ ollama run deepseek-r1:7b
 
 ##### Prompt
 
-- Finally we have the Ollama installed and desired model downloaded, we can execute our first prompt. I used something a bit complex 👌:
+- Finally we have the Ollama installed and desired model downloaded, so we can execute our first prompt.  I used something a bit complex 👌:
 
 > What is your name?
 
@@ -160,6 +165,7 @@ Flags:
 ```
 
 - Example:
+
 ![Example](../20250202125919.png)
 
 - Use `Ctrl + d` or `/bye` to exit.
