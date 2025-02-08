@@ -2,94 +2,94 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Journey into IT Knowledge</title>
-    <link>https://armbraker.github.io/blog/tags/</link>
+    <link>http://localhost:1313/blog/tags/</link>
     <description>Recent content in Tags on Journey into IT Knowledge</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Sat, 08 Feb 2025 10:30:31 +0100</lastBuildDate>
-    <atom:link href="https://armbraker.github.io/blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/blog/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AnythingLLM</title>
-      <link>https://armbraker.github.io/blog/tags/anythingllm/</link>
+      <link>http://localhost:1313/blog/tags/anythingllm/</link>
       <pubDate>Sat, 08 Feb 2025 10:30:31 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/tags/anythingllm/</guid>
+      <guid>http://localhost:1313/blog/tags/anythingllm/</guid>
       <description></description>
     </item>
     <item>
       <title>LLM</title>
-      <link>https://armbraker.github.io/blog/tags/llm/</link>
+      <link>http://localhost:1313/blog/tags/llm/</link>
       <pubDate>Sat, 08 Feb 2025 10:30:31 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/tags/llm/</guid>
+      <guid>http://localhost:1313/blog/tags/llm/</guid>
       <description></description>
     </item>
     <item>
       <title>Machine Learning</title>
-      <link>https://armbraker.github.io/blog/tags/machine-learning/</link>
+      <link>http://localhost:1313/blog/tags/machine-learning/</link>
       <pubDate>Sat, 08 Feb 2025 10:30:31 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/tags/machine-learning/</guid>
+      <guid>http://localhost:1313/blog/tags/machine-learning/</guid>
       <description></description>
     </item>
     <item>
       <title>Ollama</title>
-      <link>https://armbraker.github.io/blog/tags/ollama/</link>
+      <link>http://localhost:1313/blog/tags/ollama/</link>
       <pubDate>Sat, 08 Feb 2025 10:30:31 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/tags/ollama/</guid>
+      <guid>http://localhost:1313/blog/tags/ollama/</guid>
       <description></description>
     </item>
     <item>
       <title>Retrieval-Augmented Generation (RAG)</title>
-      <link>https://armbraker.github.io/blog/tags/retrieval-augmented-generation-rag/</link>
+      <link>http://localhost:1313/blog/tags/retrieval-augmented-generation-rag/</link>
       <pubDate>Sat, 08 Feb 2025 10:30:31 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/tags/retrieval-augmented-generation-rag/</guid>
+      <guid>http://localhost:1313/blog/tags/retrieval-augmented-generation-rag/</guid>
       <description></description>
     </item>
     <item>
       <title>CTF</title>
-      <link>https://armbraker.github.io/blog/tags/ctf/</link>
+      <link>http://localhost:1313/blog/tags/ctf/</link>
       <pubDate>Sun, 26 Jan 2025 14:59:34 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/tags/ctf/</guid>
+      <guid>http://localhost:1313/blog/tags/ctf/</guid>
       <description></description>
     </item>
     <item>
       <title>HHC24</title>
-      <link>https://armbraker.github.io/blog/tags/hhc24/</link>
+      <link>http://localhost:1313/blog/tags/hhc24/</link>
       <pubDate>Sun, 26 Jan 2025 14:59:34 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/tags/hhc24/</guid>
+      <guid>http://localhost:1313/blog/tags/hhc24/</guid>
       <description></description>
     </item>
     <item>
       <title>Sans</title>
-      <link>https://armbraker.github.io/blog/tags/sans/</link>
+      <link>http://localhost:1313/blog/tags/sans/</link>
       <pubDate>Sun, 26 Jan 2025 14:59:34 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/tags/sans/</guid>
+      <guid>http://localhost:1313/blog/tags/sans/</guid>
       <description></description>
     </item>
     <item>
       <title>Github</title>
-      <link>https://armbraker.github.io/blog/tags/github/</link>
+      <link>http://localhost:1313/blog/tags/github/</link>
       <pubDate>Sat, 18 Jan 2025 16:55:28 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/tags/github/</guid>
+      <guid>http://localhost:1313/blog/tags/github/</guid>
       <description></description>
     </item>
     <item>
       <title>Hosting</title>
-      <link>https://armbraker.github.io/blog/tags/hosting/</link>
+      <link>http://localhost:1313/blog/tags/hosting/</link>
       <pubDate>Sat, 18 Jan 2025 16:55:28 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/tags/hosting/</guid>
+      <guid>http://localhost:1313/blog/tags/hosting/</guid>
       <description></description>
     </item>
     <item>
       <title>Hugo</title>
-      <link>https://armbraker.github.io/blog/tags/hugo/</link>
+      <link>http://localhost:1313/blog/tags/hugo/</link>
       <pubDate>Sat, 18 Jan 2025 16:55:28 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/tags/hugo/</guid>
+      <guid>http://localhost:1313/blog/tags/hugo/</guid>
       <description></description>
     </item>
     <item>
       <title>Git</title>
-      <link>https://armbraker.github.io/blog/tags/git/</link>
+      <link>http://localhost:1313/blog/tags/git/</link>
       <pubDate>Sat, 18 Jan 2025 15:25:21 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/tags/git/</guid>
+      <guid>http://localhost:1313/blog/tags/git/</guid>
       <description></description>
     </item>
   </channel>

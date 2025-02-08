@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>RSA on Journey into IT Knowledge</title>
-    <link>https://armbraker.github.io/blog/categories/rsa/</link>
+    <link>http://localhost:1313/blog/categories/rsa/</link>
     <description>Recent content in RSA on Journey into IT Knowledge</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Sun, 26 Jan 2025 14:59:25 +0100</lastBuildDate>
-    <atom:link href="https://armbraker.github.io/blog/categories/rsa/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/blog/categories/rsa/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>HHC24 - Frostbit Decryption</title>
-      <link>https://armbraker.github.io/blog/posts/hhc24/frostbitdecrypt/</link>
+      <link>http://localhost:1313/blog/posts/hhc24/frostbitdecrypt/</link>
       <pubDate>Sun, 26 Jan 2025 14:59:25 +0100</pubDate>
-      <guid>https://armbraker.github.io/blog/posts/hhc24/frostbitdecrypt/</guid>
+      <guid>http://localhost:1313/blog/posts/hhc24/frostbitdecrypt/</guid>
       <description>&lt;h2 id=&#34;introduction&#34;&gt;&#xA;  Introduction&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#introduction&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Hardest challenge of HHC24! This was challenge require series of multiple detective and attack techniques. Lot&amp;rsquo;s of folks loose thier sanity during this road 🛣.&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;There is no Silver 🥈 or Gold 🥇 variant. You will receive a silver medal when finishing the challange and gold when you solve Deativation challange.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;decrypt-pcap&#34;&gt;&#xA;  Decrypt PCAP&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#decrypt-pcap&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Look for session key log file in dump:&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;strings frostbit_core_dump.13 | grep &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;secret&amp;#34;&lt;/span&gt; -i&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;&#xA;&lt;li&gt;Other way to obtain the nonce can be:&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;strings frostbit_core_dump.13 | grep &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;session&amp;#34;&lt;/span&gt; -i&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;a href=&#34;https://api.frostbit.app/api/v1/bot/83270120-3b1c-41f3-b25b-deaa5b5d1327/session#&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://api.frostbit.app/api/v1/bot/83270120-3b1c-41f3-b25b-deaa5b5d1327/session#&lt;/a&gt;&lt;/p&gt;</description>
     </item>
   </channel>

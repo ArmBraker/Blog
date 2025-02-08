@@ -34,7 +34,7 @@ description = "A Journey to into IT Knowledge"
 keywords = "blog,knowledge,IT Security,hacking,personal,networking"
 info = ["IT Security Specialist 🔐", "Consultant 💡"]
 avatarURL = "/blog/images/avatar.png"
-gravatar = "samuelkrausko@gmail.com"
+#gravatar = "samuelkrausko@gmail.com"
 dateFormat = "January 2, 2006"
 since = 2025
 # Git Commit in Footer, uncomment the line below to enable it
