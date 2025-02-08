@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>
+  Local LLMs Part 2: Adding Custom Data to Locally Running LLMs · Journey into IT Knowledge
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="ArmBraker 👨‍💻">
+<meta name="description" content="Learn how to integrate custom data for LLMs">
+<meta name="keywords" content="blog,knowledge,IT Security,hacking,personal,networking">
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Local LLMs Part 2: Adding Custom Data to Locally Running LLMs">
+  <meta name="twitter:description" content="Learn how to integrate custom data for LLMs">
+
+<meta property="og:url" content="https://armbraker.github.io/blog/posts/ai/adding-custom-data-to-locally-running-llms/">
+  <meta property="og:site_name" content="Journey into IT Knowledge">
+  <meta property="og:title" content="Local LLMs Part 2: Adding Custom Data to Locally Running LLMs">
+  <meta property="og:description" content="Learn how to integrate custom data for LLMs">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-02-08T10:30:31+01:00">
+    <meta property="article:modified_time" content="2025-02-08T10:30:31+01:00">
+    <meta property="article:tag" content="LLM">
+    <meta property="article:tag" content="Machine Learning">
+    <meta property="article:tag" content="Retrieval-Augmented Generation (RAG)">
+    <meta property="article:tag" content="Ollama">
+    <meta property="article:tag" content="AnythingLLM">
+      <meta property="og:see_also" content="https://armbraker.github.io/blog/posts/ai/introduction-llm-ollama-tool-part-1/">
+
+
+
+
+<link rel="canonical" href="https://armbraker.github.io/blog/posts/ai/adding-custom-data-to-locally-running-llms/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/blog/css/coder.min.35806ce5e0e1bb4527b622208e45c388f9cf2ef6ba7239537fe5b91b2690c4ec.css" integrity="sha256-NYBs5eDhu0UntiIgjkXDiPnPLva6cjlTf&#43;W5GyaQxOw=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/blog/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="https://armbraker.github.io/blog/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="https://armbraker.github.io/blog/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="https://armbraker.github.io/blog/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="https://armbraker.github.io/blog/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://armbraker.github.io/blog/images/apple-touch-icon.png">
+
+<link rel="manifest" href="https://armbraker.github.io/blog/site.webmanifest">
+<link rel="mask-icon" href="https://armbraker.github.io/blog/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="https://armbraker.github.io/blog/">
+      Journey into IT Knowledge
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/blog/">Home</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/blog/posts/">Blog</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/blog/about/">About</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://armbraker.github.io/blog/posts/ai/adding-custom-data-to-locally-running-llms/">
+              Local LLMs Part 2: Adding Custom Data to Locally Running LLMs
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2025-02-08T10:30:31&#43;01:00">
+                February 8, 2025
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              6-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/blog/categories/local-llm-model/">Local LLM Model</a>
+      <span class="separator">•</span>
+    <a href="/blog/categories/machine-learning/">Machine Learning</a></div>
+
+          <div class="tags">
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/blog/tags/llm/">LLM</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/blog/tags/machine-learning/">Machine Learning</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/blog/tags/retrieval-augmented-generation-rag/">Retrieval-Augmented Generation (RAG)</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/blog/tags/ollama/">Ollama</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/blog/tags/anythingllm/">AnythingLLM</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#common-learning-methods">Common Learning Methods</a>
+      <ul>
+        <li><a href="#1-fine-tuning">1. Fine-Tuning</a></li>
+        <li><a href="#2-prompt-engineering">2. Prompt Engineering</a></li>
+        <li><a href="#3-in-context-learning">3. In-Context Learning</a></li>
+        <li><a href="#4-retrieval-augmented-generation-rag">4. Retrieval-Augmented Generation (RAG)</a></li>
+      </ul>
+    </li>
+    <li><a href="#our-method-of-choice">Our Method of Choice</a></li>
+    <li><a href="#technology-stack">Technology Stack</a>
+      <ul>
+        <li><a href="#installation">Installation</a></li>
+        <li><a href="#configuration">Configuration</a></li>
+      </ul>
+    </li>
+    <li><a href="#provide-custom-data">Provide Custom Data</a>
+      <ul>
+        <li><a href="#local-data">Local Data</a></li>
+        <li><a href="#remote-data">Remote Data</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+<h2 id="introduction">
+  Introduction
+  <a class="heading-link" href="#introduction">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Welcome in the 2nd party of this series, in previous article [Introduction into LLM &amp; Ollama Tool](<a href="https://armbraker.github.io/blog/posts/ai/introduction-llm-part-1/"  class="external-link" target="_blank" rel="noopener">Local LLMs Part1: Introduction to LLM and Ollama · Journey into IT Knowledge</a>)
+we focused on short introduction to AI and LLM models their benefits and challenges.</p>
+<p>In today article I would like to follow on the challenges which we can have with Public LLM models like ChatGPT or DeepSeek:</p>
+<ul>
+<li><strong>Data Privacy</strong></li>
+<li><strong>Cost</strong></li>
+<li><strong>Confidentiality</strong></li>
+<li><strong>Compliance and Regulations</strong></li>
+</ul>
+<p><img src="/blog/posts/ai/adding-custom-data-to-locally-running-llms/Pastedimage20250207134924.png" alt=""></p>
+<p>I will try to summarize in this part how to feed LLMs with your data without loosing privacy and describe their <em>pros</em> and <em>cons</em> of these methods, including when to choose this method.</p>
+<hr>
+<h2 id="common-learning-methods">
+  Common Learning Methods
+  <a class="heading-link" href="#common-learning-methods">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<h3 id="1-fine-tuning">
+  1. Fine-Tuning
+  <a class="heading-link" href="#1-fine-tuning">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<table>
+  <thead>
+      <tr>
+          <th><strong>Characteristic</strong></th>
+          <th><strong>Description</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Definition</strong></td>
+          <td>Retraining a pre-existing LLM on your custom dataset to adapt it to specific tasks or domains.</td>
+      </tr>
+      <tr>
+          <td><strong>Pros</strong></td>
+          <td>Highly effective for domain-specific tasks, results in a more accurate and tailored model, can leverage pre-trained knowledge while adapting to new data.</td>
+      </tr>
+      <tr>
+          <td><strong>Cons</strong></td>
+          <td>Requires significant computational resources, time-consuming process, needs expertise in machine learning and access to high-quality datasets.</td>
+      </tr>
+      <tr>
+          <td><strong>When to Choose</strong></td>
+          <td>When you need a highly customized model for specific applications, when accuracy and domain-specific performance are crucial, when you have the necessary resources and expertise to fine-tune the model.</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="2-prompt-engineering">
+  2. Prompt Engineering
+  <a class="heading-link" href="#2-prompt-engineering">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<table>
+  <thead>
+      <tr>
+          <th><strong>Characteristic</strong></th>
+          <th><strong>Description</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Definition</strong></td>
+          <td>The art of creating well-crafted prompts that guide the LLM to produce desired outputs without altering the model itself.</td>
+      </tr>
+      <tr>
+          <td><strong>Pros</strong></td>
+          <td>Does not require retraining the model, quick and easy to implement, flexible and can be adjusted on the fly.</td>
+      </tr>
+      <tr>
+          <td><strong>Cons</strong></td>
+          <td>Limited by the inherent capabilities of the base model, may not perform as well on highly specialized tasks, can be less consistent compared to fine-tuned models.</td>
+      </tr>
+      <tr>
+          <td><strong>When to Choose</strong></td>
+          <td>When you need a quick solution without retraining the model, when dealing with general tasks that do not require extensive customization, when computational resources and time are limited.</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="3-in-context-learning">
+  3. In-Context Learning
+  <a class="heading-link" href="#3-in-context-learning">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<table>
+  <thead>
+      <tr>
+          <th><strong>Characteristic</strong></th>
+          <th><strong>Description</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Definition</strong></td>
+          <td>Providing examples within the prompt to guide the model&rsquo;s behavior for specific tasks.</td>
+      </tr>
+      <tr>
+          <td><strong>Pros</strong></td>
+          <td>No need for model retraining, allows for dynamic adjustment based on the task at hand, can improve performance with relevant examples.</td>
+      </tr>
+      <tr>
+          <td><strong>Cons</strong></td>
+          <td>Limited by the number of examples that can be provided within the prompt, effectiveness depends on the quality and relevance of the examples, may require frequent updates and adjustments.</td>
+      </tr>
+      <tr>
+          <td><strong>When to Choose</strong></td>
+          <td>When you need to quickly adapt the model to different tasks, when you have relevant examples readily available, when the task does not require extensive retraining.</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="4-retrieval-augmented-generation-rag">
+  4. Retrieval-Augmented Generation (RAG)
+  <a class="heading-link" href="#4-retrieval-augmented-generation-rag">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<table>
+  <thead>
+      <tr>
+          <th><strong>Characteristic</strong></th>
+          <th><strong>Description</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Definition</strong></td>
+          <td>Combining information retrieval with generation by allowing the LLM to access external documents or databases to generate more accurate and contextually relevant responses.</td>
+      </tr>
+      <tr>
+          <td><strong>Pros</strong></td>
+          <td>Provides up-to-date and relevant information from external sources, enhances the model&rsquo;s ability to answer specific questions accurately, reduces the need for extensive fine-tuning on large datasets.</td>
+      </tr>
+      <tr>
+          <td><strong>Cons</strong></td>
+          <td>Requires setting up and maintaining an external knowledge base or document repository, may introduce latency due to the retrieval process, needs additional components for effective retrieval and integration.</td>
+      </tr>
+      <tr>
+          <td><strong>When to Choose</strong></td>
+          <td>When you need the model to access a wide range of up-to-date information, when accuracy and context relevance are critical for the task, when you have the infrastructure to support document retrieval and integration.</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="our-method-of-choice">
+  Our Method of Choice
+  <a class="heading-link" href="#our-method-of-choice">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>I personally prefer <em>Retrieval-Augmented Generation (RAG)</em> and <em>In-Context Learning</em> methods because they provide me the best results and keep my comfort 🛌 at high level.</p>
+<p>There is too many ways how you can make RAG process tailored on your needs. The most common ways are by using Python 🐍 tools like <a href="[LangChain]%28https://www.langchain.com/%29" >LangChain</a> with combination of vector database 📊 (<a href="https://github.com/chroma-core/chroma"  class="external-link" target="_blank" rel="noopener">GitHub - chroma-core/chroma: the AI-native open-source embedding database</a>)</p>
+<p>However, I am very lazy person and I don&rsquo;t know much about the whole LLM and AI&rsquo;s internal workflows at the moment.<br>
+Therefore, I decided to use easier way for the moment and use out of box solution <a href="https://anythingllm.com/"  class="external-link" target="_blank" rel="noopener"><strong>AnythingLLM</strong></a></p>
+<p><img src="/blog/posts/ai/adding-custom-data-to-locally-running-llms/Pastedimage20250207141852.png" alt=""></p>
+<blockquote>
+<p><strong>AnythingLLM</strong> is the easiest way to put powerful AI products like OpenAi, GPT-4, LangChain, PineconeDB, ChromaDB, and other services together in a neat package with no fuss to increase your productivity by 100x.</p></blockquote>
+<p>There are also other solutions and methods which can be used as LLM is very trendy topic  nowadays 🚀.
+You may also check solutions like:</p>
+<ul>
+<li><a href="https://www.nomic.ai/gpt4all"  class="external-link" target="_blank" rel="noopener">GPT4All</a></li>
+<li><a href="https://openwebui.com/"  class="external-link" target="_blank" rel="noopener">Open WebUI</a></li>
+<li><a href="https://dev.to/nassermaronie/build-your-own-rag-app-a-step-by-step-guide-to-setup-llm-locally-using-ollama-python-and-chromadb-b12"  class="external-link" target="_blank" rel="noopener">Build Your Own RAG App: A Step-by-Step Guide to Setup LLM locally using Ollama, Python, and ChromaDB - DEV Community</a></li>
+</ul>
+<p>Maybe we will address some of them later. I also want to review RAG with LangChain and Python as it allows you to create your own pipelines.</p>
+<h2 id="technology-stack">
+  Technology Stack
+  <a class="heading-link" href="#technology-stack">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Okay so, you’ve cut through all that text pile ⚔, we can finally start with deploying our solution with AnythingLLM and Ollama</p>
+<p><img src="/blog/posts/ai/adding-custom-data-to-locally-running-llms/Pastedimage20250207141810.png" alt=""></p>
+<h3 id="installation">
+  Installation
+  <a class="heading-link" href="#installation">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>Installation of Ollama was described already in my previous post  <a href="https://armbraker.github.io/blog/posts/ai/introduction-llm-part-1/"  class="external-link" target="_blank" rel="noopener">Local LLMs Part1: Introduction to LLM and Ollama · Journey into IT Knowledge</a>, and therefore I will not list it here and will continue only with installation and configuration of AnythingLLM.</p>
+<p>Installation is very simple:</p>
+<ol>
+<li>Visit their download page <a href="https://anythingllm.com/desktop"  class="external-link" target="_blank" rel="noopener">Download AnythingLLM for Desktop</a></li>
+<li>Choose operation system (Windows, MAC or Linux)</li>
+<li>Install</li>
+<li>Done</li>
+</ol>
+<p><em><strong>Note:</strong></em> Your browser show you a warning page as the file is not signed and other AVs can also have an issue to trust to this executable.</p>
+<h3 id="configuration">
+  Configuration
+  <a class="heading-link" href="#configuration">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<ul>
+<li><strong>Disclaimer</strong>: Agents functionality is not working with reasoning models like DeepSeek R1.</li>
+</ul>
+<p>Once you have AnythingLLM installed, it is very easy to configure it utilize your local LLMs with Ollama.</p>
+<ol>
+<li>Just choose provider Ollama in Search LLM provider window and it will identify you installation automatically:</li>
+</ol>
+<p><img src="/blog/posts/ai/adding-custom-data-to-locally-running-llms/Pastedimage20250207143904.png" alt="">
+<img src="/blog/posts/ai/adding-custom-data-to-locally-running-llms/Pastedimage20250207143806.png" alt=""></p>
+<ol start="2">
+<li>You may leave advance settings as they are and continue.</li>
+<li>You should see your configuration like:</li>
+</ol>
+<p><img src="/blog/posts/ai/adding-custom-data-to-locally-running-llms/Pastedimage20250207144028.png" alt=""></p>
+<ol start="4">
+<li>You can skip survey if you want.</li>
+</ol>
+<h2 id="provide-custom-data">
+  Provide Custom Data
+  <a class="heading-link" href="#provide-custom-data">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<h3 id="local-data">
+  Local Data
+  <a class="heading-link" href="#local-data">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<ol>
+<li>Create workspace where you will store relevant data/documentation, e.g. &ldquo;Blog&rdquo;.</li>
+</ol>
+<p><img src="/blog/posts/ai/adding-custom-data-to-locally-running-llms/Pastedimage20250207145708.png" alt=""></p>
+<ol start="2">
+<li>I don&rsquo;t know what is optimal way how to organize the data in the Workspaces, but I am creating folders and workspace according to topic which I want to provide to LLM. But I will leave it on everybody to figure out the a way working best for them.</li>
+<li>You can upload your documentation and files by simple clink on upload icon next to name of your workspace</li>
+</ol>
+<p><img src="/blog/posts/ai/adding-custom-data-to-locally-running-llms/Pastedimage20250207150522.png" alt=""></p>
+<ol start="4">
+<li>Then select the files or simply drag and drop them, then click &ldquo;move to workspace&rdquo;. They should appear in your workspace:</li>
+</ol>
+<p><img src="/blog/posts/ai/adding-custom-data-to-locally-running-llms/Pastedimage20250207150645.png" alt="">
+<img src="/blog/posts/ai/adding-custom-data-to-locally-running-llms/Pastedimage20250207150506.png" alt=""></p>
+<ol start="5">
+<li>Simply as anything from your documentation:</li>
+</ol>
+<p><img src="/blog/posts/ai/adding-custom-data-to-locally-running-llms/Pastedimage20250207151230.png" alt=""></p>
+<ol start="6">
+<li>You may also check from here the LLM take the info:</li>
+</ol>
+<p><img src="/blog/posts/ai/adding-custom-data-to-locally-running-llms/Pastedimage20250207151328.png" alt=""></p>
+<h3 id="remote-data">
+  Remote Data
+  <a class="heading-link" href="#remote-data">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p><strong>AnythingLLM</strong> provide you a possibility to scrap data from Internet site or pull data from repositories (GitHub, GitLab, YouTube transcript) and import them into RAG.
+<strong>Note</strong>: For Git solutions, you will need to obtain <em><strong>API</strong></em> key.</p>
+<p><img src="/blog/posts/ai/adding-custom-data-to-locally-running-llms/Pastedimage20250208094627.png" alt=""></p>
+<p>After you scrap the website, it will create you a new folder in Documents section, and you will need to mark it to use in you <strong>workspace</strong>.</p>
+<p><img src="/blog/posts/ai/adding-custom-data-to-locally-running-llms/Pastedimage20250208094708.png" alt=""></p>
+<p>Wualaaa, you can use this documents in your context window (chat) with AI. 🎉🥳</p>
+<p><img src="/blog/posts/ai/adding-custom-data-to-locally-running-llms/Pastedimage20250208101519.png" alt=""></p>
+
+      </div>
+
+
+      <footer>
+        
+
+<section class="see-also">
+  
+    
+    
+    
+  
+</section>
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+    2025
+     ArmBraker 👨‍💻 
+    ·
+    
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/blog/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

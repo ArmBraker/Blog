@@ -1,9 +1,9 @@
 +++ 
 draft = false
 date = 2025-02-01T14:15:31+01:00
-title = "Local LLMs Part1: Introduction to LLM and Ollama"
+title = "Local LLMs Part 1: Introduction to LLM and Ollama"
 description = "Introducing LLM machine learning models and how to run them locally with the Ollama"
-slug = "introduction-llm-part-1"
+slug = ""
 authors = []
 tags = [
     "LLM",
@@ -18,6 +18,8 @@ externalLink = ""
 series = ["Local LLM with Ollama"]
 +++
 
+{{<toc>}}
+
 ## Introduction
 
 Welcome to this new series focused on LLMs (Large Language Models) and running them locally using [Ollama](https://ollama.com/).
@@ -29,6 +31,7 @@ I've used and tried various *LLMs like OpenAI, Gemini, and Claude.*
 However, I have privacy concerns regarding the potential sharing of personal information with third parties. Many people, including myself, share these worries. Therefore, I decided to dive deeper into this topic and learn about LLMs and how to feed them with personal information without worrying about providing it to third-party entities.
 
 ![LLM Meme](../20250202110843.jpg)
+
 
 ## Content of This Series 🧾
 

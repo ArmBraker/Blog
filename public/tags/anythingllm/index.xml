@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AnythingLLM on Journey into IT Knowledge</title>
+    <link>https://armbraker.github.io/blog/tags/anythingllm/</link>
+    <description>Recent content in AnythingLLM on Journey into IT Knowledge</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 08 Feb 2025 10:30:31 +0100</lastBuildDate>
+    <atom:link href="https://armbraker.github.io/blog/tags/anythingllm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Local LLMs Part 2: Adding Custom Data to Locally Running LLMs</title>
+      <link>https://armbraker.github.io/blog/posts/ai/adding-custom-data-to-locally-running-llms/</link>
+      <pubDate>Sat, 08 Feb 2025 10:30:31 +0100</pubDate>
+      <guid>https://armbraker.github.io/blog/posts/ai/adding-custom-data-to-locally-running-llms/</guid>
+      <description>&lt;nav id=&#34;TableOfContents&#34;&gt;&#xA;  &lt;ul&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;#introduction&#34;&gt;Introduction&lt;/a&gt;&lt;/li&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;#common-learning-methods&#34;&gt;Common Learning Methods&lt;/a&gt;&#xA;      &lt;ul&gt;&#xA;        &lt;li&gt;&lt;a href=&#34;#1-fine-tuning&#34;&gt;1. Fine-Tuning&lt;/a&gt;&lt;/li&gt;&#xA;        &lt;li&gt;&lt;a href=&#34;#2-prompt-engineering&#34;&gt;2. Prompt Engineering&lt;/a&gt;&lt;/li&gt;&#xA;        &lt;li&gt;&lt;a href=&#34;#3-in-context-learning&#34;&gt;3. In-Context Learning&lt;/a&gt;&lt;/li&gt;&#xA;        &lt;li&gt;&lt;a href=&#34;#4-retrieval-augmented-generation-rag&#34;&gt;4. Retrieval-Augmented Generation (RAG)&lt;/a&gt;&lt;/li&gt;&#xA;      &lt;/ul&gt;&#xA;    &lt;/li&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;#our-method-of-choice&#34;&gt;Our Method of Choice&lt;/a&gt;&lt;/li&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;#technology-stack&#34;&gt;Technology Stack&lt;/a&gt;&#xA;      &lt;ul&gt;&#xA;        &lt;li&gt;&lt;a href=&#34;#installation&#34;&gt;Installation&lt;/a&gt;&lt;/li&gt;&#xA;        &lt;li&gt;&lt;a href=&#34;#configuration&#34;&gt;Configuration&lt;/a&gt;&lt;/li&gt;&#xA;      &lt;/ul&gt;&#xA;    &lt;/li&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;#provide-custom-data&#34;&gt;Provide Custom Data&lt;/a&gt;&#xA;      &lt;ul&gt;&#xA;        &lt;li&gt;&lt;a href=&#34;#local-data&#34;&gt;Local Data&lt;/a&gt;&lt;/li&gt;&#xA;        &lt;li&gt;&lt;a href=&#34;#remote-data&#34;&gt;Remote Data&lt;/a&gt;&lt;/li&gt;&#xA;      &lt;/ul&gt;&#xA;    &lt;/li&gt;&#xA;  &lt;/ul&gt;&#xA;&lt;/nav&gt;&#xA;&lt;h2 id=&#34;introduction&#34;&gt;&#xA;  Introduction&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#introduction&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Welcome in the 2nd party of this series, in previous article [Introduction into LLM &amp;amp; Ollama Tool](&lt;a href=&#34;https://armbraker.github.io/blog/posts/ai/introduction-llm-part-1/&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Local LLMs Part1: Introduction to LLM and Ollama · Journey into IT Knowledge&lt;/a&gt;)&#xA;we focused on short introduction to AI and LLM models their benefits and challenges.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

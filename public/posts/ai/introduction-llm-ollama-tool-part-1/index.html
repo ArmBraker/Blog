@@ -3,7 +3,7 @@
 
 <head>
   <title>
-  Local LLMs Part1: Introduction to LLM and Ollama · Journey into IT Knowledge
+  Local LLMs Part 1: Introduction to LLM and Ollama · Journey into IT Knowledge
 </title>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,12 +19,12 @@
 
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Local LLMs Part1: Introduction to LLM and Ollama">
+  <meta name="twitter:title" content="Local LLMs Part 1: Introduction to LLM and Ollama">
   <meta name="twitter:description" content="Introducing LLM machine learning models and how to run them locally with the Ollama">
 
-<meta property="og:url" content="https://armbraker.github.io/blog/posts/ai/introduction-llm-part-1/">
+<meta property="og:url" content="https://armbraker.github.io/blog/posts/ai/introduction-llm-ollama-tool-part-1/">
   <meta property="og:site_name" content="Journey into IT Knowledge">
-  <meta property="og:title" content="Local LLMs Part1: Introduction to LLM and Ollama">
+  <meta property="og:title" content="Local LLMs Part 1: Introduction to LLM and Ollama">
   <meta property="og:description" content="Introducing LLM machine learning models and how to run them locally with the Ollama">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
@@ -34,11 +34,12 @@
     <meta property="article:tag" content="LLM">
     <meta property="article:tag" content="Ollama">
     <meta property="article:tag" content="Machine Learning">
+      <meta property="og:see_also" content="https://armbraker.github.io/blog/posts/ai/adding-custom-data-to-locally-running-llms/">
 
 
 
 
-<link rel="canonical" href="https://armbraker.github.io/blog/posts/ai/introduction-llm-part-1/">
+<link rel="canonical" href="https://armbraker.github.io/blog/posts/ai/introduction-llm-ollama-tool-part-1/">
 
 
 <link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
@@ -48,7 +49,7 @@
 
   
   
-  <link rel="stylesheet" href="/blog/css/coder.min.f04d4c2b3aa2d369dd0f02bc87d53b60d811a0f74526c9ef8a434ee3248b3606.css" integrity="sha256-8E1MKzqi02ndDwK8h9U7YNgRoPdFJsnvikNO4ySLNgY=" crossorigin="anonymous" media="screen" />
+  <link rel="stylesheet" href="/blog/css/coder.min.35806ce5e0e1bb4527b622208e45c388f9cf2ef6ba7239537fe5b91b2690c4ec.css" integrity="sha256-NYBs5eDhu0UntiIgjkXDiPnPLva6cjlTf&#43;W5GyaQxOw=" crossorigin="anonymous" media="screen" />
 
 
 
@@ -145,8 +146,8 @@
       <header>
         <div class="post-title">
           <h1 class="title">
-            <a class="title-link" href="https://armbraker.github.io/blog/posts/ai/introduction-llm-part-1/">
-              Local LLMs Part1: Introduction to LLM and Ollama
+            <a class="title-link" href="https://armbraker.github.io/blog/posts/ai/introduction-llm-ollama-tool-part-1/">
+              Local LLMs Part 1: Introduction to LLM and Ollama
             </a>
           </h1>
         </div>
@@ -160,7 +161,7 @@
             </span>
             <span class="reading-time">
               <i class="fa-solid fa-clock" aria-hidden="true"></i>
-              5-minute read
+              6-minute read
             </span>
           </div>
           
@@ -189,20 +190,47 @@
 
       <div class="post-content">
         
-        <h2 id="introduction">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#content-of-this-series-">Content of This Series 🧾</a></li>
+    <li><a href="#part-1-introduction-to-llm-and-ollama-tool"><strong>Part 1: Introduction to LLM and Ollama Tool</strong></a>
+      <ul>
+        <li><a href="#what-are-large-language-models-llms">What are Large Language Models (LLMs)?</a>
+          <ul>
+            <li><a href="#what-are-llms">What are LLMs?</a></li>
+            <li><a href="#problems-of-llm-and-ai-">Problems of LLM and AI 🔥</a></li>
+          </ul>
+        </li>
+        <li><a href="#what-is-ollama">What is Ollama?</a></li>
+        <li><a href="#running-llm-models-locally-with-ollama">Running LLM Models Locally with Ollama</a>
+          <ul>
+            <li><a href="#choosing-right-platform">Choosing Right Platform</a></li>
+            <li><a href="#installation">Installation</a></li>
+            <li><a href="#usage">Usage</a></li>
+            <li><a href="#local-model-installation">Local Model Installation</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+<h2 id="introduction">
   Introduction
   <a class="heading-link" href="#introduction">
     <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
     <span class="sr-only">Link to heading</span>
   </a>
 </h2>
-<p>Welcome to this new series focused on LLMs (Large Language Models) and running them locally using <a href="https://ollama.com/"  class="external-link" target="_blank" rel="noopener">Ollama</a>).
-Recently, I decided to take a little break from my usual domain of <strong>Cybersecurity</strong> to explore LLMs. This topic is very popular nowadays, and many believe it will impact every domain of our lives and work. I have used and tried various LLMs, such as OpenAI, Gemini, and Claude.
-However, I have concerns about the privacy of my personal or company information, and I believe others share this concern. Therefore, I decided to delve deeper into this topic and learn about LLMs and how to <em><strong>&ldquo;feed&rdquo;</strong></em> them with personal information without worries of providing them into 3rd party.
-<img src="../20250202110843.jpg" alt="LLM Meme"></p>
-<h2 id="content-of-the-series-">
-  Content of the series 🧾
-  <a class="heading-link" href="#content-of-the-series-">
+<p>Welcome to this new series focused on LLMs (Large Language Models) and running them locally using <a href="https://ollama.com/"  class="external-link" target="_blank" rel="noopener">Ollama</a>.</p>
+<p>Recently, I decided to take a little break from my usual domain of cybersecurity to explore LLMs—a topic that&rsquo;s growing in popularity today.
+It seems that many believe it will impact every aspect of our lives and work.
+I&rsquo;ve used and tried various <em>LLMs like OpenAI, Gemini, and Claude.</em></p>
+<p>However, I have privacy concerns regarding the potential sharing of personal information with third parties. Many people, including myself, share these worries. Therefore, I decided to dive deeper into this topic and learn about LLMs and how to feed them with personal information without worrying about providing it to third-party entities.</p>
+<p><img src="../20250202110843.jpg" alt="LLM Meme"></p>
+<h2 id="content-of-this-series-">
+  Content of This Series 🧾
+  <a class="heading-link" href="#content-of-this-series-">
     <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
     <span class="sr-only">Link to heading</span>
   </a>
@@ -238,8 +266,7 @@ However, I have concerns about the privacy of my personal or company information
 <p><strong>L</strong>arge <strong>L</strong>anguage <strong>M</strong>odels (LLMs) are advanced artificial intelligence systems designed to understand, generate, and respond to human language. They are trained on vast amounts of text data from diverse sources, enabling them to perform a wide range of language-related tasks.</p>
 <p>There are also other variants of LLM, called <strong>&ldquo;Multimodal&rdquo;</strong> LLMs. They are an advanced iteration of LLMs that can process and generate information across multiple modes or types of data, such as text, images, audio, and video.</p>
 <blockquote>
-<p>In a nutshell, LLMs are designed to understand and generate text like a human, in addition to other forms of content, based on the vast amount of data used to train them. They have the ability to infer from context, generate coherent and contextually relevant responses, translate to languages other than English, summarize text, answer questions (general conversation and FAQs) and even assist in creative writing or code generation tasks. 🤖</p>
-</blockquote>
+<p>In a nutshell, LLMs are designed to understand and generate text like a human, in addition to other forms of content, based on the vast amount of data used to train them. They have the ability to infer from context, generate coherent and contextually relevant responses, translate to languages other than English, summarize text, answer questions (general conversation and FAQs) and even assist in creative writing or code generation tasks. 🤖</p></blockquote>
 <h4 id="problems-of-llm-and-ai-">
   Problems of LLM and AI 🔥
   <a class="heading-link" href="#problems-of-llm-and-ai-">
@@ -262,11 +289,10 @@ However, I have concerns about the privacy of my personal or company information
     <span class="sr-only">Link to heading</span>
   </a>
 </h3>
-<p><img src="../20250202120505.png%7C300" alt="Ollama Icon"></p>
-<p>Ollama is an <strong>open-source</strong> project that serves as a powerful and user-friendly platform for running LLMs on your local machine. This offers <strong>enhanced privacy, cost savings, and offline access</strong>. Ollama is providing <strong>full control over data and infrastructure</strong>, making it ideal for those who prioritize data security and customization.</p>
+<p><img src="../20250202120505.png" alt="Ollama Icon"></p>
+<p>Ollama is an <strong>open-source</strong> project that serves as a powerful and user-friendly platform for running LLMs on your local machine. This offers you <strong>enhanced privacy, cost savings, and offline access</strong>. Ollama is providing <strong>full control over data and infrastructure</strong>, making it ideal for those who prioritize data security and customization.</p>
 <blockquote>
-<p>If you need, you can find more on their official website -&gt; <a href="https://ollama.com/"  class="external-link" target="_blank" rel="noopener">Ollama</a> or on their <a href="https://github.com/ollama/ollama"  class="external-link" target="_blank" rel="noopener">GitHub - ollama/ollama: Get up and running with Llama 3.3, DeepSeek-R1, Phi-4, Gemma 2, and other large language models.</a></p>
-</blockquote>
+<p>If you need, you can find more on their official website -&gt; <a href="https://ollama.com/"  class="external-link" target="_blank" rel="noopener">Ollama</a> or on their <a href="https://github.com/ollama/ollama"  class="external-link" target="_blank" rel="noopener">GitHub - ollama/ollama: Get up and running with Llama 3.3, DeepSeek-R1, Phi-4, Gemma 2, and other large language models.</a></p></blockquote>
 <h3 id="running-llm-models-locally-with-ollama">
   Running LLM Models Locally with Ollama
   <a class="heading-link" href="#running-llm-models-locally-with-ollama">
@@ -274,17 +300,16 @@ However, I have concerns about the privacy of my personal or company information
     <span class="sr-only">Link to heading</span>
   </a>
 </h3>
-<h4 id="choosing-a-right-platform">
-  Choosing a Right Platform
-  <a class="heading-link" href="#choosing-a-right-platform">
+<h4 id="choosing-right-platform">
+  Choosing Right Platform
+  <a class="heading-link" href="#choosing-right-platform">
     <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
     <span class="sr-only">Link to heading</span>
   </a>
 </h4>
-<p>I am using Windows as my base operating system, and LLMs run best with a GPU.
-Therefore, I will guide you on how to use Ollama on Windows.</p>
+<p>I am using Windows as my base operating system, and  as LLMs run best with a GPU it think it will make non-sense to run them in VM.  I will guide you on how to use Ollama on Windows.</p>
 <p>There is also an option to run Ollama in Docker - <a href="https://hub.docker.com/r/ollama/ollama"  class="external-link" target="_blank" rel="noopener">ollama/ollama - Docker Image | Docker Hub</a>, but it may be little tricky for content sharing with LLMs, as will be described later in this series.</p>
-<p><strong>Note</strong>: I am suggesting to follow their <a href="https://github.com/ollama/ollama"  class="external-link" target="_blank" rel="noopener">GitHub</a> for installation instructions.</p>
+<p><strong>Note</strong>: I am suggesting to follow Ollama official installation instruction on their <a href="https://github.com/ollama/ollama"  class="external-link" target="_blank" rel="noopener">GitHub</a>.</p>
 <h4 id="installation">
   Installation
   <a class="heading-link" href="#installation">
@@ -315,8 +340,8 @@ Therefore, I will guide you on how to use Ollama on Windows.</p>
     <span class="sr-only">Link to heading</span>
   </a>
 </h4>
-<p>![Deepseak](../069ccc94-63b0-41e6-b2b3-e8e56068ab1a.webp | 300)
-We will use <em><strong>DeepSeek-R1</strong></em> model, it is  DeepSeek’s first-generation reasoning models, achieving performance comparable to OpenAI-o1 across math, code, and reasoning tasks.</p>
+<p><img src="../069ccc94-63b0-41e6-b2b3-e8e56068ab1a.webp" alt="DeepSeek"></p>
+<p>We will use <em><strong>DeepSeek-R1</strong></em> model, it is  DeepSeek’s first-generation reasoning models, achieving performance comparable to OpenAI-o1 across math, code, and reasoning tasks.</p>
 <p>To be precise, we will use <strong>DeepSeek-R1-Distill-Qwen-7B</strong> as this model should be running smoothly on my computer:</p>
 <ul>
 <li><strong>CPU:</strong> Ryzen 3800</li>
@@ -324,9 +349,9 @@ We will use <em><strong>DeepSeek-R1</strong></em> model, it is  DeepSeek’s fir
 <li><strong>GPU:</strong> NVidia 1070</li>
 <li><strong>Note:</strong> Please be careful when choosing a model. There is a rule: the denser <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> the model, the higher the hardware requirements it needs.</li>
 </ul>
-<h5 id="download-the-model">
-  Download the Model
-  <a class="heading-link" href="#download-the-model">
+<h5 id="download-llm-model">
+  Download LLM Model
+  <a class="heading-link" href="#download-llm-model">
     <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
     <span class="sr-only">Link to heading</span>
   </a>
@@ -341,11 +366,10 @@ We will use <em><strong>DeepSeek-R1</strong></em> model, it is  DeepSeek’s fir
   </a>
 </h5>
 <ul>
-<li>Finally we have the Ollama installed and desired model downloaded, we can execute our first prompt. I used something a bit complex 👌:</li>
+<li>Finally we have the Ollama installed and desired model downloaded, so we can execute our first prompt.  I used something a bit complex 👌:</li>
 </ul>
 <blockquote>
-<p>What is your name?</p>
-</blockquote>
+<p>What is your name?</p></blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>&gt;&gt;&gt; what is your name?
 </span></span><span style="display:flex;"><span>&lt;<span style="color:#ff6ac1">think</span>&gt;
 </span></span><span style="display:flex;"><span>
@@ -382,13 +406,11 @@ We will use <em><strong>DeepSeek-R1</strong></em> model, it is  DeepSeek’s fir
 </span></span><span style="display:flex;"><span>  -h, --help      help for ollama
 </span></span><span style="display:flex;"><span>  -v, --version   Show version information
 </span></span></code></pre></div><ul>
-<li>
-<p>Example:
-<img src="../20250202125919.png" alt="Example"></p>
-</li>
-<li>
-<p>Use <code>Ctrl + d</code> or <code>/bye</code> to exit.</p>
-</li>
+<li>Example:</li>
+</ul>
+<p><img src="../20250202125919.png" alt="Example"></p>
+<ul>
+<li>Use <code>Ctrl + d</code> or <code>/bye</code> to exit.</li>
 </ul>
 <div class="footnotes" role="doc-endnotes">
 <hr>
